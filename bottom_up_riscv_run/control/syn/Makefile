@@ -8,7 +8,7 @@
 # -----------------------------
 # User-configurable variables
 # -----------------------------
-TOP        ?= riscv_core
+TOP        ?= control
 DC_SHELL   ?= dc_shell
 # UNIX environment variable (pwd)
 WARD := $(shell pwd)
