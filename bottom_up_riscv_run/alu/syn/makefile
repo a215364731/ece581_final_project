@@ -88,7 +88,7 @@ help:
 	@echo "  make dc TOP=<design_name>"
 	@echo ""
 	@echo "VARIABLES:"
-	@echo "  TOP        Top-level RTL module (default: fifo1)"
+	@echo "  TOP        Top-level RTL module (default: alu)"
 	@echo "  DC_SHELL   Design Compiler executable (default: dc_shell)"
 	@echo "  LOGDIR     Directory for log files (default: logs)"
 	@echo ""
@@ -105,3 +105,4 @@ help:
 	@echo "  make clean_up_for_submission"
 	@echo ""
 	@echo "=============================================="
+
