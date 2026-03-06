@@ -15,14 +15,16 @@ puts "INFO: Starting Analyze and Elaborate stage"
 # $rtl_list should be defined in dc_setup.tcl
 # -autoread automatically reads the files
 # -define SYNTHESIS defines synthesis preprocessor macro
-echo "analyze $rtl_list -autoread -define SYNTHESIS"
-analyze $rtl_list -autoread -define SYNTHESIS
+echo "analyze -format sverilog -define SYNTHESIS $rtl_list"
+analyze -format sverilog -define SYNTHESIS $rtl_list
 
 # --------------------------------------------------
 # Elaborate top-level design
 # --------------------------------------------------
 # $top_design should be defined in dc_setup.tcl
 elaborate $top_design
+current_design $top_design
+link
 
 # --------------------------------------------------
 # Standardize names for hierarchical output
