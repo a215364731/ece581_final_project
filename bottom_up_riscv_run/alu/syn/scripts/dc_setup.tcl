@@ -55,8 +55,9 @@ if { [info exists ::env(RTLDIR)] } {
 }
 
 puts "INFO: RTL directory = $rtl_dir"
-set rtl_list [list ${rtl_dir}/${top_design}.sv ${rtl_dir}/alu.sv  ${rtl_dir}/control.sv ${rtl_dir}/regfile.sv \
-              ${rtl_dir}/data_mem.sv  ${rtl_dir}/imm_gen.sv  ${rtl_dir}/pc.sv]
+#set rtl_list [list ${rtl_dir}/${top_design}.sv ${rtl_dir}/alu.sv  ${rtl_dir}/control.sv ${rtl_dir}/regfile.sv \
+ #             ${rtl_dir}/data_mem.sv  ${rtl_dir}/imm_gen.sv  ${rtl_dir}/pc.sv]
+set rtl_list [list ${rtl_dir}/${top_design}.sv]
 
 # --------------------------------------------------
 # Corner / Timing settings
