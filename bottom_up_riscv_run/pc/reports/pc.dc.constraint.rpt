@@ -1,0 +1,20 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : pc
+Version: Q-2019.12-SP3
+Date   : Thu Mar  5 16:15:02 2026
+****************************************
+
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   pc                           0.00       5960486.50     -5960486.50
+                                                                    (VIOLATED)
+
+
+1

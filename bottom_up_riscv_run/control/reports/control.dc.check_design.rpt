@@ -1,0 +1,19 @@
+ 
+****************************************
+check_design summary:
+Version:     Q-2019.12-SP3
+Date:        Thu Mar  5 16:04:48 2026
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                      4
+    Shorted outputs (LINT-31)                                       2
+    Constant outputs (LINT-52)                                      2
+--------------------------------------------------------------------------------
+
+Warning: In design 'control', output port 'mem_read' is connected directly to output port 'mem_to_reg'. (LINT-31)
+Warning: In design 'control', output port 'alu_ctrl[3]' is connected directly to output port 'alu_ctrl[2]'. (LINT-31)
+Warning: In design 'control', output port 'alu_ctrl[3]' is connected directly to 'logic 0'. (LINT-52)
+Warning: In design 'control', output port 'alu_ctrl[2]' is connected directly to 'logic 0'. (LINT-52)
+1

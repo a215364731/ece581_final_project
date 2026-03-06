@@ -1,0 +1,48 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Ultra(TM) in wire load mode
+// Version   : Q-2019.12-SP3
+// Date      : Thu Mar  5 16:04:48 2026
+/////////////////////////////////////////////////////////////
+
+
+module control ( opcode, funct3, funct7, reg_write, mem_read, mem_write, 
+        mem_to_reg, alu_src, branch, alu_ctrl );
+  input [6:0] opcode;
+  input [2:0] funct3;
+  input [6:0] funct7;
+  output [3:0] alu_ctrl;
+  output reg_write, mem_read, mem_write, mem_to_reg, alu_src, branch;
+  wire   mem_read, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28,
+         n29, n30, n31, n32, n33, n34;
+  assign alu_ctrl[2] = 1'b0;
+  assign alu_ctrl[3] = 1'b0;
+  assign mem_to_reg = mem_read;
+
+  NAND2X0_HVT U27 ( .A1(opcode[0]), .A2(opcode[1]), .Y(n17) );
+  OR3X1_HVT U28 ( .A1(opcode[3]), .A2(opcode[2]), .A3(n17), .Y(n19) );
+  INVX0_HVT U29 ( .A(n19), .Y(n18) );
+  INVX0_HVT U30 ( .A(opcode[4]), .Y(n32) );
+  NAND4X0_HVT U31 ( .A1(n18), .A2(opcode[6]), .A3(opcode[5]), .A4(n32), .Y(n30) );
+  INVX0_HVT U32 ( .A(n30), .Y(branch) );
+  OR2X1_HVT U33 ( .A1(opcode[6]), .A2(n19), .Y(n22) );
+  NAND2X0_HVT U34 ( .A1(opcode[4]), .A2(opcode[5]), .Y(n23) );
+  OR3X1_HVT U35 ( .A1(funct7[6]), .A2(funct7[4]), .A3(n23), .Y(n20) );
+  OR3X1_HVT U36 ( .A1(funct7[0]), .A2(funct7[1]), .A3(n20), .Y(n21) );
+  NOR4X1_HVT U37 ( .A1(funct7[2]), .A2(funct7[3]), .A3(n22), .A4(n21), .Y(n24)
+         );
+  INVX0_HVT U38 ( .A(funct7[5]), .Y(n25) );
+  NAND4X0_HVT U39 ( .A1(funct3[1]), .A2(n24), .A3(funct3[2]), .A4(n25), .Y(n27) );
+  INVX0_HVT U40 ( .A(n27), .Y(alu_ctrl[1]) );
+  INVX0_HVT U41 ( .A(n22), .Y(n34) );
+  AND3X1_HVT U42 ( .A1(n34), .A2(opcode[5]), .A3(n32), .Y(mem_write) );
+  NOR3X0_HVT U43 ( .A1(opcode[4]), .A2(opcode[5]), .A3(n22), .Y(mem_read) );
+  AND2X1_HVT U44 ( .A1(n34), .A2(n23), .Y(alu_src) );
+  INVX0_HVT U45 ( .A(funct3[0]), .Y(n29) );
+  OR3X1_HVT U46 ( .A1(funct3[1]), .A2(funct3[2]), .A3(n25), .Y(n26) );
+  NAND2X0_HVT U47 ( .A1(n27), .A2(n26), .Y(n28) );
+  NAND3X0_HVT U48 ( .A1(n29), .A2(n24), .A3(n28), .Y(n31) );
+  NAND2X0_HVT U49 ( .A1(n31), .A2(n30), .Y(alu_ctrl[0]) );
+  NAND2X0_HVT U50 ( .A1(opcode[5]), .A2(n32), .Y(n33) );
+  AND2X1_HVT U51 ( .A1(n34), .A2(n33), .Y(reg_write) );
+endmodule
+

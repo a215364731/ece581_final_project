@@ -1,0 +1,38 @@
+ 
+****************************************
+check_design summary:
+Version:     Q-2019.12-SP3
+Date:        Thu Mar  5 16:42:27 2026
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     24
+    Unconnected ports (LINT-28)                                    24
+--------------------------------------------------------------------------------
+
+Warning: In design 'data_mem', port 'addr[31]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[30]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[29]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[24]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[23]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[22]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[21]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[20]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[19]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[18]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[17]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[15]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[14]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[13]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[12]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[11]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[10]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[0]' is not connected to any nets. (LINT-28)
+1

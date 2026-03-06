@@ -1,0 +1,96 @@
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+Warning: The following input ports have no clock_relative delay specified, the command set_input_delay without -clock option will be ignored. (TIM-216)
+--------------------
+mem_read
+mem_write
+addr[9]
+addr[8]
+addr[7]
+addr[6]
+addr[5]
+addr[4]
+addr[3]
+addr[2]
+write_data[31]
+write_data[30]
+write_data[29]
+write_data[28]
+write_data[27]
+write_data[26]
+write_data[25]
+write_data[24]
+write_data[23]
+write_data[22]
+write_data[21]
+write_data[20]
+write_data[19]
+write_data[18]
+write_data[17]
+write_data[16]
+write_data[15]
+write_data[14]
+write_data[13]
+write_data[12]
+write_data[11]
+write_data[10]
+write_data[9]
+write_data[8]
+write_data[7]
+write_data[6]
+write_data[5]
+write_data[4]
+write_data[3]
+write_data[2]
+write_data[1]
+write_data[0]
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+read_data[0]
+read_data[1]
+read_data[2]
+read_data[3]
+read_data[4]
+read_data[5]
+read_data[6]
+read_data[7]
+read_data[8]
+read_data[9]
+read_data[10]
+read_data[11]
+read_data[12]
+read_data[13]
+read_data[14]
+read_data[15]
+read_data[16]
+read_data[17]
+read_data[18]
+read_data[19]
+read_data[20]
+read_data[21]
+read_data[22]
+read_data[23]
+read_data[24]
+read_data[25]
+read_data[26]
+read_data[27]
+read_data[28]
+read_data[29]
+read_data[30]
+read_data[31]
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1
