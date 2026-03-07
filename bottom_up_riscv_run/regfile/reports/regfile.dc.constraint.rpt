@@ -1,0 +1,20 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : regfile
+Version: X-2025.06-SP4
+Date   : Fri Mar  6 17:16:35 2026
+****************************************
+
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   regfile                      0.00       282567968.00   -282567968.00
+                                                                    (VIOLATED)
+
+
+1

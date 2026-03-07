@@ -1,0 +1,65 @@
+/////////////////////////////////////////////////////////////
+// Created by: Synopsys DC Ultra(TM) in wire load mode
+// Version   : X-2025.06-SP4
+// Date      : Fri Mar  6 17:39:33 2026
+/////////////////////////////////////////////////////////////
+
+
+module imm_gen ( instruction, imm );
+  input [31:0] instruction;
+  output [31:0] imm;
+  wire   n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24;
+  assign imm[12] = imm[31];
+  assign imm[13] = imm[31];
+  assign imm[14] = imm[31];
+  assign imm[15] = imm[31];
+  assign imm[16] = imm[31];
+  assign imm[17] = imm[31];
+  assign imm[18] = imm[31];
+  assign imm[19] = imm[31];
+  assign imm[20] = imm[31];
+  assign imm[21] = imm[31];
+  assign imm[22] = imm[31];
+  assign imm[23] = imm[31];
+  assign imm[24] = imm[31];
+  assign imm[25] = imm[31];
+  assign imm[26] = imm[31];
+  assign imm[27] = imm[31];
+  assign imm[28] = imm[31];
+  assign imm[29] = imm[31];
+  assign imm[30] = imm[31];
+
+  AND2X2_HVT U27 ( .A1(instruction[31]), .A2(n21), .Y(imm[31]) );
+  NAND2X0_HVT U28 ( .A1(instruction[1]), .A2(instruction[0]), .Y(n13) );
+  OR3X1_HVT U29 ( .A1(instruction[3]), .A2(instruction[2]), .A3(n13), .Y(n15)
+         );
+  INVX0_HVT U30 ( .A(instruction[5]), .Y(n14) );
+  OR3X1_HVT U31 ( .A1(n15), .A2(n14), .A3(instruction[4]), .Y(n17) );
+  OR2X1_HVT U32 ( .A1(instruction[6]), .A2(n15), .Y(n22) );
+  OR2X1_HVT U33 ( .A1(instruction[5]), .A2(n22), .Y(n16) );
+  NAND2X0_HVT U34 ( .A1(n17), .A2(n16), .Y(n21) );
+  INVX0_HVT U35 ( .A(n16), .Y(n19) );
+  INVX0_HVT U36 ( .A(n17), .Y(n20) );
+  AND2X1_HVT U37 ( .A1(n20), .A2(instruction[7]), .Y(n24) );
+  INVX0_HVT U38 ( .A(instruction[6]), .Y(n18) );
+  AO22X1_HVT U39 ( .A1(instruction[20]), .A2(n19), .A3(n24), .A4(n18), .Y(
+        imm[0]) );
+  AO22X1_HVT U40 ( .A1(n20), .A2(instruction[8]), .A3(n19), .A4(
+        instruction[21]), .Y(imm[1]) );
+  AO22X1_HVT U41 ( .A1(n20), .A2(instruction[9]), .A3(n19), .A4(
+        instruction[22]), .Y(imm[2]) );
+  AO22X1_HVT U42 ( .A1(n20), .A2(instruction[10]), .A3(n19), .A4(
+        instruction[23]), .Y(imm[3]) );
+  AO22X1_HVT U43 ( .A1(n20), .A2(instruction[11]), .A3(n19), .A4(
+        instruction[24]), .Y(imm[4]) );
+  AND2X1_HVT U44 ( .A1(instruction[25]), .A2(n21), .Y(imm[5]) );
+  AND2X1_HVT U45 ( .A1(instruction[26]), .A2(n21), .Y(imm[6]) );
+  AND2X1_HVT U46 ( .A1(instruction[27]), .A2(n21), .Y(imm[7]) );
+  AND2X1_HVT U47 ( .A1(instruction[28]), .A2(n21), .Y(imm[8]) );
+  AND2X1_HVT U48 ( .A1(instruction[29]), .A2(n21), .Y(imm[9]) );
+  AND2X1_HVT U49 ( .A1(instruction[30]), .A2(n21), .Y(imm[10]) );
+  AOI21X1_HVT U50 ( .A1(instruction[4]), .A2(instruction[5]), .A3(n22), .Y(n23) );
+  AO22X1_HVT U51 ( .A1(instruction[6]), .A2(n24), .A3(instruction[31]), .A4(
+        n23), .Y(imm[11]) );
+endmodule
+

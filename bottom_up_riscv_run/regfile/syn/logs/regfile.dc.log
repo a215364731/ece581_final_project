@@ -1,0 +1,939 @@
+Info: [VCS_SAVE_RESTORE_INFO] ASLR (Address Space Layout Randomization) is detected on the machine. To enable $save functionality, ASLR will be switched off and simv re-executed.
+Please use '-no_save' simv switch to avoid this.
+
+                           Design Compiler Graphical 
+                                 DC Ultra (TM)
+                                  DFTMAX (TM)
+                              Power Compiler (TM)
+                                 DesignWare (R)
+                                 DC Expert (TM)
+                               Design Vision (TM)
+                               HDL Compiler (TM)
+                               VHDL Compiler (TM)
+                                  DFT Compiler
+                               Design Compiler(R)
+
+               Version X-2025.06-SP4 for linux64 - Nov 25, 2025 
+
+                    Copyright (c) 1988 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+      Inc.  This software may only be used in accordance with the terms and
+  conditions of a written license agreement with Synopsys, Inc.  All other use,
+   reproduction, or distribution of this software is strictly prohibited.  By
+   installing, accessing, using, or executing this software, you agree that it
+  will reside on, operate within, and have access to the computers and networks
+    where such software is used ("Host System"), and that Synopsys may access
+     components and data of the Host System as necessary for it to function
+ properly, to authenticate and validate license keys, to verify that it is used
+ only in conformity with the applicable license restrictions, and to communicate
+                 error messages and associated data to Synopsys.
+
+Initializing...
+Initializing gui preferences from file  /u/jgasaba2/.synopsys_dc_gui/preferences.tcl
+Current time:       Fri Mar  6 17:14:04 2026
+Hostname:           phobos.ece.pdx.edu
+CPU Model:          Intel Xeon Processor (Cascadelake)
+CPU Details:        Cores = 32 : Sockets = 32 : Cache Size = 16384 KB : Freq = 2.50 GHz
+OS:                 Linux 5.14.0-611.34.1.el9_7.x86_64
+RAM:                 62 GB (Free  54 GB)
+Swap:                 9 GB (Free   9 GB)
+Work Filesystem:    /u/jgasaba2 mounted to vol-lapis.cat.pdx.edu:/lapis/home/23/jgasaba2/rocky9
+Tmp Filesystem:     / mounted to /dev/mapper/rl_phobos-root
+Work Disk:          5820 GB (Free 5653 GB)
+Tmp Disk:            59 GB (Free  45 GB)
+
+CPU Load: 0%, Ram Free: 54 GB, Swap Free: 9 GB, Work Disk Free: 5653 GB, Tmp Disk Free: 45 GB
+##################################################
+# Top Level Synthesis Script 
+# Sets up top-design name and sources scripts files
+# Author: Venkatesh Patil (v.p@pdx.edu)
+# ################################################
+puts "=== DC TOP START ==="
+=== DC TOP START ===
+if { [info exists ::env(TOP)] } {
+    set top_design $::env(TOP)
+} elseif { ![info exists top_design] } {
+    set top_design riscv_core
+}
+regfile
+set script_dir [file dirname [info script]]
+/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/scripts
+source -echo -verbose $script_dir/dc_setup.tcl
+####################################################
+# For ECE-581 Class
+# Author: Venkatesh Patil (v.p@pdx.edu)
+# Modular Script: Initialization and setup for DC
+# Sets design-independent variables: corners, libs, RTL, clocks, directories
+####################################################
+puts "INFO: Setup and reset"
+INFO: Setup and reset
+# --------------------------------------------------
+# Reset previous designs if any
+# --------------------------------------------------
+if { [list_designs] != 0 } {
+    reset_design
+    remove_design -designs
+}
+Warning: No designs to list. (UID-275)
+# --------------------------------------------------
+# Design / Flow Options
+# --------------------------------------------------
+# These control optional features of the flow
+set add_ios 0                        ;# Insert IO pad cells
+0
+set pad_design 1                      ;# Pad the design
+1
+set dc_floorplanning 1                ;# Enable floorplanning
+1
+set enable_dft 0                      ;# Enable DFT (0 = off)
+0
+set innovus_enable_manual_macro_placement 0 ;# Manual macro placement in Innovus
+0
+set design_size {580 580}             ;# Width x Height of the design
+580 580
+set design_io_border 310              ;# Border for IO placement
+310
+# --------------------------------------------------
+# Library base directory
+# --------------------------------------------------
+# Can override via environment variable LIB_DIR
+if { [info exists ::env(LIB_DIR)] } {
+    set lib_dir $::env(LIB_DIR)
+} else {
+    set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+}
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+# --------------------------------------------------
+# RTL Files
+# --------------------------------------------------
+# List of RTL files for the design
+# top_design must be set in top-level script or Makefile
+# --------------------------------------------------
+# RTL directory (from Makefile)
+# --------------------------------------------------
+if { [info exists ::env(RTLDIR)] } {
+    set rtl_dir $::env(RTLDIR)
+} else {
+    error "RTLDIR not set. Run DC via Makefile."
+}
+/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl
+puts "INFO: RTL directory = $rtl_dir"
+INFO: RTL directory = /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl
+#set rtl_list [list ${rtl_dir}/${top_design}.sv ${rtl_dir}/alu.sv  ${rtl_dir}/control.sv ${rtl_dir}/regfile.sv \
+ #             ${rtl_dir}/data_mem.sv  ${rtl_dir}/imm_gen.sv  ${rtl_dir}/pc.sv]
+set rtl_list [list ${rtl_dir}/${top_design}.sv]
+/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv
+# --------------------------------------------------
+# Corner / Timing settings
+# --------------------------------------------------
+set slow_corner "ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v"
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set fast_corner "ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c"
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set synth_corners $slow_corner
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set synth_corners_target "ss0p95v125c"
+ss0p95v125c
+set synth_corners_slow $slow_corner
+ss0p95v125c_2p25v ss0p95v125c ss0p75v125c_i0p75v
+set synth_corners_fast $fast_corner
+ff0p95vn40c ff1p16vn40c_2p75v ff1p16vn40c
+set slow_metal Cmax_125
+Cmax_125
+set fast_metal Cmax_125
+Cmax_125
+# --------------------------------------------------
+# Library types for DC
+# --------------------------------------------------
+# Libraries used in link_library and target_library
+set lib_types "$lib_dir/io_std/db_nldm $lib_dir/sram_lp/db_nldm $lib_dir/pll/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm
+set ndm_types "$lib_dir/stdcell_rvt/ndm $lib_dir/stdcell_hvt/ndm $lib_dir/sram_lp/ndm $lib_dir/io_std/ndm $lib_dir/pll/ndm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/ndm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/ndm
+# Enable for NLDM libraries
+set lib_types_target {}
+lappend lib_types_target "$lib_dir/stdcell_rvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm
+lappend lib_types_target "$lib_dir/stdcell_hvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm
+lappend lib_types_target "$lib_dir/stdcell_lvt/db_nldm"
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm
+# Enable for CCS libraries
+#set lib_types_target {}
+#lappend lib_types_target "$lib_dir/stdcell_rvt/db_ccs"
+#lappend lib_types_target "$lib_dir/stdcell_hvt/db_ccs"
+#lappend lib_types_target "$lib_dir/stdcell_lvt/db_ccs"
+set sub_lib_type "saed32?vt_ saed32sramlp_ saed32io_wb_ saed32pll_"
+saed32?vt_ saed32sramlp_ saed32io_wb_ saed32pll_
+# Choose Multi-vt target library
+set sub_lib_type_target {}
+lappend sub_lib_type_target "saed32rvt_"
+saed32rvt_
+lappend sub_lib_type_target "saed32hvt_"
+saed32rvt_ saed32hvt_
+lappend sub_lib_type_target "saed32lvt_"
+saed32rvt_ saed32hvt_ saed32lvt_
+# LEF files for floorplanning
+set lef_types [list \ 
+    $lib_dir/stdcell_hvt/lef \
+    $lib_dir/stdcell_rvt/lef \
+    $lib_dir/stdcell_lvt/lef \
+    $lib_dir/sram_lp/lef \
+    $lib_dir/io_std/lef \
+    $lib_dir/pll/lef \
+]
+Error: unknown command '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/lef' (CMD-005)
+set sub_lef_type "saed32nm_?vt_*.lef saed32_sram_lp_*.lef saed32io_std_wb saed32_PLL.lef"
+saed32nm_?vt_*.lef saed32_sram_lp_*.lef saed32io_std_wb saed32_PLL.lef
+# Milkyway libraries for ICC2 / DC
+set mwlib_types [list \
+    $lib_dir/stdcell_hvt/milkyway \
+    $lib_dir/stdcell_rvt/milkyway \
+    $lib_dir/stdcell_lvt/milkyway \
+    $lib_dir/io_std/milkyway \
+    $lib_dir/sram_lp/milkyway \
+    $lib_dir/pll/milkyway \
+]
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/milkyway /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/milkyway
+set sub_mwlib_type "saed32nm_?vt_* saed32sram_lp saed32io_wb_* SAED32_PLL_FR*"
+saed32nm_?vt_* saed32sram_lp saed32io_wb_* SAED32_PLL_FR*
+# --------------------------------------------------
+# Project directories
+# --------------------------------------------------
+file mkdir ../work
+file mkdir ../reports
+file mkdir ../outputs
+puts "INFO: DC setup complete for ${top_design}"
+INFO: DC setup complete for regfile
+source -echo -verbose $script_dir/dc_libraries.tcl
+####################################################
+# For ECE-581 Class
+# Author: Venkatesh Patil (v.p@pdx.edu)
+# Modular Script: Setup libraries for Synopsys DC
+# Configures target and link libraries for synthesis
+####################################################
+puts "INFO: Setting up libraries..."
+INFO: Setting up libraries...
+# --------------------------------------------------
+# Base library directories
+# --------------------------------------------------
+# lib_dir should be a common variable defined in dc_setup.tcl
+# synthetic_library is the DW Foundation library for synthesis
+set lib_dir /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib
+set synthetic_library /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb
+/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb
+# --------------------------------------------------
+# Construct search path for all library types
+# --------------------------------------------------
+# lib_types should be defined in dc_setup.tcl
+set search_path ""
+foreach lib $lib_types { lappend search_path $lib }
+# Add local directory at the end of search path
+lappend search_path .
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm .
+# --------------------------------------------------
+# Construct link_library for Design Compiler
+# Includes all standard cells, I/Os, SRAMs, PLLs, and DW Foundation
+# --------------------------------------------------
+set link_library ""
+foreach path $search_path {
+    foreach corner $synth_corners {
+        foreach sublib $sub_lib_type {
+            foreach dbfile [glob -nocomplain $path/$sublib$corner.db] {
+                lappend link_library $dbfile
+            }
+        }
+    }
+}
+# Append DW Foundation and wildcard for other libraries
+lappend link_library $synthetic_library *
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb *
+# Apply to DC
+set_app_var link_library $link_library
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb *
+# --------------------------------------------------
+# Construct target_library for synthesis output
+# Only includes target corner libraries (HVT/RVT)
+# --------------------------------------------------
+set target_library ""
+foreach path $lib_types_target {
+    foreach corner $synth_corners_target {
+        foreach sublib $sub_lib_type_target {
+            foreach dbfile [glob -nocomplain $path/$sublib$corner*.db] {
+                lappend target_library $dbfile
+            }
+        }
+    }
+}
+set_app_var target_library $target_library
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db
+# include  R/V/L VT libraries explicitly as needed.
+lappend link_library $lib_dir/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb * /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db
+lappend link_library $lib_dir/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb * /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
+lappend link_library $lib_dir/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb * /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db
+puts "INFO: Library setup completed"
+INFO: Library setup completed
+source -echo -verbose $script_dir/dc_analyze.tcl
+####################################################
+# For ECE-581 Class
+# Author: Venkatesh Patil (v.p@pdx.edu)
+# Modular Script: Analyze and Elaborate RTL
+# for Synopsys Design Compiler (DC)
+# Sources I/O insertion scripts if enabled
+####################################################
+puts "INFO: Starting Analyze and Elaborate stage"
+INFO: Starting Analyze and Elaborate stage
+# --------------------------------------------------
+# Analyze the RTL
+# --------------------------------------------------
+# $rtl_list should be defined in dc_setup.tcl
+# -autoread automatically reads the files
+# -define SYNTHESIS defines synthesis preprocessor macro
+#echo "analyze $rtl_list -autoread -define SYNTHESIS"
+#analyze $rtl_list -autoread -define SYNTHESIS
+echo "analyze -format sverilog -define SYNTHESIS $rtl_list"
+analyze -format sverilog -define SYNTHESIS /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv
+analyze -format sverilog -define SYNTHESIS $rtl_list
+Running PRESTO HDLC
+Compiling source file /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv
+Presto compilation completed successfully.
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db'
+1
+# --------------------------------------------------
+# Elaborate top-level design
+# --------------------------------------------------
+# $top_design should be defined in dc_setup.tcl
+elaborate $top_design
+Loading db file '/pkgs/synopsys/2025/design_compiler/syn/X-2025.06-SP4/libraries/syn/gtech.db'
+Loading db file '/pkgs/synopsys/2025/design_compiler/syn/X-2025.06-SP4/libraries/syn/standard.sldb'
+  Loading link library 'saed32io_wb_ss0p95v125c_2p25v'
+  Loading link library 'saed32sramlp_ss0p75v125c_i0p75v'
+  Loading link library 'saed32pll_ss0p95v125c_2p25v'
+  Loading link library 'saed32rvt_ss0p95v125c'
+  Loading link library 'saed32hvt_ss0p95v125c'
+  Loading link library 'saed32lvt_ss0p95v125c'
+  Loading link library 'gtech'
+Running PRESTO HDLC
+
+Inferred memory devices in process in routine 'regfile' in file
+	 /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv'.
+==================================================================================
+|    Register Name    |   Type    | Width | Bus | MB |  Set  | Reset | ST | Line |
+==================================================================================
+|      regs_reg       | Flip-flop | 1024  |  Y  | N  | None  | None  | N  |  17  |
+==================================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|    regfile/14    |   32   |   32    |      5       |
+|    regfile/15    |   32   |   32    |      5       |
+======================================================
+Presto compilation completed successfully. (regfile)
+Module: regfile, Ports: 113, Input: 49, Output: 64, Inout: 0
+Module: regfile, Registers: 1024, Async set/reset: 0, Sync set/reset: 0
+Information: Module regfile report end. (ELAB-965)
+Elaborated 1 design.
+Current design is now 'regfile'.
+1
+current_design $top_design
+Current design is 'regfile'.
+{regfile}
+link
+
+  Linking design 'regfile'
+  Using the following designs and libraries:
+  --------------------------------------------------------------------------
+  regfile                     /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/regfile.db
+  saed32io_wb_ss0p95v125c_2p25v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db
+  saed32sramlp_ss0p75v125c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db
+  saed32pll_ss0p95v125c_2p25v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db
+  dw_foundation.sldb (library) /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/libraries/syn/dw_foundation.sldb
+  saed32rvt_ss0p95v125c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db
+  saed32hvt_ss0p95v125c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
+  saed32lvt_ss0p95v125c (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db
+
+Information: Summary of messages issued during linking: (LINK-1806)
+No messages were issued during linking.
+1
+# --------------------------------------------------
+# Standardize names for hierarchical output
+# --------------------------------------------------
+change_names -rules verilog -hierarchy
+Warning: The specified replacement character (_) is conflicting with the specified allowed or restricted character.   (UCN-4)
+1
+# --------------------------------------------------
+# Optional: Insert I/O pad cells
+# --------------------------------------------------
+# If add_ios flag is set, source the common add_ios script
+# and a design-specific add_ios script
+if { [info exists add_ios] && $add_ios } {
+    puts "INFO: Inserting I/O pad cells"
+    source $script_dir/add_ios.tcl
+    source $script_dir/${top_design}.add_ios.tcl
+}
+puts "INFO: Analyze and Elaborate stage completed"
+INFO: Analyze and Elaborate stage completed
+source -echo -verbose $script_dir/dc_constraints.tcl
+####################################################
+# For ECE-581 Class
+# Author: Venaktesh Patil (v.p@pdx.edu)
+# Placeholder script for any design constraints
+# before/after sdc file is sourced
+# Synopsys DC compiler
+# #################################################
+source ../constraints/${top_design}.sdc
+INFO: Constraints
+Current design is 'regfile'.
+1
+# Add additional constraints or overwrite constraints
+# 
+source -echo -verbose $script_dir/dc_compile.tcl
+####################################################
+# For ECE-581 Class
+# Author: Venaktesh Patil (v.p@pdx.edu)
+# Modular Script to compile given RTL design for 
+# Synopsys DC compiler
+# Preserves hierarchy
+# Modify as needed.
+# #################################################
+puts "INFO: Compile"
+INFO: Compile
+set_dont_use [get_lib_cells */DELLN*]
+1
+uniquify
+1
+compile_ultra -scan
+Information: Performing leakage power optimization. (PWR-850)
+CPU Load: 0%, Ram Free: 54 GB, Swap Free: 9 GB, Work Disk Free: 5653 GB, Tmp Disk Free: 45 GB
+Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db"
+Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db"
+Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db"
+Library analysis succeeded.
+Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
+Information: Evaluating DesignWare library utilization. (UISN-27)
+
+============================================================================
+| DesignWare Building Block Library  |         Version         | Available |
+============================================================================
+| Basic DW Building Blocks           | X-2025.06-DWBB_202506.4 |     *     |
+| Licensed DW Building Blocks        | Q-2019.12-DWBB_201912.3 |     *     |
+============================================================================
+
+====================================================================================================
+| Flow Information                                                                                 |
+----------------------------------------------------------------------------------------------------
+| Flow         | Design Compiler WLM                                                               |
+| Command Line | compile_ultra -scan                                                               |
+====================================================================================================
+| Design Information                                      | Value                                  |
+====================================================================================================
+| Number of Scenarios                                     | 0                                      |
+| Leaf Cell Count                                         | 1117                                   |
+| Number of User Hierarchies                              | 0                                      |
+| Sequential Cell Count                                   | 1024                                   |
+| Macro Count                                             | 0                                      |
+| Pad Count                                               | 0                                      |
+| Number of Power Domains                                 | 0                                      |
+| Number of Path Groups                                   | 2                                      |
+| Number of VT Class                                      | 3                                      |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 16                                     |
+| Number of Dont Touch Nets                               | 0                                      |
+| Number of Size Only Cells                               | 0                                      |
+| Design with Target Library Subset (with clock_path)     | false  (false )                        |
+| Design with UPF Data                                    | false                                  |
+====================================================================================================
+Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
+  Simplifying Design 'regfile'
+
+Loaded alib file './alib-52/saed32rvt_ss0p95v125c.db.alib' (placeholder)
+Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
+Loaded alib file './alib-52/saed32lvt_ss0p95v125c.db.alib' (placeholder)
+Module: DW01_NAND2, Ports: 3, Input: 2, Output: 1, Inout: 0
+Module: DW01_NAND2, Registers: 0, Async set/reset: 0, Sync set/reset: 0
+  Building model 'DW01_NAND2'
+Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
+CPU Load: 2%, Ram Free: 54 GB, Swap Free: 9 GB, Work Disk Free: 5653 GB, Tmp Disk Free: 45 GB
+Information: State dependent leakage is now switched from on to off.
+
+  Beginning Pass 1 Mapping
+  ------------------------
+  Processing 'regfile'
+Information: The register 'regs_reg_0__0_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__0_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__1_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__1_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__2_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__2_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__3_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__3_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__4_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__4_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__5_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__5_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__6_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__6_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__7_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__7_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__8_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__8_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__9_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__9_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__10_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__10_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__11_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__11_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__12_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__12_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__13_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__13_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__14_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__14_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__15_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__15_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__16_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__16_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__17_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__17_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__18_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__18_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__19_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__19_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__20_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__20_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__21_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__21_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__22_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__22_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__23_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__23_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__24_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__24_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__25_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__25_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__26_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__26_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__27_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__27_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__28_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__28_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__29_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__29_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__30_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__30_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__31_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__31_' will be removed. (OPT-1207)
+CPU Load: 2%, Ram Free: 54 GB, Swap Free: 9 GB, Work Disk Free: 5653 GB, Tmp Disk Free: 45 GB
+
+  Updating timing information
+Information: Updating design information... (UID-85)
+Information: The library cell 'PMT3_RVT' in the library 'saed32rvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_RVT' in the library 'saed32rvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_RVT' in the library 'saed32rvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_RVT' in the library 'saed32rvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_RVT' in the library 'saed32rvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_RVT' in the library 'saed32rvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_HVT' in the library 'saed32hvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT3_LVT' in the library 'saed32lvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT2_LVT' in the library 'saed32lvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'PMT1_LVT' in the library 'saed32lvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT3_LVT' in the library 'saed32lvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT2_LVT' in the library 'saed32lvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The library cell 'NMT1_LVT' in the library 'saed32lvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
+Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
+Information: Automatic shift-register identification is enabled for scan. Not all registers will be scan-replaced. (OPT-467)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+
+  Beginning Mapping Optimizations  (Ultra High effort)
+  -------------------------------
+Information: There is no timing violation in design regfile. Delay-based auto_ungroup will not be performed. (OPT-780)
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:13   22200.2      0.00       0.0    1672.0                           718933504.0000
+    0:00:13   22200.2      0.00       0.0    1672.0                           718933504.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+
+  Beginning Constant Register Removal
+  -----------------------------------
+    0:00:13   22200.2      0.00       0.0    1672.0                           718933504.0000
+    0:00:13   22200.2      0.00       0.0    1672.0                           718933504.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+
+  Beginning Global Optimizations
+  ------------------------------
+  Numerical Synthesis (Phase 1)
+  Numerical Synthesis (Phase 2)
+  Global Optimization (Phase 1)
+  Global Optimization (Phase 2)
+  Global Optimization (Phase 3)
+  Global Optimization (Phase 4)
+  Global Optimization (Phase 5)
+  Global Optimization (Phase 6)
+  Global Optimization (Phase 7)
+  Global Optimization (Phase 8)
+  Global Optimization (Phase 9)
+  Global Optimization (Phase 10)
+  Global Optimization (Phase 11)
+  Global Optimization (Phase 12)
+  Global Optimization (Phase 13)
+  Global Optimization (Phase 14)
+  Global Optimization (Phase 15)
+  Global Optimization (Phase 16)
+  Global Optimization (Phase 17)
+  Global Optimization (Phase 18)
+  Global Optimization (Phase 19)
+  Global Optimization (Phase 20)
+  Global Optimization (Phase 21)
+  Global Optimization (Phase 22)
+  Global Optimization (Phase 23)
+  Global Optimization (Phase 24)
+  Global Optimization (Phase 25)
+  Global Optimization (Phase 26)
+  Global Optimization (Phase 27)
+  Global Optimization (Phase 28)
+  Global Optimization (Phase 29)
+  Global Optimization (Phase 30)
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+
+  Beginning Isolate Ports
+  -----------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+
+  Beginning Delay Optimization
+  ----------------------------
+    0:00:14   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:14   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:14   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:14   15778.0      0.00       0.0       0.0                           262626880.0000
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+    0:00:14   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:14   15778.0      0.00       0.0       0.0                           262626880.0000
+
+  Beginning WLM Backend Optimization
+  --------------------------------------
+
+Threshold voltage group cell usage:
+>> saed32cell_hvt 99.81%, saed32cell_lvt 0.19%, saed32cell_svt 0.00%
+
+  Beginning Delay Optimization HSVT Pass
+  --------------------------------------
+    0:00:16   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:16   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:16   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:16   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:16   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:17   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:17   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:17   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:17   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:17   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:18   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:18   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:18   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:18   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:18   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:18   15752.1      0.00       0.0       0.0                           260414224.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:18   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:19   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:19   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:19   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:19   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:19   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:19   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:20   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:20   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:20   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:20   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:20   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:21   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:21   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:21   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:21   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:21   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:21   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:21   15736.3      0.00       0.0       0.0                           256888224.0000
+CPU Load: 3%, Ram Free: 53 GB, Swap Free: 9 GB, Work Disk Free: 5653 GB, Tmp Disk Free: 45 GB
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db'
+Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db'
+
+
+Note: Symbol # after min delay cost means estimated hold TNS across all active scenarios 
+
+
+  Optimization Complete
+  ---------------------
+Warning: Design 'regfile' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'n1447': 1984 load(s), 1 driver(s)
+Information: State dependent leakage is now switched from off to on.
+Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
+CPU Load: 3%, Ram Free: 53 GB, Swap Free: 9 GB, Work Disk Free: 5653 GB, Tmp Disk Free: 45 GB
+Information: Total number of MV cells in the design.
+----------------------------------------------------------------------------------------------------
+ MV Cells                                           Total Number                                   
+----------------------------------------------------------------------------------------------------
+ Level Shifter:                                     0                                             
+ Enable Level Shifter:                              0                                             
+ Isolation Cell:                                    0                                             
+ Retention Cell:                                    0                                             
+ Retention Clamp Cell:                              0                                             
+ Switch Cell:                                       0                                             
+ Always-On Cell:                                    0                                             
+ Repeater Cell:                                     0                                             
+
+----------------------------------------------------------------------------------------------------
+Unmapped MV Cells 
+----------------------------------------------------------------------------------------------------
+0 Isolation Cells are unmapped 
+0 Retention Clamp Cells are unmapped 
+----------------------------------------------------------------------------------------------------
+1
+change_names -rules verilog -hierarchy
+1
+1
+source -echo -verbose $script_dir/dc_reports.tcl
+####################################################
+# For ECE-581 Class
+# Author: Venaktesh Patil (v.p@pdx.edu)
+# Modular Script to redirect reports for
+# Synopsys DC compiler.
+# Add different stages if needed
+# 
+# Modify as needed.
+# #################################################
+puts "INFO: Reports"
+INFO: Reports
+set stage dc
+dc
+report_qor                     > ../reports/${top_design}.${stage}.qor.rpt
+report_constraint -all_viol    > ../reports/${top_design}.${stage}.constraint.rpt
+report_timing -delay max -input -tran -cross -sig 4 -derate -net -cap  -max_path 10000 -slack_less 0 > ../reports/${top_design}.${stage}.timing.max.rpt
+check_timing                   > ../reports/${top_design}.${stage}.check_timing.rpt
+check_design                   > ../reports/${top_design}.${stage}.check_design.rpt
+#check_mv_design  > ../reports/${top_design}.$stage.mvrc.rpt
+source -echo -verbose $script_dir/dc_outputs.tcl
+####################################################
+# For ECE-581 Class
+# Author: Venaktesh Patil (v.p@pdx.edu)
+# Modular Script for setting up outputs from
+# Synopsys DC compiler.
+#
+#
+# #################################################
+puts "INFO: Outputs"
+INFO: Outputs
+write -hier -format verilog -output ../outputs/${top_design}.dc.vg
+Writing verilog file '/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/outputs/regfile.dc.vg'.
+1
+write -hier -format ddc     -output ../outputs/${top_design}.dc.ddc
+Writing ddc file '../outputs/regfile.dc.ddc'.
+1
+save_upf ../outputs/${top_design}.dc.upf
+1
+1
+puts "=== DC TOP END ==="
+=== DC TOP END ===
+dc_shell> report
+report_a...(13) report_c...(23) report_f...(2)  report_i...(7)  report_m...(7)  report_o...(4)  report_q...(2)  report_s...(25) report_u...(4)  
+report_b...(16) report_d...(24) report_h...(3)  report_l...(6)  report_n...(4)  report_p...(18) report_r...(6)  report_t...(15) report_w...(4)  
+dc_shell> report_qor 
+ 
+****************************************
+Report : qor
+Design : regfile
+Version: X-2025.06-SP4
+Date   : Fri Mar  6 17:17:05 2026
+****************************************
+
+
+  Timing Path Group 'clk'
+  -----------------------------------
+  Levels of Logic:               1.00
+  Critical Path Length:          0.35
+  Critical Path Slack:           0.93
+  Critical Path Clk Period:      1.43
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:               3713
+  Buf/Inv Cell Count:             199
+  Buf Cell Count:                  93
+  Inv Cell Count:                 106
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:      2721
+  Sequential Cell Count:          992
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:     6660.351824
+  Noncombinational Area:  9075.990753
+  Buf/Inv Area:            323.779466
+  Total Buffer Area:           189.08
+  Total Inverter Area:         134.70
+  Macro/Black Box Area:      0.000000
+  Net Area:               7750.933683
+  -----------------------------------
+  Cell Area:             15736.342577
+  Design Area:           23487.276259
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          3764
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: phobos.ece.pdx.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.45
+  Logic Optimization:                  1.84
+  Mapping Optimization:                4.38
+  -----------------------------------------
+  Overall Compile Time:               25.95
+  Overall Compile Wall Clock Time:    26.87
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1
+dc_shell> hash [K[K[K[Kreporting [K[K[K[K[K
+report_a...(13) report_c...(23) report_f...(2)  report_i...(7)  report_m...(7)  report_o...(4)  report_q...(2)  report_s...(25) report_u...(4)  
+report_b...(16) report_d...(24) report_h...(3)  report_l...(6)  report_n...(4)  report_p...(18) report_r...(6)  report_t...(15) report_w...(4)  
+dc_shell> report_timi
+report_timing              report_timing_derate       report_timing_requirements 
+dc_shell> report_timing
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : regfile
+Version: X-2025.06-SP4
+Date   : Fri Mar  6 17:17:46 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: regs_reg_9__9_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: regs_reg_9__9_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  regfile            16000                 saed32rvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  regs_reg_9__9_/CLK (SDFFARX1_HVT)        0.00       0.00 r
+  regs_reg_9__9_/Q (SDFFARX1_HVT)          0.25       0.25 r
+  U4920/Y (AO22X1_HVT)                     0.10       0.35 r
+  regs_reg_9__9_/D (SDFFARX1_HVT)          0.00       0.35 r
+  data arrival time                                   0.35
+
+  clock clk (rise edge)                    1.43       1.43
+  clock network delay (ideal)              0.00       1.43
+  regs_reg_9__9_/CLK (SDFFARX1_HVT)        0.00       1.43 r
+  library setup time                      -0.15       1.28
+  data required time                                  1.28
+  -----------------------------------------------------------
+  data required time                                  1.28
+  data arrival time                                  -0.35
+  -----------------------------------------------------------
+  slack (MET)                                         0.93
+
+
+1
+dc_shell> exit
+
+Memory usage for this session 464 Mbytes.
+Memory usage for this session including child processes 464 Mbytes.
+CPU usage for this session 150 seconds ( 0.04 hours ).
+Elapsed time for this session 627 seconds ( 0.17 hours ).
+
+Thank you...
