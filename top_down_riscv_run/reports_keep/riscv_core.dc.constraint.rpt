@@ -1,0 +1,28 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : riscv_core
+Version: Q-2019.12-SP3
+Date   : Sat Mar  7 16:42:14 2026
+****************************************
+
+
+   max_delay/setup ('clk' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   dmem/read_data_reg_5_/D      1.32           1.32 f         0.00  (VIOLATED: increase significant digits)
+
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   riscv_core                   0.00       15216878592.00 -15216878592.00
+                                                                    (VIOLATED)
+
+
+1

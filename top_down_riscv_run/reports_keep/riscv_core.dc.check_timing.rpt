@@ -1,0 +1,117 @@
+
+Information: Checking generated_clocks...
+
+Information: Checking loops...
+
+Information: Checking no_input_delay...
+Warning: The following input ports have no clock_relative delay specified, the command set_input_delay without -clock option will be ignored. (TIM-216)
+--------------------
+instruction[31]
+instruction[30]
+instruction[29]
+instruction[28]
+instruction[27]
+instruction[26]
+instruction[25]
+instruction[24]
+instruction[23]
+instruction[22]
+instruction[21]
+instruction[20]
+instruction[19]
+instruction[18]
+instruction[17]
+instruction[16]
+instruction[15]
+instruction[14]
+instruction[13]
+instruction[12]
+instruction[11]
+instruction[10]
+instruction[9]
+instruction[8]
+instruction[7]
+instruction[6]
+instruction[5]
+instruction[4]
+instruction[3]
+instruction[2]
+instruction[1]
+instruction[0]
+
+Information: Checking unconstrained_endpoints...
+
+Warning: The following end-points are not constrained for maximum delay.
+
+End point
+---------------
+debug_pc[1]
+debug_pc[2]
+debug_pc[3]
+debug_pc[4]
+debug_pc[5]
+debug_pc[6]
+debug_pc[7]
+debug_pc[8]
+debug_pc[9]
+debug_pc[10]
+debug_pc[11]
+debug_pc[12]
+debug_pc[13]
+debug_pc[14]
+debug_pc[15]
+debug_pc[16]
+debug_pc[17]
+debug_pc[18]
+debug_pc[19]
+debug_pc[20]
+debug_pc[21]
+debug_pc[22]
+debug_pc[23]
+debug_pc[24]
+debug_pc[25]
+debug_pc[26]
+debug_pc[27]
+debug_pc[28]
+debug_pc[29]
+debug_pc[30]
+debug_pc[31]
+debug_wb_data[0]
+debug_wb_data[1]
+debug_wb_data[2]
+debug_wb_data[3]
+debug_wb_data[4]
+debug_wb_data[5]
+debug_wb_data[6]
+debug_wb_data[7]
+debug_wb_data[8]
+debug_wb_data[9]
+debug_wb_data[10]
+debug_wb_data[11]
+debug_wb_data[12]
+debug_wb_data[13]
+debug_wb_data[14]
+debug_wb_data[15]
+debug_wb_data[16]
+debug_wb_data[17]
+debug_wb_data[18]
+debug_wb_data[19]
+debug_wb_data[20]
+debug_wb_data[21]
+debug_wb_data[22]
+debug_wb_data[23]
+debug_wb_data[24]
+debug_wb_data[25]
+debug_wb_data[26]
+debug_wb_data[27]
+debug_wb_data[28]
+debug_wb_data[29]
+debug_wb_data[30]
+debug_wb_data[31]
+
+Information: Checking pulse_clock_cell_type...
+
+Information: Checking no_driving_cell...
+
+Information: Checking partial_input_delay...
+1

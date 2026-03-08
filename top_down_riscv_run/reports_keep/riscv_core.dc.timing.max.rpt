@@ -1,0 +1,135 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -derate
+        -input_pins
+        -nets
+        -slack_lesser_than 0.0000
+        -max_paths 10000
+        -transition_time
+        -crosstalk_delta
+        -capacitance
+Design : riscv_core
+Version: Q-2019.12-SP3
+Date   : Sat Mar  7 16:42:14 2026
+****************************************
+
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: rf/regs_reg_17__1_
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: dmem/read_data_reg_5_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  riscv_core         140000                saed32rvt_ss0p95v125c
+  regfile            35000                 saed32rvt_ss0p95v125c
+  data_mem           140000                saed32rvt_ss0p95v125c
+
+  Point                                       Fanout       Cap     DTran     Trans     Delta     Derate      Incr       Path
+  -----------------------------------------------------------------------------------------------------------------------------
+  clock clk (rise edge)                                                                                    0.0000     0.0000
+  clock network delay (ideal)                                                                              0.0000     0.0000
+  rf/regs_reg_17__1_/CLK (SDFFARX1_LVT)                           0.0000    0.0000    0.0000               0.0000 #   0.0000 r
+  rf/regs_reg_17__1_/Q (SDFFARX1_LVT)                                       0.0314                         0.1358     0.1358 f
+  rf/regs[545] (net)                            3       1.5745                                             0.0000     0.1358 f
+  rf/U69/A1 (AOI22X1_LVT)                                         0.0000    0.0314    0.0000               0.0000     0.1358 f
+  rf/U69/Y (AOI22X1_LVT)                                                    0.0177                         0.0679     0.2037 r
+  rf/n1 (net)                                   1       0.4449                                             0.0000     0.2037 r
+  rf/U68/A4 (AND4X1_LVT)                                          0.0000    0.0177    0.0000               0.0000     0.2037 r
+  rf/U68/Y (AND4X1_LVT)                                                     0.0283                         0.0590     0.2626 r
+  rf/n796 (net)                                 1       0.5984                                             0.0000     0.2626 r
+  rf/U1350/A3 (NAND4X0_LVT)                                       0.0000    0.0283    0.0000               0.0000     0.2626 r
+  rf/U1350/Y (NAND4X0_LVT)                                                  0.0596                         0.0478     0.3105 f
+  rf/rd2[1] (net)                               2       1.1310                                             0.0000     0.3105 f
+  rf/rd2[1] (regfile)                                                                                      0.0000     0.3105 f
+  reg_data2[1] (net)                                    1.1310                                             0.0000     0.3105 f
+  U831/A2 (OA21X1_LVT)                                            0.0000    0.0596    0.0000               0.0000     0.3105 f
+  U831/Y (OA21X1_LVT)                                                       0.0370                         0.0690     0.3795 f
+  n368 (net)                                    3       2.7404                                             0.0000     0.3795 f
+  U815/A1 (XNOR2X2_LVT)                                           0.0000    0.0370    0.0000               0.0000     0.3795 f
+  U815/Y (XNOR2X2_LVT)                                                      0.0284                         0.0705     0.4500 r
+  n290 (net)                                    2       1.2519                                             0.0000     0.4500 r
+  U770/A1 (NAND2X0_LVT)                                           0.0000    0.0284    0.0000               0.0000     0.4500 r
+  U770/Y (NAND2X0_LVT)                                                      0.0497                         0.0335     0.4835 f
+  n241 (net)                                    3       1.4959                                             0.0000     0.4835 f
+  U768/A2 (OA21X1_LVT)                                            0.0000    0.0497    0.0000               0.0000     0.4835 f
+  U768/Y (OA21X1_LVT)                                                       0.0238                         0.0524     0.5358 f
+  n273 (net)                                    1       0.6035                                             0.0000     0.5358 f
+  U307/A1 (AND2X2_LVT)                                            0.0000    0.0238    0.0000               0.0000     0.5358 f
+  U307/Y (AND2X2_LVT)                                                       0.0295                         0.0501     0.5860 f
+  n481 (net)                                    5       3.1116                                             0.0000     0.5860 f
+  U550/A2 (OA21X1_LVT)                                            0.0000    0.0295    0.0000               0.0000     0.5860 f
+  U550/Y (OA21X1_LVT)                                                       0.0334                         0.0578     0.6438 f
+  n186 (net)                                    3       2.5046                                             0.0000     0.6438 f
+  U549/A1 (XOR2X2_LVT)                                            0.0000    0.0334    0.0000               0.0000     0.6438 f
+  U549/Y (XOR2X2_LVT)                                                       0.0261                         0.0705     0.7143 r
+  n199 (net)                                    1       0.5500                                             0.0000     0.7143 r
+  U570/A1 (AO21X2_LVT)                                            0.0000    0.0261    0.0000               0.0000     0.7143 r
+  U570/Y (AO21X2_LVT)                                                       0.0492                         0.0818     0.7961 r
+  alu_result[5] (net)                           9       5.8437                                             0.0000     0.7961 r
+  dmem/addr[5] (data_mem)                                                                                  0.0000     0.7961 r
+  dmem/addr[5] (net)                                    5.8437                                             0.0000     0.7961 r
+  dmem/U14399/A1 (OR2X2_LVT)                                      0.0000    0.0492    0.0000               0.0000     0.7961 r
+  dmem/U14399/Y (OR2X2_LVT)                                                 0.0315                         0.0595     0.8557 r
+  dmem/n5101 (net)                              3       4.1580                                             0.0000     0.8557 r
+  dmem/U12242/A2 (OR2X2_LVT)                                      0.0000    0.0315    0.0000               0.0000     0.8557 r
+  dmem/U12242/Y (OR2X2_LVT)                                                 0.0328                         0.0523     0.9079 r
+  dmem/n2954 (net)                              4       4.7059                                             0.0000     0.9079 r
+  dmem/U1399/A (INVX4_LVT)                                        0.0000    0.0328    0.0000               0.0000     0.9079 r
+  dmem/U1399/Y (INVX4_LVT)                                                  0.0195                         0.0115     0.9194 f
+  dmem/n5254 (net)                              5       2.9355                                             0.0000     0.9194 f
+  dmem/U3524/A1 (NAND2X0_LVT)                                     0.0000    0.0195    0.0000               0.0000     0.9194 f
+  dmem/U3524/Y (NAND2X0_LVT)                                                0.0397                         0.0290     0.9484 r
+  dmem/n4712 (net)                              1       0.7801                                             0.0000     0.9484 r
+  dmem/U2922/A (IBUFFX16_LVT)                                     0.0000    0.0397    0.0000               0.0000     0.9484 r
+  dmem/U2922/Y (IBUFFX16_LVT)                                               0.0321                         0.0750     1.0234 f
+  dmem/n3809 (net)                             64      36.1244                                             0.0000     1.0234 f
+  dmem/U12165/A1 (NAND2X0_LVT)                                    0.0000    0.0321    0.0000               0.0000     1.0234 f
+  dmem/U12165/Y (NAND2X0_LVT)                                               0.0309                         0.0330     1.0564 r
+  dmem/n2774 (net)                              1       0.6201                                             0.0000     1.0564 r
+  dmem/U3690/A1 (NAND3X0_LVT)                                     0.0000    0.0309    0.0000               0.0000     1.0564 r
+  dmem/U3690/Y (NAND3X0_LVT)                                                0.0420                         0.0309     1.0873 f
+  dmem/n742 (net)                               1       0.6898                                             0.0000     1.0873 f
+  dmem/U289/A2 (OR2X1_LVT)                                        0.0000    0.0420    0.0000               0.0000     1.0873 f
+  dmem/U289/Y (OR2X1_LVT)                                                   0.0202                         0.0394     1.1267 f
+  dmem/n2 (net)                                 1       0.7663                                             0.0000     1.1267 f
+  dmem/U288/A (INVX1_LVT)                                         0.0000    0.0202    0.0000               0.0000     1.1267 f
+  dmem/U288/Y (INVX1_LVT)                                                   0.0149                         0.0155     1.1421 r
+  dmem/n738 (net)                               1       0.5891                                             0.0000     1.1421 r
+  dmem/U546/A2 (NAND4X0_LVT)                                      0.0000    0.0149    0.0000               0.0000     1.1421 r
+  dmem/U546/Y (NAND4X0_LVT)                                                 0.0463                         0.0358     1.1779 f
+  dmem/n106 (net)                               1       0.6049                                             0.0000     1.1779 f
+  dmem/U545/A2 (OR3X1_LVT)                                        0.0000    0.0463    0.0000               0.0000     1.1779 f
+  dmem/U545/Y (OR3X1_LVT)                                                   0.0227                         0.0554     1.2333 f
+  dmem/n1955 (net)                              1       0.5402                                             0.0000     1.2333 f
+  dmem/U5133/A1 (OA21X1_LVT)                                      0.0000    0.0227    0.0000               0.0000     1.2333 f
+  dmem/U5133/Y (OA21X1_LVT)                                                 0.0203                         0.0485     1.2818 f
+  dmem/n3909 (net)                              1       0.4670                                             0.0000     1.2818 f
+  dmem/U13437/A3 (OA21X1_LVT)                                     0.0000    0.0203    0.0000               0.0000     1.2818 f
+  dmem/U13437/Y (OA21X1_LVT)                                                0.0228                         0.0394     1.3213 f
+  dmem/n8649 (net)                              1       0.5144                                             0.0000     1.3213 f
+  dmem/read_data_reg_5_/D (SDFFX1_LVT)                            0.0000    0.0228    0.0000               0.0000     1.3213 f
+  data arrival time                                                                                                   1.3213
+
+  clock clk (rise edge)                                                                                    1.4100     1.4100
+  clock network delay (ideal)                                                                              0.0000     1.4100
+  dmem/read_data_reg_5_/CLK (SDFFX1_LVT)                                                                   0.0000     1.4100 r
+  library setup time                                                                                      -0.0888     1.3212
+  data required time                                                                                                  1.3212
+  -----------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                  1.3212
+  data arrival time                                                                                                  -1.3213
+  -----------------------------------------------------------------------------------------------------------------------------
+  slack (VIOLATED: increase significant digits)                                                                       0.0000
+
+
+1

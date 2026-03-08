@@ -1,0 +1,94 @@
+ 
+****************************************
+check_design summary:
+Version:     Q-2019.12-SP3
+Date:        Sat Mar  7 16:42:15 2026
+****************************************
+
+                   Name                                            Total
+--------------------------------------------------------------------------------
+Inputs/Outputs                                                     25
+    Unconnected ports (LINT-28)                                    24
+    Constant outputs (LINT-52)                                      1
+
+Cells                                                              25
+    Connected to power or ground (LINT-32)                         24
+    Nets connected to multiple pins on same cell (LINT-33)          1
+--------------------------------------------------------------------------------
+
+Warning: In design 'data_mem', port 'addr[31]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[30]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[29]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[28]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[27]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[26]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[25]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[24]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[23]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[22]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[21]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[20]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[19]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[18]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[17]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[16]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[15]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[14]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[13]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[12]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[11]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[10]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[1]' is not connected to any nets. (LINT-28)
+Warning: In design 'data_mem', port 'addr[0]' is not connected to any nets. (LINT-28)
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[31]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[30]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[29]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[28]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[27]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[26]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[25]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[24]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[23]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[22]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[21]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[20]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[19]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[18]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[17]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[16]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[15]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[14]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[13]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[12]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[11]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[10]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[1]' is connected to logic 0. 
+Warning: In design 'riscv_core', a pin on submodule 'dmem' is connected to logic 1 or logic 0. (LINT-32)
+   Pin 'addr[0]' is connected to logic 0. 
+Warning: In design 'riscv_core', the same net is connected to more than one pin on submodule 'dmem'. (LINT-33)
+   Net 'n166' is connected to pins 'addr[31]', 'addr[30]'', 'addr[29]', 'addr[28]', 'addr[27]', 'addr[26]', 'addr[25]', 'addr[24]', 'addr[23]', 'addr[22]', 'addr[21]', 'addr[20]', 'addr[19]', 'addr[18]', 'addr[17]', 'addr[16]', 'addr[15]', 'addr[14]', 'addr[13]', 'addr[12]', 'addr[11]', 'addr[10]', 'addr[1]', 'addr[0]'.
+Warning: In design 'riscv_core', output port 'debug_pc[0]' is connected directly to 'logic 0'. (LINT-52)
+1
