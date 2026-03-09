@@ -336,9 +336,138 @@ source -echo -verbose $script_dir/dc_constraints.tcl
 # Synopsys DC compiler
 # #################################################
 source ../constraints/${top_design}.sdc
-INFO: Constraints
-Current design is 'data_mem'.
-1
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
+Warning: Design rule attributes from the driving cell will be
+	set on the port. (UID-401)
 # Add additional constraints or overwrite constraints
 # 
 source -echo -verbose $script_dir/dc_compile.tcl
@@ -358,10 +487,7 @@ uniquify
 1
 compile_ultra -scan
 Information: Performing power optimization. (PWR-850)
-Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db"
-Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db"
-Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db"
-Library analysis succeeded.
+Alib files are up-to-date.
 Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
@@ -411,39 +537,32 @@ Information: The library cell 'NMT2_LVT' in the library 'saed32lvt_ss0p95v125c' 
 Information: The library cell 'NMT1_LVT' in the library 'saed32lvt_ss0p95v125c' is not characterized for internal power. (PWR-536)
 Information: The target library(s) contains cell(s), other than black boxes, that are not characterized for internal power. (PWR-24)
 Information: Automatic shift-register identification is enabled for scan. Not all registers will be scan-replaced. (OPT-467)
-Information: Complementing port 'S6' in design 'data_mem_MUX_OP_256_8_32'.
-	 The new name of the port is 'S6_BAR'. (OPT-319)
-Information: Complementing port 'S5' in design 'data_mem_MUX_OP_256_8_32'.
-	 The new name of the port is 'S5_BAR'. (OPT-319)
-Information: Complementing port 'S4' in design 'data_mem_MUX_OP_256_8_32'.
-	 The new name of the port is 'S4_BAR'. (OPT-319)
-Information: Complementing port 'S3' in design 'data_mem_MUX_OP_256_8_32'.
-	 The new name of the port is 'S3_BAR'. (OPT-319)
 Information: Complementing port 'S2' in design 'data_mem_MUX_OP_256_8_32'.
 	 The new name of the port is 'S2_BAR'. (OPT-319)
+Information: Complementing port 'S1' in design 'data_mem_MUX_OP_256_8_32'.
+	 The new name of the port is 'S1_BAR'. (OPT-319)
 
 Threshold voltage group cell usage:
 >> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
 
   Beginning Mapping Optimizations  (Ultra High effort)
   -------------------------------
-Information: There is no timing violation in design data_mem. Delay-based auto_ungroup will not be performed. (OPT-780)
   Mapping Optimization (Phase 1)
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:02:58  157833.1      0.00       0.0    2640.0                           5369515008.0000
-    0:02:58  157833.1      0.00       0.0    2640.0                           5369515008.0000
+    0:01:16  143123.2      0.23     385.6     653.5                           3473586176.0000
+    0:01:17  143098.8      0.26     386.3     653.5                           3472639744.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
 
   Beginning Constant Register Removal
   -----------------------------------
-    0:02:59  157897.1      0.00       0.0    2640.0                           5372229632.0000
-    0:03:00  157897.1      0.00       0.0    2640.0                           5372229632.0000
+    0:01:17  143504.4      0.27     386.7     653.5                           3489831680.0000
+    0:01:18  143504.4      0.27     386.7     653.5                           3489831680.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
@@ -494,65 +613,66 @@ Threshold voltage group cell usage:
 
   Beginning Delay Optimization
   ----------------------------
-    0:03:05  124440.3      0.00       0.0       0.0                           2430563584.0000
-    0:03:05  124440.3      0.00       0.0       0.0                           2430563584.0000
-    0:03:05  124440.3      0.00       0.0       0.0                           2430563584.0000
-    0:03:06  124440.3      0.00       0.0       0.0                           2430563584.0000
+    0:01:22  121591.1      0.28      39.2     190.9                           2317526528.0000
+    0:01:32  121778.7      0.13      53.9     203.0                           2315944704.0000
+    0:01:32  121778.7      0.13      53.9     203.0                           2315944704.0000
+    0:01:34  121930.4      0.13      56.3     203.0                           2703670016.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
-    0:03:07  124440.3      0.00       0.0       0.0                           2430563584.0000
-    0:03:08  124440.3      0.00       0.0       0.0                           2430563584.0000
+    0:01:36  121930.4      0.13      56.3     203.0                           2703670016.0000
+    0:01:37  121930.4      0.13      56.3     203.0                           2703670016.0000
 
   Beginning WLM Backend Optimization
   --------------------------------------
+    0:01:43  120374.8      0.13      36.8     176.8                           2631298304.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+>> saed32cell_hvt 99.98%, saed32cell_lvt 0.00%, saed32cell_svt 0.02%
 
   Beginning Delay Optimization HSVT Pass
   --------------------------------------
-    0:03:15  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:15  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:15  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:15  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:16  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:16  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:16  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:16  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:17  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:17  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:17  112512.3      0.00       0.0       0.0                           1939377024.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
+    0:01:44  120350.9      0.13      33.4     171.1                           2630684928.0000
+    0:01:44  120350.9      0.13      33.4     171.1                           2630684928.0000
+    0:01:44  120350.9      0.13      33.4     171.1                           2630684928.0000
+    0:02:11  121094.0      0.11      27.7     171.1                           3179968768.0000
+    0:02:12  121094.0      0.11      27.7     171.1                           3179968768.0000
+    0:02:12  121094.0      0.11      27.7     171.1                           3179968768.0000
+    0:02:12  121094.0      0.11      27.7     171.1                           3179968768.0000
+    0:02:16  121123.5      0.00       0.0     169.4                           3233074944.0000
+    0:02:17  121123.5      0.00       0.0     169.4                           3233074944.0000
+    0:02:17  121123.5      0.00       0.0     169.4                           3233074944.0000
+    0:02:17  121123.5      0.00       0.0     169.4                           3233074944.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 99.03%, saed32cell_lvt 0.00%, saed32cell_svt 0.97%
+>> saed32cell_hvt 97.30%, saed32cell_lvt 0.11%, saed32cell_svt 2.59%
 
   Beginning Delay Optimization
   ----------------------------
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 99.03%, saed32cell_lvt 0.00%, saed32cell_svt 0.97%
+>> saed32cell_hvt 97.30%, saed32cell_lvt 0.11%, saed32cell_svt 2.59%
 
 
   Beginning Leakage Power Optimization  (max_leakage_power 0)
@@ -562,7 +682,7 @@ Threshold voltage group cell usage:
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:03:18  112452.4      0.00       0.0       0.0                           1937697664.0000
+    0:02:18  118824.0      0.00       0.0       0.0                           2520197888.0000
   Global Optimization (Phase 31)
   Global Optimization (Phase 32)
   Global Optimization (Phase 33)
@@ -574,61 +694,65 @@ Threshold voltage group cell usage:
   Global Optimization (Phase 39)
   Global Optimization (Phase 40)
   Global Optimization (Phase 41)
-    0:03:19  123724.2      0.00       0.0       0.0                           13157621760.0000
-    0:03:19  123724.2      0.00       0.0       0.0                           13157621760.0000
-    0:03:19  123724.2      0.00       0.0       0.0                           13157621760.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:20  114599.4      0.00       0.0       0.0                           1971796480.0000
+  Global Optimization (Phase 42)
+  Global Optimization (Phase 43)
+  Global Optimization (Phase 44)
+  Global Optimization (Phase 45)
+    0:02:23  118254.7      0.00       0.0       0.0                           2297997312.0000
+    0:02:23  118254.7      0.00       0.0       0.0                           2297997312.0000
+    0:02:23  118254.7      0.00       0.0       0.0                           2297997312.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:03:21  114599.4      0.00       0.0       0.0                           1971796480.0000
-    0:03:23  114889.9      0.00       0.0       3.0                           2716713472.0000
-    0:03:23  114889.9      0.00       0.0       3.0                           2716713472.0000
-    0:03:23  114889.9      0.00       0.0       3.0                           2716713472.0000
-    0:03:25  114231.1      0.00       0.0       3.0                           2004396160.0000
+    0:02:24  118196.8      0.00       0.0       0.0                           2224017920.0000
+    0:02:26  117562.7      0.03       0.3       0.0                           2175888384.0000
+    0:02:28  117667.4      0.00       0.0       0.0                           2196416768.0000
+    0:02:29  117630.8      0.00       0.0       0.0                           2193203968.0000
+    0:02:29  117624.2      0.00       0.0       0.0                           2192769536.0000
+    0:02:29  117624.2      0.00       0.0       0.0                           2192769536.0000
+    0:02:30  117614.8      0.00       0.0       0.0                           2191356672.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 96.27%, saed32cell_lvt 0.00%, saed32cell_svt 3.73%
+>> saed32cell_hvt 95.92%, saed32cell_lvt 0.72%, saed32cell_svt 3.35%
 
   Beginning Delay Optimization HSVT Pass
   --------------------------------------
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:26  114231.1      0.00       0.0       3.0                           2004396160.0000
-    0:03:29  114360.7      0.00       0.0       2.2 net76983                  2037495040.0000
-    0:03:30  115158.7      0.00       0.0       0.4 net76668                  2128364416.0000
-    0:03:30  115336.6      0.00       0.0       0.0                           2148622080.0000
-    0:03:30  115336.6      0.00       0.0       0.0                           2148622080.0000
-    0:03:30  115336.6      0.00       0.0       0.0                           2148622080.0000
-    0:03:30  115336.6      0.00       0.0       0.0                           2148622080.0000
-    0:03:30  115336.6      0.00       0.0       0.0                           2148622080.0000
-    0:03:30  115336.6      0.00       0.0       0.0                           2148622080.0000
-    0:03:39  115068.8      0.00       0.0       0.0                           2140008192.0000
+    0:02:31  117614.8      0.00       0.0       0.0                           2191356672.0000
+    0:02:31  117614.8      0.00       0.0       0.0                           2191356672.0000
+    0:02:31  117614.8      0.00       0.0       0.0                           2191356672.0000
+    0:02:31  117616.1      0.00       0.0       0.0                           2191270912.0000
+    0:02:32  117616.1      0.00       0.0       0.0                           2191270912.0000
+    0:02:32  117616.1      0.00       0.0       0.0                           2191270912.0000
+    0:02:32  117616.1      0.00       0.0       0.0                           2191270912.0000
+    0:02:32  117616.1      0.00       0.0       0.0                           2191270912.0000
+    0:02:33  117644.3      0.00       0.0       0.0                           2180381184.0000
+    0:02:33  117644.3      0.00       0.0       0.0                           2180381184.0000
+    0:02:33  117644.3      0.00       0.0       0.0                           2180381184.0000
+    0:02:33  117644.3      0.00       0.0       0.0                           2180381184.0000
+    0:02:34  117644.3      0.00       0.0       0.0                           2180381184.0000
+    0:02:34  117644.3      0.00       0.0       0.0                           2180381184.0000
+    0:02:36  117590.4      0.00       0.0       0.0                           2177944320.0000
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
@@ -644,8 +768,8 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   ---------------------
 Warning: Design 'data_mem' contains 3 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
      Net 'clk': 8224 load(s), 1 driver(s)
-     Net 'n559': 8224 load(s), 1 driver(s)
-     Net 'n560': 16448 load(s), 1 driver(s)
+     Net 'n559': 8157 load(s), 1 driver(s)
+     Net 'n560': 16314 load(s), 1 driver(s)
 Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
 1
@@ -694,10 +818,67 @@ save_upf ../outputs/${top_design}.dc.upf
 1
 puts "=== DC TOP END ==="
 === DC TOP END ===
-dc_shell> 
-Memory usage for this session 525 Mbytes.
-Memory usage for this session including child processes 525 Mbytes.
-CPU usage for this session 219 seconds ( 0.06 hours ).
-Elapsed time for this session 297 seconds ( 0.08 hours ).
+dc_shell> report_timing
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : data_mem
+Version: Q-2019.12-SP3
+Date   : Mon Mar  9 16:13:42 2026
+****************************************
 
-Thank you...
+ # A fanout number of 1000 was used for high fanout net computations.
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: addr[7] (input port clocked by clk)
+  Endpoint: read_data_reg_2_
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  data_mem           140000                saed32rvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock clk (rise edge)                    0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.50       0.50 r
+  addr[7] (in)                             0.01       0.51 r
+  U9206/Y (INVX2_RVT)                      0.02       0.52 f
+  U9624/Y (AND2X1_RVT)                     0.06       0.59 f
+  U9511/Y (AND2X1_HVT)                     0.11       0.70 f
+  U9158/Y (AND2X1_RVT)                     0.13       0.82 f
+  U9131/Y (NBUFFX4_RVT)                    0.11       0.94 f
+  U10044/Y (NAND2X0_HVT)                   0.06       1.00 r
+  U10043/Y (NAND2X0_HVT)                   0.06       1.06 f
+  U14550/Y (NOR4X1_HVT)                    0.15       1.22 r
+  U10037/Y (NAND2X0_HVT)                   0.05       1.26 f
+  U8795/Y (OR3X1_HVT)                      0.10       1.37 f
+  U9411/Y (OR3X1_LVT)                      0.04       1.41 f
+  U9766/Y (AO22X1_RVT)                     0.05       1.46 f
+  U9765/Y (NAND2X0_RVT)                    0.03       1.49 r
+  U9763/Y (NAND2X0_RVT)                    0.04       1.53 f
+  read_data_reg_2_/D (SDFFARX1_HVT)        0.00       1.53 f
+  data arrival time                                   1.53
+
+  clock clk (rise edge)                    1.70       1.70
+  clock network delay (ideal)              0.00       1.70
+  read_data_reg_2_/CLK (SDFFARX1_HVT)      0.00       1.70 r
+  library setup time                      -0.17       1.53
+  data required time                                  1.53
+  -----------------------------------------------------------
+  data required time                                  1.53
+  data arrival time                                  -1.53
+  -----------------------------------------------------------
+  slack (MET)                                         0.00
+
+
+1
+dc_shell> 

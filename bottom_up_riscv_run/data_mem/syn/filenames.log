@@ -99,14 +99,11 @@
 /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/constraints/data_mem.sdc
 /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/syn/scripts/dc_compile.tcl
 /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db
-/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
-/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db
 /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/syn/alib-52/saed32rvt_ss0p95v125c.db.alib
-/u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/syn/alib-52/alib_analyze_libs.tcl.e
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
 /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/syn/alib-52/saed32hvt_ss0p95v125c.db.alib
-/u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/syn/alib-52/alib_analyze_libs.tcl.e
+/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db
 /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/syn/alib-52/saed32lvt_ss0p95v125c.db.alib
-/u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/data_mem/syn/alib-52/alib_analyze_libs.tcl.e
 /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db
 /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
 /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db

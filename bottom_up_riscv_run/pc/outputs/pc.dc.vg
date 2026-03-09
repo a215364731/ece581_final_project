@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////
 // Created by: Synopsys DC Ultra(TM) in wire load mode
 // Version   : Q-2019.12-SP3
-// Date      : Thu Mar  5 16:15:02 2026
+// Date      : Mon Mar  9 15:29:59 2026
 /////////////////////////////////////////////////////////////
 
 
@@ -9,74 +9,73 @@ module pc ( clk, rst, pc_next, pc );
   input [31:0] pc_next;
   output [31:0] pc;
   input clk, rst;
-  wire   n65, n66, n67;
+  wire   n65, n66;
 
-  SDFFARX1_HVT pc_reg_31_ ( .D(pc_next[31]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_17_ ( .D(pc_next[17]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[17]) );
+  SDFFARX1_RVT pc_reg_2_ ( .D(pc_next[2]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[2]) );
+  SDFFARX1_RVT pc_reg_0_ ( .D(pc_next[0]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[0]) );
+  SDFFARX1_RVT pc_reg_31_ ( .D(pc_next[31]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[31]) );
-  SDFFARX1_HVT pc_reg_30_ ( .D(pc_next[30]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_30_ ( .D(pc_next[30]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[30]) );
-  SDFFARX1_HVT pc_reg_29_ ( .D(pc_next[29]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_29_ ( .D(pc_next[29]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[29]) );
-  SDFFARX1_HVT pc_reg_28_ ( .D(pc_next[28]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_28_ ( .D(pc_next[28]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[28]) );
-  SDFFARX1_HVT pc_reg_27_ ( .D(pc_next[27]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[27]) );
-  SDFFARX1_HVT pc_reg_26_ ( .D(pc_next[26]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_27_ ( .D(pc_next[27]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[27]) );
+  SDFFARX1_RVT pc_reg_26_ ( .D(pc_next[26]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[26]) );
-  SDFFARX1_HVT pc_reg_25_ ( .D(pc_next[25]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[25]) );
-  SDFFARX1_HVT pc_reg_24_ ( .D(pc_next[24]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_25_ ( .D(pc_next[25]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[25]) );
+  SDFFARX1_RVT pc_reg_24_ ( .D(pc_next[24]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[24]) );
-  SDFFARX1_HVT pc_reg_23_ ( .D(pc_next[23]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[23]) );
-  SDFFARX1_HVT pc_reg_22_ ( .D(pc_next[22]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[22]) );
-  SDFFARX1_HVT pc_reg_21_ ( .D(pc_next[21]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[21]) );
-  SDFFARX1_HVT pc_reg_20_ ( .D(pc_next[20]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[20]) );
-  SDFFARX1_HVT pc_reg_19_ ( .D(pc_next[19]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[19]) );
-  SDFFARX1_HVT pc_reg_18_ ( .D(pc_next[18]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[18]) );
-  SDFFARX1_HVT pc_reg_17_ ( .D(pc_next[17]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[17]) );
-  SDFFARX1_HVT pc_reg_16_ ( .D(pc_next[16]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n66), .Q(pc[16]) );
-  SDFFARX1_HVT pc_reg_15_ ( .D(pc_next[15]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_23_ ( .D(pc_next[23]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[23]) );
+  SDFFARX1_RVT pc_reg_22_ ( .D(pc_next[22]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[22]) );
+  SDFFARX1_RVT pc_reg_21_ ( .D(pc_next[21]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[21]) );
+  SDFFARX1_RVT pc_reg_20_ ( .D(pc_next[20]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[20]) );
+  SDFFARX1_RVT pc_reg_19_ ( .D(pc_next[19]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[19]) );
+  SDFFARX1_RVT pc_reg_18_ ( .D(pc_next[18]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[18]) );
+  SDFFARX1_RVT pc_reg_16_ ( .D(pc_next[16]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[16]) );
+  SDFFARX1_RVT pc_reg_15_ ( .D(pc_next[15]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[15]) );
-  SDFFARX1_HVT pc_reg_14_ ( .D(pc_next[14]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_14_ ( .D(pc_next[14]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[14]) );
-  SDFFARX1_HVT pc_reg_13_ ( .D(pc_next[13]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_13_ ( .D(pc_next[13]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[13]) );
-  SDFFARX1_HVT pc_reg_12_ ( .D(pc_next[12]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_12_ ( .D(pc_next[12]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[12]) );
-  SDFFARX1_HVT pc_reg_11_ ( .D(pc_next[11]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_11_ ( .D(pc_next[11]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[11]) );
-  SDFFARX1_HVT pc_reg_10_ ( .D(pc_next[10]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[10]) );
-  SDFFARX1_HVT pc_reg_9_ ( .D(pc_next[9]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_10_ ( .D(pc_next[10]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[10]) );
+  SDFFARX1_RVT pc_reg_9_ ( .D(pc_next[9]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[9]) );
-  SDFFARX1_HVT pc_reg_8_ ( .D(pc_next[8]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[8]) );
-  SDFFARX1_HVT pc_reg_7_ ( .D(pc_next[7]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_8_ ( .D(pc_next[8]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[8]) );
+  SDFFARX1_RVT pc_reg_7_ ( .D(pc_next[7]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[7]) );
-  SDFFARX1_HVT pc_reg_6_ ( .D(pc_next[6]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[6]) );
-  SDFFARX1_HVT pc_reg_5_ ( .D(pc_next[5]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_6_ ( .D(pc_next[6]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[6]) );
+  SDFFARX1_RVT pc_reg_5_ ( .D(pc_next[5]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[5]) );
-  SDFFARX1_HVT pc_reg_4_ ( .D(pc_next[4]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[4]) );
-  SDFFARX1_HVT pc_reg_3_ ( .D(pc_next[3]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_4_ ( .D(pc_next[4]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+        .RSTB(n65), .Q(pc[4]) );
+  SDFFARX1_RVT pc_reg_3_ ( .D(pc_next[3]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[3]) );
-  SDFFARX1_HVT pc_reg_2_ ( .D(pc_next[2]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[2]) );
-  SDFFARX1_HVT pc_reg_1_ ( .D(pc_next[1]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
+  SDFFARX1_RVT pc_reg_1_ ( .D(pc_next[1]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
         .RSTB(n65), .Q(pc[1]) );
-  SDFFARX1_HVT pc_reg_0_ ( .D(pc_next[0]), .SI(1'b0), .SE(1'b0), .CLK(clk), 
-        .RSTB(n67), .Q(pc[0]) );
-  INVX2_HVT U67 ( .A(rst), .Y(n65) );
-  INVX0_HVT U68 ( .A(rst), .Y(n67) );
-  INVX0_HVT U69 ( .A(rst), .Y(n66) );
+  NBUFFX4_HVT U67 ( .A(n66), .Y(n65) );
+  INVX0_HVT U68 ( .A(rst), .Y(n66) );
 endmodule
 

@@ -5,16 +5,16 @@ Warning: Design 'data_mem' contains 3 high-fanout nets. A fanout number of 1000 
 Report : qor
 Design : data_mem
 Version: Q-2019.12-SP3
-Date   : Thu Mar  5 16:42:26 2026
+Date   : Mon Mar  9 16:12:14 2026
 ****************************************
 
 
   Timing Path Group 'clk'
   -----------------------------------
-  Levels of Logic:               6.00
-  Critical Path Length:          0.94
-  Critical Path Slack:           0.35
-  Critical Path Clk Period:      1.43
+  Levels of Logic:              14.00
+  Critical Path Length:          1.03
+  Critical Path Slack:           0.00
+  Critical Path Clk Period:      1.70
   Total Negative Slack:          0.00
   No. of Violating Paths:        0.00
   Worst Hold Violation:          0.00
@@ -27,12 +27,12 @@ Date   : Thu Mar  5 16:42:26 2026
   -----------------------------------
   Hierarchical Cell Count:          0
   Hierarchical Port Count:          0
-  Leaf Cell Count:              24731
-  Buf/Inv Cell Count:            2365
-  Buf Cell Count:                 820
-  Inv Cell Count:                1545
+  Leaf Cell Count:              23075
+  Buf/Inv Cell Count:             361
+  Buf Cell Count:                 199
+  Inv Cell Count:                 162
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:     16507
+  Combinational Cell Count:     14851
   Sequential Cell Count:         8224
   Macro Count:                      0
   -----------------------------------
@@ -40,21 +40,21 @@ Date   : Thu Mar  5 16:42:26 2026
 
   Area
   -----------------------------------
-  Combinational Area:    39825.889807
-  Noncombinational Area: 75242.891083
-  Buf/Inv Area:           3717.872653
-  Total Buffer Area:          1688.53
-  Total Inverter Area:        2029.34
+  Combinational Area:    42378.512704
+  Noncombinational Area: 75211.885489
+  Buf/Inv Area:            767.260739
+  Total Buffer Area:           529.13
+  Total Inverter Area:         238.13
   Macro/Black Box Area:      0.000000
-  Net Area:             112146.521428
+  Net Area:             117254.580749
   -----------------------------------
-  Cell Area:            115068.780890
-  Design Area:          227215.302318
+  Cell Area:            117590.398193
+  Design Area:          234844.978942
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:         24776
+  Total Number of Nets:         23189
   Nets With Violations:             0
   Max Trans Violations:             0
   Max Cap Violations:               0
@@ -65,12 +65,12 @@ Date   : Thu Mar  5 16:42:26 2026
 
   Compile CPU Statistics
   -----------------------------------------
-  Resource Sharing:                    4.65
-  Logic Optimization:                  4.56
-  Mapping Optimization:               18.12
+  Resource Sharing:                    4.84
+  Logic Optimization:                 22.24
+  Mapping Optimization:               61.76
   -----------------------------------------
-  Overall Compile Time:               92.74
-  Overall Compile Wall Clock Time:    97.68
+  Overall Compile Time:              150.30
+  Overall Compile Wall Clock Time:   155.26
 
   --------------------------------------------------------------------
 

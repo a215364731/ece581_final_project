@@ -13,7 +13,7 @@ Report : timing
         -capacitance
 Design : data_mem
 Version: Q-2019.12-SP3
-Date   : Thu Mar  5 16:42:26 2026
+Date   : Mon Mar  9 16:12:14 2026
 ****************************************
 
  # A fanout number of 1000 was used for high fanout net computations.
