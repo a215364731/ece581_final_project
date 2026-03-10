@@ -30,19 +30,19 @@ Please use '-no_save' simv switch to avoid this.
 
 Initializing...
 Initializing gui preferences from file  /u/jgasaba2/.synopsys_dc_gui/preferences.tcl
-Current time:       Mon Mar  9 18:54:52 2026
+Current time:       Mon Mar  9 13:03:23 2026
 Hostname:           phobos.ece.pdx.edu
 CPU Model:          Intel Xeon Processor (Cascadelake)
 CPU Details:        Cores = 32 : Sockets = 32 : Cache Size = 16384 KB : Freq = 2.50 GHz
 OS:                 Linux 5.14.0-611.34.1.el9_7.x86_64
-RAM:                 62 GB (Free  52 GB)
+RAM:                 62 GB (Free  53 GB)
 Swap:                 9 GB (Free   9 GB)
 Work Filesystem:    /u/jgasaba2 mounted to vol-lapis.cat.pdx.edu:/lapis/home/23/jgasaba2/rocky9
 Tmp Filesystem:     / mounted to /dev/mapper/rl_phobos-root
-Work Disk:          5801 GB (Free 5634 GB)
+Work Disk:          5807 GB (Free 5640 GB)
 Tmp Disk:            59 GB (Free  44 GB)
 
-CPU Load: 3%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 1%, Ram Free: 53 GB, Swap Free: 9 GB, Work Disk Free: 5640 GB, Tmp Disk Free: 44 GB
 ##################################################
 # Top Level Synthesis Script 
 # Sets up top-design name and sources scripts files
@@ -55,9 +55,9 @@ if { [info exists ::env(TOP)] } {
 } elseif { ![info exists top_design] } {
     set top_design riscv_core
 }
-alu
+regfile
 set script_dir [file dirname [info script]]
-/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/scripts
+/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/scripts
 source -echo -verbose $script_dir/dc_setup.tcl
 ####################################################
 # For ECE-581 Class
@@ -116,13 +116,13 @@ if { [info exists ::env(RTLDIR)] } {
 } else {
     error "RTLDIR not set. Run DC via Makefile."
 }
-/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/rtl
+/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl
 puts "INFO: RTL directory = $rtl_dir"
-INFO: RTL directory = /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/rtl
+INFO: RTL directory = /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl
 #set rtl_list [list ${rtl_dir}/${top_design}.sv ${rtl_dir}/alu.sv  ${rtl_dir}/control.sv ${rtl_dir}/regfile.sv \
  #             ${rtl_dir}/data_mem.sv  ${rtl_dir}/imm_gen.sv  ${rtl_dir}/pc.sv]
 set rtl_list [list ${rtl_dir}/${top_design}.sv]
-/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/rtl/alu.sv
+/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv
 # --------------------------------------------------
 # Corner / Timing settings
 # --------------------------------------------------
@@ -204,7 +204,7 @@ file mkdir ../work
 file mkdir ../reports
 file mkdir ../outputs
 puts "INFO: DC setup complete for ${top_design}"
-INFO: DC setup complete for alu
+INFO: DC setup complete for regfile
 source -echo -verbose $script_dir/dc_libraries.tcl
 ####################################################
 # For ECE-581 Class
@@ -290,11 +290,16 @@ INFO: Starting Analyze and Elaborate stage
 # --------------------------------------------------
 # Analyze the RTL
 # --------------------------------------------------
+# $rtl_list should be defined in dc_setup.tcl
+# -autoread automatically reads the files
+# -define SYNTHESIS defines synthesis preprocessor macro
+#echo "analyze $rtl_list -autoread -define SYNTHESIS"
+#analyze $rtl_list -autoread -define SYNTHESIS
 echo "analyze -format sverilog -define SYNTHESIS $rtl_list"
-analyze -format sverilog -define SYNTHESIS /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/rtl/alu.sv
+analyze -format sverilog -define SYNTHESIS /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv
 analyze -format sverilog -define SYNTHESIS $rtl_list
 Running PRESTO HDLC
-Compiling source file /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/rtl/alu.sv
+Compiling source file /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv
 Presto compilation completed successfully.
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
@@ -307,6 +312,7 @@ Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/
 # --------------------------------------------------
 # Elaborate top-level design
 # --------------------------------------------------
+# $top_design should be defined in dc_setup.tcl
 elaborate $top_design
 Loading db file '/pkgs/synopsys/2025/design_compiler/syn/X-2025.06-SP4/libraries/syn/gtech.db'
 Loading db file '/pkgs/synopsys/2025/design_compiler/syn/X-2025.06-SP4/libraries/syn/standard.sldb'
@@ -319,29 +325,36 @@ Loading db file '/pkgs/synopsys/2025/design_compiler/syn/X-2025.06-SP4/libraries
   Loading link library 'gtech'
 Running PRESTO HDLC
 
-Statistics for case statements in always block in file
-	'/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/rtl/alu.sv'
-==========================================================
-|    Line    |  full/ parallel  |     block location     |
-==========================================================
-|     10     |    auto/auto     | always block at line 9 |
-==========================================================
-Presto compilation completed successfully. (alu)
-Module: alu, Ports: 101, Input: 68, Output: 33, Inout: 0
-Module: alu, Registers: 0, Async set/reset: 0, Sync set/reset: 0
-Information: Module alu report end. (ELAB-965)
+Inferred memory devices in process in routine 'regfile' in file
+	 /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/rtl/regfile.sv'.
+==================================================================================
+|    Register Name    |   Type    | Width | Bus | MB |  Set  | Reset | ST | Line |
+==================================================================================
+|      regs_reg       | Flip-flop | 1024  |  Y  | N  | None  | None  | N  |  17  |
+==================================================================================
+Statistics for MUX_OPs
+======================================================
+| block name/line  | Inputs | Outputs | # sel inputs |
+======================================================
+|    regfile/14    |   32   |   32    |      5       |
+|    regfile/15    |   32   |   32    |      5       |
+======================================================
+Presto compilation completed successfully. (regfile)
+Module: regfile, Ports: 113, Input: 49, Output: 64, Inout: 0
+Module: regfile, Registers: 1024, Async set/reset: 0, Sync set/reset: 0
+Information: Module regfile report end. (ELAB-965)
 Elaborated 1 design.
-Current design is now 'alu'.
+Current design is now 'regfile'.
 1
 current_design $top_design
-Current design is 'alu'.
-{alu}
+Current design is 'regfile'.
+{regfile}
 link
 
-  Linking design 'alu'
+  Linking design 'regfile'
   Using the following designs and libraries:
   --------------------------------------------------------------------------
-  alu                         /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/alu.db
+  regfile                     /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/syn/regfile.db
   saed32io_wb_ss0p95v125c_2p25v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db
   saed32sramlp_ss0p75v125c_i0p75v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db
   saed32pll_ss0p95v125c_2p25v (library) /pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db
@@ -362,6 +375,8 @@ Warning: The specified replacement character (_) is conflicting with the specifi
 # --------------------------------------------------
 # Optional: Insert I/O pad cells
 # --------------------------------------------------
+# If add_ios flag is set, source the common add_ios script
+# and a design-specific add_ios script
 if { [info exists add_ios] && $add_ios } {
     puts "INFO: Inserting I/O pad cells"
     source $script_dir/add_ios.tcl
@@ -379,7 +394,7 @@ source -echo -verbose $script_dir/dc_constraints.tcl
 # #################################################
 source ../constraints/${top_design}.sdc
 INFO: Constraints
-Current design is 'alu'.
+Current design is 'regfile'.
 1
 # Add additional constraints or overwrite constraints
 # 
@@ -400,11 +415,8 @@ uniquify
 1
 compile_ultra -scan
 Information: Performing leakage power optimization. (PWR-850)
-CPU Load: 3%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
-Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db"
-Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db"
-Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db"
-Library analysis succeeded.
+CPU Load: 1%, Ram Free: 53 GB, Swap Free: 9 GB, Work Disk Free: 5640 GB, Tmp Disk Free: 44 GB
+Alib files are up-to-date.
 Information: Choosing a test methodology will restrict the optimization of sequential cells. (UIO-12)
 Information: Evaluating DesignWare library utilization. (UISN-27)
 
@@ -424,26 +436,23 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 | Design Information                                      | Value                                  |
 ====================================================================================================
 | Number of Scenarios                                     | 0                                      |
-| Leaf Cell Count                                         | 166                                    |
+| Leaf Cell Count                                         | 1117                                   |
 | Number of User Hierarchies                              | 0                                      |
-| Sequential Cell Count                                   | 0                                      |
+| Sequential Cell Count                                   | 1024                                   |
 | Macro Count                                             | 0                                      |
 | Pad Count                                               | 0                                      |
 | Number of Power Domains                                 | 0                                      |
-| Number of Path Groups                                   | 1                                      |
+| Number of Path Groups                                   | 2                                      |
 | Number of VT Class                                      | 3                                      |
-| Number of Clocks                                        | 0                                      |
-| Number of Dont Touch Cells                              | 20                                     |
+| Number of Clocks                                        | 1                                      |
+| Number of Dont Touch Cells                              | 16                                     |
 | Number of Dont Touch Nets                               | 0                                      |
 | Number of Size Only Cells                               | 0                                      |
 | Design with Target Library Subset (with clock_path)     | false  (false )                        |
 | Design with UPF Data                                    | false                                  |
 ====================================================================================================
 Information: Sequential output inversion is enabled.  SVF file must be used for formal verification. (OPT-1208)
-
-Information: There are 3 potential problems in your design. Please run 'check_design' for more information. (LINT-99)
-
-  Simplifying Design 'alu'
+  Simplifying Design 'regfile'
 
 Loaded alib file './alib-52/saed32rvt_ss0p95v125c.db.alib' (placeholder)
 Loaded alib file './alib-52/saed32hvt_ss0p95v125c.db.alib'
@@ -452,14 +461,77 @@ Module: DW01_NAND2, Ports: 3, Input: 2, Output: 1, Inout: 0
 Module: DW01_NAND2, Registers: 0, Async set/reset: 0, Sync set/reset: 0
   Building model 'DW01_NAND2'
 Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 1%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5640 GB, Tmp Disk Free: 44 GB
 Information: State dependent leakage is now switched from on to off.
 
   Beginning Pass 1 Mapping
   ------------------------
-  Processing 'alu'
- Implement Synthetic for 'alu'.
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+  Processing 'regfile'
+Information: The register 'regs_reg_0__0_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__0_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__1_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__1_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__2_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__2_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__3_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__3_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__4_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__4_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__5_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__5_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__6_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__6_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__7_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__7_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__8_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__8_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__9_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__9_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__10_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__10_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__11_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__11_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__12_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__12_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__13_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__13_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__14_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__14_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__15_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__15_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__16_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__16_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__17_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__17_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__18_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__18_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__19_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__19_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__20_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__20_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__21_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__21_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__22_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__22_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__23_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__23_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__24_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__24_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__25_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__25_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__26_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__26_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__27_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__27_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__28_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__28_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__29_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__29_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__30_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__30_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__31_' will be removed. (OPT-1207)
+Information: The register 'regs_reg_0__31_' will be removed. (OPT-1207)
+CPU Load: 1%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5640 GB, Tmp Disk Free: 44 GB
 
   Updating timing information
 Information: Updating design information... (UID-85)
@@ -489,23 +561,22 @@ Threshold voltage group cell usage:
 
   Beginning Mapping Optimizations  (Ultra High effort)
   -------------------------------
-Information: Added key list 'DesignWare' to design 'alu'. (DDB-72)
-Information: There is no timing violation in design alu. Delay-based auto_ungroup will not be performed. (OPT-780)
+Information: There is no timing violation in design regfile. Delay-based auto_ungroup will not be performed. (OPT-780)
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:06    1186.9      0.00       0.0       0.0                           34363040.0000
-    0:00:06    1186.9      0.00       0.0       0.0                           34363040.0000
+    0:00:10   22200.2      0.00       0.0    1672.0                           718933504.0000
+    0:00:11   22200.2      0.00       0.0    1672.0                           718933504.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
 
   Beginning Constant Register Removal
   -----------------------------------
-    0:00:06    1197.5      0.00       0.0       0.0                           34815468.0000
-    0:00:06    1197.5      0.00       0.0       0.0                           34815468.0000
+    0:00:11   22200.2      0.00       0.0    1672.0                           718933504.0000
+    0:00:11   22200.2      0.00       0.0    1672.0                           718933504.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
@@ -556,93 +627,79 @@ Threshold voltage group cell usage:
 
   Beginning Delay Optimization
   ----------------------------
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
+    0:00:11   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:11   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:11   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:11   15778.0      0.00       0.0       0.0                           262626880.0000
 
 Threshold voltage group cell usage:
 >> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
-    0:00:07     918.5      0.00       0.0      30.2                           11024093.0000
-    0:00:07     918.5      0.00       0.0      30.2                           11024093.0000
+    0:00:12   15778.0      0.00       0.0       0.0                           262626880.0000
+    0:00:12   15778.0      0.00       0.0       0.0                           262626880.0000
 
   Beginning WLM Backend Optimization
   --------------------------------------
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 99.72%, saed32cell_lvt 0.28%, saed32cell_svt 0.00%
+>> saed32cell_hvt 99.81%, saed32cell_lvt 0.19%, saed32cell_svt 0.00%
 
   Beginning Delay Optimization HSVT Pass
   --------------------------------------
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-
-
-  Beginning Design Rule Fixing  (max_capacitance)
-  ----------------------------
-
-                                  TOTAL                                                
-   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-  Global Optimization (Phase 31)
-  Global Optimization (Phase 32)
-  Global Optimization (Phase 33)
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
+    0:00:13   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:13   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:13   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:13   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:13   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:14   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:14   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:14   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:14   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:14   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:15   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:15   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:15   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:15   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:15   15776.2      0.00       0.0       0.0                           266603584.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           264760336.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:15   15752.1      0.00       0.0       0.0                           260414224.0000
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     917.5      0.00       0.0       0.0                           11477223.0000
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+    0:00:15   15752.1      0.00       0.0       0.0                           260414224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:16   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:17   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:17   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:17   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:17   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:17   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+    0:00:18   15736.3      0.00       0.0       0.0                           256888224.0000
+CPU Load: 3%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5640 GB, Tmp Disk Free: 44 GB
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
@@ -656,10 +713,11 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
 
   Optimization Complete
   ---------------------
+Warning: Design 'regfile' contains 1 high-fanout nets. A fanout number of 1000 will be used for delay calculations involving these nets. (TIM-134)
+     Net 'n1447': 1984 load(s), 1 driver(s)
 Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
-Warning: There is no defined clock in the design. (PWR-80)
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 3%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5640 GB, Tmp Disk Free: 44 GB
 Information: Total number of MV cells in the design.
 ----------------------------------------------------------------------------------------------------
  MV Cells                                           Total Number                                   
@@ -715,26 +773,104 @@ source -echo -verbose $script_dir/dc_outputs.tcl
 puts "INFO: Outputs"
 INFO: Outputs
 write -hier -format verilog -output ../outputs/${top_design}.dc.vg
-Writing verilog file '/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/outputs/alu.dc.vg'.
+Writing verilog file '/u/jgasaba2/ece581_final_project/bottom_up_riscv_run/regfile/outputs/regfile.dc.vg'.
 1
 write -hier -format ddc     -output ../outputs/${top_design}.dc.ddc
-Writing ddc file '../outputs/alu.dc.ddc'.
+Writing ddc file '../outputs/regfile.dc.ddc'.
 1
 save_upf ../outputs/${top_design}.dc.upf
 1
 1
 puts "=== DC TOP END ==="
 === DC TOP END ===
-dc_shell> ls
-.   ALU.mr   alu-verilog.pvl  cksum_dir    default.svf	  logs	    rtl
-..  alib-52  alu-verilog.syn  command.log  filenames.log  makefile  scripts
-dc_shell> \[Kls[K
+dc_shell> repo
+report_a...(13) report_c...(23) report_f...(2)  report_i...(7)  report_m...(7)  report_o...(4)  report_q...(2)  report_s...(25) report_u...(4)  
+report_b...(16) report_d...(24) report_h...(3)  report_l...(6)  report_n...(4)  report_p...(18) report_r...(6)  report_t...(15) report_w...(4)  
+dc_shell> report_qor 
+ 
+****************************************
+Report : qor
+Design : regfile
+Version: X-2025.06-SP4
+Date   : Mon Mar  9 13:03:56 2026
+****************************************
+
+
+  Timing Path Group 'clk'
+  -----------------------------------
+  Levels of Logic:               1.00
+  Critical Path Length:          0.35
+  Critical Path Slack:           0.91
+  Critical Path Clk Period:      1.41
+  Total Negative Slack:          0.00
+  No. of Violating Paths:        0.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:               3713
+  Buf/Inv Cell Count:             199
+  Buf Cell Count:                  93
+  Inv Cell Count:                 106
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:      2721
+  Sequential Cell Count:          992
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:     6660.351824
+  Noncombinational Area:  9075.990753
+  Buf/Inv Area:            323.779466
+  Total Buffer Area:           189.08
+  Total Inverter Area:         134.70
+  Macro/Black Box Area:      0.000000
+  Net Area:               7750.933683
+  -----------------------------------
+  Cell Area:             15736.342577
+  Design Area:           23487.276259
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:          3764
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: phobos.ece.pdx.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.50
+  Logic Optimization:                  1.79
+  Mapping Optimization:                4.36
+  -----------------------------------------
+  Overall Compile Time:               22.48
+  Overall Compile Wall Clock Time:    23.40
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1
+dc_shell> exdc_shell> e[Kstart_gui
+dc_shell> Current design is 'regfile'.
+dc_shell> Current design is 'regfile'.
 dc_shell> 
-dc_shell> exit
-
-Memory usage for this session 400 Mbytes.
-Memory usage for this session including child processes 400 Mbytes.
-CPU usage for this session 129 seconds ( 0.04 hours ).
-Elapsed time for this session 7477 seconds ( 2.08 hours ).
-
-Thank you...

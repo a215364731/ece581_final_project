@@ -1,7 +1,7 @@
 puts "INFO: Constraints"
 
 
-set clk_period  1.43
+set clk_period  1.41
 
 create_clock -name clk -period $clk_period   [get_ports clk]
 
