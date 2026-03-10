@@ -1,16 +1,17 @@
-# 1. Ensure the clock is attached to the physical port
-# Replace 'clk' with the actual name of your clock port if different
-create_clock [get_ports clk] -name clk -period 1.7
+# 1. Clock Definition
+# Using the 1.41ns period to match your Top-Down baseline
+create_clock [get_ports clk] -name clk -period 1.41
 
-# 2. Check if there are any non-clock inputs (like 'reset' or 'stall')
-# If you have inputs, they NEED an input delay or they will be unconstrained
+# 2. Input Delay
+# Keeping this at 0.2ns. This is the time for 'rst' to arrive.
 set_input_delay 0.2 -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
 
-# 3. Apply output delay
-# Using 1.5 is very aggressive (leaves only 0.2ns for the PC logic).
-# If it fails, try 1.2 first.
-set_output_delay 1.5 -clock clk [all_outputs]
+# 3. Output Delay (The Budget Adjustment)
+# Old logic: 1.7 - 1.5 = 0.2ns logic window.
+# New logic: 1.41 - 1.2 = 0.21ns logic window.
+# We must reduce the output delay to stay within the 1.41ns cycle.
+set_output_delay 1.2 -clock clk [all_outputs]
 
-# 4. Force DC to recognize the ports
+# 4. Environment
 set_drive 1 [all_inputs]
 set_load 0.1 [all_outputs]

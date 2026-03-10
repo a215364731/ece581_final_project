@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version Q-2019.12-SP3 for linux64 -- Apr 21, 2020
-#@ # Date:   Mon Mar  9 17:35:29 2026
+#@ # Date:   Mon Mar  9 17:47:12 2026
 #@ # Run by: saishree@auto.ece.pdx.edu
 #@ 
 
@@ -6678,9 +6678,9 @@ source /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/admin/setup/.synops
 
 #@ # -- End source /pkgs/synopsys/2020/design_compiler/syn/Q-2019.12-SP3/admin/setup/.synopsys_dc.setup
 
-set top_design pc
-source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_top.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_top.tcl
+set top_design riscv_core
+source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_top.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_top.tcl
 
 #@ ##################################################
 #@ # Top Level Synthesis Script 
@@ -6699,7 +6699,7 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ set script_dir [file dirname [info script]]
 #@ 
 #@ source -echo -verbose $script_dir/dc_setup.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_setup.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_setup.tcl
 
 #@ 
 #@ ####################################################
@@ -6758,7 +6758,7 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ }
 #@ 
 #@ puts "INFO: RTL directory = $rtl_dir"
-#@ set rtl_list [list ${rtl_dir}/${top_design}.sv]
+#@ set rtl_list [list ${rtl_dir}/${top_design}.sv ]
 #@ 
 #@ # --------------------------------------------------
 #@ # Corner / Timing settings
@@ -6821,10 +6821,10 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ file mkdir ../outputs
 #@ 
 #@ puts "INFO: DC setup complete for ${top_design}"
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_setup.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_setup.tcl
 
 #@ source -echo -verbose $script_dir/dc_libraries.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_libraries.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_libraries.tcl
 
 #@ 
 #@ ####################################################
@@ -6893,10 +6893,10 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ lappend link_library $lib_dir/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db
 #@ lappend link_library $lib_dir/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db
 #@ puts "INFO: Library setup completed"
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_libraries.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_libraries.tcl
 
 #@ source -echo -verbose $script_dir/dc_analyze.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_analyze.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_analyze.tcl
 
 #@ 
 #@ ####################################################
@@ -6941,10 +6941,10 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ }
 #@ 
 #@ puts "INFO: Analyze and Elaborate stage completed"
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_analyze.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_analyze.tcl
 
 #@ source -echo -verbose $script_dir/dc_constraints.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_constraints.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_constraints.tcl
 
 #@ ####################################################
 #@ # For ECE-581 Class
@@ -6957,36 +6957,55 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ 
 #@ 
 #@ source ../constraints/${top_design}.sdc
-#@ # -- Starting source ../constraints/pc.sdc
+#@ # -- Starting source ../constraints/riscv_core.sdc
 
+#@ # -------------------------------------------------------------------------
 #@ # 1. Clock Definition
-#@ # Using the 1.41ns period to match your Top-Down baseline
-#@ create_clock [get_ports clk] -name clk -period 1.41
+#@ # -------------------------------------------------------------------------
+#@ # Matching the Top-Down period of 1.41ns
+#@ # Duty cycle is 50% (0.705ns)
+#@ create_clock [get_ports clk] -name clk -period 1.41 -waveform {0 0.705}
 #@ 
-#@ # 2. Input Delay
-#@ # Keeping this at 0.2ns. This is the time for 'rst' to arrive.
-#@ set_input_delay 0.2 -clock clk [remove_from_collection [all_inputs] [get_ports clk]]
+#@ # -------------------------------------------------------------------------
+#@ # 2. Input Delays
+#@ # -------------------------------------------------------------------------
+#@ set_input_delay 0.2 -clock clk [get_ports rst]
 #@ 
-#@ # 3. Output Delay (The Budget Adjustment)
-#@ # Old logic: 1.7 - 1.5 = 0.2ns logic window.
-#@ # New logic: 1.41 - 1.2 = 0.21ns logic window.
-#@ # We must reduce the output delay to stay within the 1.41ns cycle.
-#@ set_output_delay 1.2 -clock clk [all_outputs]
+#@ # 'instruction' must match the input_delay used in the Control leaf SDC (0.3ns)
+#@ # to ensure consistent timing at the top level.
+#@ set_input_delay 0.3 -clock clk [get_ports instruction[*]]
 #@ 
-#@ # 4. Environment
-#@ set_drive 1 [all_inputs]
-#@ set_load 0.1 [all_outputs]
-#@ # -- End source ../constraints/pc.sdc
+#@ # -------------------------------------------------------------------------
+#@ # 3. Output Delays
+#@ # -------------------------------------------------------------------------
+#@ # Reduced to 0.4ns to give internal signals more time to reach the pads
+#@ set_output_delay 0.4 -clock clk [get_ports debug_pc[*]]
+#@ set_output_delay 0.4 -clock clk [get_ports debug_wb_data[*]]
+#@ 
+#@ # -------------------------------------------------------------------------
+#@ # 4. Environment and Design Rules
+#@ # -------------------------------------------------------------------------
+#@ set_load 0.05 [all_outputs]
+#@ set_driving_cell -lib_cell INVX2_LVT [remove_from_collection [all_inputs] [get_ports clk]]
+#@ 
+#@ # Crucial for hierarchical assembly to fix port-to-port connections
+#@ set_fix_multiple_port_nets -all -buffer_constants
+#@ 
+#@ # -------------------------------------------------------------------------
+#@ # 5. Area Constraint
+#@ # -------------------------------------------------------------------------
+#@ set_max_area 0
+#@ # -- End source ../constraints/riscv_core.sdc
 
 #@ 
 #@ # Add additional constraints or overwrite constraints
 #@ # 
 #@ 
 #@ 
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_constraints.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_constraints.tcl
 
 #@ source -echo -verbose $script_dir/dc_compile.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_compile.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_compile.tcl
 
 #@ ####################################################
 #@ # For ECE-581 Class
@@ -7002,13 +7021,25 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ set_dont_use [get_lib_cells */DELLN*]
 #@ uniquify
 #@ 
+#@ read_ddc ../../alu/outputs/alu.dc.ddc
+#@ read_ddc ../../control/outputs/control.dc.ddc
+#@ read_ddc ../../regfile/outputs/regfile.dc.ddc
+#@ read_ddc ../../data_mem/outputs/data_mem.dc.ddc
+#@ read_ddc ../../imm_gen/outputs/imm_gen.dc.ddc
+#@ read_ddc ../../pc/outputs/pc.dc.ddc
+#@ 
+#@ current_design riscv_core
+#@ 
+#@ link
+#@ set_dont_touch [get_designs {alu control regfile data_mem imm_gen pc}]
+#@ 
 #@ compile_ultra -scan
 #@ 
 #@ change_names -rules verilog -hierarchy
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_compile.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_compile.tcl
 
 #@ source -echo -verbose $script_dir/dc_reports.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_reports.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_reports.tcl
 
 #@ ####################################################
 #@ # For ECE-581 Class
@@ -7034,10 +7065,10 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ #check_mv_design  > ../reports/${top_design}.$stage.mvrc.rpt
 #@ 
 #@ 
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_reports.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_reports.tcl
 
 #@ source -echo -verbose $script_dir/dc_outputs.tcl
-#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_outputs.tcl
+#@ # -- Starting source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_outputs.tcl
 
 #@ ####################################################
 #@ # For ECE-581 Class
@@ -7053,10 +7084,10 @@ source -echo -verbose /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/
 #@ write -hier -format verilog -output ../outputs/${top_design}.dc.vg
 #@ write -hier -format ddc     -output ../outputs/${top_design}.dc.ddc
 #@ save_upf ../outputs/${top_design}.dc.upf
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_outputs.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_outputs.tcl
 
 #@ 
 #@ puts "=== DC TOP END ==="
-#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/pc/syn/scripts/dc_top.tcl
+#@ # -- End source /u/saishree/ECE-581-W26/Final_Project/bottom_up_riscv_run/riscv_core/syn/scripts/dc_top.tcl
 
 report_timing

@@ -4,8 +4,17 @@ Report : constraint
         -all_violators
 Design : data_mem
 Version: Q-2019.12-SP3
-Date   : Mon Mar  9 16:12:14 2026
+Date   : Mon Mar  9 17:42:40 2026
 ****************************************
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   data_mem                     0.00       236435.92      -236435.92
+                                                                    (VIOLATED)
 
 
    max_leakage_power
@@ -13,7 +22,7 @@ Date   : Mon Mar  9 16:12:14 2026
                              Required        Actual
    Design                   Leakage Power  Leakage Power     Slack
    -----------------------------------------------------------------
-   data_mem                     0.00       2320460288.00  -2320460288.00
+   data_mem                     0.00       2459438592.00  -2459438592.00
                                                                     (VIOLATED)
 
 

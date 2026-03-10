@@ -1,0 +1,169 @@
+Warning: Design 'riscv_core' has '3' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : riscv_core
+Version: Q-2019.12-SP3
+Date   : Mon Mar  9 17:47:47 2026
+****************************************
+
+
+   max_delay/setup ('clk' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   dmem/read_data_reg_2_/D      1.24           1.32 f        -0.08  (VIOLATED)
+   dmem/read_data_reg_19_/D     1.24           1.32 f        -0.08  (VIOLATED)
+   dmem/read_data_reg_17_/D     1.24           1.31 f        -0.07  (VIOLATED)
+   dmem/read_data_reg_25_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_18_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_26_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_30_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_3_/D      1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_10_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_31_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_1_/D      1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_23_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_29_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_14_/D     1.24           1.30 f        -0.06  (VIOLATED)
+   dmem/read_data_reg_7_/D      1.24           1.30 f        -0.05  (VIOLATED)
+   dmem/read_data_reg_9_/D      1.24           1.29 f        -0.05  (VIOLATED)
+   dmem/read_data_reg_20_/D     1.24           1.29 f        -0.05  (VIOLATED)
+   dmem/read_data_reg_6_/D      1.24           1.29 f        -0.05  (VIOLATED)
+   dmem/read_data_reg_16_/D     1.24           1.28 f        -0.04  (VIOLATED)
+   dmem/read_data_reg_21_/D     1.24           1.28 f        -0.04  (VIOLATED)
+   dmem/read_data_reg_15_/D     1.24           1.28 f        -0.04  (VIOLATED)
+   dmem/read_data_reg_22_/D     1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__6_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__6_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__1_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__21_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__30_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__29_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__28_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__4_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__27_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__20_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__22_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__1_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__21_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__30_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__26_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/read_data_reg_0_/D      1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__4_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__25_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__0_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__20_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__2_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__0_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__26_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__23_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__25_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__24_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_143__31_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__2_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__28_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__29_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__22_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__23_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__27_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__24_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/memory_reg_135__31_/D
+                                1.24           1.27 f        -0.03  (VIOLATED)
+   dmem/read_data_reg_8_/D      1.24           1.26 f        -0.02  (VIOLATED)
+   dmem/memory_reg_246__7_/D
+                                1.20           1.22 f        -0.02  (VIOLATED)
+   dmem/memory_reg_31__3_/D     1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__5_/D     1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__6_/D     1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__7_/D     1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__8_/D     1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__9_/D     1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__11_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__12_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__13_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__14_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__15_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__16_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__18_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__19_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__30_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/memory_reg_31__31_/D
+                                1.26           1.28 r        -0.01  (VIOLATED)
+   dmem/read_data_reg_12_/D     1.24           1.26 f        -0.01  (VIOLATED)
+   dmem/read_data_reg_27_/D     1.24           1.25 f        -0.01  (VIOLATED)
+   dmem/read_data_reg_28_/D     1.24           1.25 f        -0.01  (VIOLATED)
+   dmem/read_data_reg_11_/D     1.24           1.24 f         0.00  (VIOLATED: increase significant digits)
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   riscv_core                   0.00       238361.30      -238361.30
+                                                                    (VIOLATED)
+
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   riscv_core                   0.00       2495958016.00  -2495958016.00
+                                                                    (VIOLATED)
+
+
+   multiport_net
+
+                             Required        Actual
+   Net                          Cost           Cost          Violation
+   -----------------------------------------------------------------
+   ctrl/mem_to_reg              0.00           1.00          -1.00  (VIOLATED)
+
+
+1

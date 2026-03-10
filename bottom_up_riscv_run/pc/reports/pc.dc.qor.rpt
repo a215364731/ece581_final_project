@@ -4,7 +4,7 @@ Information: Updating design information... (UID-85)
 Report : qor
 Design : pc
 Version: Q-2019.12-SP3
-Date   : Mon Mar  9 15:29:59 2026
+Date   : Mon Mar  9 17:35:48 2026
 ****************************************
 
 
@@ -12,8 +12,8 @@ Date   : Mon Mar  9 15:29:59 2026
   -----------------------------------
   Levels of Logic:               0.00
   Critical Path Length:          0.16
-  Critical Path Slack:           0.04
-  Critical Path Clk Period:      1.70
+  Critical Path Slack:           0.05
+  Critical Path Clk Period:      1.41
   Total Negative Slack:          0.00
   No. of Violating Paths:        0.00
   Worst Hold Violation:          0.00
@@ -65,11 +65,11 @@ Date   : Mon Mar  9 15:29:59 2026
   Compile CPU Statistics
   -----------------------------------------
   Resource Sharing:                    0.00
-  Logic Optimization:                  0.08
-  Mapping Optimization:                0.37
+  Logic Optimization:                  0.15
+  Mapping Optimization:                0.63
   -----------------------------------------
-  Overall Compile Time:               13.29
-  Overall Compile Wall Clock Time:    14.11
+  Overall Compile Time:               13.86
+  Overall Compile Wall Clock Time:    14.89
 
   --------------------------------------------------------------------
 

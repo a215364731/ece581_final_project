@@ -4,7 +4,7 @@ Report : constraint
         -all_violators
 Design : control
 Version: Q-2019.12-SP3
-Date   : Mon Mar  9 16:31:20 2026
+Date   : Mon Mar  9 17:45:16 2026
 ****************************************
 
 
@@ -13,7 +13,7 @@ Date   : Mon Mar  9 16:31:20 2026
                              Required        Actual
    Design                   Leakage Power  Leakage Power     Slack
    -----------------------------------------------------------------
-   control                      0.00       1451087.50     -1451087.50
+   control                      0.00       2100846.00     -2100846.00
                                                                     (VIOLATED)
 
 
