@@ -4,8 +4,48 @@ Report : constraint
         -all_violators
 Design : alu
 Version: X-2025.06-SP4
-Date   : Mon Mar  9 18:57:02 2026
+Date   : Tue Mar 10 18:38:08 2026
 ****************************************
+
+
+   max_delay/setup ('COMBO' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   zero                         0.60           1.04 f        -0.44  (VIOLATED)
+   result[30]                   0.60           0.94 f        -0.34  (VIOLATED)
+   result[24]                   0.60           0.93 r        -0.33  (VIOLATED)
+   result[0]                    0.60           0.92 f        -0.32  (VIOLATED)
+   result[27]                   0.60           0.92 f        -0.32  (VIOLATED)
+   result[29]                   0.60           0.92 r        -0.32  (VIOLATED)
+   result[28]                   0.60           0.91 r        -0.31  (VIOLATED)
+   result[31]                   0.60           0.91 f        -0.31  (VIOLATED)
+   result[21]                   0.60           0.91 f        -0.31  (VIOLATED)
+   result[23]                   0.60           0.90 r        -0.30  (VIOLATED)
+   result[19]                   0.60           0.90 r        -0.30  (VIOLATED)
+   result[26]                   0.60           0.90 r        -0.30  (VIOLATED)
+   result[22]                   0.60           0.90 f        -0.30  (VIOLATED)
+   result[17]                   0.60           0.89 r        -0.29  (VIOLATED)
+   result[20]                   0.60           0.89 f        -0.29  (VIOLATED)
+   result[14]                   0.60           0.89 r        -0.29  (VIOLATED)
+   result[18]                   0.60           0.89 f        -0.29  (VIOLATED)
+   result[25]                   0.60           0.88 r        -0.28  (VIOLATED)
+   result[16]                   0.60           0.88 r        -0.28  (VIOLATED)
+   result[8]                    0.60           0.85 r        -0.25  (VIOLATED)
+   result[13]                   0.60           0.85 f        -0.25  (VIOLATED)
+   result[11]                   0.60           0.85 f        -0.25  (VIOLATED)
+   result[9]                    0.60           0.84 r        -0.24  (VIOLATED)
+   result[12]                   0.60           0.83 f        -0.23  (VIOLATED)
+   result[10]                   0.60           0.83 r        -0.23  (VIOLATED)
+   result[15]                   0.60           0.83 r        -0.23  (VIOLATED)
+   result[6]                    0.60           0.82 f        -0.22  (VIOLATED)
+   result[4]                    0.60           0.81 r        -0.21  (VIOLATED)
+   result[5]                    0.60           0.79 f        -0.19  (VIOLATED)
+   result[7]                    0.60           0.77 r        -0.17  (VIOLATED)
+   result[3]                    0.60           0.73 r        -0.13  (VIOLATED)
+   result[2]                    0.60           0.72 r        -0.12  (VIOLATED)
+   result[1]                    0.60           0.69 r        -0.09  (VIOLATED)
 
 
    max_leakage_power
@@ -13,7 +53,7 @@ Date   : Mon Mar  9 18:57:02 2026
                              Required        Actual
    Design                   Leakage Power  Leakage Power     Slack
    -----------------------------------------------------------------
-   alu                          0.00       15382492.00    -15382492.00
+   alu                          0.00       670719488.00   -670719488.00
                                                                     (VIOLATED)
 
 

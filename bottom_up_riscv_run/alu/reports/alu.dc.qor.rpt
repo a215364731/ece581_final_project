@@ -4,18 +4,18 @@ Information: Updating design information... (UID-85)
 Report : qor
 Design : alu
 Version: X-2025.06-SP4
-Date   : Mon Mar  9 18:57:01 2026
+Date   : Tue Mar 10 18:38:08 2026
 ****************************************
 
 
-  Timing Path Group (none)
+  Timing Path Group 'COMBO'
   -----------------------------------
-  Levels of Logic:              34.00
-  Critical Path Length:          5.56
-  Critical Path Slack:         uninit
-  Critical Path Clk Period:       n/a
-  Total Negative Slack:          0.00
-  No. of Violating Paths:        0.00
+  Levels of Logic:              17.00
+  Critical Path Length:          0.74
+  Critical Path Slack:          -0.44
+  Critical Path Clk Period:      1.41
+  Total Negative Slack:         -8.74
+  No. of Violating Paths:       33.00
   Worst Hold Violation:          0.00
   Total Hold Violation:          0.00
   No. of Hold Violations:        0.00
@@ -26,12 +26,12 @@ Date   : Mon Mar  9 18:57:01 2026
   -----------------------------------
   Hierarchical Cell Count:          0
   Hierarchical Port Count:          0
-  Leaf Cell Count:                356
-  Buf/Inv Cell Count:              83
-  Buf Cell Count:                   1
-  Inv Cell Count:                  82
+  Leaf Cell Count:                846
+  Buf/Inv Cell Count:             230
+  Buf Cell Count:                   6
+  Inv Cell Count:                 224
   CT Buf/Inv Cell Count:            0
-  Combinational Cell Count:       356
+  Combinational Cell Count:       846
   Sequential Cell Count:            0
   Macro Count:                      0
   -----------------------------------
@@ -39,21 +39,21 @@ Date   : Mon Mar  9 18:57:01 2026
 
   Area
   -----------------------------------
-  Combinational Area:      917.459839
+  Combinational Area:     1883.715356
   Noncombinational Area:     0.000000
-  Buf/Inv Area:            106.740480
-  Total Buffer Area:             2.03
-  Total Inverter Area:         104.71
+  Buf/Inv Area:            307.514241
+  Total Buffer Area:            13.98
+  Total Inverter Area:         293.54
   Macro/Black Box Area:      0.000000
-  Net Area:                215.493627
+  Net Area:                324.305904
   -----------------------------------
-  Cell Area:               917.459839
-  Design Area:            1132.953466
+  Cell Area:              1883.715356
+  Design Area:            2208.021260
 
 
   Design Rules
   -----------------------------------
-  Total Number of Nets:           455
+  Total Number of Nets:           914
   Nets With Violations:             0
   Max Trans Violations:             0
   Max Cap Violations:               0
@@ -64,16 +64,16 @@ Date   : Mon Mar  9 18:57:01 2026
 
   Compile CPU Statistics
   -----------------------------------------
-  Resource Sharing:                    0.25
-  Logic Optimization:                  1.47
-  Mapping Optimization:                3.16
+  Resource Sharing:                    0.23
+  Logic Optimization:                  2.13
+  Mapping Optimization:                9.36
   -----------------------------------------
-  Overall Compile Time:               14.38
-  Overall Compile Wall Clock Time:    15.33
+  Overall Compile Time:               26.71
+  Overall Compile Wall Clock Time:    27.74
 
   --------------------------------------------------------------------
 
-  Design  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+  Design  WNS: 0.44  TNS: 8.74  Number of Violating Paths: 33
 
 
   Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0

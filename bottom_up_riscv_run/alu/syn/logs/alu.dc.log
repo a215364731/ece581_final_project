@@ -30,19 +30,19 @@ Please use '-no_save' simv switch to avoid this.
 
 Initializing...
 Initializing gui preferences from file  /u/jgasaba2/.synopsys_dc_gui/preferences.tcl
-Current time:       Mon Mar  9 18:54:52 2026
+Current time:       Tue Mar 10 18:35:41 2026
 Hostname:           phobos.ece.pdx.edu
 CPU Model:          Intel Xeon Processor (Cascadelake)
 CPU Details:        Cores = 32 : Sockets = 32 : Cache Size = 16384 KB : Freq = 2.50 GHz
 OS:                 Linux 5.14.0-611.34.1.el9_7.x86_64
-RAM:                 62 GB (Free  52 GB)
+RAM:                 62 GB (Free  50 GB)
 Swap:                 9 GB (Free   9 GB)
 Work Filesystem:    /u/jgasaba2 mounted to vol-lapis.cat.pdx.edu:/lapis/home/23/jgasaba2/rocky9
 Tmp Filesystem:     / mounted to /dev/mapper/rl_phobos-root
-Work Disk:          5801 GB (Free 5634 GB)
+Work Disk:          5785 GB (Free 5618 GB)
 Tmp Disk:            59 GB (Free  44 GB)
 
-CPU Load: 3%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 7%, Ram Free: 50 GB, Swap Free: 9 GB, Work Disk Free: 5618 GB, Tmp Disk Free: 44 GB
 ##################################################
 # Top Level Synthesis Script 
 # Sets up top-design name and sources scripts files
@@ -55,7 +55,6 @@ if { [info exists ::env(TOP)] } {
 } elseif { ![info exists top_design] } {
     set top_design riscv_core
 }
-alu
 set script_dir [file dirname [info script]]
 /u/jgasaba2/ece581_final_project/bottom_up_riscv_run/alu/syn/scripts
 source -echo -verbose $script_dir/dc_setup.tcl
@@ -378,8 +377,75 @@ source -echo -verbose $script_dir/dc_constraints.tcl
 # Synopsys DC compiler
 # #################################################
 source ../constraints/${top_design}.sdc
-INFO: Constraints
-Current design is 'alu'.
+Warning: Creating virtual clock named 'vclk' with no sources. (UID-348)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[31]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[30]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[29]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[28]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[27]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[26]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[25]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[24]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[23]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[22]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[21]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[20]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[19]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[18]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[17]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[16]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'a[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[31]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[30]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[29]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[28]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[27]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[26]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[25]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[24]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[23]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[22]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[21]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[20]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[19]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[18]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[17]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[16]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[15]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[14]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[13]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[12]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[11]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[10]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[9]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[8]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[7]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[6]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[5]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[4]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'b[0]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'alu_ctrl[3]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'alu_ctrl[2]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'alu_ctrl[1]'. (UID-401)
+Warning: Design rule attributes from the driving cell will be set on the port 'alu_ctrl[0]'. (UID-401)
 1
 # Add additional constraints or overwrite constraints
 # 
@@ -400,7 +466,7 @@ uniquify
 1
 compile_ultra -scan
 Information: Performing leakage power optimization. (PWR-850)
-CPU Load: 3%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 7%, Ram Free: 50 GB, Swap Free: 9 GB, Work Disk Free: 5618 GB, Tmp Disk Free: 44 GB
 Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_rvt/db_nldm/saed32rvt_ss0p95v125c.db"
 Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_hvt/db_nldm/saed32hvt_ss0p95v125c.db"
 Analyzing: "/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/stdcell_lvt/db_nldm/saed32lvt_ss0p95v125c.db"
@@ -430,9 +496,9 @@ Information: Evaluating DesignWare library utilization. (UISN-27)
 | Macro Count                                             | 0                                      |
 | Pad Count                                               | 0                                      |
 | Number of Power Domains                                 | 0                                      |
-| Number of Path Groups                                   | 1                                      |
+| Number of Path Groups                                   | 3                                      |
 | Number of VT Class                                      | 3                                      |
-| Number of Clocks                                        | 0                                      |
+| Number of Clocks                                        | 1                                      |
 | Number of Dont Touch Cells                              | 20                                     |
 | Number of Dont Touch Nets                               | 0                                      |
 | Number of Size Only Cells                               | 0                                      |
@@ -452,14 +518,14 @@ Module: DW01_NAND2, Ports: 3, Input: 2, Output: 1, Inout: 0
 Module: DW01_NAND2, Registers: 0, Async set/reset: 0, Sync set/reset: 0
   Building model 'DW01_NAND2'
 Information: Ungrouping 0 of 1 hierarchies before Pass 1 (OPT-775)
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 11%, Ram Free: 49 GB, Swap Free: 9 GB, Work Disk Free: 5618 GB, Tmp Disk Free: 44 GB
 Information: State dependent leakage is now switched from on to off.
 
   Beginning Pass 1 Mapping
   ------------------------
   Processing 'alu'
  Implement Synthetic for 'alu'.
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 11%, Ram Free: 49 GB, Swap Free: 9 GB, Work Disk Free: 5618 GB, Tmp Disk Free: 44 GB
 
   Updating timing information
 Information: Updating design information... (UID-85)
@@ -490,25 +556,26 @@ Threshold voltage group cell usage:
   Beginning Mapping Optimizations  (Ultra High effort)
   -------------------------------
 Information: Added key list 'DesignWare' to design 'alu'. (DDB-72)
-Information: There is no timing violation in design alu. Delay-based auto_ungroup will not be performed. (OPT-780)
+  Mapping Optimization (Phase 1)
+  Mapping Optimization (Phase 2)
 
                                   TOTAL                                                
    ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
     TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
   --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:06    1186.9      0.00       0.0       0.0                           34363040.0000
-    0:00:06    1186.9      0.00       0.0       0.0                           34363040.0000
+    0:00:06    2148.0      0.74      15.7       0.0                           877167744.0000
+    0:00:06    2148.0      0.74      15.7       0.0                           877167744.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+>> saed32cell_hvt 0.00%, saed32cell_lvt 100.00%, saed32cell_svt 0.00%
 
   Beginning Constant Register Removal
   -----------------------------------
-    0:00:06    1197.5      0.00       0.0       0.0                           34815468.0000
-    0:00:06    1197.5      0.00       0.0       0.0                           34815468.0000
+    0:00:06    2148.0      0.74      15.7       0.0                           877167744.0000
+    0:00:06    2148.0      0.74      15.7       0.0                           877167744.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+>> saed32cell_hvt 0.00%, saed32cell_lvt 100.00%, saed32cell_svt 0.00%
 
   Beginning Global Optimizations
   ------------------------------
@@ -544,105 +611,172 @@ Threshold voltage group cell usage:
   Global Optimization (Phase 28)
   Global Optimization (Phase 29)
   Global Optimization (Phase 30)
+  Mapping 'alu_DP_OP_18_125_7468_5'
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+>> saed32cell_hvt 7.29%, saed32cell_lvt 92.71%, saed32cell_svt 0.00%
 
   Beginning Isolate Ports
   -----------------------
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
+>> saed32cell_hvt 7.29%, saed32cell_lvt 92.71%, saed32cell_svt 0.00%
 
   Beginning Delay Optimization
   ----------------------------
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
-    0:00:07     923.3      0.00       0.0      30.2                           11106255.0000
+    0:00:07    1882.4      1.35      21.5     130.0                           599329024.0000
+    0:00:07    1874.6      0.64      14.2      30.3                           602328128.0000
+    0:00:07    1874.6      0.64      14.2      30.3                           602328128.0000
+    0:00:07    1874.6      0.64      14.2      30.3                           602328128.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 100.00%, saed32cell_lvt 0.00%, saed32cell_svt 0.00%
-    0:00:07     918.5      0.00       0.0      30.2                           11024093.0000
-    0:00:07     918.5      0.00       0.0      30.2                           11024093.0000
+>> saed32cell_hvt 3.35%, saed32cell_lvt 96.65%, saed32cell_svt 0.00%
+    0:00:08    1872.3      0.59      12.6      30.3                           600629376.0000
+    0:00:08    1872.3      0.59      12.6      30.3                           600629376.0000
 
   Beginning WLM Backend Optimization
   --------------------------------------
+    0:00:08    1823.2      0.59      12.0      30.3                           590306944.0000
+    0:00:08    1827.8      0.56      11.0       5.1                           594300672.0000
+    0:00:08    1827.8      0.56      11.0       5.1                           594300672.0000
+    0:00:08    1827.8      0.56      11.0       5.1                           594300672.0000
+    0:00:08    1827.8      0.56      11.0       5.1                           594300672.0000
+    0:00:08    1827.8      0.56      10.9       5.1                           593882816.0000
+    0:00:08    1827.8      0.56      10.9       5.1                           593882816.0000
+    0:00:09    1929.5      0.51      10.3       5.1                           638612480.0000
+    0:00:09    1929.5      0.51      10.3       5.1                           638612480.0000
+    0:00:09    1929.5      0.51      10.3       5.1                           638612480.0000
+    0:00:10    1930.7      0.50      10.1       0.0                           633110976.0000
+    0:00:10    1925.1      0.50      10.1       0.0                           633964672.0000
+    0:00:10    1927.9      0.50      10.1       0.0                           637402816.0000
+    0:00:10    1931.0      0.49      10.0       0.0                           637346176.0000
+    0:00:10    1931.7      0.49      10.0       0.0                           637102848.0000
+    0:00:10    1930.5      0.49       9.9       0.0                           636946624.0000
+    0:00:10    1929.5      0.49       9.9       0.0                           639342208.0000
+    0:00:10    1929.5      0.49       9.9       0.0                           639342208.0000
+    0:00:10    1929.7      0.48       9.9       0.0                           640119872.0000
+    0:00:10    1931.0      0.48       9.9       0.0                           639202624.0000
+    0:00:10    1930.2      0.48       9.8       0.0                           639252288.0000
+    0:00:10    1949.0      0.48       9.8       0.0                           640638144.0000
+    0:00:10    1949.0      0.48       9.8       0.0                           640638144.0000
+    0:00:10    1944.5      0.48       9.7       0.0                           635207616.0000
+    0:00:10    1941.9      0.48       9.6       0.0                           634970688.0000
+    0:00:10    1943.2      0.48       9.6       0.0                           634286720.0000
+    0:00:10    1942.9      0.47       9.6       0.0                           634789248.0000
+    0:00:10    1943.4      0.47       9.6       0.0                           633951104.0000
+    0:00:10    1943.4      0.47       9.6       0.0                           633951104.0000
+    0:00:11    1943.4      0.47       9.6       0.0                           633939520.0000
+    0:00:11    1945.5      0.47       9.6       0.0                           633932352.0000
+    0:00:11    1945.5      0.47       9.6       0.0                           633932352.0000
+    0:00:11    1945.5      0.47       9.6       0.0                           633932352.0000
+    0:00:11    1945.5      0.47       9.6       0.0                           633932352.0000
+    0:00:11    1945.7      0.47       9.6       0.0                           634091904.0000
+    0:00:11    1945.7      0.47       9.6       0.0                           634091904.0000
+    0:00:11    1946.0      0.47       9.6       0.0                           634857984.0000
+    0:00:11    1946.0      0.47       9.6       0.0                           634857984.0000
+    0:00:12    1946.0      0.47       9.6       0.0                           634857984.0000
+    0:00:12    1956.1      0.46       9.3       0.0                           638138432.0000
+    0:00:12    1934.8      0.46       9.3       0.0                           624654080.0000
+    0:00:12    1934.8      0.46       9.3       0.0                           624654080.0000
+    0:00:14    2013.3      0.45       9.2       0.0                           659905920.0000
+    0:00:14    2013.3      0.45       9.2       0.0                           659905920.0000
+    0:00:14    2013.3      0.45       9.2       0.0                           659905920.0000
+    0:00:14    2016.6      0.45       9.2       0.0                           659410112.0000
+    0:00:14    2017.9      0.45       9.2       0.0                           660478464.0000
+    0:00:14    2021.2      0.45       9.2       0.0                           658904320.0000
+    0:00:14    2019.9      0.45       9.1       0.0                           658748032.0000
+    0:00:14    2017.1      0.45       9.1       0.0                           657619264.0000
+    0:00:14    2017.1      0.45       9.1       0.0                           657619264.0000
+    0:00:14    2017.4      0.45       9.1       0.0                           657767232.0000
+    0:00:14    2015.4      0.45       9.1       0.0                           657172992.0000
+    0:00:14    2015.4      0.45       9.1       0.0                           657172992.0000
+    0:00:14    2015.4      0.45       9.1       0.0                           657172992.0000
+    0:00:14    2015.6      0.45       9.0       0.0                           657884416.0000
+    0:00:14    2016.1      0.45       9.0       0.0                           658409664.0000
+    0:00:14    2016.1      0.45       9.0       0.0                           658409664.0000
+    0:00:15    2016.1      0.45       9.1       0.0                           658475904.0000
+    0:00:15    2016.4      0.45       9.1       0.0                           659992576.0000
+    0:00:15    2020.2      0.45       9.1       0.0                           659624640.0000
+    0:00:15    2020.2      0.45       9.1       0.0                           659624640.0000
+    0:00:15    2020.2      0.44       9.0       0.0                           659636224.0000
+    0:00:15    2022.7      0.44       9.0       0.0                           659345344.0000
+    0:00:15    2022.7      0.44       9.0       0.0                           659345344.0000
+    0:00:15    2023.0      0.44       9.0       0.0                           659367616.0000
+    0:00:15    2023.0      0.44       9.0       0.0                           659367616.0000
+    0:00:15    2023.0      0.44       9.0       0.0                           659367616.0000
+    0:00:15    2024.0      0.44       9.0       0.0                           659742400.0000
+    0:00:15    2024.0      0.44       9.0       0.0                           659742400.0000
+    0:00:15    2024.0      0.44       9.0       0.0                           659742400.0000
+
+                                  TOTAL                                                
+   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
+    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
+  --------- --------- --------- --------- --------- ------------------------- ---------
+    0:00:15    2024.0      0.44       9.0       0.0                           659742400.0000
+    0:00:16    1969.1      0.44       8.8       0.0                           624794560.0000
+    0:00:16    1969.1      0.44       8.8       0.0                           624794560.0000
+    0:00:16    1969.1      0.44       8.8       0.0                           624794560.0000
 
 Threshold voltage group cell usage:
->> saed32cell_hvt 99.72%, saed32cell_lvt 0.28%, saed32cell_svt 0.00%
+>> saed32cell_hvt 0.00%, saed32cell_lvt 99.56%, saed32cell_svt 0.44%
 
   Beginning Delay Optimization HSVT Pass
   --------------------------------------
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:08     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:09     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-
-
-  Beginning Design Rule Fixing  (max_capacitance)
-  ----------------------------
-
-                                  TOTAL                                                
-   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:10     918.2      0.00       0.0      30.2                           11750377.0000
-  Global Optimization (Phase 31)
-  Global Optimization (Phase 32)
-  Global Optimization (Phase 33)
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-
-                                  TOTAL                                                
-   ELAPSED            WORST NEG   SETUP    DESIGN                              LEAKAGE 
-    TIME      AREA      SLACK     COST    RULE COST         ENDPOINT            POWER  
-  --------- --------- --------- --------- --------- ------------------------- ---------
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:10     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:11     922.0      0.00       0.0       0.0                           13683098.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     918.5      0.00       0.0       0.0                           11586517.0000
-    0:00:12     917.5      0.00       0.0       0.0                           11477223.0000
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+    0:00:16    1969.1      0.44       8.8       0.0                           624794560.0000
+    0:00:16    1969.1      0.44       8.8       0.0                           624794560.0000
+    0:00:16    1969.1      0.44       8.8       0.0                           624794560.0000
+    0:00:16    1969.1      0.44       8.8       0.0                           624794560.0000
+    0:00:16    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:17    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:17    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:17    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:17    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:17    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:17    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:17    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:18    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:18    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:18    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:18    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:18    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:18    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:19    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:19    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:19    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:19    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:19    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:19    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:19    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:20    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:20    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:20    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:20    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:20    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:20    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:21    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:21    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:21    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:21    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:22    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:22    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:22    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:22    1967.8      0.44       8.8       0.0                           624716096.0000
+    0:00:22    1966.1      0.44       8.8       0.0                           623956672.0000
+    0:00:22    1966.1      0.44       8.8       0.0                           623956672.0000
+    0:00:22    1966.1      0.44       8.8       0.0                           623956672.0000
+    0:00:23    1887.3      0.44       8.7       0.0                           604516160.0000
+    0:00:23    1887.3      0.44       8.7       0.0                           604516160.0000
+    0:00:23    1887.3      0.44       8.7       0.0                           604582400.0000
+    0:00:24    1888.5      0.44       8.7       0.0                           604942592.0000
+    0:00:24    1891.8      0.44       8.7       0.0                           605164480.0000
+    0:00:24    1891.8      0.44       8.7       0.0                           605164480.0000
+    0:00:24    1891.8      0.44       8.7       0.0                           605164480.0000
+    0:00:24    1891.8      0.44       8.7       0.0                           605164480.0000
+    0:00:24    1891.8      0.44       8.7       0.0                           605164480.0000
+    0:00:24    1891.8      0.44       8.7       0.0                           605164480.0000
+    0:00:24    1891.8      0.44       8.7       0.0                           605164480.0000
+    0:00:24    1883.7      0.44       8.7       0.0                           587211904.0000
+CPU Load: 12%, Ram Free: 49 GB, Swap Free: 9 GB, Work Disk Free: 5618 GB, Tmp Disk Free: 44 GB
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/io_std/db_nldm/saed32io_wb_ss0p95v125c_2p25v.db'
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/sram_lp/db_nldm/saed32sramlp_ss0p75v125c_i0p75v.db'
 Loading db file '/pkgs/synopsys/2020/32_28nm/SAED32_EDK/lib/pll/db_nldm/saed32pll_ss0p95v125c_2p25v.db'
@@ -658,8 +792,7 @@ Note: Symbol # after min delay cost means estimated hold TNS across all active s
   ---------------------
 Information: State dependent leakage is now switched from off to on.
 Information: Propagating switching activity (low effort zero delay simulation). (PWR-6)
-Warning: There is no defined clock in the design. (PWR-80)
-CPU Load: 4%, Ram Free: 52 GB, Swap Free: 9 GB, Work Disk Free: 5634 GB, Tmp Disk Free: 44 GB
+CPU Load: 12%, Ram Free: 49 GB, Swap Free: 9 GB, Work Disk Free: 5618 GB, Tmp Disk Free: 44 GB
 Information: Total number of MV cells in the design.
 ----------------------------------------------------------------------------------------------------
  MV Cells                                           Total Number                                   
@@ -725,16 +858,233 @@ save_upf ../outputs/${top_design}.dc.upf
 1
 puts "=== DC TOP END ==="
 === DC TOP END ===
-dc_shell> ls
-.   ALU.mr   alu-verilog.pvl  cksum_dir    default.svf	  logs	    rtl
-..  alib-52  alu-verilog.syn  command.log  filenames.log  makefile  scripts
-dc_shell> \[Kls[K
+dc_shell> rep
+repl...(2)   repo...(183) 
+dc_shell> repo
+report_a...(13) report_c...(23) report_f...(2)  report_i...(7)  report_m...(7)  report_o...(4)  report_q...(2)  report_s...(25) report_u...(4)  
+report_b...(16) report_d...(24) report_h...(3)  report_l...(6)  report_n...(4)  report_p...(18) report_r...(6)  report_t...(15) report_w...(4)  
+dc_shell> report_tim
+report_timing              report_timing_derate       report_timing_requirements 
+dc_shell> report_timing
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : alu
+Version: X-2025.06-SP4
+Date   : Tue Mar 10 18:38:33 2026
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: alu_ctrl[0]
+              (input port clocked by vclk)
+  Endpoint: zero (output port clocked by vclk)
+  Path Group: COMBO
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  alu                8000                  saed32rvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock vclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  alu_ctrl[0] (in)                         0.01       0.31 r
+  U498/Y (INVX8_LVT)                       0.02       0.33 f
+  U209/Y (INVX16_LVT)                      0.02       0.36 r
+  U848/Y (XOR2X2_LVT)                      0.07       0.42 f
+  U219/Y (INVX1_LVT)                       0.02       0.44 r
+  U217/Y (AND2X1_LVT)                      0.04       0.48 r
+  U851/Y (NOR2X0_LVT)                      0.06       0.54 f
+  U406/Y (NAND2X0_LVT)                     0.06       0.60 r
+  U852/Y (INVX1_LVT)                       0.02       0.62 f
+  U249/Y (AND2X1_LVT)                      0.05       0.67 f
+  U248/Y (INVX0_LVT)                       0.02       0.69 r
+  U247/Y (OA21X1_LVT)                      0.04       0.73 r
+  U911/Y (OA21X1_LVT)                      0.05       0.78 r
+  U348/Y (XNOR2X2_LVT)                     0.07       0.85 r
+  U411/Y (OA21X1_LVT)                      0.05       0.90 r
+  U410/Y (OR3X1_LVT)                       0.04       0.94 r
+  U200/Y (NOR3X0_LVT)                      0.06       1.00 f
+  U405/Y (AND3X1_LVT)                      0.04       1.04 f
+  zero (out)                               0.00       1.04 f
+  data arrival time                                   1.04
+
+  clock vclk (rise edge)                   1.41       1.41
+  clock network delay (ideal)              0.00       1.41
+  output external delay                   -0.81       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.04
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.44
+
+
+1
+dc_shell> ld [K[Krepo
+report_a...(13) report_c...(23) report_f...(2)  report_i...(7)  report_m...(7)  report_o...(4)  report_q...(2)  report_s...(25) report_u...(4)  
+report_b...(16) report_d...(24) report_h...(3)  report_l...(6)  report_n...(4)  report_p...(18) report_r...(6)  report_t...(15) report_w...(4)  
+dc_shell> report_qor 
+ 
+****************************************
+Report : qor
+Design : alu
+Version: X-2025.06-SP4
+Date   : Tue Mar 10 18:39:00 2026
+****************************************
+
+
+  Timing Path Group 'COMBO'
+  -----------------------------------
+  Levels of Logic:              17.00
+  Critical Path Length:          0.74
+  Critical Path Slack:          -0.44
+  Critical Path Clk Period:      1.41
+  Total Negative Slack:         -8.74
+  No. of Violating Paths:       33.00
+  Worst Hold Violation:          0.00
+  Total Hold Violation:          0.00
+  No. of Hold Violations:        0.00
+  -----------------------------------
+
+
+  Cell Count
+  -----------------------------------
+  Hierarchical Cell Count:          0
+  Hierarchical Port Count:          0
+  Leaf Cell Count:                846
+  Buf/Inv Cell Count:             230
+  Buf Cell Count:                   6
+  Inv Cell Count:                 224
+  CT Buf/Inv Cell Count:            0
+  Combinational Cell Count:       846
+  Sequential Cell Count:            0
+  Macro Count:                      0
+  -----------------------------------
+
+
+  Area
+  -----------------------------------
+  Combinational Area:     1883.715356
+  Noncombinational Area:     0.000000
+  Buf/Inv Area:            307.514241
+  Total Buffer Area:            13.98
+  Total Inverter Area:         293.54
+  Macro/Black Box Area:      0.000000
+  Net Area:                324.305904
+  -----------------------------------
+  Cell Area:              1883.715356
+  Design Area:            2208.021260
+
+
+  Design Rules
+  -----------------------------------
+  Total Number of Nets:           914
+  Nets With Violations:             0
+  Max Trans Violations:             0
+  Max Cap Violations:               0
+  -----------------------------------
+
+
+  Hostname: phobos.ece.pdx.edu
+
+  Compile CPU Statistics
+  -----------------------------------------
+  Resource Sharing:                    0.23
+  Logic Optimization:                  2.13
+  Mapping Optimization:                9.36
+  -----------------------------------------
+  Overall Compile Time:               26.71
+  Overall Compile Wall Clock Time:    27.74
+
+  --------------------------------------------------------------------
+
+  Design  WNS: 0.44  TNS: 8.74  Number of Violating Paths: 33
+
+
+  Design (Hold)  WNS: 0.00  TNS: 0.00  Number of Violating Paths: 0
+
+  --------------------------------------------------------------------
+
+
+1
+dc_shell> report_qortiming
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : alu
+Version: X-2025.06-SP4
+Date   : Tue Mar 10 18:39:24 2026
+****************************************
+
+Operating Conditions: ss0p95v125c   Library: saed32rvt_ss0p95v125c
+Wire Load Model Mode: enclosed
+
+  Startpoint: alu_ctrl[0]
+              (input port clocked by vclk)
+  Endpoint: zero (output port clocked by vclk)
+  Path Group: COMBO
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  alu                8000                  saed32rvt_ss0p95v125c
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  clock vclk (rise edge)                   0.00       0.00
+  clock network delay (ideal)              0.00       0.00
+  input external delay                     0.30       0.30 r
+  alu_ctrl[0] (in)                         0.01       0.31 r
+  U498/Y (INVX8_LVT)                       0.02       0.33 f
+  U209/Y (INVX16_LVT)                      0.02       0.36 r
+  U848/Y (XOR2X2_LVT)                      0.07       0.42 f
+  U219/Y (INVX1_LVT)                       0.02       0.44 r
+  U217/Y (AND2X1_LVT)                      0.04       0.48 r
+  U851/Y (NOR2X0_LVT)                      0.06       0.54 f
+  U406/Y (NAND2X0_LVT)                     0.06       0.60 r
+  U852/Y (INVX1_LVT)                       0.02       0.62 f
+  U249/Y (AND2X1_LVT)                      0.05       0.67 f
+  U248/Y (INVX0_LVT)                       0.02       0.69 r
+  U247/Y (OA21X1_LVT)                      0.04       0.73 r
+  U911/Y (OA21X1_LVT)                      0.05       0.78 r
+  U348/Y (XNOR2X2_LVT)                     0.07       0.85 r
+  U411/Y (OA21X1_LVT)                      0.05       0.90 r
+  U410/Y (OR3X1_LVT)                       0.04       0.94 r
+  U200/Y (NOR3X0_LVT)                      0.06       1.00 f
+  U405/Y (AND3X1_LVT)                      0.04       1.04 f
+  zero (out)                               0.00       1.04 f
+  data arrival time                                   1.04
+
+  clock vclk (rise edge)                   1.41       1.41
+  clock network delay (ideal)              0.00       1.41
+  output external delay                   -0.81       0.60
+  data required time                                  0.60
+  -----------------------------------------------------------
+  data required time                                  0.60
+  data arrival time                                  -1.04
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.44
+
+
+1
+dc_shell> 
 dc_shell> 
 dc_shell> exit
 
 Memory usage for this session 400 Mbytes.
 Memory usage for this session including child processes 400 Mbytes.
-CPU usage for this session 129 seconds ( 0.04 hours ).
-Elapsed time for this session 7477 seconds ( 2.08 hours ).
+CPU usage for this session 147 seconds ( 0.04 hours ).
+Elapsed time for this session 984 seconds ( 0.27 hours ).
 
 Thank you...
