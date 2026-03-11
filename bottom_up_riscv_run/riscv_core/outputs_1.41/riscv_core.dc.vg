@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////////////////
 // Created by: Synopsys DC Ultra(TM) in wire load mode
 // Version   : Q-2019.12-SP3
-// Date      : Mon Mar  9 23:09:33 2026
+// Date      : Tue Mar 10 19:25:24 2026
 /////////////////////////////////////////////////////////////
 
 
@@ -7269,59 +7269,77 @@ endmodule
 module imm_gen ( instruction, imm );
   input [31:0] instruction;
   output [31:0] imm;
-  wire   n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24;
-  assign imm[12] = imm[31];
+  wire   n13, n14, n15, n16, n18, n20, n21, n22, n23, n24, n25, n26, n27, n28,
+         n29, n30, n31, n32, n33, n34, n35, n36, n37, n38, n39, n40, n41, n42,
+         n43, n44, n45, n46, n47;
   assign imm[13] = imm[31];
-  assign imm[14] = imm[31];
   assign imm[15] = imm[31];
-  assign imm[16] = imm[31];
   assign imm[17] = imm[31];
-  assign imm[18] = imm[31];
   assign imm[19] = imm[31];
-  assign imm[20] = imm[31];
   assign imm[21] = imm[31];
-  assign imm[22] = imm[31];
   assign imm[23] = imm[31];
-  assign imm[24] = imm[31];
   assign imm[25] = imm[31];
-  assign imm[26] = imm[31];
   assign imm[27] = imm[31];
-  assign imm[28] = imm[31];
   assign imm[29] = imm[31];
-  assign imm[30] = imm[31];
+  assign imm[14] = imm[12];
+  assign imm[16] = imm[12];
+  assign imm[18] = imm[12];
+  assign imm[20] = imm[12];
+  assign imm[22] = imm[12];
+  assign imm[24] = imm[12];
+  assign imm[26] = imm[12];
+  assign imm[28] = imm[12];
+  assign imm[30] = imm[12];
 
-  AND2X2_HVT U27 ( .A1(instruction[31]), .A2(n21), .Y(imm[31]) );
-  NAND2X0_HVT U28 ( .A1(instruction[1]), .A2(instruction[0]), .Y(n13) );
-  OR3X1_HVT U29 ( .A1(instruction[3]), .A2(instruction[2]), .A3(n13), .Y(n15)
+  OR2X1_HVT U27 ( .A1(n38), .A2(n34), .Y(n36) );
+  NOR2X0_RVT U28 ( .A1(n38), .A2(n34), .Y(n20) );
+  NAND4X0_LVT U29 ( .A1(n18), .A2(n22), .A3(instruction[5]), .A4(n21), .Y(n13)
          );
-  INVX0_HVT U30 ( .A(instruction[5]), .Y(n14) );
-  OR3X1_HVT U31 ( .A1(n15), .A2(n14), .A3(instruction[4]), .Y(n17) );
-  OR2X1_HVT U32 ( .A1(instruction[6]), .A2(n15), .Y(n22) );
-  OR2X1_HVT U33 ( .A1(instruction[5]), .A2(n22), .Y(n16) );
-  NAND2X0_HVT U34 ( .A1(n17), .A2(n16), .Y(n21) );
-  INVX0_HVT U35 ( .A(n16), .Y(n19) );
-  INVX0_HVT U36 ( .A(n17), .Y(n20) );
-  AND2X1_HVT U37 ( .A1(n20), .A2(instruction[7]), .Y(n24) );
-  INVX0_HVT U38 ( .A(instruction[6]), .Y(n18) );
-  AO22X1_HVT U39 ( .A1(instruction[20]), .A2(n19), .A3(n24), .A4(n18), .Y(
-        imm[0]) );
-  AO22X1_HVT U40 ( .A1(n20), .A2(instruction[8]), .A3(n19), .A4(
-        instruction[21]), .Y(imm[1]) );
-  AO22X1_HVT U41 ( .A1(n20), .A2(instruction[9]), .A3(n19), .A4(
-        instruction[22]), .Y(imm[2]) );
-  AO22X1_HVT U42 ( .A1(n20), .A2(instruction[10]), .A3(n19), .A4(
-        instruction[23]), .Y(imm[3]) );
-  AO22X1_HVT U43 ( .A1(n20), .A2(instruction[11]), .A3(n19), .A4(
-        instruction[24]), .Y(imm[4]) );
-  AND2X1_HVT U44 ( .A1(instruction[25]), .A2(n21), .Y(imm[5]) );
-  AND2X1_HVT U45 ( .A1(instruction[26]), .A2(n21), .Y(imm[6]) );
-  AND2X1_HVT U46 ( .A1(instruction[27]), .A2(n21), .Y(imm[7]) );
-  AND2X1_HVT U47 ( .A1(instruction[28]), .A2(n21), .Y(imm[8]) );
-  AND2X1_HVT U48 ( .A1(instruction[29]), .A2(n21), .Y(imm[9]) );
-  AND2X1_HVT U49 ( .A1(instruction[30]), .A2(n21), .Y(imm[10]) );
-  AOI21X1_HVT U50 ( .A1(instruction[4]), .A2(instruction[5]), .A3(n22), .Y(n23) );
-  AO22X1_HVT U51 ( .A1(instruction[6]), .A2(n24), .A3(instruction[31]), .A4(
-        n23), .Y(imm[11]) );
+  INVX1_LVT U30 ( .A(n15), .Y(n41) );
+  INVX1_RVT U31 ( .A(n14), .Y(n31) );
+  AND3X1_LVT U32 ( .A1(n46), .A2(n45), .A3(n44), .Y(n47) );
+  OR2X1_RVT U33 ( .A1(instruction[5]), .A2(instruction[6]), .Y(n14) );
+  NOR2X0_RVT U34 ( .A1(n41), .A2(n40), .Y(imm[31]) );
+  OR2X1_RVT U35 ( .A1(n39), .A2(n38), .Y(n40) );
+  AND2X1_RVT U36 ( .A1(instruction[1]), .A2(instruction[0]), .Y(n22) );
+  AND2X1_RVT U37 ( .A1(n18), .A2(n22), .Y(n15) );
+  AO21X1_RVT U38 ( .A1(instruction[6]), .A2(n16), .A3(n43), .Y(n38) );
+  INVX0_HVT U39 ( .A(instruction[5]), .Y(n16) );
+  AND2X1_RVT U40 ( .A1(instruction[4]), .A2(instruction[5]), .Y(n43) );
+  NOR2X0_RVT U41 ( .A1(n41), .A2(n40), .Y(imm[12]) );
+  NOR2X0_RVT U42 ( .A1(n37), .A2(n36), .Y(imm[9]) );
+  NOR2X0_LVT U43 ( .A1(instruction[2]), .A2(instruction[3]), .Y(n18) );
+  NOR2X0_RVT U44 ( .A1(n35), .A2(n36), .Y(imm[6]) );
+  NAND2X0_LVT U45 ( .A1(n18), .A2(n22), .Y(n34) );
+  OAI22X1_RVT U46 ( .A1(n33), .A2(n41), .A3(n32), .A4(n13), .Y(imm[0]) );
+  AND2X1_HVT U47 ( .A1(n20), .A2(instruction[27]), .Y(imm[7]) );
+  AND2X1_HVT U48 ( .A1(n20), .A2(instruction[25]), .Y(imm[5]) );
+  AND2X1_HVT U49 ( .A1(n20), .A2(instruction[30]), .Y(imm[10]) );
+  AND2X1_HVT U50 ( .A1(n20), .A2(instruction[28]), .Y(imm[8]) );
+  NAND2X0_HVT U51 ( .A1(n31), .A2(instruction[24]), .Y(n24) );
+  INVX0_HVT U52 ( .A(instruction[11]), .Y(n23) );
+  INVX0_HVT U53 ( .A(instruction[4]), .Y(n21) );
+  OAI22X1_HVT U54 ( .A1(n24), .A2(n41), .A3(n23), .A4(n13), .Y(imm[4]) );
+  NAND2X0_HVT U55 ( .A1(n31), .A2(instruction[23]), .Y(n26) );
+  INVX0_HVT U56 ( .A(instruction[10]), .Y(n25) );
+  OAI22X1_HVT U57 ( .A1(n26), .A2(n41), .A3(n25), .A4(n13), .Y(imm[3]) );
+  NAND2X0_HVT U58 ( .A1(n31), .A2(instruction[22]), .Y(n28) );
+  INVX0_HVT U59 ( .A(instruction[9]), .Y(n27) );
+  OAI22X1_HVT U60 ( .A1(n28), .A2(n41), .A3(n27), .A4(n13), .Y(imm[2]) );
+  NAND2X0_HVT U61 ( .A1(n31), .A2(instruction[21]), .Y(n30) );
+  INVX0_HVT U62 ( .A(instruction[8]), .Y(n29) );
+  OAI22X1_HVT U63 ( .A1(n30), .A2(n41), .A3(n29), .A4(n13), .Y(imm[1]) );
+  NAND2X0_HVT U64 ( .A1(n31), .A2(instruction[20]), .Y(n33) );
+  INVX0_HVT U65 ( .A(instruction[6]), .Y(n42) );
+  NAND2X0_HVT U66 ( .A1(n42), .A2(instruction[7]), .Y(n32) );
+  INVX0_HVT U67 ( .A(instruction[26]), .Y(n35) );
+  INVX0_HVT U68 ( .A(instruction[29]), .Y(n37) );
+  INVX0_HVT U69 ( .A(instruction[31]), .Y(n39) );
+  AO21X1_HVT U70 ( .A1(instruction[5]), .A2(instruction[7]), .A3(n42), .Y(n46)
+         );
+  INVX0_HVT U71 ( .A(n43), .Y(n45) );
+  OR2X1_HVT U72 ( .A1(instruction[31]), .A2(instruction[6]), .Y(n44) );
+  AND2X1_HVT U73 ( .A1(n15), .A2(n47), .Y(imm[11]) );
 endmodule
 
 
@@ -7331,445 +7349,926 @@ module alu ( a, b, alu_ctrl, result, zero );
   input [3:0] alu_ctrl;
   output [31:0] result;
   output zero;
-  wire   n123, n124, n125, n126, n127, n128, n129, n130, n131, n132, n133,
-         n134, n135, n136, n137, n138, n139, n140, n141, n142, n143, n144,
-         n145, n146, n147, n148, n149, n150, n151, n152, n153, n154, n155,
-         n156, n157, n158, n159, n160, n161, n162, n163, n164, n165, n166,
-         n167, n168, n169, n170, n171, n172, n173, n174, n175, n176, n177,
-         n178, n179, n180, n181, n182, n183, n184, n185, n186, n187, n188,
-         n189, n190, n191, n192, n193, n194, n195, n196, n197, n198, n199,
-         n200, n201, n202, n203, n204, n205, n206, n207, n208, n209, n210,
-         n211, n212, n213, n214, n215, n216, n217, n218, n219, n220, n221,
-         n222, n223, n224, n225, n226, n227, n228, n229, n230, n231, n232,
-         n233, n234, n235, n236, n237, n238, n239, n240, n241, n242, n243,
-         n244, n245, n246, n247, n248, n249, n250, n251, n252, n253, n254,
-         n255, n256, n257, n258, n259, n260, n261, n262, n263, n264, n265,
-         n266, n267, n268, n269, n270, n271, n272, n273, n274, n275, n276,
-         n277, n278, n279, n280, n281, n282, n283, n284, n285, n286, n287,
-         n288, n289, n290, n291, n292, n293, n294, n295, n296, n297, n298,
-         n299, n300, n301, n302, n303, n304, n305, n306, n307, n308, n309,
-         n310, n311, n312, n313, n314, n315, n316, n317, n318, n319, n320,
-         n321, n322, n323, n324, n325, n326, n327, n328, n329, n330, n331,
-         n332, n333, n334, n335, n336, n337, n338, n339, n340, n341, n342,
-         n343, n344, n345, n346, n347, n348, n349, n350, n351, n352, n353,
-         n354, n355, n356, n357, n358, n359, n360, n361, n362, n363, n364,
-         n365, n366, n367, n368, n369, n370, n371, n372, n373, n374, n375,
-         n376, n377, n378, n379, n380, n381, n382, n383, n384, n385, n386,
-         n387, n388, n389, n390, n391, n392, n393, n394, n395, n396, n397,
-         n398, n399, n400, n401, n402, n403, n404, n405, n406, n407, n408,
-         n409, n410, n411, n412, n413, n414, n415, n416, n417, n418, n419,
-         n420, n421, n422, n423, n424, n425, n426, n427, n428, n429, n430,
-         n431, n432, n433, n434, n435, n436, n437, n438, n439, n440, n441,
-         n442, n443, n444, n445, n446, n447, n448, n449, n450, n451, n452,
-         n453, n454, n455, n456, n457, n458, n459, n460, n461, n462, n463,
-         n464, n465, n466, n467, n468, n469, n470, n471, n472, n473, n474,
-         n475, n476;
+  wire   n123, n124, n125, n126, n127, n128, n129, n130, n131, n132, n135,
+         n136, n137, n138, n139, n140, n141, n142, n143, n144, n145, n146,
+         n147, n148, n149, n150, n151, n152, n153, n154, n155, n156, n157,
+         n158, n159, n160, n161, n162, n163, n164, n165, n166, n167, n168,
+         n169, n170, n171, n172, n173, n174, n175, n176, n177, n178, n179,
+         n180, n181, n182, n183, n184, n185, n186, n187, n188, n189, n190,
+         n191, n192, n193, n194, n195, n196, n197, n198, n199, n200, n201,
+         n202, n203, n204, n205, n206, n207, n208, n209, n210, n211, n212,
+         n213, n214, n215, n216, n217, n218, n219, n220, n221, n222, n223,
+         n224, n225, n226, n227, n228, n229, n230, n231, n232, n233, n234,
+         n235, n236, n237, n238, n239, n240, n241, n242, n243, n244, n245,
+         n246, n247, n248, n249, n250, n251, n252, n253, n254, n255, n256,
+         n257, n258, n259, n260, n261, n262, n263, n264, n265, n266, n267,
+         n268, n269, n270, n271, n272, n273, n274, n275, n276, n277, n278,
+         n279, n280, n281, n282, n283, n284, n285, n286, n287, n288, n289,
+         n290, n291, n292, n293, n294, n295, n296, n297, n298, n299, n300,
+         n301, n302, n303, n304, n305, n306, n307, n308, n309, n310, n311,
+         n312, n313, n314, n315, n316, n317, n318, n319, n320, n321, n322,
+         n323, n324, n325, n326, n327, n328, n329, n330, n331, n332, n333,
+         n334, n335, n336, n337, n338, n339, n340, n341, n342, n343, n344,
+         n345, n346, n347, n348, n349, n350, n351, n352, n353, n354, n355,
+         n356, n357, n358, n359, n360, n361, n362, n363, n364, n365, n366,
+         n367, n368, n369, n370, n371, n372, n373, n374, n375, n376, n377,
+         n378, n379, n380, n381, n382, n383, n384, n385, n386, n387, n388,
+         n389, n390, n391, n392, n393, n394, n395, n396, n397, n398, n399,
+         n400, n401, n402, n403, n404, n405, n406, n407, n408, n409, n410,
+         n411, n412, n413, n414, n415, n416, n417, n418, n419, n420, n421,
+         n422, n423, n424, n425, n426, n427, n428, n429, n430, n431, n432,
+         n433, n434, n435, n436, n437, n438, n439, n440, n441, n442, n443,
+         n444, n445, n446, n447, n448, n449, n450, n451, n452, n453, n454,
+         n455, n456, n457, n458, n459, n460, n461, n462, n463, n464, n465,
+         n466, n467, n468, n469, n470, n471, n472, n473, n474, n475, n476,
+         n477, n478, n479, n480, n481, n482, n483, n484, n485, n486, n487,
+         n488, n489, n490, n491, n492, n493, n494, n495, n496, n497, n498,
+         n499, n500, n501, n502, n503, n504, n505, n506, n507, n508, n509,
+         n510, n511, n512, n513, n514, n515, n516, n517, n518, n519, n520,
+         n521, n522, n523, n524, n525, n526, n527, n528, n529, n530, n531,
+         n532, n533, n534, n535, n536, n537, n538, n539, n540, n541, n542,
+         n543, n544, n545, n546, n547, n548, n549, n550, n551, n552, n553,
+         n554, n555, n556, n557, n558, n559, n560, n561, n562, n563, n564,
+         n565, n566, n567, n568, n569, n570, n571, n572, n573, n574, n575,
+         n576, n577, n578, n579, n580, n581, n582, n583, n584, n585, n586,
+         n587, n588, n589, n590, n591, n592, n593, n594, n595, n596, n597,
+         n598, n599, n600, n601, n602, n603, n604, n605, n606, n607, n608,
+         n609, n610, n611, n612, n613, n614, n615, n616, n617, n618, n619,
+         n620, n621, n622, n623, n624, n625, n626, n627, n628, n629, n630,
+         n631, n632, n633, n634, n635, n636, n637, n638, n639, n640, n641,
+         n642, n643, n644, n645, n646, n647, n648, n649, n650, n651, n652,
+         n653, n654, n655, n656, n657, n658, n659, n660, n661, n662, n663,
+         n664, n665, n666, n667, n668, n669, n670, n671, n672, n673, n674,
+         n675, n676, n677, n678, n679, n680, n681, n682, n683, n684, n685,
+         n686, n687, n688, n689, n690, n691, n692, n693, n694, n695, n696,
+         n697, n698, n699, n700, n701, n702, n703, n704, n705, n706, n707,
+         n708, n709, n710, n711, n712, n713, n714, n715, n716, n717, n718,
+         n719, n720, n721, n722, n723, n724, n725, n726, n727, n728, n729,
+         n730, n731, n732, n733, n734, n735, n736, n737, n738, n739, n740,
+         n741, n742, n743, n744, n745, n746, n747, n748, n749, n750, n751,
+         n752, n753, n754, n755, n756, n757, n758, n759, n760, n761, n762,
+         n763, n764, n765, n766, n767, n768, n769, n770, n771, n772, n773,
+         n774, n775, n776, n777, n778, n779, n780, n781, n782, n783, n784,
+         n785, n786, n787, n788, n789, n790, n791, n792, n793, n794, n795,
+         n796, n797, n798, n799, n800, n801, n802, n803, n804, n805, n806,
+         n807, n808, n809, n810, n811, n812, n813, n814, n815, n816, n817,
+         n818, n819, n820, n821, n822, n823, n824, n825, n826, n827, n828,
+         n829, n830, n831, n832, n833, n834, n835, n836, n837, n838, n839,
+         n840, n841, n842, n843, n844, n845, n846, n847, n848, n849, n850,
+         n851, n852, n853, n854, n855, n856, n857, n858, n859, n860, n861,
+         n862, n863, n864, n865, n866, n867, n868, n869, n870, n871, n872,
+         n873, n874, n875, n876, n877, n878, n879, n880, n881, n882, n883,
+         n884, n885, n886, n887, n888, n889, n890, n891, n892, n893, n894,
+         n895, n896, n897, n898, n899, n900, n901, n902, n903, n904, n905,
+         n906, n907, n908, n909, n910, n911, n912, n913, n914, n915, n916,
+         n917, n918, n919, n920, n921, n922, n923, n924, n925, n926, n927,
+         n928, n929, n930, n931, n932;
 
-  AND2X1_HVT U157 ( .A1(alu_ctrl[1]), .A2(n128), .Y(n167) );
-  NOR2X0_HVT U158 ( .A1(alu_ctrl[3]), .A2(alu_ctrl[2]), .Y(n128) );
-  NOR2X2_RVT U159 ( .A1(alu_ctrl[1]), .A2(n129), .Y(n464) );
-  INVX1_LVT U160 ( .A(n461), .Y(n123) );
-  INVX1_LVT U161 ( .A(n123), .Y(n124) );
-  INVX2_LVT U162 ( .A(n434), .Y(n321) );
-  NOR2X0_HVT U163 ( .A1(alu_ctrl[1]), .A2(alu_ctrl[3]), .Y(n244) );
-  INVX1_HVT U164 ( .A(alu_ctrl[0]), .Y(n125) );
-  NAND3X0_HVT U165 ( .A1(n244), .A2(alu_ctrl[2]), .A3(n125), .Y(n442) );
-  INVX1_HVT U166 ( .A(n442), .Y(n323) );
-  INVX1_HVT U167 ( .A(n323), .Y(n452) );
-  INVX1_HVT U168 ( .A(n167), .Y(n451) );
-  MUX21X1_HVT U169 ( .A1(n452), .A2(n451), .S0(b[22]), .Y(n126) );
-  NAND2X0_HVT U170 ( .A1(n167), .A2(alu_ctrl[0]), .Y(n434) );
-  NAND2X0_HVT U171 ( .A1(n126), .A2(n434), .Y(n134) );
-  INVX1_HVT U172 ( .A(a[22]), .Y(n127) );
-  NAND2X0_HVT U173 ( .A1(b[22]), .A2(n127), .Y(n218) );
-  INVX1_HVT U174 ( .A(n218), .Y(n131) );
-  INVX1_HVT U175 ( .A(n128), .Y(n129) );
-  XOR2X1_HVT U176 ( .A1(alu_ctrl[0]), .A2(b[22]), .Y(n147) );
-  XOR2X1_HVT U177 ( .A1(alu_ctrl[0]), .A2(b[21]), .Y(n403) );
-  XOR2X1_HVT U178 ( .A1(alu_ctrl[0]), .A2(b[20]), .Y(n397) );
-  XOR2X1_HVT U179 ( .A1(alu_ctrl[0]), .A2(b[19]), .Y(n138) );
-  XOR2X1_HVT U180 ( .A1(alu_ctrl[0]), .A2(b[18]), .Y(n388) );
-  XOR2X1_HVT U181 ( .A1(alu_ctrl[0]), .A2(b[17]), .Y(n308) );
-  XOR2X1_HVT U182 ( .A1(alu_ctrl[0]), .A2(b[16]), .Y(n380) );
-  XOR2X1_HVT U183 ( .A1(alu_ctrl[0]), .A2(b[15]), .Y(n301) );
-  XOR2X1_HVT U184 ( .A1(alu_ctrl[0]), .A2(b[14]), .Y(n372) );
-  XOR2X1_HVT U185 ( .A1(alu_ctrl[0]), .A2(b[13]), .Y(n294) );
-  XOR2X1_HVT U186 ( .A1(alu_ctrl[0]), .A2(b[12]), .Y(n364) );
-  XOR2X1_HVT U187 ( .A1(alu_ctrl[0]), .A2(b[11]), .Y(n287) );
-  XOR2X1_HVT U188 ( .A1(alu_ctrl[0]), .A2(b[10]), .Y(n355) );
-  XOR2X1_HVT U189 ( .A1(alu_ctrl[0]), .A2(b[9]), .Y(n280) );
-  XOR2X1_HVT U190 ( .A1(alu_ctrl[0]), .A2(b[8]), .Y(n347) );
-  XOR2X1_HVT U191 ( .A1(alu_ctrl[0]), .A2(b[7]), .Y(n273) );
-  XOR2X1_HVT U192 ( .A1(alu_ctrl[0]), .A2(b[6]), .Y(n339) );
-  XOR2X1_HVT U193 ( .A1(alu_ctrl[0]), .A2(b[5]), .Y(n266) );
-  XOR2X1_HVT U194 ( .A1(alu_ctrl[0]), .A2(b[4]), .Y(n331) );
-  XOR2X1_HVT U195 ( .A1(alu_ctrl[0]), .A2(b[3]), .Y(n259) );
-  XOR2X1_HVT U196 ( .A1(alu_ctrl[0]), .A2(b[2]), .Y(n314) );
-  XOR2X1_HVT U197 ( .A1(alu_ctrl[0]), .A2(b[1]), .Y(n252) );
-  XOR2X1_HVT U198 ( .A1(alu_ctrl[0]), .A2(b[0]), .Y(n163) );
-  AO22X1_HVT U199 ( .A1(n323), .A2(n131), .A3(n464), .A4(n130), .Y(n132) );
-  AO21X1_HVT U200 ( .A1(n321), .A2(b[22]), .A3(n132), .Y(n133) );
-  AO21X1_HVT U201 ( .A1(a[22]), .A2(n134), .A3(n133), .Y(result[22]) );
-  INVX1_HVT U202 ( .A(n167), .Y(n361) );
-  MUX21X1_HVT U203 ( .A1(n452), .A2(n361), .S0(b[19]), .Y(n135) );
-  NAND2X0_HVT U204 ( .A1(n135), .A2(n434), .Y(n143) );
-  INVX1_HVT U205 ( .A(a[19]), .Y(n136) );
-  NAND2X0_HVT U206 ( .A1(b[19]), .A2(n136), .Y(n211) );
-  INVX1_HVT U207 ( .A(n211), .Y(n140) );
-  FADDX1_HVT U208 ( .A(a[19]), .B(n138), .CI(n137), .CO(n396), .S(n139) );
-  AO22X1_HVT U209 ( .A1(n323), .A2(n140), .A3(n464), .A4(n139), .Y(n141) );
-  AO21X1_HVT U210 ( .A1(n321), .A2(b[19]), .A3(n141), .Y(n142) );
-  AO21X1_HVT U211 ( .A1(a[19]), .A2(n143), .A3(n142), .Y(result[19]) );
-  MUX21X1_HVT U212 ( .A1(n442), .A2(n451), .S0(b[27]), .Y(n144) );
-  NAND2X0_HVT U213 ( .A1(n144), .A2(n434), .Y(n152) );
-  INVX1_HVT U214 ( .A(a[27]), .Y(n145) );
-  NAND2X0_HVT U215 ( .A1(b[27]), .A2(n145), .Y(n231) );
-  INVX1_HVT U216 ( .A(n231), .Y(n149) );
-  NBUFFX2_HVT U217 ( .A(n464), .Y(n429) );
-  XOR2X1_HVT U218 ( .A1(alu_ctrl[0]), .A2(b[27]), .Y(n154) );
-  XOR2X1_HVT U219 ( .A1(alu_ctrl[0]), .A2(b[26]), .Y(n427) );
-  XOR2X1_HVT U220 ( .A1(alu_ctrl[0]), .A2(b[25]), .Y(n325) );
-  XOR2X1_HVT U221 ( .A1(alu_ctrl[0]), .A2(b[24]), .Y(n419) );
-  XOR2X1_HVT U222 ( .A1(alu_ctrl[0]), .A2(b[23]), .Y(n411) );
-  FADDX1_HVT U223 ( .A(a[22]), .B(n147), .CI(n146), .CO(n410), .S(n130) );
-  AO22X1_HVT U224 ( .A1(n323), .A2(n149), .A3(n429), .A4(n148), .Y(n150) );
-  AO21X1_HVT U225 ( .A1(n321), .A2(b[27]), .A3(n150), .Y(n151) );
-  AO21X1_HVT U226 ( .A1(a[27]), .A2(n152), .A3(n151), .Y(result[27]) );
-  INVX1_HVT U227 ( .A(a[30]), .Y(n157) );
-  NAND2X0_HVT U228 ( .A1(b[30]), .A2(n157), .Y(n238) );
-  INVX1_HVT U229 ( .A(n238), .Y(n156) );
-  XOR2X1_HVT U230 ( .A1(alu_ctrl[0]), .A2(b[30]), .Y(n456) );
-  XOR2X1_HVT U231 ( .A1(alu_ctrl[0]), .A2(b[29]), .Y(n445) );
-  XOR2X1_HVT U232 ( .A1(alu_ctrl[0]), .A2(b[28]), .Y(n438) );
-  FADDX1_HVT U233 ( .A(a[27]), .B(n154), .CI(n153), .CO(n437), .S(n148) );
-  AOI22X1_HVT U234 ( .A1(n323), .A2(n156), .A3(n464), .A4(n155), .Y(n161) );
-  MUX21X1_HVT U235 ( .A1(n442), .A2(n451), .S0(b[30]), .Y(n158) );
-  AO21X1_HVT U236 ( .A1(n158), .A2(n434), .A3(n157), .Y(n160) );
-  NAND2X0_HVT U237 ( .A1(n321), .A2(b[30]), .Y(n159) );
-  NAND3X0_HVT U238 ( .A1(n161), .A2(n160), .A3(n159), .Y(result[30]) );
-  INVX1_HVT U239 ( .A(a[0]), .Y(n162) );
-  NAND2X0_HVT U240 ( .A1(b[0]), .A2(n162), .Y(n174) );
-  INVX1_HVT U241 ( .A(n174), .Y(n165) );
-  FADDX1_HVT U242 ( .A(alu_ctrl[0]), .B(a[0]), .CI(n163), .CO(n251), .S(n164)
+  XNOR2X1_RVT U157 ( .A1(n213), .A2(n862), .Y(n863) );
+  XOR2X1_LVT U158 ( .A1(n406), .A2(n731), .Y(n405) );
+  XNOR2X1_HVT U159 ( .A1(n396), .A2(n835), .Y(n395) );
+  AND2X1_HVT U160 ( .A1(n362), .A2(n361), .Y(n179) );
+  AND2X1_RVT U161 ( .A1(n746), .A2(n745), .Y(n747) );
+  MUX21X1_HVT U162 ( .A1(n450), .A2(n491), .S0(b[30]), .Y(n492) );
+  OR3X1_HVT U163 ( .A1(n479), .A2(n219), .A3(n222), .Y(n218) );
+  OA21X1_HVT U164 ( .A1(n907), .A2(n921), .A3(n906), .Y(n324) );
+  AO21X1_HVT U165 ( .A1(n389), .A2(n386), .A3(n616), .Y(n385) );
+  AO21X1_HVT U166 ( .A1(n572), .A2(n571), .A3(n570), .Y(n256) );
+  OA21X1_HVT U167 ( .A1(n894), .A2(n889), .A3(n895), .Y(n412) );
+  OA21X1_RVT U168 ( .A1(n768), .A2(n770), .A3(n771), .Y(n890) );
+  INVX2_RVT U169 ( .A(n681), .Y(n877) );
+  OR2X1_RVT U170 ( .A1(a[29]), .A2(n511), .Y(n524) );
+  NOR2X0_RVT U171 ( .A1(a[28]), .A2(n510), .Y(n908) );
+  OR2X1_HVT U172 ( .A1(n597), .A2(n596), .Y(n388) );
+  XNOR2X1_RVT U173 ( .A1(n374), .A2(b[29]), .Y(n511) );
+  AND2X1_HVT U174 ( .A1(n251), .A2(a[3]), .Y(n568) );
+  XNOR2X1_RVT U175 ( .A1(n374), .A2(b[30]), .Y(n518) );
+  NAND2X0_LVT U176 ( .A1(n403), .A2(n789), .Y(n793) );
+  OR2X1_RVT U177 ( .A1(n804), .A2(n476), .Y(n345) );
+  XOR2X1_RVT U178 ( .A1(n124), .A2(b[22]), .Y(n502) );
+  AND2X1_RVT U179 ( .A1(n124), .A2(a[0]), .Y(n454) );
+  XNOR2X1_RVT U180 ( .A1(n374), .A2(b[21]), .Y(n501) );
+  XNOR2X1_LVT U181 ( .A1(n374), .A2(b[2]), .Y(n456) );
+  NAND2X0_RVT U182 ( .A1(n457), .A2(a[3]), .Y(n415) );
+  OR2X1_RVT U183 ( .A1(a[16]), .A2(n477), .Y(n451) );
+  XOR2X1_LVT U184 ( .A1(n124), .A2(b[7]), .Y(n464) );
+  INVX1_HVT U185 ( .A(result[13]), .Y(n416) );
+  INVX1_HVT U186 ( .A(result[14]), .Y(n144) );
+  INVX1_HVT U187 ( .A(result[17]), .Y(n184) );
+  OR2X2_HVT U188 ( .A1(n270), .A2(n491), .Y(n284) );
+  INVX1_HVT U189 ( .A(n713), .Y(n337) );
+  INVX1_HVT U190 ( .A(n925), .Y(n515) );
+  AO21X2_HVT U191 ( .A1(n123), .A2(n762), .A3(n681), .Y(n765) );
+  XOR2X2_RVT U192 ( .A1(n857), .A2(n856), .Y(n199) );
+  AO21X2_HVT U193 ( .A1(n123), .A2(n599), .A3(n681), .Y(n883) );
+  AO21X2_HVT U194 ( .A1(n123), .A2(n653), .A3(n681), .Y(n903) );
+  INVX2_LVT U195 ( .A(n450), .Y(n123) );
+  XNOR2X1_LVT U196 ( .A1(n124), .A2(b[4]), .Y(n212) );
+  XOR2X2_LVT U197 ( .A1(n124), .A2(b[8]), .Y(n465) );
+  XNOR2X1_LVT U198 ( .A1(alu_ctrl[0]), .A2(b[9]), .Y(n401) );
+  NBUFFX16_LVT U199 ( .A(alu_ctrl[0]), .Y(n124) );
+  NAND3X2_LVT U200 ( .A1(n282), .A2(n677), .A3(n374), .Y(n450) );
+  XNOR2X1_LVT U201 ( .A1(n374), .A2(b[27]), .Y(n509) );
+  XNOR2X1_LVT U202 ( .A1(n374), .A2(b[28]), .Y(n510) );
+  NAND2X0_RVT U203 ( .A1(n182), .A2(n902), .Y(n181) );
+  NAND2X0_LVT U204 ( .A1(n925), .A2(n442), .Y(n444) );
+  AND2X1_RVT U205 ( .A1(n529), .A2(n521), .Y(n193) );
+  NAND3X0_RVT U206 ( .A1(n310), .A2(n309), .A3(n868), .Y(n308) );
+  INVX1_LVT U207 ( .A(n532), .Y(n266) );
+  INVX0_RVT U208 ( .A(n918), .Y(n355) );
+  AOI21X1_RVT U209 ( .A1(n919), .A2(n528), .A3(n527), .Y(n529) );
+  NAND2X0_RVT U210 ( .A1(n846), .A2(n686), .Y(n687) );
+  INVX0_RVT U211 ( .A(n378), .Y(n298) );
+  AND2X1_RVT U212 ( .A1(n365), .A2(n364), .Y(n195) );
+  INVX0_RVT U213 ( .A(n508), .Y(n240) );
+  NAND2X0_RVT U214 ( .A1(n741), .A2(n877), .Y(n749) );
+  INVX0_RVT U215 ( .A(n735), .Y(n751) );
+  NAND2X0_RVT U216 ( .A1(n725), .A2(n877), .Y(n733) );
+  INVX0_HVT U217 ( .A(n928), .Y(n157) );
+  MUX21X1_RVT U218 ( .A1(n450), .A2(n491), .S0(b[24]), .Y(n767) );
+  AND2X1_RVT U219 ( .A1(n519), .A2(n526), .Y(n520) );
+  NAND2X0_RVT U220 ( .A1(n776), .A2(n877), .Y(n786) );
+  NAND2X0_HVT U221 ( .A1(n123), .A2(n290), .Y(n289) );
+  INVX1_HVT U222 ( .A(n488), .Y(n302) );
+  NAND2X0_RVT U223 ( .A1(n486), .A2(n877), .Y(n490) );
+  NAND2X0_HVT U224 ( .A1(n123), .A2(n270), .Y(n285) );
+  NAND2X0_RVT U225 ( .A1(n836), .A2(a[7]), .Y(n704) );
+  INVX0_HVT U226 ( .A(n880), .Y(n414) );
+  INVX0_RVT U227 ( .A(n757), .Y(n357) );
+  MUX21X1_RVT U228 ( .A1(n450), .A2(n491), .S0(b[19]), .Y(n734) );
+  MUX21X1_RVT U229 ( .A1(n450), .A2(n491), .S0(b[14]), .Y(n776) );
+  MUX21X1_RVT U230 ( .A1(n450), .A2(n491), .S0(b[31]), .Y(n539) );
+  NAND2X0_RVT U231 ( .A1(n507), .A2(a[26]), .Y(n895) );
+  MUX21X1_RVT U232 ( .A1(n450), .A2(n491), .S0(b[21]), .Y(n750) );
+  NAND2X0_RVT U233 ( .A1(n518), .A2(a[30]), .Y(n526) );
+  MUX21X1_RVT U234 ( .A1(n450), .A2(n491), .S0(b[23]), .Y(n720) );
+  MUX21X1_RVT U235 ( .A1(n450), .A2(n491), .S0(b[22]), .Y(n707) );
+  INVX0_RVT U236 ( .A(n451), .Y(n476) );
+  MUX21X1_RVT U237 ( .A1(n450), .A2(n491), .S0(b[16]), .Y(n486) );
+  MUX21X1_RVT U238 ( .A1(n450), .A2(n491), .S0(b[1]), .Y(n808) );
+  INVX0_HVT U239 ( .A(n463), .Y(n779) );
+  MUX21X1_RVT U240 ( .A1(n450), .A2(n491), .S0(b[2]), .Y(n815) );
+  MUX21X1_RVT U241 ( .A1(n450), .A2(n491), .S0(b[3]), .Y(n824) );
+  INVX1_HVT U242 ( .A(n480), .Y(n222) );
+  INVX0_HVT U243 ( .A(n493), .Y(n715) );
+  INVX0_HVT U244 ( .A(n262), .Y(n816) );
+  INVX1_RVT U245 ( .A(n154), .Y(n847) );
+  INVX1_HVT U246 ( .A(n777), .Y(n797) );
+  INVX0_RVT U247 ( .A(n462), .Y(n854) );
+  INVX0_RVT U248 ( .A(n494), .Y(n204) );
+  NAND2X0_HVT U249 ( .A1(n384), .A2(n606), .Y(n383) );
+  INVX0_HVT U250 ( .A(n700), .Y(n377) );
+  INVX0_RVT U251 ( .A(n175), .Y(n871) );
+  INVX1_HVT U252 ( .A(n454), .Y(n307) );
+  NAND2X0_RVT U253 ( .A1(n470), .A2(a[13]), .Y(n798) );
+  OR2X1_LVT U254 ( .A1(a[0]), .A2(n124), .Y(n678) );
+  AND2X1_RVT U255 ( .A1(n482), .A2(n481), .Y(n483) );
+  INVX1_HVT U256 ( .A(b[0]), .Y(n270) );
+  INVX1_HVT U257 ( .A(b[18]), .Y(n260) );
+  INVX1_HVT U258 ( .A(a[17]), .Y(n620) );
+  INVX1_LVT U259 ( .A(alu_ctrl[1]), .Y(n482) );
+  INVX1_HVT U260 ( .A(a[29]), .Y(n660) );
+  INVX1_RVT U261 ( .A(b[12]), .Y(n290) );
+  INVX0_HVT U262 ( .A(b[25]), .Y(n165) );
+  INVX0_RVT U263 ( .A(result[8]), .Y(n423) );
+  INVX0_RVT U264 ( .A(result[9]), .Y(n422) );
+  INVX0_HVT U265 ( .A(result[6]), .Y(n168) );
+  NAND2X0_RVT U266 ( .A1(n395), .A2(n521), .Y(n394) );
+  NAND2X0_RVT U267 ( .A1(n239), .A2(n920), .Y(n923) );
+  NAND2X0_RVT U268 ( .A1(n214), .A2(n861), .Y(n213) );
+  OR2X1_RVT U269 ( .A1(n922), .A2(n921), .Y(n239) );
+  INVX1_RVT U270 ( .A(n827), .Y(n846) );
+  NAND2X0_RVT U271 ( .A1(n687), .A2(n415), .Y(n692) );
+  AND2X1_RVT U272 ( .A1(n340), .A2(n339), .Y(n338) );
+  INVX1_RVT U273 ( .A(n442), .Y(n917) );
+  AND2X1_RVT U274 ( .A1(n442), .A2(n916), .Y(n924) );
+  AO22X1_RVT U275 ( .A1(b[14]), .A2(n785), .A3(n786), .A4(a[14]), .Y(n370) );
+  AO22X1_RVT U276 ( .A1(a[12]), .A2(n287), .A3(n791), .A4(b[12]), .Y(n286) );
+  NAND2X0_RVT U277 ( .A1(n767), .A2(n877), .Y(n775) );
+  INVX0_RVT U278 ( .A(n513), .Y(n435) );
+  NAND2X0_RVT U279 ( .A1(n734), .A2(n877), .Y(n740) );
+  NAND2X0_RVT U280 ( .A1(n824), .A2(n877), .Y(n832) );
+  NAND2X0_RVT U281 ( .A1(n750), .A2(n877), .Y(n760) );
+  NAND2X0_RVT U282 ( .A1(n815), .A2(n877), .Y(n823) );
+  NAND2X0_RVT U283 ( .A1(n831), .A2(b[3]), .Y(n364) );
+  AND2X1_RVT U284 ( .A1(n694), .A2(n877), .Y(n695) );
+  NAND2X0_RVT U285 ( .A1(n802), .A2(n877), .Y(n807) );
+  NAND2X0_RVT U286 ( .A1(n883), .A2(b[11]), .Y(n279) );
+  NAND2X0_RVT U287 ( .A1(n913), .A2(b[28]), .Y(n407) );
+  NAND2X0_RVT U288 ( .A1(n707), .A2(n877), .Y(n719) );
+  NAND2X0_RVT U289 ( .A1(n910), .A2(n909), .Y(n911) );
+  NAND2X0_RVT U290 ( .A1(n241), .A2(n895), .Y(n896) );
+  NAND2X0_RVT U291 ( .A1(n774), .A2(b[24]), .Y(n427) );
+  NAND2X0_HVT U292 ( .A1(n301), .A2(n300), .Y(n299) );
+  NAND2X0_RVT U293 ( .A1(n720), .A2(n877), .Y(n724) );
+  NAND2X0_RVT U294 ( .A1(n858), .A2(b[8]), .Y(n424) );
+  NAND2X0_RVT U295 ( .A1(n449), .A2(n877), .Y(n485) );
+  NAND2X0_RVT U296 ( .A1(n765), .A2(b[25]), .Y(n429) );
+  NAND2X0_RVT U297 ( .A1(n817), .A2(n818), .Y(n819) );
+  INVX1_RVT U298 ( .A(n453), .Y(n842) );
+  INVX1_RVT U299 ( .A(n891), .Y(n242) );
+  INVX1_RVT U300 ( .A(n894), .Y(n241) );
+  NAND2X0_RVT U301 ( .A1(n836), .A2(a[5]), .Y(n839) );
+  NAND2X0_RVT U302 ( .A1(n488), .A2(n333), .Y(n294) );
+  NAND2X0_RVT U303 ( .A1(n618), .A2(n253), .Y(n252) );
+  AO21X1_RVT U304 ( .A1(n123), .A2(n625), .A3(n681), .Y(n739) );
+  AO21X1_RVT U305 ( .A1(n123), .A2(n825), .A3(n681), .Y(n831) );
+  AO21X1_RVT U306 ( .A1(n123), .A2(n598), .A3(n681), .Y(n875) );
+  AO21X1_RVT U307 ( .A1(n123), .A2(n609), .A3(n681), .Y(n785) );
+  NAND2X0_RVT U308 ( .A1(n379), .A2(n675), .Y(n176) );
+  INVX0_RVT U309 ( .A(n927), .Y(n351) );
+  AO21X1_RVT U310 ( .A1(n123), .A2(n665), .A3(n681), .Y(n541) );
+  AO21X1_RVT U311 ( .A1(n123), .A2(n605), .A3(n681), .Y(n800) );
+  AO21X1_RVT U312 ( .A1(n123), .A2(n604), .A3(n681), .Y(n791) );
+  AO21X1_RVT U313 ( .A1(n123), .A2(n659), .A3(n681), .Y(n913) );
+  NAND2X0_RVT U314 ( .A1(n510), .A2(a[28]), .Y(n909) );
+  MUX21X1_RVT U315 ( .A1(n450), .A2(n491), .S0(a[4]), .Y(n694) );
+  MUX21X1_RVT U316 ( .A1(n450), .A2(n491), .S0(b[13]), .Y(n792) );
+  MUX21X1_RVT U317 ( .A1(n450), .A2(n491), .S0(a[5]), .Y(n837) );
+  MUX21X1_RVT U318 ( .A1(n450), .A2(n491), .S0(a[7]), .Y(n702) );
+  MUX21X1_RVT U319 ( .A1(n450), .A2(n491), .S0(b[25]), .Y(n761) );
+  NAND2X0_RVT U320 ( .A1(n380), .A2(n645), .Y(n379) );
+  NAND2X0_RVT U321 ( .A1(n319), .A2(n855), .Y(n869) );
+  MUX21X1_RVT U322 ( .A1(n450), .A2(n491), .S0(b[11]), .Y(n878) );
+  OR2X1_RVT U323 ( .A1(n647), .A2(n646), .Y(n380) );
+  XNOR2X1_RVT U324 ( .A1(n374), .A2(b[31]), .Y(n536) );
+  XNOR2X1_RVT U325 ( .A1(n680), .A2(n679), .Y(n684) );
+  INVX2_LVT U326 ( .A(n448), .Y(n681) );
+  NAND2X0_RVT U327 ( .A1(n603), .A2(n387), .Y(n386) );
+  NAND2X0_RVT U328 ( .A1(n834), .A2(n843), .Y(n835) );
+  NAND2X0_HVT U329 ( .A1(n615), .A2(n383), .Y(n382) );
+  NAND2X0_RVT U330 ( .A1(n585), .A2(n256), .Y(n255) );
+  XOR2X1_RVT U331 ( .A1(n811), .A2(n306), .Y(n812) );
+  INVX0_LVT U332 ( .A(n788), .Y(n413) );
+  INVX1_RVT U333 ( .A(n803), .Y(n333) );
+  NAND2X0_RVT U334 ( .A1(n552), .A2(n670), .Y(n674) );
+  INVX1_RVT U335 ( .A(n521), .Y(n219) );
+  NAND2X0_RVT U336 ( .A1(n388), .A2(n595), .Y(n387) );
+  NAND2X0_RVT U337 ( .A1(n583), .A2(n584), .Y(n254) );
+  NAND2X0_RVT U338 ( .A1(n700), .A2(n853), .Y(n701) );
+  NAND2X0_RVT U339 ( .A1(n175), .A2(n872), .Y(n873) );
+  NAND2X0_RVT U340 ( .A1(n462), .A2(n855), .Y(n856) );
+  NAND2X0_RVT U341 ( .A1(n460), .A2(a[6]), .Y(n848) );
+  AND2X4_LVT U342 ( .A1(n483), .A2(n677), .Y(n521) );
+  OR2X1_HVT U343 ( .A1(n607), .A2(n608), .Y(n384) );
+  AND3X1_RVT U344 ( .A1(n124), .A2(n282), .A3(n677), .Y(n129) );
+  NAND2X0_RVT U345 ( .A1(n497), .A2(a[18]), .Y(n730) );
+  NAND2X0_RVT U346 ( .A1(n679), .A2(n678), .Y(n305) );
+  NAND2X0_RVT U347 ( .A1(a[10]), .A2(n466), .Y(n872) );
+  OR2X1_HVT U348 ( .A1(n290), .A2(n491), .Y(n288) );
+  NAND2X0_RVT U349 ( .A1(n259), .A2(a[17]), .Y(n727) );
+  NAND2X0_RVT U350 ( .A1(n500), .A2(a[20]), .Y(n745) );
+  INVX1_RVT U351 ( .A(a[19]), .Y(n625) );
+  INVX1_LVT U352 ( .A(alu_ctrl[3]), .Y(n677) );
+  INVX1_RVT U353 ( .A(alu_ctrl[2]), .Y(n481) );
+  INVX1_HVT U354 ( .A(a[20]), .Y(n632) );
+  INVX1_HVT U355 ( .A(a[4]), .Y(n452) );
+  INVX0_HVT U356 ( .A(b[3]), .Y(n251) );
+  INVX1_RVT U357 ( .A(a[9]), .Y(n594) );
+  INVX0_LVT U358 ( .A(result[26]), .Y(n393) );
+  NAND2X0_LVT U359 ( .A1(n148), .A2(n341), .Y(result[21]) );
+  AND2X1_RVT U360 ( .A1(n142), .A2(n139), .Y(n200) );
+  INVX0_RVT U361 ( .A(result[20]), .Y(n173) );
+  INVX0_LVT U362 ( .A(result[23]), .Y(n140) );
+  INVX0_LVT U363 ( .A(result[22]), .Y(n392) );
+  INVX0_LVT U364 ( .A(result[24]), .Y(n426) );
+  OR2X1_RVT U365 ( .A1(n159), .A2(n160), .Y(n158) );
+  NAND2X0_RVT U366 ( .A1(n764), .A2(n521), .Y(n431) );
+  INVX0_RVT U367 ( .A(result[11]), .Y(n138) );
+  AND3X1_RVT U368 ( .A1(n187), .A2(n190), .A3(n188), .Y(n321) );
+  INVX0_RVT U369 ( .A(result[12]), .Y(n172) );
+  OR2X1_RVT U370 ( .A1(n219), .A2(n181), .Y(n139) );
+  MUX21X1_LVT U371 ( .A1(n135), .A2(n180), .S0(n441), .Y(n142) );
+  INVX0_RVT U372 ( .A(result[7]), .Y(n250) );
+  XNOR2X1_LVT U373 ( .A1(n209), .A2(n773), .Y(n267) );
+  XNOR2X1_LVT U374 ( .A1(n185), .A2(n763), .Y(n764) );
+  NAND2X0_RVT U375 ( .A1(n840), .A2(n394), .Y(result[5]) );
+  XOR2X1_LVT U376 ( .A1(n334), .A2(n722), .Y(n143) );
+  INVX0_RVT U377 ( .A(result[3]), .Y(n170) );
+  XNOR2X1_LVT U378 ( .A1(n316), .A2(n896), .Y(n315) );
+  XNOR2X1_LVT U379 ( .A1(n323), .A2(n911), .Y(n912) );
+  XNOR2X1_LVT U380 ( .A1(n292), .A2(n790), .Y(n291) );
+  AOI21X1_RVT U381 ( .A1(n925), .A2(n924), .A3(n923), .Y(n397) );
+  NAND2X0_RVT U382 ( .A1(n199), .A2(n521), .Y(n198) );
+  AO222X1_RVT U383 ( .A1(n876), .A2(a[10]), .A3(n875), .A4(b[10]), .A5(n874), 
+        .A6(n521), .Y(result[10]) );
+  OR2X1_RVT U384 ( .A1(n747), .A2(n743), .Y(n149) );
+  AND2X1_RVT U385 ( .A1(n228), .A2(n521), .Y(n227) );
+  NAND2X0_RVT U386 ( .A1(n706), .A2(n705), .Y(result[7]) );
+  NAND2X0_RVT U387 ( .A1(n882), .A2(n521), .Y(n281) );
+  INVX0_LVT U388 ( .A(n926), .Y(n276) );
+  NAND2X0_RVT U389 ( .A1(n698), .A2(n697), .Y(result[4]) );
+  AO222X1_RVT U390 ( .A1(n865), .A2(a[9]), .A3(n864), .A4(b[9]), .A5(n863), 
+        .A6(n521), .Y(result[9]) );
+  OA21X1_RVT U391 ( .A1(n736), .A2(n710), .A3(n737), .Y(n743) );
+  NAND2X0_RVT U392 ( .A1(n131), .A2(n925), .Y(n354) );
+  OR2X1_RVT U393 ( .A1(n738), .A2(n710), .Y(n225) );
+  XNOR2X1_LVT U394 ( .A1(n372), .A2(n784), .Y(n371) );
+  NAND2X0_RVT U395 ( .A1(n693), .A2(n521), .Y(n698) );
+  INVX0_RVT U396 ( .A(result[2]), .Y(n178) );
+  INVX0_LVT U397 ( .A(n534), .Y(n161) );
+  NAND2X0_RVT U398 ( .A1(n352), .A2(n925), .Y(n258) );
+  XOR2X1_LVT U399 ( .A1(n433), .A2(n881), .Y(n882) );
+  NAND3X0_RVT U400 ( .A1(n710), .A2(n738), .A3(n735), .Y(n228) );
+  OR2X1_RVT U401 ( .A1(n219), .A2(n220), .Y(n215) );
+  NAND3X0_LVT U402 ( .A1(n266), .A2(n805), .A3(n153), .Y(n264) );
+  NAND2X0_RVT U403 ( .A1(n925), .A2(n887), .Y(n390) );
+  NAND2X0_RVT U404 ( .A1(n174), .A2(n341), .Y(n145) );
+  XNOR2X1_RVT U405 ( .A1(n846), .A2(n829), .Y(n830) );
+  XOR2X1_LVT U406 ( .A1(n796), .A2(n701), .Y(n208) );
+  NAND2X0_RVT U407 ( .A1(n363), .A2(n179), .Y(result[2]) );
+  INVX0_RVT U408 ( .A(result[1]), .Y(n171) );
+  NAND2X0_RVT U409 ( .A1(n918), .A2(n495), .Y(n517) );
+  OA21X1_LVT U410 ( .A1(n377), .A2(n796), .A3(n853), .Y(n857) );
+  NAND2X0_RVT U411 ( .A1(n428), .A2(n427), .Y(n358) );
+  OR2X1_LVT U412 ( .A1(n805), .A2(n153), .Y(n263) );
+  AO22X1_RVT U413 ( .A1(n478), .A2(n480), .A3(n222), .A4(n221), .Y(n220) );
+  XOR2X1_LVT U414 ( .A1(n330), .A2(n849), .Y(n329) );
+  XNOR2X1_RVT U415 ( .A1(n692), .A2(n691), .Y(n693) );
+  AND2X1_HVT U416 ( .A1(n918), .A2(n442), .Y(n900) );
+  NAND2X0_RVT U417 ( .A1(n676), .A2(n381), .Y(n164) );
+  AOI22X1_LVT U418 ( .A1(b[29]), .A2(n929), .A3(n930), .A4(a[29]), .Y(n332) );
+  NAND2X0_RVT U419 ( .A1(n699), .A2(n870), .Y(n310) );
+  AO21X1_RVT U420 ( .A1(n684), .A2(n521), .A3(n683), .Y(n685) );
+  NAND2X0_RVT U421 ( .A1(n775), .A2(a[24]), .Y(n428) );
+  NAND2X0_RVT U422 ( .A1(n478), .A2(n479), .Y(n221) );
+  AND2X1_RVT U423 ( .A1(n411), .A2(n410), .Y(n174) );
+  AND2X1_RVT U424 ( .A1(n430), .A2(n429), .Y(n304) );
+  NAND2X0_RVT U425 ( .A1(n859), .A2(a[8]), .Y(n425) );
+  OR2X1_RVT U426 ( .A1(n219), .A2(n520), .Y(n234) );
+  NAND2X0_RVT U427 ( .A1(n884), .A2(a[11]), .Y(n280) );
+  INVX0_LVT U428 ( .A(n826), .Y(n827) );
+  NAND2X0_RVT U429 ( .A1(n740), .A2(a[19]), .Y(n340) );
+  NAND2X0_RVT U430 ( .A1(n898), .A2(a[26]), .Y(n313) );
+  NAND2X0_RVT U431 ( .A1(n801), .A2(a[13]), .Y(n418) );
+  NAND2X0_RVT U432 ( .A1(n350), .A2(n526), .Y(n527) );
+  NAND2X0_RVT U433 ( .A1(n821), .A2(n521), .Y(n363) );
+  NAND2X0_RVT U434 ( .A1(n766), .A2(a[25]), .Y(n430) );
+  NOR2X0_RVT U435 ( .A1(n891), .A2(n888), .Y(n893) );
+  AO22X1_RVT U436 ( .A1(b[23]), .A2(n723), .A3(n724), .A4(a[23]), .Y(n432) );
+  NAND2X0_RVT U437 ( .A1(n904), .A2(a[27]), .Y(n411) );
+  NAND2X0_RVT U438 ( .A1(n498), .A2(n206), .Y(n205) );
+  NAND2X0_RVT U439 ( .A1(n852), .A2(n877), .Y(n859) );
+  NAND2X0_RVT U440 ( .A1(n897), .A2(b[26]), .Y(n312) );
+  NAND2X0_RVT U441 ( .A1(n914), .A2(a[28]), .Y(n408) );
+  AOI22X1_RVT U442 ( .A1(b[30]), .A2(n522), .A3(n523), .A4(a[30]), .Y(n436) );
+  AO22X1_RVT U443 ( .A1(b[22]), .A2(n718), .A3(n719), .A4(a[22]), .Y(n346) );
+  NAND2X0_RVT U444 ( .A1(n823), .A2(a[2]), .Y(n362) );
+  INVX0_HVT U445 ( .A(n902), .Y(n183) );
+  MUX21X1_RVT U446 ( .A1(n839), .A2(n838), .S0(b[5]), .Y(n840) );
+  NAND2X0_RVT U447 ( .A1(n814), .A2(a[1]), .Y(n369) );
+  NAND2X0_RVT U448 ( .A1(n928), .A2(n521), .Y(n159) );
+  AOI22X1_RVT U449 ( .A1(b[31]), .A2(n541), .A3(n540), .A4(a[31]), .Y(n542) );
+  AND2X1_RVT U450 ( .A1(n356), .A2(n756), .Y(n712) );
+  NAND2X0_RVT U451 ( .A1(n252), .A2(n617), .Y(n381) );
+  AOI22X1_LVT U452 ( .A1(b[21]), .A2(n759), .A3(n760), .A4(a[21]), .Y(n341) );
+  MUX21X1_RVT U453 ( .A1(n696), .A2(n695), .S0(b[4]), .Y(n697) );
+  NAND2X0_RVT U454 ( .A1(n902), .A2(n521), .Y(n135) );
+  OR2X1_RVT U455 ( .A1(n414), .A2(n879), .Y(n293) );
+  NAND2X0_RVT U456 ( .A1(n832), .A2(a[3]), .Y(n365) );
+  NAND2X0_RVT U457 ( .A1(n916), .A2(n528), .Y(n525) );
+  INVX0_LVT U458 ( .A(n496), .Y(n360) );
+  NAND2X0_RVT U459 ( .A1(n866), .A2(n877), .Y(n876) );
+  NAND2X0_RVT U460 ( .A1(n878), .A2(n877), .Y(n884) );
+  NAND2X0_RVT U461 ( .A1(n794), .A2(n780), .Y(n402) );
+  NAND2X0_RVT U462 ( .A1(n792), .A2(n877), .Y(n801) );
+  NAND3X0_RVT U463 ( .A1(n877), .A2(n289), .A3(n288), .Y(n287) );
+  NAND2X0_RVT U464 ( .A1(n800), .A2(b[13]), .Y(n417) );
+  AND2X1_HVT U465 ( .A1(n463), .A2(n794), .Y(n795) );
+  NAND3X0_RVT U466 ( .A1(n877), .A2(n285), .A3(n284), .Y(n283) );
+  NOR2X0_RVT U467 ( .A1(n357), .A2(n708), .Y(n713) );
+  NAND2X0_RVT U468 ( .A1(n808), .A2(n877), .Y(n814) );
+  INVX0_LVT U469 ( .A(n345), .Y(n206) );
+  NAND2X0_RVT U470 ( .A1(n813), .A2(b[1]), .Y(n367) );
+  XNOR2X1_RVT U471 ( .A1(n820), .A2(n819), .Y(n821) );
+  NAND2X0_RVT U472 ( .A1(n905), .A2(n877), .Y(n914) );
+  NAND2X0_RVT U473 ( .A1(n772), .A2(n771), .Y(n773) );
+  NAND2X0_RVT U474 ( .A1(n822), .A2(b[2]), .Y(n361) );
+  NAND2X0_RVT U475 ( .A1(n242), .A2(n889), .Y(n763) );
+  NAND2X0_RVT U476 ( .A1(n761), .A2(n877), .Y(n766) );
+  NAND2X0_RVT U477 ( .A1(n739), .A2(b[19]), .Y(n339) );
+  INVX0_HVT U478 ( .A(n887), .Y(n888) );
+  OA21X1_HVT U479 ( .A1(n891), .A2(n890), .A3(n889), .Y(n892) );
+  OR2X1_RVT U480 ( .A1(n357), .A2(n711), .Y(n356) );
+  NAND2X0_RVT U481 ( .A1(n492), .A2(n877), .Y(n523) );
+  NAND2X0_RVT U482 ( .A1(n524), .A2(n927), .Y(n928) );
+  NAND2X0_RVT U483 ( .A1(n539), .A2(n877), .Y(n540) );
+  NAND2X0_RVT U484 ( .A1(n885), .A2(n877), .Y(n898) );
+  NAND2X0_RVT U485 ( .A1(n535), .A2(n537), .Y(n538) );
+  NAND2X0_RVT U486 ( .A1(n903), .A2(b[27]), .Y(n410) );
+  NAND2X0_RVT U487 ( .A1(n886), .A2(n877), .Y(n897) );
+  NAND2X0_RVT U488 ( .A1(n351), .A2(n519), .Y(n350) );
+  NAND2X0_RVT U489 ( .A1(n901), .A2(n906), .Y(n902) );
+  NAND2X0_RVT U490 ( .A1(n899), .A2(n877), .Y(n904) );
+  MUX21X1_RVT U491 ( .A1(n450), .A2(n491), .S0(b[8]), .Y(n852) );
+  NAND2X0_RVT U492 ( .A1(n860), .A2(n877), .Y(n865) );
+  OR2X1_RVT U493 ( .A1(n906), .A2(n908), .Y(n318) );
+  OA21X1_HVT U494 ( .A1(n458), .A2(n844), .A3(n843), .Y(n845) );
+  NAND2X0_RVT U495 ( .A1(n869), .A2(n130), .Y(n309) );
+  AND3X1_RVT U496 ( .A1(n385), .A2(n382), .A3(n614), .Y(n617) );
+  AND2X1_HVT U497 ( .A1(n726), .A2(n261), .Y(n729) );
+  NAND2X0_RVT U498 ( .A1(n488), .A2(n804), .Y(n300) );
+  OR2X1_RVT U499 ( .A1(n844), .A2(n453), .Y(n331) );
+  AO21X1_RVT U500 ( .A1(n803), .A2(n804), .A3(n488), .Y(n301) );
+  NAND3X0_RVT U501 ( .A1(n255), .A2(n254), .A3(n582), .Y(n253) );
+  AND2X1_RVT U502 ( .A1(n757), .A2(n756), .Y(n758) );
+  NAND2X0_RVT U503 ( .A1(n812), .A2(n521), .Y(n368) );
+  INVX0_LVT U504 ( .A(n458), .Y(n833) );
+  NAND2X0_RVT U505 ( .A1(n498), .A2(n344), .Y(n207) );
+  NAND2X0_RVT U506 ( .A1(n690), .A2(n689), .Y(n691) );
+  NAND2X0_RVT U507 ( .A1(n836), .A2(a[4]), .Y(n696) );
+  NAND2X0_RVT U508 ( .A1(n686), .A2(n415), .Y(n829) );
+  NAND2X0_RVT U509 ( .A1(n880), .A2(n404), .Y(n881) );
+  NAND2X0_RVT U510 ( .A1(n456), .A2(a[2]), .Y(n818) );
+  INVX1_HVT U511 ( .A(n828), .Y(n686) );
+  MUX21X1_RVT U512 ( .A1(n450), .A2(n491), .S0(b[28]), .Y(n905) );
+  NAND2X0_RVT U513 ( .A1(n487), .A2(n451), .Y(n488) );
+  OR2X1_HVT U514 ( .A1(a[31]), .A2(n536), .Y(n535) );
+  NAND2X0_RVT U515 ( .A1(n505), .A2(a[24]), .Y(n771) );
+  NAND2X0_RVT U516 ( .A1(n506), .A2(a[25]), .Y(n889) );
+  NAND2X0_RVT U517 ( .A1(a[21]), .A2(n501), .Y(n756) );
+  NAND2X0_RVT U518 ( .A1(n448), .A2(n450), .Y(n836) );
+  MUX21X1_RVT U519 ( .A1(n450), .A2(n491), .S0(b[27]), .Y(n899) );
+  OR2X1_LVT U520 ( .A1(n688), .A2(n828), .Y(n453) );
+  MUX21X1_RVT U521 ( .A1(n450), .A2(n491), .S0(b[10]), .Y(n866) );
+  OR2X1_RVT U522 ( .A1(a[30]), .A2(n518), .Y(n519) );
+  INVX0_LVT U523 ( .A(n487), .Y(n344) );
+  NAND2X0_RVT U524 ( .A1(n511), .A2(a[29]), .Y(n927) );
+  MUX21X1_RVT U525 ( .A1(n450), .A2(n491), .S0(b[9]), .Y(n860) );
+  AND2X1_RVT U526 ( .A1(n783), .A2(n277), .Y(n473) );
+  OAI21X1_RVT U527 ( .A1(n816), .A2(n306), .A3(n810), .Y(n820) );
+  AND2X1_HVT U528 ( .A1(n557), .A2(n675), .Y(n676) );
+  MUX21X1_RVT U529 ( .A1(n450), .A2(n491), .S0(b[26]), .Y(n885) );
+  NAND2X0_RVT U530 ( .A1(n333), .A2(n804), .Y(n805) );
+  NAND2X0_RVT U531 ( .A1(a[16]), .A2(n477), .Y(n487) );
+  AND2X1_HVT U532 ( .A1(n867), .A2(n130), .Y(n870) );
+  OA21X1_RVT U533 ( .A1(n727), .A2(n204), .A3(n730), .Y(n203) );
+  NAND2X0_RVT U534 ( .A1(n413), .A2(n789), .Y(n790) );
+  NAND2X0_RVT U535 ( .A1(n278), .A2(n471), .Y(n277) );
+  OR2X1_RVT U536 ( .A1(n854), .A2(n853), .Y(n319) );
+  NAND2X0_RVT U537 ( .A1(n742), .A2(n737), .Y(n738) );
+  NAND2X0_RVT U538 ( .A1(n769), .A2(n768), .Y(n722) );
+  OA21X1_RVT U539 ( .A1(n674), .A2(n673), .A3(n672), .Y(n163) );
+  NAND2X0_RVT U540 ( .A1(n471), .A2(n783), .Y(n784) );
+  NAND2X0_RVT U541 ( .A1(n493), .A2(n716), .Y(n717) );
+  AND2X1_RVT U542 ( .A1(n560), .A2(n583), .Y(n585) );
+  INVX0_LVT U543 ( .A(n810), .Y(n231) );
+  NAND2X0_RVT U544 ( .A1(n777), .A2(n798), .Y(n799) );
+  NAND2X0_RVT U545 ( .A1(n261), .A2(n727), .Y(n480) );
+  NOR2X0_RVT U546 ( .A1(n736), .A2(n744), .Y(n753) );
+  AND2X1_RVT U547 ( .A1(n305), .A2(n307), .Y(n306) );
+  AND2X1_RVT U548 ( .A1(n261), .A2(n494), .Y(n498) );
+  OR2X1_RVT U549 ( .A1(n744), .A2(n737), .Y(n400) );
+  AND2X1_HVT U550 ( .A1(n494), .A2(n730), .Y(n731) );
+  NAND2X0_RVT U551 ( .A1(n154), .A2(n848), .Y(n849) );
+  AND2X1_RVT U552 ( .A1(n471), .A2(n777), .Y(n474) );
+  INVX1_HVT U553 ( .A(n721), .Y(n769) );
+  INVX0_LVT U554 ( .A(n798), .Y(n278) );
+  NAND2X0_RVT U555 ( .A1(a[14]), .A2(n472), .Y(n783) );
+  OR2X1_RVT U556 ( .A1(a[6]), .A2(n460), .Y(n154) );
+  NOR2X0_RVT U557 ( .A1(a[12]), .A2(n469), .Y(n788) );
+  NAND2X0_RVT U558 ( .A1(n469), .A2(a[12]), .Y(n789) );
+  OR2X1_RVT U559 ( .A1(a[14]), .A2(n472), .Y(n471) );
+  OR2X1_RVT U560 ( .A1(n625), .A2(n376), .Y(n737) );
+  OR2X1_RVT U561 ( .A1(a[7]), .A2(n464), .Y(n700) );
+  NAND2X0_RVT U562 ( .A1(n504), .A2(a[23]), .Y(n768) );
+  NAND2X0_RVT U563 ( .A1(a[22]), .A2(n502), .Y(n716) );
+  OAI21X1_RVT U564 ( .A1(n650), .A2(n651), .A3(n649), .Y(n132) );
+  OA21X1_HVT U565 ( .A1(n613), .A2(n612), .A3(n611), .Y(n614) );
+  NOR2X0_RVT U566 ( .A1(a[23]), .A2(n504), .Y(n721) );
+  NOR2X0_RVT U567 ( .A1(a[20]), .A2(n500), .Y(n744) );
+  OR2X1_RVT U568 ( .A1(a[22]), .A2(n502), .Y(n493) );
+  OR2X1_RVT U569 ( .A1(a[17]), .A2(n259), .Y(n261) );
+  OA21X1_RVT U570 ( .A1(n602), .A2(n601), .A3(n600), .Y(n389) );
+  OA21X1_HVT U571 ( .A1(n581), .A2(n580), .A3(n579), .Y(n582) );
+  NOR2X0_RVT U572 ( .A1(a[15]), .A2(n475), .Y(n803) );
+  OR2X1_RVT U573 ( .A1(a[18]), .A2(n497), .Y(n494) );
+  AND2X1_RVT U574 ( .A1(n376), .A2(n625), .Y(n736) );
+  INVX1_LVT U575 ( .A(n491), .Y(n447) );
+  AND2X1_RVT U576 ( .A1(alu_ctrl[2]), .A2(n482), .Y(n282) );
+  NOR2X0_RVT U577 ( .A1(b[9]), .A2(n594), .Y(n596) );
+  NOR2X0_RVT U578 ( .A1(b[13]), .A2(n605), .Y(n607) );
+  NOR2X0_RVT U579 ( .A1(b[11]), .A2(n599), .Y(n601) );
+  AND2X1_RVT U580 ( .A1(n165), .A2(a[25]), .Y(n650) );
+  INVX1_HVT U581 ( .A(a[13]), .Y(n605) );
+  INVX1_HVT U582 ( .A(a[11]), .Y(n599) );
+  INVX1_HVT U583 ( .A(a[8]), .Y(n593) );
+  INVX1_HVT U584 ( .A(a[30]), .Y(n664) );
+  INVX0_HVT U585 ( .A(a[5]), .Y(n573) );
+  INVX1_HVT U586 ( .A(a[21]), .Y(n633) );
+  INVX0_HVT U587 ( .A(b[5]), .Y(n445) );
+  INVX1_HVT U588 ( .A(a[10]), .Y(n598) );
+  INVX1_HVT U589 ( .A(a[15]), .Y(n610) );
+  INVX0_HVT U590 ( .A(b[1]), .Y(n446) );
+  INVX1_HVT U591 ( .A(a[31]), .Y(n665) );
+  INVX1_HVT U592 ( .A(a[27]), .Y(n653) );
+  INVX1_HVT U593 ( .A(a[22]), .Y(n637) );
+  INVX1_HVT U594 ( .A(a[28]), .Y(n659) );
+  INVX1_HVT U595 ( .A(a[26]), .Y(n652) );
+  INVX1_HVT U596 ( .A(a[24]), .Y(n648) );
+  INVX1_HVT U597 ( .A(a[23]), .Y(n638) );
+  NAND2X0_LVT U598 ( .A1(n475), .A2(a[15]), .Y(n804) );
+  XOR2X2_LVT U599 ( .A1(n124), .A2(b[12]), .Y(n469) );
+  OR2X1_LVT U600 ( .A1(a[10]), .A2(n466), .Y(n175) );
+  OR2X1_LVT U601 ( .A1(a[13]), .A2(n470), .Y(n777) );
+  INVX1_LVT U602 ( .A(n709), .Y(n710) );
+  XOR2X1_LVT U603 ( .A1(n124), .A2(b[16]), .Y(n477) );
+  XOR2X1_LVT U604 ( .A1(n124), .A2(b[1]), .Y(n455) );
+  XOR2X1_LVT U605 ( .A1(n124), .A2(b[5]), .Y(n459) );
+  XNOR2X1_LVT U606 ( .A1(n374), .A2(b[25]), .Y(n506) );
+  XNOR2X1_LVT U607 ( .A1(n374), .A2(b[26]), .Y(n507) );
+  XNOR2X1_LVT U608 ( .A1(n374), .A2(b[24]), .Y(n505) );
+  INVX4_LVT U609 ( .A(n124), .Y(n374) );
+  OR3X2_LVT U610 ( .A1(n482), .A2(alu_ctrl[3]), .A3(alu_ctrl[2]), .Y(n491) );
+  NOR2X0_HVT U611 ( .A1(b[7]), .A2(n578), .Y(n580) );
+  NOR2X0_HVT U612 ( .A1(n627), .A2(n547), .Y(n630) );
+  NOR2X0_HVT U613 ( .A1(b[18]), .A2(n624), .Y(n547) );
+  NOR2X0_HVT U614 ( .A1(n674), .A2(n556), .Y(n675) );
+  NOR2X0_HVT U615 ( .A1(n650), .A2(n553), .Y(n555) );
+  NOR2X0_HVT U616 ( .A1(b[24]), .A2(n648), .Y(n553) );
+  NOR2X0_HVT U617 ( .A1(n612), .A2(n587), .Y(n615) );
+  NOR2X0_HVT U618 ( .A1(b[14]), .A2(n609), .Y(n587) );
+  NOR2X0_HVT U619 ( .A1(n580), .A2(n559), .Y(n583) );
+  NOR2X0_HVT U620 ( .A1(b[21]), .A2(n633), .Y(n635) );
+  NOR2X0_HVT U621 ( .A1(b[23]), .A2(n638), .Y(n640) );
+  INVX0_HVT U622 ( .A(n752), .Y(n711) );
+  XNOR2X1_LVT U623 ( .A1(n270), .A2(n124), .Y(n679) );
+  NOR2X0_HVT U624 ( .A1(n647), .A2(n549), .Y(n557) );
+  NOR2X0_HVT U625 ( .A1(n622), .A2(n546), .Y(n548) );
+  NOR2X0_HVT U626 ( .A1(n662), .A2(n550), .Y(n552) );
+  NOR2X0_HVT U627 ( .A1(b[28]), .A2(n659), .Y(n550) );
+  NOR2X0_LVT U628 ( .A1(a[5]), .A2(n459), .Y(n844) );
+  INVX0_HVT U629 ( .A(n780), .Y(n879) );
+  INVX0_HVT U630 ( .A(n736), .Y(n742) );
+  NOR2X0_HVT U631 ( .A1(n607), .A2(n586), .Y(n588) );
+  NOR2X0_HVT U632 ( .A1(b[12]), .A2(n604), .Y(n586) );
+  NOR2X0_HVT U633 ( .A1(n596), .A2(n589), .Y(n591) );
+  NOR2X0_HVT U634 ( .A1(b[8]), .A2(n593), .Y(n589) );
+  NOR2X0_HVT U635 ( .A1(b[17]), .A2(n620), .Y(n622) );
+  NOR2X0_HVT U636 ( .A1(b[19]), .A2(n625), .Y(n627) );
+  XOR2X1_LVT U637 ( .A1(n124), .A2(b[15]), .Y(n475) );
+  XOR2X1_LVT U638 ( .A1(n124), .A2(b[17]), .Y(n259) );
+  INVX0_HVT U639 ( .A(result[15]), .Y(n932) );
+  INVX0_HVT U640 ( .A(a[25]), .Y(n762) );
+  INVX0_HVT U641 ( .A(n916), .Y(n922) );
+  AOI21X1_HVT U642 ( .A1(n644), .A2(n643), .A3(n642), .Y(n645) );
+  AOI21X1_HVT U643 ( .A1(n132), .A2(n658), .A3(n657), .Y(n673) );
+  AOI21X1_HVT U644 ( .A1(n671), .A2(n670), .A3(n669), .Y(n672) );
+  INVX0_HVT U645 ( .A(n844), .Y(n834) );
+  INVX0_HVT U646 ( .A(n744), .Y(n746) );
+  INVX0_HVT U647 ( .A(n908), .Y(n910) );
+  NOR2X0_HVT U648 ( .A1(b[15]), .A2(n610), .Y(n612) );
+  NOR2X0_HVT U649 ( .A1(n575), .A2(n558), .Y(n560) );
+  NOR2X0_HVT U650 ( .A1(b[4]), .A2(n452), .Y(n558) );
+  NOR2X0_HVT U651 ( .A1(n568), .A2(n565), .Y(n571) );
+  NOR2X0_HVT U652 ( .A1(b[2]), .A2(n566), .Y(n565) );
+  OAI21X1_HVT U653 ( .A1(n564), .A2(n563), .A3(n562), .Y(n572) );
+  INVX0_HVT U654 ( .A(a[7]), .Y(n578) );
+  NOR2X0_HVT U655 ( .A1(b[29]), .A2(n660), .Y(n662) );
+  NOR2X0_HVT U656 ( .A1(b[31]), .A2(n665), .Y(n667) );
+  NOR2X0_HVT U657 ( .A1(b[27]), .A2(n653), .Y(n655) );
+  XOR2X1_LVT U658 ( .A1(n124), .A2(b[10]), .Y(n466) );
+  XOR2X1_LVT U659 ( .A1(n124), .A2(b[13]), .Y(n470) );
+  XNOR2X1_LVT U660 ( .A1(n124), .A2(n260), .Y(n497) );
+  XNOR2X1_LVT U661 ( .A1(n124), .A2(b[19]), .Y(n376) );
+  XOR2X1_LVT U662 ( .A1(n124), .A2(b[20]), .Y(n500) );
+  INVX0_HVT U663 ( .A(n753), .Y(n708) );
+  XOR2X1_LVT U664 ( .A1(n124), .A2(b[23]), .Y(n504) );
+  INVX0_HVT U665 ( .A(a[0]), .Y(n561) );
+  NOR2X0_HVT U666 ( .A1(n616), .A2(n592), .Y(n618) );
+  NOR2X0_HVT U667 ( .A1(n635), .A2(n543), .Y(n545) );
+  NOR2X0_HVT U668 ( .A1(b[20]), .A2(n632), .Y(n543) );
+  AOI21X1_HVT U669 ( .A1(n631), .A2(n630), .A3(n629), .Y(n646) );
+  NOR2X0_HVT U670 ( .A1(n640), .A2(n544), .Y(n643) );
+  NOR2X0_HVT U671 ( .A1(b[22]), .A2(n637), .Y(n544) );
+  NOR2X0_HVT U672 ( .A1(n667), .A2(n551), .Y(n670) );
+  NOR2X0_HVT U673 ( .A1(b[30]), .A2(n664), .Y(n551) );
+  NOR2X0_HVT U674 ( .A1(n655), .A2(n554), .Y(n658) );
+  NOR2X0_HVT U675 ( .A1(b[26]), .A2(n652), .Y(n554) );
+  INVX0_HVT U676 ( .A(a[1]), .Y(n809) );
+  INVX0_HVT U677 ( .A(a[2]), .Y(n566) );
+  INVX0_HVT U678 ( .A(a[3]), .Y(n825) );
+  XOR2X1_LVT U679 ( .A1(n124), .A2(b[6]), .Y(n460) );
+  INVX0_HVT U680 ( .A(a[6]), .Y(n577) );
+  XOR2X1_LVT U681 ( .A1(n124), .A2(b[14]), .Y(n472) );
+  INVX0_HVT U682 ( .A(a[14]), .Y(n609) );
+  NOR2X0_HVT U683 ( .A1(n797), .A2(n778), .Y(n782) );
+  INVX0_HVT U684 ( .A(n794), .Y(n778) );
+  INVX0_HVT U685 ( .A(n793), .Y(n781) );
+  INVX0_HVT U686 ( .A(a[16]), .Y(n619) );
+  INVX0_HVT U687 ( .A(n726), .Y(n479) );
+  INVX0_HVT U688 ( .A(a[18]), .Y(n624) );
+  INVX0_HVT U689 ( .A(n907), .Y(n901) );
+  INVX0_HVT U690 ( .A(n688), .Y(n690) );
+  INVX0_HVT U691 ( .A(n869), .Y(n861) );
+  INVX0_HVT U692 ( .A(a[12]), .Y(n604) );
+  INVX0_HVT U693 ( .A(n770), .Y(n772) );
+  INVX0_HVT U694 ( .A(n919), .Y(n920) );
+  XNOR2X1_LVT U695 ( .A1(n308), .A2(n873), .Y(n874) );
+  AO21X1_LVT U696 ( .A1(n709), .A2(n360), .A3(n359), .Y(n925) );
+  AND4X1_LVT U697 ( .A1(n184), .A2(n142), .A3(n932), .A4(n141), .Y(n125) );
+  AND4X1_LVT U698 ( .A1(n125), .A2(n140), .A3(n137), .A4(n136), .Y(n126) );
+  AND4X1_LVT U699 ( .A1(n169), .A2(n188), .A3(n416), .A4(n190), .Y(n127) );
+  AND4X1_LVT U700 ( .A1(n173), .A2(n172), .A3(n127), .A4(n167), .Y(n128) );
+  AND2X1_LVT U701 ( .A1(n266), .A2(n153), .Y(n926) );
+  NAND2X0_LVT U702 ( .A1(n401), .A2(n594), .Y(n130) );
+  NOR2X0_LVT U703 ( .A1(n907), .A2(n917), .Y(n131) );
+  AND2X1_LVT U704 ( .A1(n148), .A2(n144), .Y(n136) );
+  NAND2X0_LVT U705 ( .A1(n147), .A2(n521), .Y(n148) );
+  AND3X1_LVT U706 ( .A1(n146), .A2(n139), .A3(n138), .Y(n137) );
+  NOR2X0_LVT U707 ( .A1(n145), .A2(result[18]), .Y(n141) );
+  NAND3X0_LVT U708 ( .A1(n281), .A2(n279), .A3(n280), .Y(result[11]) );
+  AO21X1_LVT U709 ( .A1(n143), .A2(n521), .A3(n432), .Y(result[23]) );
+  AO21X1_LVT U710 ( .A1(n371), .A2(n521), .A3(n370), .Y(result[14]) );
+  INVX0_LVT U711 ( .A(result[19]), .Y(n146) );
+  NAND2X0_LVT U712 ( .A1(n224), .A2(n338), .Y(result[19]) );
+  XNOR2X2_LVT U713 ( .A1(n238), .A2(n758), .Y(n147) );
+  AO21X1_LVT U714 ( .A1(n678), .A2(n679), .A3(n454), .Y(n233) );
+  NAND3X0_LVT U715 ( .A1(n151), .A2(n150), .A3(n149), .Y(n152) );
+  NAND3X0_LVT U716 ( .A1(n248), .A2(n743), .A3(n747), .Y(n150) );
+  OR2X1_LVT U717 ( .A1(n747), .A2(n248), .Y(n151) );
+  AO21X1_LVT U718 ( .A1(n152), .A2(n521), .A3(n342), .Y(result[20]) );
+  NAND2X0_LVT U719 ( .A1(n533), .A2(n699), .Y(n153) );
+  NAND3X0_LVT U720 ( .A1(n158), .A2(n156), .A3(n155), .Y(result[29]) );
+  OA21X1_LVT U721 ( .A1(n159), .A2(n397), .A3(n332), .Y(n155) );
+  NAND4X0_LVT U722 ( .A1(n160), .A2(n397), .A3(n521), .A4(n157), .Y(n156) );
+  NAND3X0_LVT U723 ( .A1(n276), .A2(n924), .A3(n918), .Y(n160) );
+  OA21X1_LVT U724 ( .A1(n714), .A2(n161), .A3(n349), .Y(n348) );
+  AO21X1_LVT U725 ( .A1(n162), .A2(n129), .A3(n685), .Y(result[0]) );
+  NAND3X0_LVT U726 ( .A1(n164), .A2(n176), .A3(n163), .Y(n162) );
+  NAND3X0_LVT U727 ( .A1(n166), .A2(n293), .A3(n404), .Y(n292) );
+  OR2X1_LVT U728 ( .A1(n787), .A2(n796), .Y(n166) );
+  INVX1_LVT U729 ( .A(n699), .Y(n796) );
+  AO21X1_LVT U730 ( .A1(n246), .A2(n826), .A3(n245), .Y(n699) );
+  AND3X1_LVT U731 ( .A1(n311), .A2(n168), .A3(n187), .Y(n167) );
+  NAND4X0_LVT U732 ( .A1(n196), .A2(n521), .A3(n353), .A4(n520), .Y(n187) );
+  AO21X1_LVT U733 ( .A1(n329), .A2(n521), .A3(n328), .Y(result[6]) );
+  NAND3X0_LVT U734 ( .A1(n192), .A2(n191), .A3(n189), .Y(n311) );
+  OR2X1_LVT U735 ( .A1(n517), .A2(n197), .Y(n190) );
+  AND3X1_LVT U736 ( .A1(n436), .A2(n171), .A3(n170), .Y(n169) );
+  AO21X1_LVT U737 ( .A1(n291), .A2(n521), .A3(n286), .Y(result[12]) );
+  AND2X1_LVT U738 ( .A1(n130), .A2(n175), .Y(n467) );
+  NOR2X0_LVT U739 ( .A1(a[3]), .A2(n457), .Y(n828) );
+  XOR2X2_LVT U740 ( .A1(n124), .A2(b[3]), .Y(n457) );
+  AND2X1_LVT U741 ( .A1(n212), .A2(n452), .Y(n688) );
+  NOR4X1_LVT U742 ( .A1(result[16]), .A2(n177), .A3(result[0]), .A4(result[4]), 
+        .Y(n249) );
+  NAND3X0_LVT U743 ( .A1(n178), .A2(n250), .A3(n542), .Y(n177) );
+  OA22X1_LVT U744 ( .A1(n521), .A2(n298), .A3(n297), .A4(n295), .Y(result[16])
          );
-  AOI22X1_HVT U243 ( .A1(n323), .A2(n165), .A3(n464), .A4(n164), .Y(n248) );
-  INVX2_HVT U244 ( .A(n321), .Y(n453) );
-  NAND2X0_HVT U245 ( .A1(n453), .A2(n442), .Y(n461) );
-  INVX1_HVT U246 ( .A(b[0]), .Y(n166) );
-  NAND3X0_HVT U247 ( .A1(a[0]), .A2(n461), .A3(n166), .Y(n247) );
-  AO21X1_HVT U248 ( .A1(n167), .A2(a[0]), .A3(n321), .Y(n168) );
-  NAND2X0_HVT U249 ( .A1(b[0]), .A2(n168), .Y(n246) );
-  INVX1_HVT U250 ( .A(b[29]), .Y(n171) );
-  INVX1_HVT U251 ( .A(a[28]), .Y(n169) );
-  NAND2X0_HVT U252 ( .A1(b[28]), .A2(n169), .Y(n436) );
-  AO222X1_HVT U253 ( .A1(a[29]), .A2(n171), .A3(a[29]), .A4(n436), .A5(n171), 
-        .A6(n436), .Y(n237) );
-  INVX1_HVT U254 ( .A(b[27]), .Y(n170) );
-  AO22X1_HVT U255 ( .A1(a[29]), .A2(n171), .A3(a[27]), .A4(n170), .Y(n236) );
-  INVX1_HVT U256 ( .A(b[26]), .Y(n229) );
-  INVX1_HVT U257 ( .A(b[23]), .Y(n219) );
-  INVX1_HVT U258 ( .A(b[22]), .Y(n172) );
-  AO22X1_HVT U259 ( .A1(a[23]), .A2(n219), .A3(a[22]), .A4(n172), .Y(n223) );
-  INVX1_HVT U260 ( .A(b[21]), .Y(n213) );
-  INVX1_HVT U261 ( .A(a[20]), .Y(n173) );
-  NAND2X0_HVT U262 ( .A1(b[20]), .A2(n173), .Y(n395) );
-  AO222X1_HVT U263 ( .A1(a[21]), .A2(n213), .A3(a[21]), .A4(n395), .A5(n213), 
-        .A6(n395), .Y(n222) );
-  INVX1_HVT U264 ( .A(b[18]), .Y(n209) );
-  INVX1_HVT U265 ( .A(b[16]), .Y(n205) );
-  INVX1_HVT U266 ( .A(b[14]), .Y(n201) );
-  INVX1_HVT U267 ( .A(b[12]), .Y(n197) );
-  INVX1_HVT U268 ( .A(b[10]), .Y(n193) );
-  INVX1_HVT U269 ( .A(b[8]), .Y(n189) );
-  INVX1_HVT U270 ( .A(b[7]), .Y(n187) );
-  INVX1_HVT U271 ( .A(b[2]), .Y(n177) );
-  INVX1_HVT U272 ( .A(b[1]), .Y(n175) );
-  AO222X1_HVT U273 ( .A1(a[1]), .A2(n175), .A3(a[1]), .A4(n174), .A5(n175), 
-        .A6(n174), .Y(n176) );
-  AO222X1_HVT U274 ( .A1(a[2]), .A2(n177), .A3(a[2]), .A4(n176), .A5(n177), 
-        .A6(n176), .Y(n179) );
-  INVX1_HVT U275 ( .A(b[3]), .Y(n178) );
-  AO222X1_HVT U276 ( .A1(a[3]), .A2(n179), .A3(a[3]), .A4(n178), .A5(n179), 
-        .A6(n178), .Y(n181) );
-  INVX1_HVT U277 ( .A(b[4]), .Y(n180) );
-  AO222X1_HVT U278 ( .A1(a[4]), .A2(n181), .A3(a[4]), .A4(n180), .A5(n181), 
-        .A6(n180), .Y(n183) );
-  INVX1_HVT U279 ( .A(b[5]), .Y(n182) );
-  AO222X1_HVT U280 ( .A1(a[5]), .A2(n183), .A3(a[5]), .A4(n182), .A5(n183), 
-        .A6(n182), .Y(n185) );
-  INVX1_HVT U281 ( .A(b[6]), .Y(n184) );
-  AO222X1_HVT U282 ( .A1(a[6]), .A2(n185), .A3(a[6]), .A4(n184), .A5(n185), 
-        .A6(n184), .Y(n186) );
-  AO222X1_HVT U283 ( .A1(a[7]), .A2(n187), .A3(a[7]), .A4(n186), .A5(n187), 
-        .A6(n186), .Y(n188) );
-  AO222X1_HVT U284 ( .A1(a[8]), .A2(n189), .A3(a[8]), .A4(n188), .A5(n189), 
-        .A6(n188), .Y(n191) );
-  INVX1_HVT U285 ( .A(b[9]), .Y(n190) );
-  AO222X1_HVT U286 ( .A1(a[9]), .A2(n191), .A3(a[9]), .A4(n190), .A5(n191), 
-        .A6(n190), .Y(n192) );
-  AO222X1_HVT U287 ( .A1(a[10]), .A2(n193), .A3(a[10]), .A4(n192), .A5(n193), 
-        .A6(n192), .Y(n195) );
-  INVX1_HVT U288 ( .A(b[11]), .Y(n194) );
-  AO222X1_HVT U289 ( .A1(a[11]), .A2(n195), .A3(a[11]), .A4(n194), .A5(n195), 
-        .A6(n194), .Y(n196) );
-  AO222X1_HVT U290 ( .A1(a[12]), .A2(n197), .A3(a[12]), .A4(n196), .A5(n197), 
-        .A6(n196), .Y(n199) );
-  INVX1_HVT U291 ( .A(b[13]), .Y(n198) );
-  AO222X1_HVT U292 ( .A1(a[13]), .A2(n199), .A3(a[13]), .A4(n198), .A5(n199), 
-        .A6(n198), .Y(n200) );
-  AO222X1_HVT U293 ( .A1(a[14]), .A2(n201), .A3(a[14]), .A4(n200), .A5(n201), 
-        .A6(n200), .Y(n203) );
-  INVX1_HVT U294 ( .A(b[15]), .Y(n202) );
-  AO222X1_HVT U295 ( .A1(a[15]), .A2(n203), .A3(a[15]), .A4(n202), .A5(n203), 
-        .A6(n202), .Y(n204) );
-  AO222X1_HVT U296 ( .A1(a[16]), .A2(n205), .A3(a[16]), .A4(n204), .A5(n205), 
-        .A6(n204), .Y(n207) );
-  INVX1_HVT U297 ( .A(b[17]), .Y(n206) );
-  AO222X1_HVT U298 ( .A1(a[17]), .A2(n207), .A3(a[17]), .A4(n206), .A5(n207), 
-        .A6(n206), .Y(n208) );
-  AO222X1_HVT U299 ( .A1(a[18]), .A2(n209), .A3(a[18]), .A4(n208), .A5(n209), 
-        .A6(n208), .Y(n212) );
-  INVX1_HVT U300 ( .A(b[20]), .Y(n210) );
-  AOI22X1_HVT U301 ( .A1(n212), .A2(n211), .A3(a[20]), .A4(n210), .Y(n217) );
-  NAND2X0_HVT U302 ( .A1(a[21]), .A2(n213), .Y(n216) );
-  INVX1_HVT U303 ( .A(b[19]), .Y(n214) );
-  NAND2X0_HVT U304 ( .A1(a[19]), .A2(n214), .Y(n215) );
-  NAND3X0_HVT U305 ( .A1(n217), .A2(n216), .A3(n215), .Y(n221) );
-  AO222X1_HVT U306 ( .A1(a[23]), .A2(n219), .A3(a[23]), .A4(n218), .A5(n219), 
-        .A6(n218), .Y(n220) );
-  OA221X1_HVT U307 ( .A1(n223), .A2(n222), .A3(n223), .A4(n221), .A5(n220), 
-        .Y(n225) );
-  INVX1_HVT U308 ( .A(b[24]), .Y(n224) );
-  AO222X1_HVT U309 ( .A1(n225), .A2(a[24]), .A3(n225), .A4(n224), .A5(a[24]), 
-        .A6(n224), .Y(n227) );
-  INVX1_HVT U310 ( .A(b[25]), .Y(n226) );
-  AO222X1_HVT U311 ( .A1(a[25]), .A2(n227), .A3(a[25]), .A4(n226), .A5(n227), 
-        .A6(n226), .Y(n228) );
-  AO222X1_HVT U312 ( .A1(a[26]), .A2(n229), .A3(a[26]), .A4(n228), .A5(n229), 
-        .A6(n228), .Y(n232) );
-  INVX1_HVT U313 ( .A(b[28]), .Y(n230) );
-  AO22X1_HVT U314 ( .A1(n232), .A2(n231), .A3(a[28]), .A4(n230), .Y(n235) );
-  INVX1_HVT U315 ( .A(b[31]), .Y(n239) );
-  INVX1_HVT U316 ( .A(b[30]), .Y(n233) );
-  AO22X1_HVT U317 ( .A1(a[31]), .A2(n239), .A3(a[30]), .A4(n233), .Y(n234) );
-  AO221X1_HVT U318 ( .A1(n237), .A2(n236), .A3(n237), .A4(n235), .A5(n234), 
-        .Y(n242) );
-  AO21X1_HVT U319 ( .A1(a[31]), .A2(n239), .A3(n238), .Y(n241) );
-  INVX1_HVT U320 ( .A(a[31]), .Y(n240) );
-  NAND2X0_HVT U321 ( .A1(b[31]), .A2(n240), .Y(n460) );
-  NAND3X0_HVT U322 ( .A1(n242), .A2(n241), .A3(n460), .Y(n243) );
-  NAND4X0_HVT U323 ( .A1(n244), .A2(alu_ctrl[0]), .A3(alu_ctrl[2]), .A4(n243), 
-        .Y(n245) );
-  NAND4X0_HVT U324 ( .A1(n248), .A2(n247), .A3(n246), .A4(n245), .Y(result[0])
-         );
-  MUX21X1_HVT U325 ( .A1(n452), .A2(n361), .S0(b[1]), .Y(n249) );
-  NAND2X0_HVT U326 ( .A1(n249), .A2(n453), .Y(n255) );
-  INVX1_HVT U327 ( .A(a[1]), .Y(n250) );
-  AO21X1_HVT U328 ( .A1(n323), .A2(n250), .A3(n321), .Y(n254) );
-  FADDX1_HVT U329 ( .A(a[1]), .B(n252), .CI(n251), .CO(n313), .S(n253) );
-  AO222X1_HVT U330 ( .A1(n255), .A2(a[1]), .A3(n254), .A4(b[1]), .A5(n253), 
-        .A6(n429), .Y(result[1]) );
-  MUX21X1_HVT U331 ( .A1(n452), .A2(n361), .S0(b[3]), .Y(n256) );
-  NAND2X0_HVT U332 ( .A1(n256), .A2(n453), .Y(n262) );
-  INVX1_HVT U333 ( .A(a[3]), .Y(n257) );
-  AO21X1_HVT U334 ( .A1(n323), .A2(n257), .A3(n321), .Y(n261) );
-  FADDX1_HVT U335 ( .A(a[3]), .B(n259), .CI(n258), .CO(n330), .S(n260) );
-  AO222X1_HVT U336 ( .A1(n262), .A2(a[3]), .A3(n261), .A4(b[3]), .A5(n260), 
-        .A6(n429), .Y(result[3]) );
-  MUX21X1_HVT U337 ( .A1(n452), .A2(n361), .S0(b[5]), .Y(n263) );
-  NAND2X0_HVT U338 ( .A1(n263), .A2(n453), .Y(n269) );
-  INVX1_HVT U339 ( .A(a[5]), .Y(n264) );
-  AO21X1_HVT U340 ( .A1(n323), .A2(n264), .A3(n321), .Y(n268) );
-  FADDX1_HVT U341 ( .A(a[5]), .B(n266), .CI(n265), .CO(n338), .S(n267) );
-  AO222X1_HVT U342 ( .A1(n269), .A2(a[5]), .A3(n268), .A4(b[5]), .A5(n267), 
-        .A6(n429), .Y(result[5]) );
-  MUX21X1_HVT U343 ( .A1(n452), .A2(n361), .S0(b[7]), .Y(n270) );
-  NAND2X0_HVT U344 ( .A1(n270), .A2(n453), .Y(n276) );
-  INVX1_HVT U345 ( .A(a[7]), .Y(n271) );
-  AO21X1_HVT U346 ( .A1(n323), .A2(n271), .A3(n321), .Y(n275) );
-  FADDX1_HVT U347 ( .A(a[7]), .B(n273), .CI(n272), .CO(n346), .S(n274) );
-  AO222X1_HVT U348 ( .A1(n276), .A2(a[7]), .A3(n275), .A4(b[7]), .A5(n274), 
-        .A6(n464), .Y(result[7]) );
-  MUX21X1_HVT U349 ( .A1(n452), .A2(n361), .S0(b[9]), .Y(n277) );
-  NAND2X0_HVT U350 ( .A1(n277), .A2(n453), .Y(n283) );
-  INVX1_HVT U351 ( .A(a[9]), .Y(n278) );
-  AO21X1_HVT U352 ( .A1(n323), .A2(n278), .A3(n321), .Y(n282) );
-  FADDX1_HVT U353 ( .A(a[9]), .B(n280), .CI(n279), .CO(n354), .S(n281) );
-  AO222X1_HVT U354 ( .A1(n283), .A2(a[9]), .A3(n282), .A4(b[9]), .A5(n281), 
-        .A6(n464), .Y(result[9]) );
-  MUX21X1_HVT U355 ( .A1(n442), .A2(n361), .S0(b[11]), .Y(n284) );
-  NAND2X0_HVT U356 ( .A1(n284), .A2(n453), .Y(n290) );
-  INVX1_HVT U357 ( .A(a[11]), .Y(n285) );
-  AO21X1_HVT U358 ( .A1(n323), .A2(n285), .A3(n321), .Y(n289) );
-  FADDX1_HVT U359 ( .A(a[11]), .B(n287), .CI(n286), .CO(n363), .S(n288) );
-  AO222X1_HVT U360 ( .A1(n290), .A2(a[11]), .A3(n289), .A4(b[11]), .A5(n288), 
-        .A6(n464), .Y(result[11]) );
-  MUX21X1_HVT U361 ( .A1(n452), .A2(n361), .S0(b[13]), .Y(n291) );
-  NAND2X0_HVT U362 ( .A1(n291), .A2(n453), .Y(n297) );
-  INVX1_HVT U363 ( .A(a[13]), .Y(n292) );
-  AO21X1_HVT U364 ( .A1(n323), .A2(n292), .A3(n321), .Y(n296) );
-  FADDX1_HVT U365 ( .A(a[13]), .B(n294), .CI(n293), .CO(n371), .S(n295) );
-  AO222X1_HVT U366 ( .A1(n297), .A2(a[13]), .A3(n296), .A4(b[13]), .A5(n295), 
-        .A6(n429), .Y(result[13]) );
-  MUX21X1_HVT U367 ( .A1(n452), .A2(n361), .S0(b[15]), .Y(n298) );
-  NAND2X0_HVT U368 ( .A1(n298), .A2(n453), .Y(n304) );
-  INVX1_HVT U369 ( .A(a[15]), .Y(n299) );
-  AO21X1_HVT U370 ( .A1(n323), .A2(n299), .A3(n321), .Y(n303) );
-  FADDX1_HVT U371 ( .A(a[15]), .B(n301), .CI(n300), .CO(n379), .S(n302) );
-  AO222X1_HVT U372 ( .A1(n304), .A2(a[15]), .A3(n303), .A4(b[15]), .A5(n302), 
-        .A6(n464), .Y(result[15]) );
-  MUX21X1_HVT U373 ( .A1(n452), .A2(n361), .S0(b[17]), .Y(n305) );
-  NAND2X0_HVT U374 ( .A1(n305), .A2(n434), .Y(n311) );
-  INVX1_HVT U375 ( .A(a[17]), .Y(n306) );
-  AO21X1_HVT U376 ( .A1(n323), .A2(n306), .A3(n321), .Y(n310) );
-  FADDX1_HVT U377 ( .A(a[17]), .B(n308), .CI(n307), .CO(n387), .S(n309) );
-  AO222X1_HVT U378 ( .A1(n311), .A2(a[17]), .A3(n310), .A4(b[17]), .A5(n309), 
-        .A6(n429), .Y(result[17]) );
-  MUX21X1_HVT U379 ( .A1(n442), .A2(n361), .S0(b[2]), .Y(n312) );
-  INVX1_HVT U380 ( .A(a[2]), .Y(n316) );
-  AO21X1_HVT U381 ( .A1(n312), .A2(n453), .A3(n316), .Y(n319) );
-  FADDX1_HVT U382 ( .A(a[2]), .B(n314), .CI(n313), .CO(n258), .S(n315) );
-  NAND2X0_HVT U383 ( .A1(n429), .A2(n315), .Y(n318) );
-  NAND3X0_HVT U384 ( .A1(b[2]), .A2(n461), .A3(n316), .Y(n317) );
-  NAND3X0_HVT U385 ( .A1(n319), .A2(n318), .A3(n317), .Y(result[2]) );
-  MUX21X1_HVT U386 ( .A1(n442), .A2(n451), .S0(b[25]), .Y(n320) );
-  NAND2X0_HVT U387 ( .A1(n320), .A2(n434), .Y(n328) );
-  INVX1_HVT U388 ( .A(a[25]), .Y(n322) );
-  AO21X1_HVT U389 ( .A1(n323), .A2(n322), .A3(n321), .Y(n327) );
-  FADDX1_HVT U390 ( .A(a[25]), .B(n325), .CI(n324), .CO(n426), .S(n326) );
-  AO222X1_HVT U391 ( .A1(n328), .A2(a[25]), .A3(n327), .A4(b[25]), .A5(n326), 
-        .A6(n464), .Y(result[25]) );
-  MUX21X1_HVT U392 ( .A1(n442), .A2(n361), .S0(b[4]), .Y(n329) );
-  INVX1_HVT U393 ( .A(a[4]), .Y(n333) );
-  AO21X1_HVT U394 ( .A1(n329), .A2(n434), .A3(n333), .Y(n336) );
-  FADDX1_HVT U395 ( .A(a[4]), .B(n331), .CI(n330), .CO(n265), .S(n332) );
-  NAND2X0_HVT U396 ( .A1(n464), .A2(n332), .Y(n335) );
-  NAND3X0_HVT U397 ( .A1(b[4]), .A2(n461), .A3(n333), .Y(n334) );
-  NAND3X0_HVT U398 ( .A1(n336), .A2(n335), .A3(n334), .Y(result[4]) );
-  MUX21X1_HVT U399 ( .A1(n442), .A2(n361), .S0(b[6]), .Y(n337) );
-  INVX1_HVT U400 ( .A(a[6]), .Y(n341) );
-  AO21X1_HVT U401 ( .A1(n337), .A2(n453), .A3(n341), .Y(n344) );
-  FADDX1_HVT U402 ( .A(a[6]), .B(n339), .CI(n338), .CO(n272), .S(n340) );
-  NAND2X0_HVT U403 ( .A1(n429), .A2(n340), .Y(n343) );
-  NAND3X0_HVT U404 ( .A1(b[6]), .A2(n461), .A3(n341), .Y(n342) );
-  NAND3X0_HVT U405 ( .A1(n344), .A2(n343), .A3(n342), .Y(result[6]) );
-  MUX21X1_HVT U406 ( .A1(n442), .A2(n361), .S0(b[8]), .Y(n345) );
-  INVX1_HVT U407 ( .A(a[8]), .Y(n349) );
-  AO21X1_HVT U408 ( .A1(n345), .A2(n434), .A3(n349), .Y(n352) );
-  FADDX1_HVT U409 ( .A(a[8]), .B(n347), .CI(n346), .CO(n279), .S(n348) );
-  NAND2X0_HVT U410 ( .A1(n464), .A2(n348), .Y(n351) );
-  NAND3X0_HVT U411 ( .A1(b[8]), .A2(n461), .A3(n349), .Y(n350) );
-  NAND3X0_HVT U412 ( .A1(n352), .A2(n351), .A3(n350), .Y(result[8]) );
-  MUX21X1_HVT U413 ( .A1(n442), .A2(n361), .S0(b[10]), .Y(n353) );
-  INVX1_HVT U414 ( .A(a[10]), .Y(n357) );
-  AO21X1_HVT U415 ( .A1(n353), .A2(n453), .A3(n357), .Y(n360) );
-  FADDX1_HVT U416 ( .A(a[10]), .B(n355), .CI(n354), .CO(n286), .S(n356) );
-  NAND2X0_HVT U417 ( .A1(n429), .A2(n356), .Y(n359) );
-  NAND3X0_HVT U418 ( .A1(b[10]), .A2(n124), .A3(n357), .Y(n358) );
-  NAND3X0_HVT U419 ( .A1(n360), .A2(n359), .A3(n358), .Y(result[10]) );
-  MUX21X1_HVT U420 ( .A1(n442), .A2(n361), .S0(b[12]), .Y(n362) );
-  INVX1_HVT U421 ( .A(a[12]), .Y(n366) );
-  AO21X1_HVT U422 ( .A1(n362), .A2(n453), .A3(n366), .Y(n369) );
-  FADDX1_HVT U423 ( .A(a[12]), .B(n364), .CI(n363), .CO(n293), .S(n365) );
-  NAND2X0_HVT U424 ( .A1(n464), .A2(n365), .Y(n368) );
-  NAND3X0_HVT U425 ( .A1(b[12]), .A2(n461), .A3(n366), .Y(n367) );
-  NAND3X0_HVT U426 ( .A1(n369), .A2(n368), .A3(n367), .Y(result[12]) );
-  MUX21X1_HVT U427 ( .A1(n452), .A2(n451), .S0(b[14]), .Y(n370) );
-  INVX1_HVT U428 ( .A(a[14]), .Y(n374) );
-  AO21X1_HVT U429 ( .A1(n370), .A2(n453), .A3(n374), .Y(n377) );
-  FADDX1_HVT U430 ( .A(a[14]), .B(n372), .CI(n371), .CO(n300), .S(n373) );
-  NAND2X0_HVT U431 ( .A1(n429), .A2(n373), .Y(n376) );
-  NAND3X0_HVT U432 ( .A1(b[14]), .A2(n461), .A3(n374), .Y(n375) );
-  NAND3X0_HVT U433 ( .A1(n377), .A2(n376), .A3(n375), .Y(result[14]) );
-  MUX21X1_HVT U434 ( .A1(n452), .A2(n451), .S0(b[16]), .Y(n378) );
-  INVX1_HVT U435 ( .A(a[16]), .Y(n382) );
-  AO21X1_HVT U436 ( .A1(n378), .A2(n434), .A3(n382), .Y(n385) );
-  FADDX1_HVT U437 ( .A(a[16]), .B(n380), .CI(n379), .CO(n307), .S(n381) );
-  NAND2X0_HVT U438 ( .A1(n429), .A2(n381), .Y(n384) );
-  NAND3X0_HVT U439 ( .A1(b[16]), .A2(n124), .A3(n382), .Y(n383) );
-  NAND3X0_HVT U440 ( .A1(n385), .A2(n384), .A3(n383), .Y(result[16]) );
-  MUX21X1_HVT U441 ( .A1(n452), .A2(n451), .S0(b[18]), .Y(n386) );
-  INVX1_HVT U442 ( .A(a[18]), .Y(n390) );
-  AO21X1_HVT U443 ( .A1(n386), .A2(n434), .A3(n390), .Y(n393) );
-  FADDX1_HVT U444 ( .A(a[18]), .B(n388), .CI(n387), .CO(n137), .S(n389) );
-  NAND2X0_HVT U445 ( .A1(n429), .A2(n389), .Y(n392) );
-  NAND3X0_HVT U446 ( .A1(b[18]), .A2(n124), .A3(n390), .Y(n391) );
-  NAND3X0_HVT U447 ( .A1(n393), .A2(n392), .A3(n391), .Y(result[18]) );
-  MUX21X1_HVT U448 ( .A1(n452), .A2(n451), .S0(b[20]), .Y(n394) );
-  NAND2X0_HVT U449 ( .A1(n394), .A2(n434), .Y(n400) );
-  INVX1_HVT U450 ( .A(n395), .Y(n399) );
-  FADDX1_HVT U451 ( .A(a[20]), .B(n397), .CI(n396), .CO(n402), .S(n398) );
-  AO222X1_HVT U452 ( .A1(n400), .A2(a[20]), .A3(n124), .A4(n399), .A5(n398), 
-        .A6(n429), .Y(result[20]) );
-  MUX21X1_HVT U453 ( .A1(n452), .A2(n451), .S0(b[21]), .Y(n401) );
-  INVX1_HVT U454 ( .A(a[21]), .Y(n405) );
-  AO21X1_HVT U455 ( .A1(n401), .A2(n434), .A3(n405), .Y(n408) );
-  FADDX1_HVT U456 ( .A(a[21]), .B(n403), .CI(n402), .CO(n146), .S(n404) );
-  NAND2X0_HVT U457 ( .A1(n429), .A2(n404), .Y(n407) );
-  NAND3X0_HVT U458 ( .A1(b[21]), .A2(n124), .A3(n405), .Y(n406) );
-  NAND3X0_HVT U459 ( .A1(n408), .A2(n407), .A3(n406), .Y(result[21]) );
-  MUX21X1_HVT U460 ( .A1(n452), .A2(n451), .S0(b[23]), .Y(n409) );
-  INVX1_HVT U461 ( .A(a[23]), .Y(n413) );
-  AO21X1_HVT U462 ( .A1(n409), .A2(n434), .A3(n413), .Y(n416) );
-  FADDX1_HVT U463 ( .A(a[23]), .B(n411), .CI(n410), .CO(n418), .S(n412) );
-  NAND2X0_HVT U464 ( .A1(n429), .A2(n412), .Y(n415) );
-  NAND3X0_HVT U465 ( .A1(b[23]), .A2(n124), .A3(n413), .Y(n414) );
-  NAND3X0_HVT U466 ( .A1(n416), .A2(n415), .A3(n414), .Y(result[23]) );
-  MUX21X1_HVT U467 ( .A1(n442), .A2(n451), .S0(b[24]), .Y(n417) );
-  INVX1_HVT U468 ( .A(a[24]), .Y(n421) );
-  AO21X1_HVT U469 ( .A1(n417), .A2(n434), .A3(n421), .Y(n424) );
-  FADDX1_HVT U470 ( .A(a[24]), .B(n419), .CI(n418), .CO(n324), .S(n420) );
-  NAND2X0_HVT U471 ( .A1(n429), .A2(n420), .Y(n423) );
-  NAND3X0_HVT U472 ( .A1(b[24]), .A2(n124), .A3(n421), .Y(n422) );
-  NAND3X0_HVT U473 ( .A1(n424), .A2(n423), .A3(n422), .Y(result[24]) );
-  MUX21X1_HVT U474 ( .A1(n442), .A2(n451), .S0(b[26]), .Y(n425) );
-  INVX1_HVT U475 ( .A(a[26]), .Y(n430) );
-  AO21X1_HVT U476 ( .A1(n425), .A2(n453), .A3(n430), .Y(n433) );
-  FADDX1_HVT U477 ( .A(a[26]), .B(n427), .CI(n426), .CO(n153), .S(n428) );
-  NAND2X0_HVT U478 ( .A1(n429), .A2(n428), .Y(n432) );
-  NAND3X0_HVT U479 ( .A1(b[26]), .A2(n124), .A3(n430), .Y(n431) );
-  NAND3X0_HVT U480 ( .A1(n433), .A2(n432), .A3(n431), .Y(result[26]) );
-  MUX21X1_HVT U481 ( .A1(n442), .A2(n451), .S0(b[28]), .Y(n435) );
-  NAND2X0_HVT U482 ( .A1(n435), .A2(n434), .Y(n441) );
-  INVX1_HVT U483 ( .A(n436), .Y(n440) );
-  FADDX1_HVT U484 ( .A(a[28]), .B(n438), .CI(n437), .CO(n444), .S(n439) );
-  AO222X1_HVT U485 ( .A1(n441), .A2(a[28]), .A3(n124), .A4(n440), .A5(n439), 
-        .A6(n464), .Y(result[28]) );
-  MUX21X1_HVT U486 ( .A1(n442), .A2(n451), .S0(b[29]), .Y(n443) );
-  INVX1_HVT U487 ( .A(a[29]), .Y(n447) );
-  AO21X1_HVT U488 ( .A1(n443), .A2(n453), .A3(n447), .Y(n450) );
-  FADDX1_HVT U489 ( .A(a[29]), .B(n445), .CI(n444), .CO(n455), .S(n446) );
-  NAND2X0_HVT U490 ( .A1(n464), .A2(n446), .Y(n449) );
-  NAND3X0_HVT U491 ( .A1(b[29]), .A2(n124), .A3(n447), .Y(n448) );
-  NAND3X0_HVT U492 ( .A1(n450), .A2(n449), .A3(n448), .Y(result[29]) );
-  MUX21X1_HVT U493 ( .A1(n452), .A2(n451), .S0(b[31]), .Y(n454) );
-  NAND2X0_HVT U494 ( .A1(n454), .A2(n453), .Y(n466) );
-  FADDX1_HVT U495 ( .A(a[30]), .B(n456), .CI(n455), .CO(n459), .S(n155) );
-  XOR2X1_HVT U496 ( .A1(alu_ctrl[0]), .A2(b[31]), .Y(n457) );
-  XOR2X1_HVT U497 ( .A1(n457), .A2(a[31]), .Y(n458) );
-  XOR2X1_HVT U498 ( .A1(n459), .A2(n458), .Y(n463) );
-  INVX1_HVT U499 ( .A(n460), .Y(n462) );
-  AO22X1_HVT U500 ( .A1(n464), .A2(n463), .A3(n462), .A4(n461), .Y(n465) );
-  AO21X1_HVT U501 ( .A1(a[31]), .A2(n466), .A3(n465), .Y(result[31]) );
-  NOR4X1_HVT U502 ( .A1(result[19]), .A2(result[22]), .A3(result[27]), .A4(
-        result[30]), .Y(n470) );
-  NOR4X1_HVT U503 ( .A1(result[0]), .A2(result[1]), .A3(result[3]), .A4(
-        result[5]), .Y(n469) );
-  NOR4X1_HVT U504 ( .A1(result[7]), .A2(result[9]), .A3(result[11]), .A4(
-        result[13]), .Y(n468) );
-  NOR4X1_HVT U505 ( .A1(result[15]), .A2(result[17]), .A3(result[2]), .A4(
-        result[25]), .Y(n467) );
-  NAND4X0_HVT U506 ( .A1(n470), .A2(n469), .A3(n468), .A4(n467), .Y(n476) );
-  NOR4X1_HVT U507 ( .A1(result[4]), .A2(result[6]), .A3(result[8]), .A4(
-        result[10]), .Y(n474) );
-  NOR4X1_HVT U508 ( .A1(result[12]), .A2(result[14]), .A3(result[16]), .A4(
-        result[18]), .Y(n473) );
-  NOR4X1_HVT U509 ( .A1(result[20]), .A2(result[21]), .A3(result[23]), .A4(
-        result[24]), .Y(n472) );
-  NOR4X1_HVT U510 ( .A1(result[26]), .A2(result[28]), .A3(result[29]), .A4(
-        result[31]), .Y(n471) );
-  NAND4X0_HVT U511 ( .A1(n474), .A2(n473), .A3(n472), .A4(n471), .Y(n475) );
-  NOR2X0_HVT U512 ( .A1(n476), .A2(n475), .Y(zero) );
+  NAND4X0_LVT U745 ( .A1(n444), .A2(n921), .A3(n183), .A4(n521), .Y(n180) );
+  NAND2X0_LVT U746 ( .A1(n444), .A2(n921), .Y(n182) );
+  NAND3X0_LVT U747 ( .A1(n186), .A2(n890), .A3(n390), .Y(n185) );
+  NAND3X0_LVT U748 ( .A1(n534), .A2(n887), .A3(n918), .Y(n186) );
+  OR2X1_LVT U749 ( .A1(n234), .A2(n353), .Y(n188) );
+  NAND4X0_LVT U750 ( .A1(n194), .A2(n257), .A3(n529), .A4(n538), .Y(n189) );
+  OR2X1_LVT U751 ( .A1(n234), .A2(n926), .Y(n197) );
+  OR2X1_LVT U752 ( .A1(n538), .A2(n257), .Y(n191) );
+  AO22X1_LVT U753 ( .A1(n538), .A2(n521), .A3(n194), .A4(n193), .Y(n192) );
+  AND2X1_LVT U754 ( .A1(n258), .A2(n443), .Y(n194) );
+  NAND2X0_LVT U755 ( .A1(n366), .A2(n195), .Y(result[3]) );
+  OR2X1_LVT U756 ( .A1(n926), .A2(n517), .Y(n196) );
+  NAND3X0_LVT U757 ( .A1(n198), .A2(n424), .A3(n425), .Y(result[8]) );
+  NAND3X0_RVT U758 ( .A1(n200), .A2(n411), .A3(n410), .Y(result[27]) );
+  AO21X1_LVT U759 ( .A1(n405), .A2(n521), .A3(n201), .Y(result[18]) );
+  AO22X1_LVT U760 ( .A1(n733), .A2(a[18]), .A3(n732), .A4(b[18]), .Y(n201) );
+  NAND3X0_LVT U761 ( .A1(n202), .A2(n268), .A3(n269), .Y(n406) );
+  AOI21X1_LVT U762 ( .A1(n261), .A2(n499), .A3(n728), .Y(n202) );
+  NAND2X0_LVT U763 ( .A1(n345), .A2(n487), .Y(n499) );
+  NAND3X0_LVT U764 ( .A1(n207), .A2(n203), .A3(n205), .Y(n709) );
+  NAND2X0_LVT U765 ( .A1(n208), .A2(n521), .Y(n706) );
+  NAND3X0_LVT U766 ( .A1(n211), .A2(n210), .A3(n768), .Y(n209) );
+  NAND2X0_LVT U767 ( .A1(n925), .A2(n769), .Y(n210) );
+  NAND3X0_LVT U768 ( .A1(n534), .A2(n769), .A3(n918), .Y(n211) );
+  OA21X1_LVT U769 ( .A1(n415), .A2(n688), .A3(n689), .Y(n458) );
+  OR2X1_LVT U770 ( .A1(n452), .A2(n212), .Y(n689) );
+  NAND2X0_LVT U771 ( .A1(n699), .A2(n867), .Y(n214) );
+  AND3X1_LVT U772 ( .A1(n217), .A2(n216), .A3(n215), .Y(n223) );
+  NAND4X0_LVT U773 ( .A1(n926), .A2(n222), .A3(n521), .A4(n478), .Y(n216) );
+  OR2X1_LVT U774 ( .A1(n218), .A2(n926), .Y(n217) );
+  NAND2X0_LVT U775 ( .A1(n223), .A2(n336), .Y(result[17]) );
+  NAND4X0_LVT U776 ( .A1(n229), .A2(n227), .A3(n226), .A4(n225), .Y(n224) );
+  NAND3X0_LVT U777 ( .A1(n926), .A2(n738), .A3(n710), .Y(n226) );
+  OR3X1_LVT U778 ( .A1(n738), .A2(n735), .A3(n926), .Y(n229) );
+  NAND3X0_LVT U779 ( .A1(n232), .A2(n230), .A3(n818), .Y(n826) );
+  NAND2X0_LVT U780 ( .A1(n231), .A2(n817), .Y(n230) );
+  NAND2X0_LVT U781 ( .A1(n455), .A2(a[1]), .Y(n810) );
+  NAND3X0_LVT U782 ( .A1(n233), .A2(n817), .A3(n262), .Y(n232) );
+  OR2X1_LVT U783 ( .A1(a[1]), .A2(n455), .Y(n262) );
+  OR2X1_LVT U784 ( .A1(a[2]), .A2(n456), .Y(n817) );
+  NAND4X0_LVT U785 ( .A1(n402), .A2(n781), .A3(n799), .A4(n275), .Y(n271) );
+  NAND2X0_LVT U786 ( .A1(n795), .A2(n699), .Y(n275) );
+  NAND2X0_LVT U787 ( .A1(n236), .A2(n235), .Y(n780) );
+  OA21X1_LVT U788 ( .A1(n868), .A2(n871), .A3(n872), .Y(n235) );
+  OR2X1_LVT U789 ( .A1(n594), .A2(n401), .Y(n868) );
+  NAND3X0_LVT U790 ( .A1(n467), .A2(n320), .A3(n237), .Y(n236) );
+  NAND2X0_LVT U791 ( .A1(n854), .A2(n855), .Y(n237) );
+  OA21X1_LVT U792 ( .A1(n755), .A2(n926), .A3(n754), .Y(n238) );
+  OA21X1_LVT U793 ( .A1(n890), .A2(n240), .A3(n412), .Y(n921) );
+  AND2X1_LVT U794 ( .A1(n242), .A2(n241), .Y(n508) );
+  NAND3X0_LVT U795 ( .A1(n244), .A2(n473), .A3(n243), .Y(n532) );
+  NAND2X0_LVT U796 ( .A1(n793), .A2(n474), .Y(n243) );
+  NAND2X0_LVT U797 ( .A1(n247), .A2(n780), .Y(n244) );
+  AND2X1_LVT U798 ( .A1(n794), .A2(n474), .Y(n247) );
+  AO21X1_LVT U799 ( .A1(n833), .A2(n375), .A3(n461), .Y(n245) );
+  AND2X1_LVT U800 ( .A1(n842), .A2(n375), .Y(n246) );
+  AND2X1_LVT U801 ( .A1(n247), .A2(n463), .Y(n533) );
+  AND2X1_LVT U802 ( .A1(n867), .A2(n467), .Y(n463) );
+  OR2X1_LVT U803 ( .A1(n404), .A2(n788), .Y(n403) );
+  NAND2X0_LVT U804 ( .A1(a[11]), .A2(n468), .Y(n404) );
+  XNOR2X2_LVT U805 ( .A1(n374), .A2(b[11]), .Y(n468) );
+  NAND3X0_LVT U806 ( .A1(n534), .A2(n751), .A3(n742), .Y(n248) );
+  AO21X1_LVT U807 ( .A1(n533), .A2(n699), .A3(n532), .Y(n534) );
+  AND3X1_LVT U808 ( .A1(n249), .A2(n128), .A3(n322), .Y(n327) );
+  NAND3X0_LVT U809 ( .A1(n534), .A2(n352), .A3(n918), .Y(n257) );
+  INVX0_LVT U810 ( .A(n326), .Y(zero) );
+  AND2X1_LVT U811 ( .A1(n880), .A2(n413), .Y(n794) );
+  NAND2X0_LVT U812 ( .A1(a[8]), .A2(n465), .Y(n855) );
+  MUX21X1_LVT U813 ( .A1(n704), .A2(n703), .S0(b[7]), .Y(n705) );
+  NAND3X0_LVT U814 ( .A1(n265), .A2(n264), .A3(n263), .Y(n438) );
+  OA21X1_LVT U815 ( .A1(n805), .A2(n266), .A3(n521), .Y(n265) );
+  NOR2X0_LVT U816 ( .A1(n735), .A2(n496), .Y(n918) );
+  NAND2X0_LVT U817 ( .A1(n503), .A2(n753), .Y(n496) );
+  AND2X1_LVT U818 ( .A1(n493), .A2(n757), .Y(n503) );
+  AO21X1_LVT U819 ( .A1(n267), .A2(n521), .A3(n358), .Y(result[24]) );
+  OR2X1_LVT U820 ( .A1(a[8]), .A2(n465), .Y(n462) );
+  NAND3X0_LVT U821 ( .A1(n533), .A2(n729), .A3(n699), .Y(n268) );
+  NAND2X0_LVT U822 ( .A1(n532), .A2(n729), .Y(n269) );
+  NAND3X0_LVT U823 ( .A1(n274), .A2(n272), .A3(n271), .Y(n419) );
+  OA21X1_LVT U824 ( .A1(n799), .A2(n402), .A3(n273), .Y(n272) );
+  OA21X1_LVT U825 ( .A1(n799), .A2(n781), .A3(n521), .Y(n273) );
+  OR2X1_LVT U826 ( .A1(n799), .A2(n275), .Y(n274) );
+  NAND2X0_LVT U827 ( .A1(n900), .A2(n276), .Y(n441) );
+  AO22X1_LVT U828 ( .A1(a[0]), .A2(n283), .A3(n682), .A4(b[0]), .Y(n683) );
+  NOR2X0_LVT U829 ( .A1(n294), .A2(n926), .Y(n297) );
+  NAND3X0_LVT U830 ( .A1(n378), .A2(n299), .A3(n296), .Y(n295) );
+  NAND3X0_LVT U831 ( .A1(n926), .A2(n804), .A3(n302), .Y(n296) );
+  NOR3X0_LVT U832 ( .A1(result[25]), .A2(n303), .A3(result[29]), .Y(n391) );
+  NAND2X0_LVT U833 ( .A1(n426), .A2(n392), .Y(n303) );
+  NAND2X0_LVT U834 ( .A1(n431), .A2(n304), .Y(result[25]) );
+  NAND2X0_LVT U835 ( .A1(n542), .A2(n311), .Y(result[31]) );
+  AND2X1_LVT U836 ( .A1(n700), .A2(n462), .Y(n867) );
+  NOR2X0_LVT U837 ( .A1(a[24]), .A2(n505), .Y(n770) );
+  NAND3X0_LVT U838 ( .A1(n314), .A2(n313), .A3(n312), .Y(result[26]) );
+  NAND2X0_LVT U839 ( .A1(n315), .A2(n521), .Y(n314) );
+  NAND3X0_LVT U840 ( .A1(n434), .A2(n317), .A3(n892), .Y(n316) );
+  NAND2X0_LVT U841 ( .A1(n925), .A2(n893), .Y(n317) );
+  AOI21X1_LVT U842 ( .A1(n524), .A2(n919), .A3(n351), .Y(n512) );
+  NAND2X0_LVT U843 ( .A1(n318), .A2(n909), .Y(n919) );
+  NAND2X0_LVT U844 ( .A1(n509), .A2(a[27]), .Y(n906) );
+  NAND2X0_LVT U845 ( .A1(n853), .A2(n855), .Y(n320) );
+  NAND2X0_RVT U846 ( .A1(n321), .A2(n436), .Y(result[30]) );
+  AND2X1_LVT U847 ( .A1(n393), .A2(n343), .Y(n322) );
+  NAND3X0_LVT U848 ( .A1(n325), .A2(n354), .A3(n324), .Y(n323) );
+  NAND3X0_LVT U849 ( .A1(n534), .A2(n918), .A3(n131), .Y(n325) );
+  NAND4X0_LVT U850 ( .A1(n327), .A2(n420), .A3(n391), .A4(n126), .Y(n326) );
+  AO22X1_LVT U851 ( .A1(b[6]), .A2(n850), .A3(n851), .A4(a[6]), .Y(n328) );
+  OA21X1_LVT U852 ( .A1(n827), .A2(n331), .A3(n845), .Y(n330) );
+  NAND2X0_LVT U853 ( .A1(n498), .A2(n726), .Y(n735) );
+  AND2X1_LVT U854 ( .A1(n451), .A2(n333), .Y(n726) );
+  OA21X1_LVT U855 ( .A1(n926), .A2(n355), .A3(n515), .Y(n334) );
+  NAND2X0_LVT U856 ( .A1(n848), .A2(n335), .Y(n461) );
+  OR2X1_LVT U857 ( .A1(n843), .A2(n847), .Y(n335) );
+  NAND2X0_LVT U858 ( .A1(n459), .A2(a[5]), .Y(n843) );
+  AOI22X1_LVT U859 ( .A1(b[17]), .A2(n484), .A3(n485), .A4(a[17]), .Y(n336) );
+  OA21X1_LVT U860 ( .A1(n708), .A2(n710), .A3(n711), .Y(n754) );
+  OA21X1_LVT U861 ( .A1(n337), .A2(n710), .A3(n712), .Y(n349) );
+  AO22X1_LVT U862 ( .A1(b[20]), .A2(n748), .A3(n749), .A4(a[20]), .Y(n342) );
+  INVX0_LVT U863 ( .A(result[28]), .Y(n343) );
+  AO21X1_LVT U864 ( .A1(n347), .A2(n521), .A3(n346), .Y(result[22]) );
+  XOR2X2_LVT U865 ( .A1(n348), .A2(n717), .Y(n347) );
+  AND2X1_LVT U866 ( .A1(n524), .A2(n519), .Y(n528) );
+  NOR2X0_LVT U867 ( .A1(n917), .A2(n525), .Y(n352) );
+  OA21X1_LVT U868 ( .A1(n515), .A2(n516), .A3(n514), .Y(n353) );
+  NAND2X0_LVT U869 ( .A1(n524), .A2(n916), .Y(n513) );
+  NOR2X0_LVT U870 ( .A1(n908), .A2(n907), .Y(n916) );
+  NOR2X0_LVT U871 ( .A1(a[27]), .A2(n509), .Y(n907) );
+  AND2X1_LVT U872 ( .A1(n508), .A2(n887), .Y(n442) );
+  NOR2X0_LVT U873 ( .A1(n721), .A2(n770), .Y(n887) );
+  NOR2X0_LVT U874 ( .A1(a[25]), .A2(n506), .Y(n891) );
+  NOR2X0_LVT U875 ( .A1(a[26]), .A2(n507), .Y(n894) );
+  OR2X1_LVT U876 ( .A1(a[21]), .A2(n501), .Y(n757) );
+  NAND3X0_LVT U877 ( .A1(n399), .A2(n398), .A3(n716), .Y(n359) );
+  NAND2X0_LVT U878 ( .A1(n830), .A2(n521), .Y(n366) );
+  NAND3X0_LVT U879 ( .A1(n369), .A2(n368), .A3(n367), .Y(result[1]) );
+  NAND3X0_LVT U880 ( .A1(n373), .A2(n440), .A3(n439), .Y(n372) );
+  NAND3X0_LVT U881 ( .A1(n699), .A2(n463), .A3(n782), .Y(n373) );
+  NAND2X0_LVT U882 ( .A1(n447), .A2(n124), .Y(n448) );
+  NOR2X0_LVT U883 ( .A1(n847), .A2(n844), .Y(n375) );
+  AOI22X1_LVT U884 ( .A1(b[16]), .A2(n489), .A3(n490), .A4(a[16]), .Y(n378) );
+  AO21X1_LVT U885 ( .A1(n846), .A2(n842), .A3(n833), .Y(n396) );
+  OR2X1_LVT U886 ( .A1(n756), .A2(n715), .Y(n398) );
+  NAND2X0_LVT U887 ( .A1(n503), .A2(n752), .Y(n399) );
+  NAND2X0_LVT U888 ( .A1(n400), .A2(n745), .Y(n752) );
+  NAND2X0_LVT U889 ( .A1(n464), .A2(a[7]), .Y(n853) );
+  NAND3X0_LVT U890 ( .A1(n409), .A2(n408), .A3(n407), .Y(result[28]) );
+  NAND2X0_LVT U891 ( .A1(n912), .A2(n521), .Y(n409) );
+  OR2X1_LVT U892 ( .A1(a[11]), .A2(n468), .Y(n880) );
+  NAND3X0_LVT U893 ( .A1(n419), .A2(n418), .A3(n417), .Y(result[13]) );
+  NOR2X0_LVT U894 ( .A1(n421), .A2(result[10]), .Y(n420) );
+  NAND3X0_LVT U895 ( .A1(n931), .A2(n423), .A3(n422), .Y(n421) );
+  OA21X1_LVT U896 ( .A1(n779), .A2(n796), .A3(n879), .Y(n433) );
+  NAND3X0_LVT U897 ( .A1(n534), .A2(n893), .A3(n918), .Y(n434) );
+  AND2X1_RVT U898 ( .A1(n435), .A2(n442), .Y(n495) );
+  NAND2X0_RVT U899 ( .A1(n438), .A2(n437), .Y(result[15]) );
+  AOI22X1_RVT U900 ( .A1(b[15]), .A2(n806), .A3(n807), .A4(a[15]), .Y(n437) );
+  OA21X1_RVT U901 ( .A1(n797), .A2(n781), .A3(n798), .Y(n439) );
+  NAND2X0_RVT U902 ( .A1(n782), .A2(n780), .Y(n440) );
+  NAND2X0_HVT U903 ( .A1(n530), .A2(n531), .Y(n443) );
+  AND2X1_HVT U904 ( .A1(n445), .A2(a[5]), .Y(n575) );
+  AND2X1_HVT U905 ( .A1(n446), .A2(a[1]), .Y(n563) );
+  NOR2X0_HVT U906 ( .A1(b[10]), .A2(n598), .Y(n590) );
+  NOR2X0_HVT U907 ( .A1(b[6]), .A2(n577), .Y(n559) );
+  NOR2X0_HVT U908 ( .A1(b[16]), .A2(n619), .Y(n546) );
+  NOR2X0_HVT U909 ( .A1(n601), .A2(n590), .Y(n603) );
+  MUX21X1_HVT U910 ( .A1(n450), .A2(n491), .S0(b[17]), .Y(n449) );
+  AO21X1_HVT U911 ( .A1(n123), .A2(n620), .A3(n681), .Y(n484) );
+  INVX1_HVT U912 ( .A(n499), .Y(n478) );
+  AO21X1_HVT U913 ( .A1(n123), .A2(n619), .A3(n681), .Y(n489) );
+  AO21X2_HVT U914 ( .A1(n123), .A2(n664), .A3(n681), .Y(n522) );
+  INVX0_HVT U915 ( .A(n495), .Y(n516) );
+  OA21X1_HVT U916 ( .A1(n513), .A2(n921), .A3(n512), .Y(n514) );
+  INVX0_HVT U917 ( .A(n525), .Y(n531) );
+  INVX0_HVT U918 ( .A(n921), .Y(n530) );
+  NAND2X0_HVT U919 ( .A1(n536), .A2(a[31]), .Y(n537) );
+  NAND2X0_HVT U920 ( .A1(n545), .A2(n643), .Y(n647) );
+  NAND2X0_HVT U921 ( .A1(n548), .A2(n630), .Y(n549) );
+  NAND2X0_HVT U922 ( .A1(n555), .A2(n658), .Y(n556) );
+  NAND2X0_HVT U923 ( .A1(n561), .A2(b[0]), .Y(n564) );
+  NAND2X0_HVT U924 ( .A1(n809), .A2(b[1]), .Y(n562) );
+  NAND2X0_HVT U925 ( .A1(n566), .A2(b[2]), .Y(n569) );
+  NAND2X0_HVT U926 ( .A1(n825), .A2(b[3]), .Y(n567) );
+  OAI21X1_HVT U927 ( .A1(n569), .A2(n568), .A3(n567), .Y(n570) );
+  NAND2X0_HVT U928 ( .A1(n452), .A2(b[4]), .Y(n576) );
+  NAND2X0_HVT U929 ( .A1(n573), .A2(b[5]), .Y(n574) );
+  OAI21X1_HVT U930 ( .A1(n576), .A2(n575), .A3(n574), .Y(n584) );
+  NAND2X0_HVT U931 ( .A1(n577), .A2(b[6]), .Y(n581) );
+  NAND2X0_HVT U932 ( .A1(n578), .A2(b[7]), .Y(n579) );
+  NAND2X0_HVT U933 ( .A1(n588), .A2(n615), .Y(n616) );
+  NAND2X0_HVT U934 ( .A1(n591), .A2(n603), .Y(n592) );
+  NAND2X0_HVT U935 ( .A1(n593), .A2(b[8]), .Y(n597) );
+  NAND2X0_HVT U936 ( .A1(n594), .A2(b[9]), .Y(n595) );
+  NAND2X0_HVT U937 ( .A1(n598), .A2(b[10]), .Y(n602) );
+  NAND2X0_HVT U938 ( .A1(n599), .A2(b[11]), .Y(n600) );
+  NAND2X0_HVT U939 ( .A1(n604), .A2(b[12]), .Y(n608) );
+  NAND2X0_HVT U940 ( .A1(n605), .A2(b[13]), .Y(n606) );
+  NAND2X0_HVT U941 ( .A1(n609), .A2(b[14]), .Y(n613) );
+  NAND2X0_HVT U942 ( .A1(n610), .A2(b[15]), .Y(n611) );
+  NAND2X0_HVT U943 ( .A1(n619), .A2(b[16]), .Y(n623) );
+  NAND2X0_HVT U944 ( .A1(n620), .A2(b[17]), .Y(n621) );
+  OAI21X1_HVT U945 ( .A1(n623), .A2(n622), .A3(n621), .Y(n631) );
+  NAND2X0_HVT U946 ( .A1(n624), .A2(b[18]), .Y(n628) );
+  NAND2X0_HVT U947 ( .A1(n625), .A2(b[19]), .Y(n626) );
+  OAI21X1_HVT U948 ( .A1(n628), .A2(n627), .A3(n626), .Y(n629) );
+  NAND2X0_HVT U949 ( .A1(n632), .A2(b[20]), .Y(n636) );
+  NAND2X0_HVT U950 ( .A1(n633), .A2(b[21]), .Y(n634) );
+  OAI21X1_HVT U951 ( .A1(n636), .A2(n635), .A3(n634), .Y(n644) );
+  NAND2X0_HVT U952 ( .A1(n637), .A2(b[22]), .Y(n641) );
+  NAND2X0_HVT U953 ( .A1(n638), .A2(b[23]), .Y(n639) );
+  OAI21X1_HVT U954 ( .A1(n641), .A2(n640), .A3(n639), .Y(n642) );
+  NAND2X0_HVT U955 ( .A1(n648), .A2(b[24]), .Y(n651) );
+  NAND2X0_HVT U956 ( .A1(n762), .A2(b[25]), .Y(n649) );
+  NAND2X0_HVT U957 ( .A1(n652), .A2(b[26]), .Y(n656) );
+  NAND2X0_HVT U958 ( .A1(n653), .A2(b[27]), .Y(n654) );
+  OAI21X1_HVT U959 ( .A1(n656), .A2(n655), .A3(n654), .Y(n657) );
+  NAND2X0_HVT U960 ( .A1(n659), .A2(b[28]), .Y(n663) );
+  NAND2X0_HVT U961 ( .A1(n660), .A2(b[29]), .Y(n661) );
+  OAI21X1_HVT U962 ( .A1(n663), .A2(n662), .A3(n661), .Y(n671) );
+  NAND2X0_HVT U963 ( .A1(n664), .A2(b[30]), .Y(n668) );
+  NAND2X0_HVT U964 ( .A1(n665), .A2(b[31]), .Y(n666) );
+  OAI21X1_HVT U965 ( .A1(n668), .A2(n667), .A3(n666), .Y(n669) );
+  NAND2X0_HVT U966 ( .A1(n678), .A2(n307), .Y(n680) );
+  AO21X2_HVT U967 ( .A1(n123), .A2(n561), .A3(n681), .Y(n682) );
+  AND2X1_HVT U968 ( .A1(n702), .A2(n877), .Y(n703) );
+  AO21X1_HVT U969 ( .A1(n123), .A2(n637), .A3(n681), .Y(n718) );
+  NAND2X0_HVT U970 ( .A1(n713), .A2(n751), .Y(n714) );
+  AO21X1_HVT U971 ( .A1(n123), .A2(n638), .A3(n681), .Y(n723) );
+  MUX21X1_HVT U972 ( .A1(n450), .A2(n491), .S0(b[18]), .Y(n725) );
+  AO21X2_HVT U973 ( .A1(n123), .A2(n624), .A3(n681), .Y(n732) );
+  INVX0_HVT U974 ( .A(n727), .Y(n728) );
+  MUX21X1_HVT U975 ( .A1(n450), .A2(n491), .S0(b[20]), .Y(n741) );
+  AO21X2_HVT U976 ( .A1(n123), .A2(n632), .A3(n681), .Y(n748) );
+  AO21X1_HVT U977 ( .A1(n123), .A2(n633), .A3(n681), .Y(n759) );
+  NAND2X0_HVT U978 ( .A1(n751), .A2(n753), .Y(n755) );
+  AO21X1_HVT U979 ( .A1(n123), .A2(n648), .A3(n681), .Y(n774) );
+  NAND2X0_HVT U980 ( .A1(n463), .A2(n880), .Y(n787) );
+  MUX21X1_HVT U981 ( .A1(n450), .A2(n491), .S0(b[15]), .Y(n802) );
+  AO21X2_HVT U982 ( .A1(n123), .A2(n610), .A3(n681), .Y(n806) );
+  AO21X2_HVT U983 ( .A1(n123), .A2(n809), .A3(n681), .Y(n813) );
+  NAND2X0_HVT U984 ( .A1(n262), .A2(n810), .Y(n811) );
+  AO21X2_HVT U985 ( .A1(n123), .A2(n566), .A3(n681), .Y(n822) );
+  AND2X1_HVT U986 ( .A1(n837), .A2(n877), .Y(n838) );
+  MUX21X1_HVT U987 ( .A1(n450), .A2(n491), .S0(b[6]), .Y(n841) );
+  NAND2X0_HVT U988 ( .A1(n841), .A2(n877), .Y(n851) );
+  AO21X2_HVT U989 ( .A1(n123), .A2(n577), .A3(n681), .Y(n850) );
+  AO21X2_HVT U990 ( .A1(n123), .A2(n593), .A3(n681), .Y(n858) );
+  AO21X2_HVT U991 ( .A1(n123), .A2(n594), .A3(n681), .Y(n864) );
+  NAND2X0_HVT U992 ( .A1(n868), .A2(n130), .Y(n862) );
+  NAND2X0_HVT U993 ( .A1(n123), .A2(n652), .Y(n886) );
+  MUX21X1_HVT U994 ( .A1(n450), .A2(n491), .S0(b[29]), .Y(n915) );
+  NAND2X0_HVT U995 ( .A1(n915), .A2(n877), .Y(n930) );
+  AO21X1_HVT U996 ( .A1(n123), .A2(n660), .A3(n681), .Y(n929) );
+  INVX0_HVT U997 ( .A(result[5]), .Y(n931) );
 endmodule
 
 
@@ -50209,50 +50708,41 @@ module riscv_core ( clk, rst, instruction, debug_pc, debug_wb_data );
   output [31:0] debug_pc;
   output [31:0] debug_wb_data;
   input clk, rst;
-  wire   branch, zero, reg_write, mem_read, mem_write, alu_src, n4, n5, n6, n7,
-         n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21,
-         n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35,
-         n36, n37, n38, n39, n40, n41, n42, n43, n44, n45, n46, n47, n48, n49,
-         n50, n51, n52, n53, n54, n55, n56, n57, n58, n59, n60, n61, n62, n63,
-         n64, n65, n66, n67, n68, n69, n70, n71, n72, n73, n74, n75, n76, n77,
-         n78, n79, n80, n81, n82, n83, n84, n85, n86, n87, n88, n89, n90, n91,
-         n92, n93, n94, n95, n96, n97, n98, n99, n100, n101, n102, n103, n104,
-         n105, n106, n107, n108, n109, n110, n111, n112, n113, n114, n115,
-         n116, n117, n118, n119, n120, n121, n122, n123, n124, n125, n126,
-         n127, n128, n129, n130, n131, n132, n133, n134, n135, n136, n137,
-         n138, n139, n140, n141, n142, n143, n144, n145, n146, n147, n148,
-         n149, n150, n151, n152, n153, n154, n155, n156, n157, n158, n159,
-         n160, n161, n162, n163, n164, n165, n166, n167, n168, n169, n170,
-         n171, n172, n173, n174, n175, n176, n177, n178, n179, n180, n181,
-         n182, n183, n184, n185, n186, n187, n188, n189, n190, n191, n192,
-         n193, n194, n195, n196, n197, n198, n199, n200, n201, n202, n203,
-         n204, n205, n206, n207, n208, n209, n210, n211, n212, n213, n214,
-         n215, n216, n217, n218, n219, n220, n221, n222, n223, n224, n225,
-         n226, n227, n228, n229, n230, n231, n232, n233, n234, n235, n236,
-         n237, n238, n239, n240, n241, n242, n243, n244, n245, n246, n247,
-         n248, n249, n250, n251, n252, n253, n254, n255, n256, n257, n258,
-         n259, n260, n261, n262, n263, n264, n265, n266, n267, n268, n269,
-         n270, n271, n272, n273, n274, n275, n276, n277, n278, n279, n280,
-         n281, n282, n283, n284, n285, n286, n287, n288, n289, n290, n291,
-         n292, n293, n294, n295, n296, n297, n298, n299, n300, n301, n302,
-         n303, n304, n305, n306, n307, n308, n309, n310, n311, n312, n313,
-         n314, n315, n316, n317, n318, n319, n320, n321, n322, n323, n324,
-         n325, n326, n327, n328, n329, n330, n331, n332, n333, n334, n335,
-         n336, n337, n338, n339, n340, n341, n342, n343, n344, n345, n346,
-         n347, n348, n349, n350, n351, n352, n353, n354, n355, n356, n357,
-         n358, n359, n360, n361, n362, n363, n364, n365, n366, n367, n368,
-         n369, n370, n371, n372, n373, n374, n375, n376, n377, n378, n379,
-         n380, n381, n382, n383, n384, n385, n386, n387, n388, n389, n390,
-         n391, n392, n393, n394, n395, n396, n397, n398, n399, n400, n401,
-         n402, n403, n404, n405, n406, n407, n408, n409, n410, n411, n412,
-         n413, n414, n415, n416, n417, n418, n419, n420, n421, n422, n423,
-         n424, n425, n426, n427, n428, n429, n430, n431, n432, n433, n434,
-         n435, n436, n437, n438, n439, n440, n441, n442, n443, n444, n445,
-         n446, n447, n448, n449, n450, n451, n452, n453, n454, n455, n456,
-         n457, n458, n459, n460, n461, n462, n463, n464, n465, n466, n467,
-         n468, n469, n470, n471, n472, n473, n474, n475, n476, n477, n478,
-         n479, n480, n481, n482, n483, n484, n485, n486, n487,
-         SYNOPSYS_UNCONNECTED_1, SYNOPSYS_UNCONNECTED_2;
+  wire   branch, zero, reg_write, mem_read, mem_write, alu_src, n4, n6, n7, n8,
+         n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22,
+         n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35, n36,
+         n37, n38, n39, n40, n41, n42, n43, n44, n45, n46, n47, n48, n49, n50,
+         n51, n52, n53, n54, n55, n56, n57, n58, n59, n60, n61, n62, n63, n64,
+         n65, n66, n67, n68, n69, n70, n71, n72, n73, n74, n75, n76, n77, n78,
+         n79, n80, n81, n82, n83, n84, n85, n86, n87, n88, n89, n90, n91, n92,
+         n93, n94, n95, n96, n97, n98, n99, n100, n101, n102, n103, n104, n105,
+         n106, n107, n108, n109, n110, n111, n112, n113, n114, n115, n116,
+         n117, n118, n119, n120, n121, n122, n123, n124, n125, n126, n127,
+         n128, n129, n130, n131, n132, n133, n134, n135, n136, n137, n138,
+         n139, n140, n141, n142, n143, n144, n145, n146, n147, n148, n149,
+         n150, n151, n152, n153, n154, n155, n156, n157, n158, n159, n160,
+         n161, n162, n163, n164, n165, n166, n167, n168, n169, n170, n171,
+         n172, n173, n174, n175, n176, n177, n178, n179, n180, n181, n182,
+         n183, n184, n185, n186, n187, n188, n189, n190, n191, n192, n193,
+         n194, n195, n196, n197, n198, n199, n200, n201, n202, n203, n204,
+         n205, n206, n207, n208, n209, n210, n211, n212, n213, n214, n215,
+         n216, n217, n218, n219, n220, n221, n222, n223, n224, n225, n226,
+         n227, n228, n229, n230, n231, n232, n233, n234, n235, n236, n237,
+         n238, n239, n240, n241, n242, n243, n244, n245, n246, n247, n248,
+         n249, n250, n251, n252, n253, n254, n255, n256, n257, n258, n259,
+         n260, n261, n262, n263, n264, n265, n266, n267, n268, n269, n270,
+         n271, n272, n273, n274, n275, n276, n277, n278, n279, n280, n281,
+         n282, n283, n284, n285, n286, n287, n288, n289, n290, n291, n292,
+         n293, n294, n295, n296, n297, n298, n299, n300, n301, n302, n303,
+         n304, n305, n306, n307, n308, n309, n310, n311, n312, n313, n314,
+         n315, n316, n317, n318, n319, n320, n321, n322, n323, n324, n325,
+         n326, n327, n328, n329, n330, n331, n332, n333, n334, n335, n336,
+         n337, n338, n339, n340, n341, n342, n343, n344, n345, n346, n347,
+         n348, n349, n350, n351, n352, n353, n354, n355, n356, n357, n358,
+         n359, n360, n361, n362, n363, n364, n365, n366, n367, n368, n369,
+         n370, n371, n372, n373, n374, n375, n376, n377, n378, n379, n380,
+         n381, n382, n383, n384, n385, n386, SYNOPSYS_UNCONNECTED_1,
+         SYNOPSYS_UNCONNECTED_2;
   wire   [31:0] pc_next;
   wire   [31:0] imm;
   wire   [3:0] alu_ctrl;
@@ -50264,660 +50754,543 @@ module riscv_core ( clk, rst, instruction, debug_pc, debug_wb_data );
 
   pc pc_inst ( .clk(clk), .rst(rst), .pc_next(pc_next), .pc(debug_pc) );
   control ctrl ( .opcode(instruction[6:0]), .funct3(instruction[14:12]), 
-        .funct7(instruction[31:25]), .reg_write(reg_write), .mem_read(mem_read), .mem_write(mem_write), .mem_to_reg(n67), .alu_src(alu_src), .branch(branch), 
-        .alu_ctrl({SYNOPSYS_UNCONNECTED_1, SYNOPSYS_UNCONNECTED_2, 
-        alu_ctrl[1:0]}) );
+        .funct7(instruction[31:25]), .reg_write(reg_write), .mem_read(mem_read), .mem_write(mem_write), .alu_src(alu_src), .branch(branch), .alu_ctrl({
+        SYNOPSYS_UNCONNECTED_1, SYNOPSYS_UNCONNECTED_2, alu_ctrl[1:0]}) );
   regfile rf ( .clk(clk), .we(reg_write), .rs1(instruction[19:15]), .rs2(
-        instruction[24:20]), .rd(instruction[11:7]), .wd(debug_wb_data), .rd1(
-        reg_data1), .rd2(reg_data2) );
+        instruction[24:20]), .rd(instruction[11:7]), .wd({debug_wb_data[31:9], 
+        n6, debug_wb_data[7:0]}), .rd1(reg_data1), .rd2(reg_data2) );
   imm_gen immgen ( .instruction(instruction), .imm(imm) );
-  alu alu_inst ( .a(reg_data1), .b(alu_input2), .alu_ctrl({1'b0, 1'b0, 
-        alu_ctrl[1], n487}), .result(alu_result), .zero(zero) );
-  data_mem dmem ( .clk(clk), .mem_read(n482), .mem_write(mem_write), .addr(
-        alu_result), .write_data({n21, n27, n43, n53, n37, n25, n29, n9, n41, 
-        n55, n51, n7, n49, n11, n23, n47, n19, n59, n45, n57, n17, n63, n35, 
-        n15, n13, n61, n39, n33, n31, n5, n486, n485}), .read_data(mem_data)
+  alu alu_inst ( .a(reg_data1), .b({alu_input2[31:2], n386, alu_input2[0]}), 
+        .alu_ctrl({1'b0, 1'b0, alu_ctrl[1:0]}), .result(alu_result), .zero(
+        zero) );
+  data_mem dmem ( .clk(clk), .mem_read(n336), .mem_write(mem_write), .addr({
+        alu_result[31:6], n364, n365, alu_result[3:0]}), .write_data({n10, 
+        n366, n368, n370, n367, n375, n12, n8, n14, n16, n372, n358, n377, 
+        n363, n378, n362, n380, n357, n376, n360, n371, n361, n381, n359, n379, 
+        n374, n384, n369, n383, n373, n385, n382}), .read_data(mem_data) );
+  INVX0_LVT U72 ( .A(n4), .Y(debug_wb_data[8]) );
+  OAI21X2_LVT U73 ( .A1(n284), .A2(n288), .A3(n285), .Y(n283) );
+  OAI21X2_LVT U74 ( .A1(n265), .A2(n288), .A3(n264), .Y(n270) );
+  OAI21X2_LVT U75 ( .A1(n250), .A2(n288), .A3(n249), .Y(n255) );
+  OAI21X2_LVT U76 ( .A1(n239), .A2(n288), .A3(n238), .Y(n244) );
+  OAI21X2_LVT U77 ( .A1(n274), .A2(n288), .A3(n273), .Y(n278) );
+  OAI21X2_LVT U78 ( .A1(n257), .A2(n288), .A3(n256), .Y(n261) );
+  OAI21X2_LVT U79 ( .A1(n230), .A2(n288), .A3(n229), .Y(n235) );
+  INVX1_LVT U80 ( .A(n87), .Y(n90) );
+  INVX1_LVT U81 ( .A(n213), .Y(n218) );
+  INVX1_LVT U82 ( .A(n119), .Y(n124) );
+  INVX1_LVT U83 ( .A(n95), .Y(n100) );
+  INVX1_LVT U84 ( .A(n139), .Y(n144) );
+  INVX1_LVT U85 ( .A(n181), .Y(n186) );
+  INVX1_LVT U86 ( .A(n169), .Y(n174) );
+  INVX1_LVT U87 ( .A(n198), .Y(n203) );
+  INVX1_LVT U88 ( .A(n148), .Y(n152) );
+  INVX1_LVT U89 ( .A(n208), .Y(n212) );
+  INVX1_LVT U90 ( .A(n189), .Y(n193) );
+  INVX1_LVT U91 ( .A(n107), .Y(n112) );
+  INVX1_LVT U92 ( .A(n129), .Y(n134) );
+  INVX1_LVT U93 ( .A(n74), .Y(n78) );
+  INVX1_LVT U94 ( .A(n159), .Y(n164) );
+  OAI21X2_LVT U95 ( .A1(n220), .A2(n214), .A3(n215), .Y(n205) );
+  AND2X1_LVT U96 ( .A1(n19), .A2(imm[19]), .Y(n54) );
+  AND2X2_LVT U97 ( .A1(n19), .A2(imm[15]), .Y(n43) );
+  AND2X1_LVT U98 ( .A1(n19), .A2(imm[17]), .Y(n52) );
+  AND2X2_LVT U99 ( .A1(n19), .A2(imm[16]), .Y(n51) );
+  INVX2_LVT U100 ( .A(n338), .Y(n4) );
+  INVX2_LVT U101 ( .A(n4), .Y(n6) );
+  INVX4_LVT U102 ( .A(n355), .Y(n356) );
+  INVX4_RVT U103 ( .A(n345), .Y(n363) );
+  INVX4_RVT U104 ( .A(n339), .Y(n357) );
+  NBUFFX8_HVT U105 ( .A(mem_read), .Y(n336) );
+  AND2X4_LVT U106 ( .A1(zero), .A2(branch), .Y(n19) );
+  MUX21X1_LVT U107 ( .A1(mem_data[8]), .A2(alu_result[8]), .S0(n337), .Y(n338)
          );
-  XNOR2X1_HVT U72 ( .A1(n165), .A2(n164), .Y(n170) );
-  XNOR2X1_HVT U73 ( .A1(n132), .A2(n131), .Y(n139) );
-  NOR2X0_HVT U74 ( .A1(n264), .A2(n158), .Y(n159) );
-  AOI21X1_HVT U75 ( .A1(n78), .A2(n319), .A3(n82), .Y(n83) );
-  INVX1_HVT U76 ( .A(n320), .Y(n82) );
-  INVX1_HVT U77 ( .A(n79), .Y(n80) );
-  NOR2X2_HVT U78 ( .A1(n466), .A2(n462), .Y(n468) );
-  INVX2_LVT U79 ( .A(n483), .Y(n484) );
-  MUX21X1_LVT U80 ( .A1(reg_data2[5]), .A2(imm[5]), .S0(n483), .Y(
-        alu_input2[5]) );
-  MUX21X1_LVT U81 ( .A1(reg_data2[9]), .A2(imm[9]), .S0(n483), .Y(
-        alu_input2[9]) );
-  MUX21X2_HVT U82 ( .A1(reg_data2[17]), .A2(imm[17]), .S0(n483), .Y(
-        alu_input2[17]) );
-  MUX21X2_HVT U83 ( .A1(imm[25]), .A2(reg_data2[25]), .S0(n484), .Y(
-        alu_input2[25]) );
-  XNOR2X2_HVT U84 ( .A1(n306), .A2(n305), .Y(n311) );
-  HADDX1_HVT U85 ( .A0(n182), .B0(debug_pc[29]), .C1(n239), .SO(n183) );
-  INVX1_RVT U86 ( .A(n124), .Y(n442) );
-  INVX0_RVT U87 ( .A(n229), .Y(n102) );
-  MUX21X1_RVT U88 ( .A1(imm[14]), .A2(reg_data2[14]), .S0(n484), .Y(
-        alu_input2[14]) );
-  INVX0_RVT U89 ( .A(n355), .Y(n81) );
-  XNOR2X1_RVT U90 ( .A1(n189), .A2(n188), .Y(n193) );
-  OAI21X1_RVT U91 ( .A1(n442), .A2(n441), .A3(n440), .Y(n447) );
-  OAI21X1_RVT U92 ( .A1(n442), .A2(n145), .A3(n144), .Y(n150) );
-  XOR2X1_RVT U93 ( .A1(n409), .A2(n361), .Y(n365) );
-  OAI21X1_RVT U94 ( .A1(n427), .A2(n442), .A3(n426), .Y(n431) );
-  XOR2X1_RVT U95 ( .A1(n474), .A2(n473), .Y(n479) );
-  XOR2X1_RVT U96 ( .A1(n442), .A2(n350), .Y(n354) );
-  OAI21X1_RVT U97 ( .A1(n442), .A2(n197), .A3(n196), .Y(n202) );
-  XOR2X1_RVT U98 ( .A1(n333), .A2(n332), .Y(n338) );
-  XOR2X1_RVT U99 ( .A1(n341), .A2(n340), .Y(n346) );
-  AOI21X2_RVT U100 ( .A1(n97), .A2(n124), .A3(n96), .Y(n409) );
-  XNOR2X1_RVT U101 ( .A1(n469), .A2(n314), .Y(n317) );
-  OAI21X1_RVT U102 ( .A1(n90), .A2(n312), .A3(n89), .Y(n124) );
-  INVX1_HVT U103 ( .A(n312), .Y(n469) );
-  INVX0_RVT U104 ( .A(n407), .Y(n217) );
-  OAI21X1_RVT U105 ( .A1(n95), .A2(n426), .A3(n94), .Y(n96) );
-  INVX0_RVT U106 ( .A(n426), .Y(n439) );
-  INVX0_RVT U107 ( .A(n276), .Y(n390) );
-  INVX2_RVT U108 ( .A(n20), .Y(n21) );
-  OAI21X1_RVT U109 ( .A1(n84), .A2(n318), .A3(n83), .Y(n301) );
-  INVX2_RVT U110 ( .A(n30), .Y(n31) );
-  INVX0_RVT U111 ( .A(n318), .Y(n423) );
-  OAI21X1_RVT U112 ( .A1(n466), .A2(n465), .A3(n464), .Y(n467) );
-  INVX2_RVT U113 ( .A(n22), .Y(n23) );
-  INVX2_RVT U114 ( .A(n12), .Y(n13) );
-  INVX2_RVT U115 ( .A(n18), .Y(n19) );
-  INVX2_RVT U116 ( .A(n24), .Y(n25) );
-  INVX2_RVT U117 ( .A(n16), .Y(n17) );
-  INVX2_RVT U118 ( .A(n26), .Y(n27) );
-  INVX2_RVT U119 ( .A(n44), .Y(n45) );
-  INVX2_RVT U120 ( .A(n52), .Y(n53) );
-  INVX2_RVT U121 ( .A(n42), .Y(n43) );
-  INVX2_RVT U122 ( .A(n50), .Y(n51) );
-  INVX2_RVT U123 ( .A(n38), .Y(n39) );
-  INVX2_RVT U124 ( .A(n36), .Y(n37) );
-  INVX2_RVT U125 ( .A(n48), .Y(n49) );
-  INVX2_RVT U126 ( .A(n34), .Y(n35) );
-  INVX0_RVT U127 ( .A(reg_data2[31]), .Y(n20) );
-  INVX0_RVT U128 ( .A(reg_data2[26]), .Y(n24) );
-  INVX0_RVT U129 ( .A(reg_data2[17]), .Y(n22) );
-  MUX21X1_RVT U130 ( .A1(reg_data2[31]), .A2(imm[31]), .S0(n483), .Y(
-        alu_input2[31]) );
-  INVX2_RVT U131 ( .A(n32), .Y(n33) );
-  INVX0_RVT U132 ( .A(reg_data2[30]), .Y(n26) );
-  INVX0_RVT U133 ( .A(reg_data2[15]), .Y(n18) );
-  INVX2_RVT U134 ( .A(n28), .Y(n29) );
-  MUX21X1_RVT U135 ( .A1(reg_data2[19]), .A2(imm[19]), .S0(n483), .Y(
-        alu_input2[19]) );
-  INVX0_RVT U136 ( .A(n123), .Y(n248) );
-  INVX2_RVT U137 ( .A(n60), .Y(n61) );
-  INVX2_RVT U138 ( .A(n58), .Y(n59) );
-  MUX21X1_RVT U139 ( .A1(reg_data2[28]), .A2(imm[28]), .S0(n483), .Y(
-        alu_input2[28]) );
-  INVX2_RVT U140 ( .A(n62), .Y(n63) );
-  INVX2_RVT U141 ( .A(n56), .Y(n57) );
-  INVX2_RVT U142 ( .A(n54), .Y(n55) );
-  INVX0_RVT U143 ( .A(reg_data2[28]), .Y(n52) );
-  INVX0_RVT U144 ( .A(reg_data2[21]), .Y(n50) );
-  INVX0_RVT U145 ( .A(reg_data2[19]), .Y(n48) );
-  INVX2_RVT U146 ( .A(n46), .Y(n47) );
-  INVX0_RVT U147 ( .A(reg_data2[13]), .Y(n44) );
-  INVX0_RVT U148 ( .A(reg_data2[29]), .Y(n42) );
-  INVX2_RVT U149 ( .A(n40), .Y(n41) );
-  INVX0_RVT U150 ( .A(reg_data2[27]), .Y(n36) );
-  INVX0_RVT U151 ( .A(n194), .Y(n429) );
-  MUX21X1_RVT U152 ( .A1(reg_data2[21]), .A2(imm[21]), .S0(n483), .Y(
-        alu_input2[21]) );
-  INVX0_RVT U153 ( .A(reg_data2[11]), .Y(n16) );
-  INVX2_RVT U154 ( .A(n10), .Y(n11) );
-  MUX21X1_RVT U155 ( .A1(reg_data2[27]), .A2(imm[27]), .S0(n483), .Y(
-        alu_input2[27]) );
-  MUX21X1_RVT U156 ( .A1(reg_data2[30]), .A2(imm[30]), .S0(n483), .Y(
-        alu_input2[30]) );
-  INVX2_RVT U157 ( .A(n14), .Y(n15) );
-  INVX2_RVT U158 ( .A(n4), .Y(n5) );
-  INVX2_RVT U159 ( .A(n6), .Y(n7) );
-  MUX21X1_RVT U160 ( .A1(reg_data2[26]), .A2(imm[26]), .S0(n483), .Y(
-        alu_input2[26]) );
-  INVX2_RVT U161 ( .A(n8), .Y(n9) );
-  MUX21X1_RVT U162 ( .A1(reg_data2[29]), .A2(imm[29]), .S0(n483), .Y(
-        alu_input2[29]) );
-  INVX0_RVT U163 ( .A(reg_data2[14]), .Y(n58) );
-  INVX0_RVT U164 ( .A(reg_data2[12]), .Y(n56) );
-  INVX0_RVT U165 ( .A(n452), .Y(n454) );
-  INVX0_RVT U166 ( .A(reg_data2[18]), .Y(n10) );
-  INVX0_RVT U167 ( .A(reg_data2[24]), .Y(n8) );
-  INVX0_RVT U168 ( .A(reg_data2[10]), .Y(n62) );
-  INVX0_RVT U169 ( .A(reg_data2[22]), .Y(n54) );
-  INVX0_RVT U170 ( .A(reg_data2[16]), .Y(n46) );
-  MUX21X1_RVT U171 ( .A1(imm[16]), .A2(reg_data2[16]), .S0(n484), .Y(
-        alu_input2[16]) );
-  INVX0_RVT U172 ( .A(reg_data2[25]), .Y(n28) );
-  INVX0_RVT U173 ( .A(reg_data2[23]), .Y(n40) );
-  MUX21X1_RVT U174 ( .A1(imm[22]), .A2(reg_data2[22]), .S0(n484), .Y(
-        alu_input2[22]) );
-  MUX21X1_RVT U175 ( .A1(imm[24]), .A2(reg_data2[24]), .S0(n484), .Y(
-        alu_input2[24]) );
-  MUX21X1_RVT U176 ( .A1(imm[18]), .A2(reg_data2[18]), .S0(n484), .Y(
-        alu_input2[18]) );
-  OAI21X1_RVT U177 ( .A1(n326), .A2(n329), .A3(n330), .Y(n463) );
-  MUX21X1_RVT U178 ( .A1(imm[20]), .A2(reg_data2[20]), .S0(n484), .Y(
-        alu_input2[20]) );
-  OAI21X1_RVT U179 ( .A1(n453), .A2(n302), .A3(n303), .Y(n85) );
-  MUX21X1_RVT U180 ( .A1(imm[23]), .A2(reg_data2[23]), .S0(n484), .Y(
-        alu_input2[23]) );
-  INVX0_RVT U181 ( .A(reg_data2[20]), .Y(n6) );
-  XNOR2X1_RVT U182 ( .A1(n257), .A2(n256), .Y(n262) );
-  XNOR2X1_RVT U183 ( .A1(n221), .A2(n220), .Y(n225) );
-  XNOR2X1_RVT U184 ( .A1(n281), .A2(n280), .Y(n286) );
-  XNOR2X1_RVT U185 ( .A1(n397), .A2(n396), .Y(n402) );
-  XNOR2X1_RVT U186 ( .A1(n150), .A2(n149), .Y(n156) );
-  XNOR2X1_RVT U187 ( .A1(n375), .A2(n374), .Y(n380) );
-  XNOR2X1_RVT U188 ( .A1(n202), .A2(n201), .Y(n207) );
-  XNOR2X1_RVT U189 ( .A1(n181), .A2(n180), .Y(n184) );
-  XNOR2X1_RVT U190 ( .A1(n250), .A2(n249), .Y(n254) );
-  XNOR2X1_RVT U191 ( .A1(n238), .A2(n237), .Y(n242) );
-  XNOR2X1_RVT U192 ( .A1(n295), .A2(n294), .Y(n300) );
-  XNOR2X1_RVT U193 ( .A1(n108), .A2(n107), .Y(n122) );
-  XNOR2X1_RVT U194 ( .A1(n447), .A2(n446), .Y(n451) );
-  XNOR2X1_RVT U195 ( .A1(n270), .A2(n269), .Y(n274) );
-  XNOR2X1_RVT U196 ( .A1(n415), .A2(n414), .Y(n420) );
-  XNOR2X1_RVT U197 ( .A1(n431), .A2(n430), .Y(n435) );
-  XNOR2X1_RVT U198 ( .A1(n212), .A2(n211), .Y(n216) );
-  NAND2X0_RVT U199 ( .A1(n381), .A2(n385), .Y(n278) );
-  NAND2X0_RVT U200 ( .A1(n385), .A2(n384), .Y(n392) );
-  INVX0_RVT U201 ( .A(n403), .Y(n218) );
-  OAI21X1_RVT U202 ( .A1(n452), .A2(n456), .A3(n453), .Y(n306) );
-  NAND2X0_RVT U203 ( .A1(n228), .A2(n403), .Y(n233) );
-  NAND2X0_RVT U204 ( .A1(n438), .A2(n436), .Y(n441) );
-  NAND2X0_RVT U205 ( .A1(n429), .A2(n436), .Y(n197) );
-  NAND2X0_RVT U206 ( .A1(n76), .A2(n403), .Y(n104) );
-  NAND2X0_RVT U207 ( .A1(n436), .A2(n143), .Y(n145) );
-  NAND2X0_RVT U208 ( .A1(n404), .A2(n403), .Y(n410) );
-  NAND2X0_RVT U209 ( .A1(n287), .A2(n403), .Y(n290) );
-  NAND2X0_RVT U210 ( .A1(n172), .A2(n403), .Y(n176) );
-  NAND2X0_RVT U211 ( .A1(n366), .A2(n385), .Y(n370) );
-  INVX0_RVT U212 ( .A(n275), .Y(n385) );
-  INVX0_RVT U213 ( .A(n226), .Y(n76) );
-  NOR2X0_RVT U214 ( .A1(n75), .A2(n275), .Y(n403) );
-  INVX0_RVT U215 ( .A(n301), .Y(n456) );
-  INVX0_RVT U216 ( .A(n427), .Y(n436) );
-  NAND2X0_RVT U217 ( .A1(n268), .A2(n263), .Y(n160) );
-  NAND2X0_RVT U218 ( .A1(n72), .A2(n287), .Y(n226) );
-  NAND2X0_RVT U219 ( .A1(n77), .A2(n438), .Y(n95) );
-  NAND2X0_RVT U220 ( .A1(n73), .A2(n381), .Y(n75) );
-  INVX0_RVT U221 ( .A(n437), .Y(n141) );
-  NAND2X0_RVT U222 ( .A1(n243), .A2(n248), .Y(n127) );
-  INVX0_RVT U223 ( .A(n438), .Y(n140) );
-  INVX0_RVT U224 ( .A(n386), .Y(n387) );
-  INVX0_RVT U225 ( .A(n288), .Y(n173) );
-  INVX0_RVT U226 ( .A(n263), .Y(n266) );
-  INVX0_RVT U227 ( .A(n264), .Y(n265) );
-  INVX0_RVT U228 ( .A(n405), .Y(n406) );
-  NAND2X0_HVT U229 ( .A1(n187), .A2(n186), .Y(n188) );
-  INVX0_RVT U230 ( .A(n255), .Y(n366) );
-  INVX0_RVT U231 ( .A(n247), .Y(n125) );
-  INVX0_RVT U232 ( .A(n443), .Y(n445) );
-  INVX0_HVT U233 ( .A(reg_data2[3]), .Y(n30) );
-  INVX0_RVT U234 ( .A(n428), .Y(n195) );
-  INVX0_RVT U235 ( .A(n367), .Y(n368) );
-  NAND2X0_HVT U236 ( .A1(n454), .A2(n453), .Y(n455) );
-  INVX0_RVT U237 ( .A(n243), .Y(n246) );
-  INVX0_RVT U238 ( .A(n358), .Y(n360) );
-  XNOR2X1_RVT U239 ( .A1(n70), .A2(n81), .Y(n71) );
-  INVX0_RVT U240 ( .A(n157), .Y(n268) );
-  NAND2X0_RVT U241 ( .A1(n88), .A2(n461), .Y(n90) );
-  INVX0_RVT U242 ( .A(n383), .Y(n279) );
-  INVX0_RVT U243 ( .A(n244), .Y(n245) );
-  INVX0_HVT U244 ( .A(reg_data2[5]), .Y(n38) );
-  INVX0_RVT U245 ( .A(n227), .Y(n106) );
-  INVX0_RVT U246 ( .A(reg_data2[9]), .Y(n34) );
-  INVX0_RVT U247 ( .A(n208), .Y(n210) );
-  INVX0_HVT U248 ( .A(reg_data2[7]), .Y(n12) );
-  INVX0_RVT U249 ( .A(n219), .Y(n404) );
-  INVX0_RVT U250 ( .A(n177), .Y(n179) );
-  INVX0_RVT U251 ( .A(n267), .Y(n158) );
-  INVX0_RVT U252 ( .A(n128), .Y(n130) );
-  INVX0_RVT U253 ( .A(n463), .Y(n465) );
-  INVX0_RVT U254 ( .A(n461), .Y(n462) );
-  XNOR2X1_RVT U255 ( .A1(n214), .A2(n213), .Y(n215) );
-  XNOR2X1_RVT U256 ( .A1(n449), .A2(n448), .Y(n450) );
-  XNOR2X1_RVT U257 ( .A1(n398), .A2(n284), .Y(n285) );
-  XNOR2X1_RVT U258 ( .A1(n272), .A2(n271), .Y(n273) );
-  INVX0_RVT U259 ( .A(reg_data2[8]), .Y(n14) );
-  INVX0_HVT U260 ( .A(reg_data2[6]), .Y(n60) );
-  MUX21X2_LVT U261 ( .A1(imm[2]), .A2(reg_data2[2]), .S0(n484), .Y(
-        alu_input2[2]) );
-  INVX0_RVT U262 ( .A(n470), .Y(n472) );
-  NAND2X0_RVT U263 ( .A1(n69), .A2(n79), .Y(n70) );
-  NAND2X0_RVT U264 ( .A1(n234), .A2(debug_pc[31]), .Y(n236) );
-  NAND2X0_RVT U265 ( .A1(n68), .A2(n421), .Y(n422) );
-  INVX0_HVT U266 ( .A(reg_data2[4]), .Y(n32) );
-  OR2X1_RVT U267 ( .A1(debug_pc[31]), .A2(n234), .Y(n235) );
-  NAND2X0_RVT U268 ( .A1(n234), .A2(debug_pc[15]), .Y(n199) );
-  INVX0_RVT U269 ( .A(n421), .Y(n319) );
-  INVX0_RVT U270 ( .A(n302), .Y(n304) );
-  NAND2X0_RVT U271 ( .A1(n78), .A2(n68), .Y(n84) );
-  INVX0_RVT U272 ( .A(n313), .Y(n328) );
-  INVX0_RVT U273 ( .A(n185), .Y(n187) );
-  INVX0_RVT U274 ( .A(n347), .Y(n349) );
-  INVX0_RVT U275 ( .A(n326), .Y(n327) );
-  INVX0_HVT U276 ( .A(reg_data2[2]), .Y(n4) );
-  INVX0_RVT U277 ( .A(n466), .Y(n339) );
-  NAND2X0_RVT U278 ( .A1(n78), .A2(n320), .Y(n321) );
-  INVX0_RVT U279 ( .A(n329), .Y(n331) );
-  NAND2X0_RVT U280 ( .A1(imm[8]), .A2(debug_pc[8]), .Y(n464) );
-  NAND2X0_RVT U281 ( .A1(imm[7]), .A2(debug_pc[7]), .Y(n330) );
-  NAND2X0_RVT U282 ( .A1(imm[9]), .A2(debug_pc[9]), .Y(n471) );
-  NAND2X0_RVT U283 ( .A1(imm[10]), .A2(debug_pc[10]), .Y(n348) );
-  NAND2X0_RVT U284 ( .A1(imm[11]), .A2(debug_pc[11]), .Y(n186) );
-  NBUFFX2_RVT U285 ( .A(imm[12]), .Y(n234) );
-  NBUFFX2_RVT U286 ( .A(imm[12]), .Y(n105) );
-  OR2X1_HVT U287 ( .A1(debug_pc[2]), .A2(imm[2]), .Y(n68) );
-  NAND2X0_HVT U288 ( .A1(imm[5]), .A2(debug_pc[5]), .Y(n303) );
-  NAND2X0_HVT U289 ( .A1(imm[3]), .A2(debug_pc[3]), .Y(n320) );
-  OR2X1_HVT U290 ( .A1(debug_pc[0]), .A2(imm[0]), .Y(n356) );
-  NAND2X0_HVT U291 ( .A1(imm[0]), .A2(debug_pc[0]), .Y(n355) );
-  NAND2X0_HVT U292 ( .A1(imm[1]), .A2(debug_pc[1]), .Y(n79) );
-  NAND2X0_HVT U293 ( .A1(imm[2]), .A2(debug_pc[2]), .Y(n421) );
-  XNOR2X1_RVT U294 ( .A1(n352), .A2(n351), .Y(n353) );
-  XNOR2X1_RVT U295 ( .A1(n475), .A2(n344), .Y(n345) );
-  XNOR2X1_RVT U296 ( .A1(n336), .A2(n335), .Y(n337) );
-  NBUFFX8_LVT U297 ( .A(alu_ctrl[0]), .Y(n487) );
-  XNOR2X1_RVT U298 ( .A1(n458), .A2(n457), .Y(n459) );
-  OAI21X1_LVT U299 ( .A1(n176), .A2(n409), .A3(n175), .Y(n181) );
-  OAI21X1_LVT U300 ( .A1(n347), .A2(n442), .A3(n348), .Y(n189) );
-  OAI21X1_LVT U301 ( .A1(n358), .A2(n409), .A3(n359), .Y(n212) );
-  OAI21X1_LVT U302 ( .A1(n218), .A2(n409), .A3(n217), .Y(n221) );
-  OAI21X1_LVT U303 ( .A1(n233), .A2(n409), .A3(n232), .Y(n238) );
-  OAI21X1_LVT U304 ( .A1(n160), .A2(n409), .A3(n159), .Y(n165) );
-  OAI21X1_LVT U305 ( .A1(n370), .A2(n409), .A3(n369), .Y(n375) );
-  OAI21X1_LVT U306 ( .A1(n246), .A2(n442), .A3(n245), .Y(n250) );
-  OAI21X1_LVT U307 ( .A1(n392), .A2(n409), .A3(n391), .Y(n397) );
-  OAI21X1_LVT U308 ( .A1(n290), .A2(n409), .A3(n289), .Y(n295) );
-  OAI21X1_LVT U309 ( .A1(n266), .A2(n409), .A3(n265), .Y(n270) );
-  OAI21X1_LVT U310 ( .A1(n410), .A2(n409), .A3(n408), .Y(n415) );
-  OAI21X1_LVT U311 ( .A1(n127), .A2(n442), .A3(n126), .Y(n132) );
-  OAI21X1_LVT U312 ( .A1(n278), .A2(n409), .A3(n277), .Y(n281) );
-  OAI21X1_LVT U313 ( .A1(n275), .A2(n409), .A3(n276), .Y(n257) );
-  OAI21X1_LVT U314 ( .A1(n104), .A2(n409), .A3(n103), .Y(n108) );
-  AOI21X1_RVT U315 ( .A1(n469), .A2(n461), .A3(n463), .Y(n341) );
-  AOI21X1_RVT U316 ( .A1(n469), .A2(n468), .A3(n467), .Y(n474) );
-  AOI21X1_RVT U317 ( .A1(n469), .A2(n328), .A3(n327), .Y(n333) );
-  AOI21X1_RVT U318 ( .A1(n439), .A2(n143), .A3(n142), .Y(n144) );
-  AOI21X1_RVT U319 ( .A1(n439), .A2(n438), .A3(n437), .Y(n440) );
-  XOR2X1_RVT U320 ( .A1(n456), .A2(n455), .Y(n460) );
-  XOR2X1_RVT U321 ( .A1(n322), .A2(n321), .Y(n325) );
-  AOI21X1_RVT U322 ( .A1(n439), .A2(n429), .A3(n195), .Y(n196) );
-  NAND2X0_RVT U323 ( .A1(n292), .A2(n173), .Y(n174) );
-  NOR2X0_RVT U324 ( .A1(n291), .A2(n171), .Y(n172) );
-  NOR2X0_RVT U325 ( .A1(n427), .A2(n95), .Y(n97) );
-  NAND2X0_RVT U326 ( .A1(n230), .A2(n229), .Y(n231) );
-  NOR2X0_RVT U327 ( .A1(n227), .A2(n226), .Y(n228) );
-  NAND2X0_RVT U328 ( .A1(n388), .A2(n387), .Y(n389) );
-  NOR2X0_RVT U329 ( .A1(n443), .A2(n140), .Y(n143) );
-  NAND2X0_RVT U330 ( .A1(n444), .A2(n141), .Y(n142) );
-  NOR2X0_RVT U331 ( .A1(n383), .A2(n382), .Y(n384) );
-  AOI21X1_RVT U332 ( .A1(n301), .A2(n86), .A3(n85), .Y(n312) );
-  NAND2X0_RVT U333 ( .A1(n74), .A2(n263), .Y(n275) );
-  NAND2X0_RVT U334 ( .A1(n179), .A2(n178), .Y(n180) );
-  NAND2X0_RVT U335 ( .A1(n445), .A2(n444), .Y(n446) );
-  NAND2X0_RVT U336 ( .A1(n293), .A2(n292), .Y(n294) );
-  INVX0_RVT U337 ( .A(n381), .Y(n382) );
-  NAND2X0_RVT U338 ( .A1(n163), .A2(n162), .Y(n164) );
-  NAND2X0_RVT U339 ( .A1(n395), .A2(n394), .Y(n396) );
-  NAND2X0_RVT U340 ( .A1(n148), .A2(n147), .Y(n149) );
-  INVX0_RVT U341 ( .A(n287), .Y(n171) );
-  NAND2X0_RVT U342 ( .A1(n210), .A2(n209), .Y(n211) );
-  NAND2X0_RVT U343 ( .A1(n200), .A2(n199), .Y(n201) );
-  NAND2X0_RVT U344 ( .A1(n373), .A2(n372), .Y(n374) );
-  NAND2X0_RVT U345 ( .A1(n413), .A2(n412), .Y(n414) );
-  NAND2X0_RVT U346 ( .A1(n235), .A2(n236), .Y(n237) );
-  NAND2X0_RVT U347 ( .A1(n248), .A2(n247), .Y(n249) );
-  AOI21X1_RVT U348 ( .A1(n248), .A2(n244), .A3(n125), .Y(n126) );
-  NAND2X0_RVT U349 ( .A1(n268), .A2(n267), .Y(n269) );
-  NAND2X0_RVT U350 ( .A1(n360), .A2(n359), .Y(n361) );
-  NAND2X0_RVT U351 ( .A1(n366), .A2(n367), .Y(n256) );
-  AOI21X1_RVT U352 ( .A1(n92), .A2(n244), .A3(n91), .Y(n426) );
-  NAND2X0_RVT U353 ( .A1(n106), .A2(n230), .Y(n107) );
-  NAND2X0_RVT U354 ( .A1(n130), .A2(n129), .Y(n131) );
-  NAND2X0_RVT U355 ( .A1(n243), .A2(n92), .Y(n427) );
-  NAND2X0_RVT U356 ( .A1(n279), .A2(n388), .Y(n280) );
-  NAND2X0_RVT U357 ( .A1(n429), .A2(n428), .Y(n430) );
-  NAND2X0_RVT U358 ( .A1(n404), .A2(n405), .Y(n220) );
-  XOR2X1_RVT U359 ( .A1(n418), .A2(n417), .Y(n419) );
-  NAND2X0_RVT U360 ( .A1(n129), .A2(n247), .Y(n91) );
-  NAND2X0_RVT U361 ( .A1(n349), .A2(n348), .Y(n350) );
-  MUX21X1_LVT U362 ( .A1(reg_data2[11]), .A2(imm[11]), .S0(n483), .Y(
-        alu_input2[11]) );
-  NOR2X0_RVT U363 ( .A1(n198), .A2(n194), .Y(n438) );
-  NAND2X0_RVT U364 ( .A1(n147), .A2(n444), .Y(n93) );
-  AOI21X1_RVT U365 ( .A1(n81), .A2(n69), .A3(n80), .Y(n318) );
-  INVX0_RVT U366 ( .A(n161), .Y(n163) );
-  NAND2X0_RVT U367 ( .A1(n472), .A2(n471), .Y(n473) );
-  NOR2X0_RVT U368 ( .A1(n146), .A2(n443), .Y(n77) );
-  NOR2X0_RVT U369 ( .A1(n177), .A2(n291), .Y(n72) );
-  MUX21X2_LVT U370 ( .A1(reg_data2[3]), .A2(imm[3]), .S0(n483), .Y(
-        alu_input2[3]) );
-  NAND2X0_RVT U371 ( .A1(n331), .A2(n330), .Y(n332) );
-  NOR2X0_RVT U372 ( .A1(n128), .A2(n123), .Y(n92) );
-  AOI21X1_RVT U373 ( .A1(n463), .A2(n88), .A3(n87), .Y(n89) );
-  INVX0_RVT U374 ( .A(n146), .Y(n148) );
-  NAND2X0_RVT U375 ( .A1(n162), .A2(n267), .Y(n99) );
-  NAND2X0_RVT U376 ( .A1(n178), .A2(n292), .Y(n101) );
-  INVX0_RVT U377 ( .A(n371), .Y(n373) );
-  INVX0_RVT U378 ( .A(n411), .Y(n413) );
-  NOR2X0_RVT U379 ( .A1(n411), .A2(n219), .Y(n287) );
-  NBUFFX2_RVT U380 ( .A(reg_data2[1]), .Y(n486) );
-  MUX21X2_LVT U381 ( .A1(reg_data2[7]), .A2(imm[7]), .S0(n483), .Y(
-        alu_input2[7]) );
-  NAND2X0_RVT U382 ( .A1(n394), .A2(n388), .Y(n98) );
-  INVX0_RVT U383 ( .A(n291), .Y(n293) );
-  NAND2X0_RVT U384 ( .A1(n339), .A2(n464), .Y(n340) );
-  INVX0_RVT U385 ( .A(n393), .Y(n395) );
-  NOR2X0_RVT U386 ( .A1(n371), .A2(n255), .Y(n381) );
-  NAND2X0_RVT U387 ( .A1(n304), .A2(n303), .Y(n305) );
-  NOR2X0_RVT U388 ( .A1(n208), .A2(n358), .Y(n263) );
-  NOR2X0_RVT U389 ( .A1(n161), .A2(n157), .Y(n74) );
-  INVX0_RVT U390 ( .A(n198), .Y(n200) );
-  NAND2X0_RVT U391 ( .A1(n328), .A2(n326), .Y(n314) );
-  NOR2X0_RVT U392 ( .A1(n393), .A2(n383), .Y(n73) );
-  HADDX1_RVT U393 ( .A0(n239), .B0(debug_pc[30]), .C1(n240), .SO(n121) );
-  NOR2X0_RVT U394 ( .A1(debug_pc[12]), .A2(n234), .Y(n123) );
-  NOR2X0_RVT U395 ( .A1(debug_pc[29]), .A2(n234), .Y(n177) );
-  NOR2X0_RVT U396 ( .A1(debug_pc[13]), .A2(n234), .Y(n128) );
-  NOR2X0_RVT U397 ( .A1(n329), .A2(n313), .Y(n461) );
-  NAND2X0_RVT U398 ( .A1(n105), .A2(debug_pc[24]), .Y(n388) );
-  NOR2X0_RVT U399 ( .A1(debug_pc[19]), .A2(n234), .Y(n208) );
-  NAND2X0_RVT U400 ( .A1(n105), .A2(debug_pc[25]), .Y(n394) );
-  NAND2X0_RVT U401 ( .A1(n105), .A2(debug_pc[28]), .Y(n292) );
-  NOR2X0_RVT U402 ( .A1(debug_pc[20]), .A2(n105), .Y(n157) );
-  MUX21X1_LVT U403 ( .A1(imm[10]), .A2(reg_data2[10]), .S0(n484), .Y(
-        alu_input2[10]) );
-  NAND2X0_RVT U404 ( .A1(n105), .A2(debug_pc[17]), .Y(n147) );
-  NAND2X0_RVT U405 ( .A1(n105), .A2(debug_pc[23]), .Y(n372) );
-  NOR2X0_RVT U406 ( .A1(n185), .A2(n347), .Y(n243) );
-  NAND2X0_RVT U407 ( .A1(n105), .A2(debug_pc[29]), .Y(n178) );
-  NOR2X0_RVT U408 ( .A1(debug_pc[28]), .A2(n234), .Y(n291) );
-  NOR2X0_RVT U409 ( .A1(debug_pc[16]), .A2(n234), .Y(n443) );
-  NAND2X0_RVT U410 ( .A1(n105), .A2(debug_pc[30]), .Y(n230) );
-  NOR2X0_RVT U411 ( .A1(debug_pc[24]), .A2(n105), .Y(n383) );
-  NOR2X0_RVT U412 ( .A1(debug_pc[23]), .A2(n105), .Y(n371) );
-  NAND2X0_RVT U413 ( .A1(n105), .A2(debug_pc[22]), .Y(n367) );
-  OAI21X1_LVT U414 ( .A1(n185), .A2(n348), .A3(n186), .Y(n244) );
-  MUX21X1_LVT U415 ( .A1(imm[12]), .A2(reg_data2[12]), .S0(n484), .Y(
-        alu_input2[12]) );
-  NAND2X0_RVT U416 ( .A1(n105), .A2(debug_pc[14]), .Y(n428) );
-  NAND2X0_RVT U417 ( .A1(n234), .A2(debug_pc[12]), .Y(n247) );
-  NAND2X0_RVT U418 ( .A1(n105), .A2(debug_pc[26]), .Y(n405) );
-  NAND2X0_RVT U419 ( .A1(n105), .A2(debug_pc[20]), .Y(n267) );
-  NOR2X0_RVT U420 ( .A1(n452), .A2(n302), .Y(n86) );
-  NAND2X0_RVT U421 ( .A1(n105), .A2(debug_pc[21]), .Y(n162) );
-  NOR2X0_RVT U422 ( .A1(debug_pc[26]), .A2(n105), .Y(n219) );
-  NOR2X0_RVT U423 ( .A1(debug_pc[15]), .A2(n234), .Y(n198) );
-  NAND2X0_RVT U424 ( .A1(n105), .A2(debug_pc[13]), .Y(n129) );
-  NOR2X0_RVT U425 ( .A1(debug_pc[25]), .A2(n105), .Y(n393) );
-  NAND2X0_RVT U426 ( .A1(n234), .A2(debug_pc[18]), .Y(n359) );
-  NOR2X0_RVT U427 ( .A1(debug_pc[27]), .A2(n105), .Y(n411) );
-  NOR2X0_RVT U428 ( .A1(debug_pc[21]), .A2(n105), .Y(n161) );
-  NOR2X0_RVT U429 ( .A1(debug_pc[17]), .A2(n234), .Y(n146) );
-  OAI21X1_LVT U430 ( .A1(n464), .A2(n470), .A3(n471), .Y(n87) );
-  NAND2X0_RVT U431 ( .A1(n105), .A2(debug_pc[19]), .Y(n209) );
-  NOR2X0_RVT U432 ( .A1(debug_pc[14]), .A2(n234), .Y(n194) );
-  NOR2X0_RVT U433 ( .A1(debug_pc[18]), .A2(n105), .Y(n358) );
-  NOR2X0_RVT U434 ( .A1(debug_pc[22]), .A2(n234), .Y(n255) );
-  NOR2X0_RVT U435 ( .A1(debug_pc[30]), .A2(n234), .Y(n227) );
-  NAND2X0_RVT U436 ( .A1(n105), .A2(debug_pc[16]), .Y(n444) );
-  NAND2X0_RVT U437 ( .A1(n105), .A2(debug_pc[27]), .Y(n412) );
-  NOR2X0_RVT U438 ( .A1(n470), .A2(n466), .Y(n88) );
-  NOR2X0_RVT U439 ( .A1(debug_pc[5]), .A2(imm[5]), .Y(n302) );
-  NOR2X0_RVT U440 ( .A1(debug_pc[9]), .A2(imm[9]), .Y(n470) );
-  NOR2X0_RVT U441 ( .A1(debug_pc[7]), .A2(imm[7]), .Y(n329) );
-  NOR2X0_RVT U442 ( .A1(debug_pc[4]), .A2(imm[4]), .Y(n452) );
-  NAND2X0_RVT U443 ( .A1(imm[4]), .A2(debug_pc[4]), .Y(n453) );
-  NOR2X0_RVT U444 ( .A1(debug_pc[11]), .A2(imm[11]), .Y(n185) );
-  NOR2X0_RVT U445 ( .A1(debug_pc[6]), .A2(imm[6]), .Y(n313) );
-  NOR2X0_RVT U446 ( .A1(debug_pc[8]), .A2(imm[8]), .Y(n466) );
-  NAND2X0_RVT U447 ( .A1(imm[6]), .A2(debug_pc[6]), .Y(n326) );
-  OR2X1_HVT U448 ( .A1(debug_pc[3]), .A2(imm[3]), .Y(n78) );
-  NOR2X0_RVT U449 ( .A1(debug_pc[10]), .A2(imm[10]), .Y(n347) );
-  OR2X1_HVT U450 ( .A1(debug_pc[1]), .A2(imm[1]), .Y(n69) );
-  INVX2_RVT U451 ( .A(n482), .Y(n481) );
-  INVX2_RVT U452 ( .A(mem_read), .Y(n480) );
-  NBUFFX4_RVT U453 ( .A(mem_read), .Y(n482) );
-  AOI21X1_RVT U454 ( .A1(n423), .A2(n68), .A3(n319), .Y(n322) );
-  XOR2X1_RVT U455 ( .A1(n342), .A2(n334), .Y(n316) );
-  XOR2X1_RVT U456 ( .A1(n252), .A2(n251), .Y(n253) );
-  XNOR2X1_HVT U457 ( .A1(n137), .A2(n136), .Y(n138) );
-  XOR2X1_RVT U458 ( .A1(n363), .A2(n362), .Y(n364) );
-  XNOR2X1_RVT U459 ( .A1(n416), .A2(n223), .Y(n224) );
-  AND2X1_RVT U460 ( .A1(n356), .A2(n355), .Y(n357) );
-  NAND2X4_LVT U461 ( .A1(zero), .A2(branch), .Y(n64) );
-  NAND2X4_LVT U462 ( .A1(zero), .A2(branch), .Y(n65) );
-  NAND2X4_LVT U463 ( .A1(zero), .A2(branch), .Y(n66) );
-  NBUFFX8_LVT U464 ( .A(alu_src), .Y(n483) );
-  XOR2X1_HVT U465 ( .A1(n309), .A2(n308), .Y(n310) );
-  XOR2X1_RVT U466 ( .A1(n477), .A2(n476), .Y(n478) );
-  XOR2X1_RVT U467 ( .A1(n191), .A2(n190), .Y(n192) );
-  XNOR2X1_RVT U468 ( .A1(n376), .A2(n260), .Y(n261) );
-  XNOR2X1_HVT U469 ( .A1(n323), .A2(debug_pc[2]), .Y(n324) );
-  XNOR2X1_RVT U470 ( .A1(n433), .A2(n432), .Y(n434) );
-  XNOR2X1_RVT U471 ( .A1(n423), .A2(n422), .Y(n425) );
-  NAND2X0_HVT U472 ( .A1(debug_pc[17]), .A2(debug_pc[16]), .Y(n116) );
-  NOR2X0_HVT U473 ( .A1(n113), .A2(n343), .Y(n115) );
-  INVX0_HVT U474 ( .A(debug_pc[6]), .Y(n334) );
-  INVX0_HVT U475 ( .A(n259), .Y(n363) );
-  INVX0_HVT U476 ( .A(debug_pc[22]), .Y(n260) );
-  MUX21X1_LVT U477 ( .A1(reg_data2[13]), .A2(imm[13]), .S0(n483), .Y(
-        alu_input2[13]) );
-  MUX21X1_LVT U478 ( .A1(reg_data2[15]), .A2(imm[15]), .S0(n483), .Y(
-        alu_input2[15]) );
-  MUX21X1_LVT U479 ( .A1(n71), .A2(debug_pc[1]), .S0(n65), .Y(pc_next[1]) );
-  NAND2X0_RVT U480 ( .A1(n199), .A2(n428), .Y(n437) );
-  NOR2X0_RVT U481 ( .A1(n437), .A2(n93), .Y(n94) );
-  NAND2X0_RVT U482 ( .A1(n372), .A2(n367), .Y(n386) );
-  NOR2X0_RVT U483 ( .A1(n386), .A2(n98), .Y(n100) );
-  NAND2X0_RVT U484 ( .A1(n209), .A2(n359), .Y(n264) );
-  NOR2X0_RVT U485 ( .A1(n264), .A2(n99), .Y(n276) );
-  NAND2X0_RVT U486 ( .A1(n100), .A2(n276), .Y(n407) );
-  NAND2X0_RVT U487 ( .A1(n412), .A2(n405), .Y(n288) );
-  NOR2X0_RVT U488 ( .A1(n288), .A2(n101), .Y(n229) );
-  NOR2X0_RVT U489 ( .A1(n407), .A2(n102), .Y(n103) );
-  INVX0_HVT U490 ( .A(debug_pc[27]), .Y(n417) );
-  INVX0_HVT U491 ( .A(debug_pc[26]), .Y(n223) );
-  NOR2X0_HVT U492 ( .A1(n417), .A2(n223), .Y(n296) );
-  NAND2X0_HVT U493 ( .A1(debug_pc[28]), .A2(n296), .Y(n112) );
-  NAND2X0_HVT U494 ( .A1(debug_pc[25]), .A2(debug_pc[24]), .Y(n109) );
-  NAND2X0_HVT U495 ( .A1(debug_pc[23]), .A2(debug_pc[22]), .Y(n283) );
-  NOR2X0_HVT U496 ( .A1(n109), .A2(n283), .Y(n111) );
-  NAND2X0_HVT U497 ( .A1(debug_pc[21]), .A2(debug_pc[20]), .Y(n110) );
-  NAND2X0_HVT U498 ( .A1(debug_pc[19]), .A2(debug_pc[18]), .Y(n166) );
-  NOR2X0_HVT U499 ( .A1(n110), .A2(n166), .Y(n258) );
-  NAND2X0_HVT U500 ( .A1(n111), .A2(n258), .Y(n222) );
-  NOR2X0_HVT U501 ( .A1(n112), .A2(n222), .Y(n120) );
-  NAND2X0_HVT U502 ( .A1(debug_pc[9]), .A2(debug_pc[8]), .Y(n113) );
-  NAND2X0_HVT U503 ( .A1(debug_pc[7]), .A2(debug_pc[6]), .Y(n343) );
-  NAND2X0_HVT U504 ( .A1(debug_pc[3]), .A2(debug_pc[2]), .Y(n307) );
-  NAND2X0_HVT U505 ( .A1(debug_pc[5]), .A2(debug_pc[4]), .Y(n114) );
-  NOR2X0_HVT U506 ( .A1(n307), .A2(n114), .Y(n315) );
-  NAND2X0_HVT U507 ( .A1(n115), .A2(n315), .Y(n133) );
-  NAND2X0_HVT U508 ( .A1(debug_pc[15]), .A2(debug_pc[14]), .Y(n152) );
-  NOR2X0_HVT U509 ( .A1(n116), .A2(n152), .Y(n118) );
-  NAND2X0_HVT U510 ( .A1(debug_pc[13]), .A2(debug_pc[12]), .Y(n117) );
-  NAND2X0_HVT U511 ( .A1(debug_pc[11]), .A2(debug_pc[10]), .Y(n134) );
-  NOR2X0_HVT U512 ( .A1(n117), .A2(n134), .Y(n151) );
-  NAND2X0_HVT U513 ( .A1(n118), .A2(n151), .Y(n119) );
-  NOR2X0_HVT U514 ( .A1(n133), .A2(n119), .Y(n259) );
-  AND2X1_HVT U515 ( .A1(n120), .A2(n259), .Y(n182) );
-  MUX21X1_LVT U516 ( .A1(n122), .A2(n121), .S0(n65), .Y(pc_next[30]) );
-  INVX0_HVT U517 ( .A(debug_pc[12]), .Y(n251) );
-  INVX0_HVT U518 ( .A(n133), .Y(n352) );
-  INVX0_HVT U519 ( .A(n134), .Y(n135) );
-  NAND2X0_HVT U520 ( .A1(n352), .A2(n135), .Y(n252) );
-  NOR2X0_HVT U521 ( .A1(n251), .A2(n252), .Y(n137) );
-  INVX0_HVT U522 ( .A(debug_pc[13]), .Y(n136) );
-  MUX21X1_LVT U523 ( .A1(n139), .A2(n138), .S0(n66), .Y(pc_next[13]) );
-  NAND2X0_HVT U524 ( .A1(n352), .A2(n151), .Y(n203) );
-  NOR2X0_HVT U525 ( .A1(n152), .A2(n203), .Y(n449) );
-  NAND2X0_HVT U526 ( .A1(n449), .A2(debug_pc[16]), .Y(n154) );
-  INVX0_HVT U527 ( .A(debug_pc[17]), .Y(n153) );
-  XOR2X1_RVT U528 ( .A1(n154), .A2(n153), .Y(n155) );
-  MUX21X1_LVT U529 ( .A1(n156), .A2(n155), .S0(n65), .Y(pc_next[17]) );
-  NOR2X0_HVT U530 ( .A1(n166), .A2(n363), .Y(n272) );
-  NAND2X0_HVT U531 ( .A1(n272), .A2(debug_pc[20]), .Y(n168) );
-  INVX0_HVT U532 ( .A(debug_pc[21]), .Y(n167) );
-  XOR2X1_RVT U533 ( .A1(n168), .A2(n167), .Y(n169) );
-  MUX21X1_LVT U534 ( .A1(n170), .A2(n169), .S0(n66), .Y(pc_next[21]) );
-  NOR2X0_RVT U535 ( .A1(n407), .A2(n174), .Y(n175) );
-  MUX21X1_LVT U536 ( .A1(n184), .A2(n183), .S0(n65), .Y(pc_next[29]) );
-  NAND2X0_HVT U537 ( .A1(n352), .A2(debug_pc[10]), .Y(n191) );
-  INVX0_HVT U538 ( .A(debug_pc[11]), .Y(n190) );
-  MUX21X1_LVT U539 ( .A1(n193), .A2(n192), .S0(n65), .Y(pc_next[11]) );
-  INVX0_HVT U540 ( .A(n203), .Y(n433) );
-  NAND2X0_HVT U541 ( .A1(n433), .A2(debug_pc[14]), .Y(n205) );
-  INVX0_HVT U542 ( .A(debug_pc[15]), .Y(n204) );
-  XOR2X1_RVT U543 ( .A1(n205), .A2(n204), .Y(n206) );
-  MUX21X1_LVT U544 ( .A1(n207), .A2(n206), .S0(n66), .Y(pc_next[15]) );
-  INVX0_HVT U545 ( .A(debug_pc[18]), .Y(n362) );
-  NOR2X0_HVT U546 ( .A1(n362), .A2(n363), .Y(n214) );
-  INVX0_HVT U547 ( .A(debug_pc[19]), .Y(n213) );
-  MUX21X1_LVT U548 ( .A1(n216), .A2(n215), .S0(n65), .Y(pc_next[19]) );
-  NOR2X0_HVT U549 ( .A1(n222), .A2(n363), .Y(n416) );
-  MUX21X1_LVT U550 ( .A1(n225), .A2(n224), .S0(n64), .Y(pc_next[26]) );
-  NOR2X0_RVT U551 ( .A1(n407), .A2(n231), .Y(n232) );
-  XOR2X1_RVT U552 ( .A1(n240), .A2(debug_pc[31]), .Y(n241) );
-  MUX21X1_LVT U553 ( .A1(n242), .A2(n241), .S0(n66), .Y(pc_next[31]) );
-  MUX21X1_LVT U554 ( .A1(n254), .A2(n253), .S0(n65), .Y(pc_next[12]) );
-  NAND2X0_HVT U555 ( .A1(n259), .A2(n258), .Y(n282) );
-  INVX0_HVT U556 ( .A(n282), .Y(n376) );
-  MUX21X1_LVT U557 ( .A1(n262), .A2(n261), .S0(n66), .Y(pc_next[22]) );
-  INVX0_HVT U558 ( .A(debug_pc[20]), .Y(n271) );
-  MUX21X1_LVT U559 ( .A1(n274), .A2(n273), .S0(n64), .Y(pc_next[20]) );
-  NOR2X0_RVT U560 ( .A1(n390), .A2(n386), .Y(n277) );
-  NOR2X0_HVT U561 ( .A1(n283), .A2(n282), .Y(n398) );
-  INVX0_HVT U562 ( .A(debug_pc[24]), .Y(n284) );
-  MUX21X1_LVT U563 ( .A1(n286), .A2(n285), .S0(n64), .Y(pc_next[24]) );
-  NOR2X0_RVT U564 ( .A1(n407), .A2(n288), .Y(n289) );
-  NAND2X0_HVT U565 ( .A1(n416), .A2(n296), .Y(n298) );
-  INVX0_HVT U566 ( .A(debug_pc[28]), .Y(n297) );
-  XOR2X1_RVT U567 ( .A1(n298), .A2(n297), .Y(n299) );
-  MUX21X1_LVT U568 ( .A1(n300), .A2(n299), .S0(n66), .Y(pc_next[28]) );
-  INVX0_HVT U569 ( .A(n307), .Y(n458) );
-  NAND2X0_HVT U570 ( .A1(n458), .A2(debug_pc[4]), .Y(n309) );
-  INVX0_HVT U571 ( .A(debug_pc[5]), .Y(n308) );
-  MUX21X1_LVT U572 ( .A1(n311), .A2(n310), .S0(n65), .Y(pc_next[5]) );
-  INVX0_HVT U573 ( .A(n315), .Y(n342) );
-  MUX21X1_LVT U574 ( .A1(n317), .A2(n316), .S0(n65), .Y(pc_next[6]) );
-  INVX0_HVT U575 ( .A(debug_pc[3]), .Y(n323) );
-  MUX21X1_LVT U576 ( .A1(n325), .A2(n324), .S0(n66), .Y(pc_next[3]) );
-  NOR2X0_HVT U577 ( .A1(n334), .A2(n342), .Y(n336) );
-  INVX0_HVT U578 ( .A(debug_pc[7]), .Y(n335) );
-  MUX21X1_LVT U579 ( .A1(n338), .A2(n337), .S0(n64), .Y(pc_next[7]) );
-  NOR2X0_HVT U580 ( .A1(n343), .A2(n342), .Y(n475) );
-  INVX0_HVT U581 ( .A(debug_pc[8]), .Y(n344) );
-  MUX21X1_LVT U582 ( .A1(n346), .A2(n345), .S0(n64), .Y(pc_next[8]) );
-  INVX0_HVT U583 ( .A(debug_pc[10]), .Y(n351) );
-  MUX21X1_LVT U584 ( .A1(n354), .A2(n353), .S0(n65), .Y(pc_next[10]) );
-  MUX21X1_LVT U585 ( .A1(n357), .A2(debug_pc[0]), .S0(n66), .Y(pc_next[0]) );
-  MUX21X1_LVT U586 ( .A1(n365), .A2(n364), .S0(n65), .Y(pc_next[18]) );
-  NOR2X0_RVT U587 ( .A1(n390), .A2(n368), .Y(n369) );
-  NAND2X0_HVT U588 ( .A1(n376), .A2(debug_pc[22]), .Y(n378) );
-  INVX0_HVT U589 ( .A(debug_pc[23]), .Y(n377) );
-  XOR2X1_RVT U590 ( .A1(n378), .A2(n377), .Y(n379) );
-  MUX21X1_LVT U591 ( .A1(n380), .A2(n379), .S0(n64), .Y(pc_next[23]) );
-  NOR2X0_RVT U592 ( .A1(n390), .A2(n389), .Y(n391) );
-  NAND2X0_HVT U593 ( .A1(n398), .A2(debug_pc[24]), .Y(n400) );
-  INVX0_HVT U594 ( .A(debug_pc[25]), .Y(n399) );
-  XOR2X1_RVT U595 ( .A1(n400), .A2(n399), .Y(n401) );
-  MUX21X1_LVT U596 ( .A1(n402), .A2(n401), .S0(n66), .Y(pc_next[25]) );
-  NOR2X0_RVT U597 ( .A1(n407), .A2(n406), .Y(n408) );
-  NAND2X0_HVT U598 ( .A1(n416), .A2(debug_pc[26]), .Y(n418) );
-  MUX21X1_LVT U599 ( .A1(n420), .A2(n419), .S0(n64), .Y(pc_next[27]) );
-  INVX0_HVT U600 ( .A(debug_pc[2]), .Y(n424) );
-  MUX21X1_LVT U601 ( .A1(n425), .A2(n424), .S0(n64), .Y(pc_next[2]) );
-  INVX0_HVT U602 ( .A(debug_pc[14]), .Y(n432) );
-  MUX21X1_LVT U603 ( .A1(n435), .A2(n434), .S0(n66), .Y(pc_next[14]) );
-  INVX0_HVT U604 ( .A(debug_pc[16]), .Y(n448) );
-  MUX21X1_LVT U605 ( .A1(n451), .A2(n450), .S0(n64), .Y(pc_next[16]) );
-  INVX0_HVT U606 ( .A(debug_pc[4]), .Y(n457) );
-  MUX21X1_LVT U607 ( .A1(n460), .A2(n459), .S0(n64), .Y(pc_next[4]) );
-  NAND2X0_HVT U608 ( .A1(n475), .A2(debug_pc[8]), .Y(n477) );
-  INVX0_HVT U609 ( .A(debug_pc[9]), .Y(n476) );
-  MUX21X1_LVT U610 ( .A1(n479), .A2(n478), .S0(n64), .Y(pc_next[9]) );
-  MUX21X2_LVT U611 ( .A1(mem_data[0]), .A2(alu_result[0]), .S0(n480), .Y(
-        debug_wb_data[0]) );
-  MUX21X2_LVT U612 ( .A1(mem_data[1]), .A2(alu_result[1]), .S0(n480), .Y(
-        debug_wb_data[1]) );
-  MUX21X2_LVT U613 ( .A1(mem_data[3]), .A2(alu_result[3]), .S0(n480), .Y(
-        debug_wb_data[3]) );
-  MUX21X2_LVT U614 ( .A1(mem_data[2]), .A2(alu_result[2]), .S0(n480), .Y(
-        debug_wb_data[2]) );
-  MUX21X2_LVT U615 ( .A1(mem_data[5]), .A2(alu_result[5]), .S0(n480), .Y(
-        debug_wb_data[5]) );
-  MUX21X2_LVT U616 ( .A1(mem_data[4]), .A2(alu_result[4]), .S0(n480), .Y(
-        debug_wb_data[4]) );
-  MUX21X2_LVT U617 ( .A1(mem_data[7]), .A2(alu_result[7]), .S0(n480), .Y(
-        debug_wb_data[7]) );
-  MUX21X2_LVT U618 ( .A1(mem_data[6]), .A2(alu_result[6]), .S0(n480), .Y(
-        debug_wb_data[6]) );
-  MUX21X2_LVT U619 ( .A1(mem_data[9]), .A2(alu_result[9]), .S0(n480), .Y(
-        debug_wb_data[9]) );
-  MUX21X2_LVT U620 ( .A1(mem_data[8]), .A2(alu_result[8]), .S0(n480), .Y(
-        debug_wb_data[8]) );
-  MUX21X2_LVT U621 ( .A1(mem_data[10]), .A2(alu_result[10]), .S0(n480), .Y(
-        debug_wb_data[10]) );
-  MUX21X2_LVT U622 ( .A1(mem_data[11]), .A2(alu_result[11]), .S0(n480), .Y(
-        debug_wb_data[11]) );
-  MUX21X2_LVT U623 ( .A1(mem_data[12]), .A2(alu_result[12]), .S0(n481), .Y(
-        debug_wb_data[12]) );
-  MUX21X2_LVT U624 ( .A1(mem_data[13]), .A2(alu_result[13]), .S0(n481), .Y(
-        debug_wb_data[13]) );
-  MUX21X2_LVT U625 ( .A1(mem_data[14]), .A2(alu_result[14]), .S0(n481), .Y(
-        debug_wb_data[14]) );
-  MUX21X2_LVT U626 ( .A1(alu_result[15]), .A2(mem_data[15]), .S0(n67), .Y(
-        debug_wb_data[15]) );
-  MUX21X2_LVT U627 ( .A1(mem_data[16]), .A2(alu_result[16]), .S0(n481), .Y(
-        debug_wb_data[16]) );
-  MUX21X2_LVT U628 ( .A1(mem_data[17]), .A2(alu_result[17]), .S0(n481), .Y(
-        debug_wb_data[17]) );
-  MUX21X2_LVT U629 ( .A1(mem_data[18]), .A2(alu_result[18]), .S0(n481), .Y(
-        debug_wb_data[18]) );
-  MUX21X2_LVT U630 ( .A1(mem_data[19]), .A2(alu_result[19]), .S0(n481), .Y(
-        debug_wb_data[19]) );
-  MUX21X2_LVT U631 ( .A1(alu_result[20]), .A2(mem_data[20]), .S0(n67), .Y(
-        debug_wb_data[20]) );
-  MUX21X2_LVT U632 ( .A1(mem_data[21]), .A2(alu_result[21]), .S0(n481), .Y(
-        debug_wb_data[21]) );
-  MUX21X2_LVT U633 ( .A1(mem_data[22]), .A2(alu_result[22]), .S0(n481), .Y(
-        debug_wb_data[22]) );
-  MUX21X2_LVT U634 ( .A1(alu_result[23]), .A2(mem_data[23]), .S0(n67), .Y(
-        debug_wb_data[23]) );
-  MUX21X2_LVT U635 ( .A1(mem_data[24]), .A2(alu_result[24]), .S0(n481), .Y(
-        debug_wb_data[24]) );
-  MUX21X2_LVT U636 ( .A1(mem_data[25]), .A2(alu_result[25]), .S0(n481), .Y(
-        debug_wb_data[25]) );
-  MUX21X2_LVT U637 ( .A1(imm[8]), .A2(reg_data2[8]), .S0(n484), .Y(
-        alu_input2[8]) );
-  MUX21X2_LVT U638 ( .A1(mem_data[26]), .A2(alu_result[26]), .S0(n481), .Y(
-        debug_wb_data[26]) );
-  MUX21X2_LVT U639 ( .A1(mem_data[27]), .A2(alu_result[27]), .S0(n480), .Y(
-        debug_wb_data[27]) );
-  MUX21X2_LVT U640 ( .A1(mem_data[28]), .A2(alu_result[28]), .S0(n480), .Y(
-        debug_wb_data[28]) );
-  NBUFFX2_LVT U641 ( .A(reg_data2[0]), .Y(n485) );
-  MUX21X2_LVT U642 ( .A1(mem_data[29]), .A2(alu_result[29]), .S0(n481), .Y(
-        debug_wb_data[29]) );
-  MUX21X2_LVT U643 ( .A1(alu_result[30]), .A2(mem_data[30]), .S0(n67), .Y(
-        debug_wb_data[30]) );
-  MUX21X2_LVT U644 ( .A1(alu_result[31]), .A2(mem_data[31]), .S0(n482), .Y(
-        debug_wb_data[31]) );
-  MUX21X2_LVT U645 ( .A1(imm[6]), .A2(reg_data2[6]), .S0(n484), .Y(
-        alu_input2[6]) );
-  MUX21X2_LVT U646 ( .A1(imm[4]), .A2(reg_data2[4]), .S0(n484), .Y(
-        alu_input2[4]) );
-  MUX21X2_LVT U647 ( .A1(reg_data2[1]), .A2(imm[1]), .S0(n483), .Y(
-        alu_input2[1]) );
-  MUX21X2_LVT U648 ( .A1(imm[0]), .A2(reg_data2[0]), .S0(n484), .Y(
+  XNOR2X1_RVT U108 ( .A1(n316), .A2(n315), .Y(pc_next[4]) );
+  INVX0_HVT U109 ( .A(n145), .Y(n147) );
+  INVX1_RVT U110 ( .A(n289), .Y(n316) );
+  INVX0_HVT U111 ( .A(n102), .Y(n103) );
+  INVX0_RVT U112 ( .A(n101), .Y(n104) );
+  XOR2X1_RVT U113 ( .A1(n327), .A2(n326), .Y(pc_next[2]) );
+  INVX1_HVT U114 ( .A(n187), .Y(n178) );
+  INVX1_HVT U115 ( .A(n188), .Y(n176) );
+  INVX1_HVT U116 ( .A(n257), .Y(n246) );
+  INVX1_HVT U117 ( .A(n256), .Y(n248) );
+  INVX1_HVT U118 ( .A(n236), .Y(n226) );
+  INVX1_HVT U119 ( .A(n125), .Y(n114) );
+  INVX1_HVT U120 ( .A(n165), .Y(n154) );
+  INVX0_HVT U121 ( .A(n237), .Y(n224) );
+  INVX1_HVT U122 ( .A(n88), .Y(n67) );
+  OAI21X1_LVT U123 ( .A1(n149), .A2(n140), .A3(n141), .Y(n125) );
+  INVX0_HVT U124 ( .A(n301), .Y(n303) );
+  INVX0_HVT U125 ( .A(n96), .Y(n98) );
+  INVX1_HVT U126 ( .A(n306), .Y(n314) );
+  INVX2_RVT U127 ( .A(n15), .Y(n16) );
+  INVX4_RVT U128 ( .A(n342), .Y(n360) );
+  INVX4_RVT U129 ( .A(n344), .Y(n362) );
+  INVX8_LVT U130 ( .A(n354), .Y(n374) );
+  INVX2_LVT U131 ( .A(n343), .Y(n361) );
+  INVX2_LVT U132 ( .A(n340), .Y(n358) );
+  INVX8_LVT U133 ( .A(n349), .Y(n369) );
+  INVX8_LVT U134 ( .A(n341), .Y(n359) );
+  INVX2_RVT U135 ( .A(n13), .Y(n14) );
+  MUX21X2_LVT U136 ( .A1(imm[0]), .A2(reg_data2[0]), .S0(n356), .Y(
         alu_input2[0]) );
+  NAND2X0_RVT U137 ( .A1(n259), .A2(n246), .Y(n250) );
+  NAND2X0_RVT U138 ( .A1(n176), .A2(n156), .Y(n158) );
+  NAND2X0_RVT U139 ( .A1(n246), .A2(n228), .Y(n230) );
+  NAND2X0_RVT U140 ( .A1(n237), .A2(n246), .Y(n239) );
+  INVX1_LVT U141 ( .A(n63), .Y(n146) );
+  INVX1_RVT U142 ( .A(n48), .Y(n49) );
+  NAND2X0_RVT U143 ( .A1(n166), .A2(n176), .Y(n168) );
+  XNOR2X1_RVT U144 ( .A1(n322), .A2(n321), .Y(pc_next[3]) );
+  NAND2X0_RVT U145 ( .A1(n191), .A2(n176), .Y(n180) );
+  NAND2X0_HVT U146 ( .A1(n132), .A2(n131), .Y(n133) );
+  NAND2X0_HVT U147 ( .A1(n150), .A2(n149), .Y(n151) );
+  INVX0_HVT U148 ( .A(n300), .Y(n290) );
+  NAND2X0_HVT U149 ( .A1(n242), .A2(n241), .Y(n243) );
+  NAND2X0_HVT U150 ( .A1(n276), .A2(n271), .Y(n265) );
+  NAND2X0_HVT U151 ( .A1(n303), .A2(n302), .Y(n304) );
+  NAND2X0_HVT U152 ( .A1(n210), .A2(n209), .Y(n211) );
+  NAND2X0_HVT U153 ( .A1(n191), .A2(n190), .Y(n192) );
+  NAND2X0_HVT U154 ( .A1(n201), .A2(n200), .Y(n202) );
+  NAND2X0_HVT U155 ( .A1(n110), .A2(n109), .Y(n111) );
+  NAND2X0_HVT U156 ( .A1(n162), .A2(n161), .Y(n163) );
+  INVX0_HVT U157 ( .A(n80), .Y(n81) );
+  NAND2X0_HVT U158 ( .A1(n268), .A2(n267), .Y(n269) );
+  INVX0_HVT U159 ( .A(n126), .Y(n113) );
+  NAND2X0_HVT U160 ( .A1(n325), .A2(n324), .Y(n326) );
+  INVX0_HVT U161 ( .A(n299), .Y(n291) );
+  INVX0_HVT U162 ( .A(n271), .Y(n274) );
+  INVX0_HVT U163 ( .A(n335), .Y(pc_next[0]) );
+  NAND2X0_HVT U164 ( .A1(n172), .A2(n171), .Y(n173) );
+  INVX0_HVT U165 ( .A(n272), .Y(n273) );
+  NAND2X0_HVT U166 ( .A1(n233), .A2(n232), .Y(n234) );
+  INVX0_HVT U167 ( .A(n166), .Y(n153) );
+  NAND2X0_HVT U168 ( .A1(n276), .A2(n275), .Y(n277) );
+  INVX0_HVT U169 ( .A(n205), .Y(n206) );
+  NAND2X0_HVT U170 ( .A1(n259), .A2(n258), .Y(n260) );
+  INVX0_HVT U171 ( .A(n79), .Y(n82) );
+  INVX0_HVT U172 ( .A(n204), .Y(n207) );
+  NAND2X0_HVT U173 ( .A1(n75), .A2(n76), .Y(n77) );
+  INVX0_HVT U174 ( .A(n328), .Y(n330) );
+  INVX0_HVT U175 ( .A(n120), .Y(n122) );
+  OAI21X1_LVT U176 ( .A1(n190), .A2(n182), .A3(n183), .Y(n165) );
+  INVX0_HVT U177 ( .A(n294), .Y(n296) );
+  INVX0_HVT U178 ( .A(n284), .Y(n286) );
+  INVX0_HVT U179 ( .A(n170), .Y(n172) );
+  OAI21X1_LVT U180 ( .A1(n302), .A2(n294), .A3(n295), .Y(n31) );
+  INVX0_HVT U181 ( .A(n130), .Y(n132) );
+  INVX0_HVT U182 ( .A(n219), .Y(n221) );
+  INVX0_HVT U183 ( .A(n231), .Y(n233) );
+  INVX0_HVT U184 ( .A(n279), .Y(n281) );
+  INVX0_HVT U185 ( .A(n140), .Y(n142) );
+  INVX0_HVT U186 ( .A(n182), .Y(n184) );
+  OAI21X1_LVT U187 ( .A1(n285), .A2(n279), .A3(n280), .Y(n272) );
+  INVX0_HVT U188 ( .A(n240), .Y(n242) );
+  INVX0_HVT U189 ( .A(n149), .Y(n136) );
+  INVX0_HVT U190 ( .A(n275), .Y(n263) );
+  INVX0_HVT U191 ( .A(n160), .Y(n162) );
+  INVX0_HVT U192 ( .A(n266), .Y(n268) );
+  OAI21X1_LVT U193 ( .A1(n275), .A2(n266), .A3(n267), .Y(n39) );
+  INVX0_HVT U194 ( .A(n258), .Y(n247) );
+  INVX0_HVT U195 ( .A(n251), .Y(n253) );
+  INVX0_HVT U196 ( .A(n323), .Y(n325) );
+  INVX0_HVT U197 ( .A(n214), .Y(n216) );
+  INVX0_HVT U198 ( .A(n209), .Y(n195) );
+  INVX0_HVT U199 ( .A(n190), .Y(n177) );
+  INVX0_HVT U200 ( .A(n199), .Y(n201) );
+  INVX0_HVT U201 ( .A(n108), .Y(n110) );
+  INVX0_HVT U202 ( .A(n318), .Y(n320) );
+  INVX0_HVT U203 ( .A(n313), .Y(n307) );
+  INVX0_HVT U204 ( .A(n308), .Y(n310) );
+  NAND2X0_RVT U205 ( .A1(n38), .A2(debug_pc[11]), .Y(n267) );
+  NAND2X0_RVT U206 ( .A1(n43), .A2(debug_pc[23]), .Y(n161) );
+  NAND2X0_RVT U207 ( .A1(n43), .A2(debug_pc[15]), .Y(n232) );
+  NAND2X0_RVT U208 ( .A1(n54), .A2(debug_pc[19]), .Y(n200) );
+  AND2X1_RVT U209 ( .A1(n19), .A2(imm[20]), .Y(n57) );
+  AND2X1_LVT U210 ( .A1(n19), .A2(imm[10]), .Y(n37) );
+  AND2X1_LVT U211 ( .A1(n19), .A2(imm[18]), .Y(n53) );
+  AND2X1_LVT U212 ( .A1(n19), .A2(imm[14]), .Y(n42) );
+  AND2X1_LVT U213 ( .A1(n19), .A2(imm[12]), .Y(n41) );
+  AND2X1_LVT U214 ( .A1(n19), .A2(imm[22]), .Y(n58) );
+  AND2X1_LVT U215 ( .A1(n19), .A2(imm[24]), .Y(n64) );
+  AND2X1_LVT U216 ( .A1(n19), .A2(imm[11]), .Y(n38) );
+  NAND2X0_RVT U217 ( .A1(n19), .A2(n21), .Y(n22) );
+  AND2X1_LVT U218 ( .A1(n19), .A2(imm[6]), .Y(n29) );
+  INVX8_LVT U219 ( .A(n353), .Y(n373) );
+  NBUFFX2_RVT U220 ( .A(reg_data2[17]), .Y(n378) );
+  INVX2_RVT U221 ( .A(n7), .Y(n8) );
+  NBUFFX2_RVT U222 ( .A(reg_data2[15]), .Y(n380) );
+  NBUFFX2_RVT U223 ( .A(reg_data2[26]), .Y(n375) );
+  NBUFFX2_RVT U224 ( .A(reg_data2[19]), .Y(n377) );
+  NBUFFX2_RVT U225 ( .A(reg_data2[13]), .Y(n376) );
+  INVX2_RVT U226 ( .A(n11), .Y(n12) );
+  INVX0_LVT U227 ( .A(reg_data2[31]), .Y(n9) );
+  INVX0_LVT U228 ( .A(reg_data2[25]), .Y(n11) );
+  INVX0_LVT U229 ( .A(reg_data2[23]), .Y(n13) );
+  INVX0_LVT U230 ( .A(reg_data2[24]), .Y(n7) );
+  INVX0_LVT U231 ( .A(reg_data2[22]), .Y(n15) );
+  NBUFFX2_RVT U232 ( .A(reg_data2[0]), .Y(n382) );
+  IBUFFX16_HVT U233 ( .A(mem_read), .Y(n337) );
+  NAND2X0_HVT U234 ( .A1(n286), .A2(n285), .Y(n287) );
+  NAND2X0_HVT U235 ( .A1(n122), .A2(n121), .Y(n123) );
+  NAND2X0_HVT U236 ( .A1(n310), .A2(n309), .Y(n311) );
+  NAND2X0_HVT U237 ( .A1(n98), .A2(n97), .Y(n99) );
+  NAND2X0_HVT U238 ( .A1(n253), .A2(n252), .Y(n254) );
+  NAND2X0_HVT U239 ( .A1(n314), .A2(n313), .Y(n315) );
+  NAND2X0_HVT U240 ( .A1(n210), .A2(n204), .Y(n197) );
+  NAND2X0_HVT U241 ( .A1(n296), .A2(n295), .Y(n297) );
+  NAND2X0_HVT U242 ( .A1(n221), .A2(n220), .Y(n222) );
+  NAND2X0_HVT U243 ( .A1(n281), .A2(n280), .Y(n282) );
+  NAND2X0_HVT U244 ( .A1(n142), .A2(n141), .Y(n143) );
+  NAND2X0_HVT U245 ( .A1(n330), .A2(n329), .Y(n331) );
+  NAND2X0_HVT U246 ( .A1(n184), .A2(n183), .Y(n185) );
+  NAND2X0_HVT U247 ( .A1(n216), .A2(n215), .Y(n217) );
+  INVX1_HVT U248 ( .A(n317), .Y(n327) );
+  NAND2X0_HVT U249 ( .A1(n320), .A2(n319), .Y(n321) );
+  NAND2X0_HVT U250 ( .A1(n333), .A2(n334), .Y(n335) );
+  INVX1_HVT U251 ( .A(n262), .Y(n276) );
+  INVX1_HVT U252 ( .A(n135), .Y(n150) );
+  INVX1_HVT U253 ( .A(n245), .Y(n259) );
+  INVX1_HVT U254 ( .A(n194), .Y(n210) );
+  INVX1_HVT U255 ( .A(n175), .Y(n191) );
+  NAND2X0_RVT U256 ( .A1(n51), .A2(debug_pc[30]), .Y(n88) );
+  NAND2X0_HVT U257 ( .A1(n43), .A2(debug_pc[31]), .Y(n76) );
+  OR2X1_HVT U258 ( .A1(debug_pc[31]), .A2(n43), .Y(n75) );
+  AND2X1_LVT U259 ( .A1(n19), .A2(imm[7]), .Y(n30) );
+  INVX2_LVT U260 ( .A(n9), .Y(n10) );
+  INVX1_LVT U261 ( .A(reg_data2[27]), .Y(n347) );
+  INVX1_LVT U262 ( .A(reg_data2[11]), .Y(n351) );
+  INVX1_LVT U263 ( .A(reg_data2[21]), .Y(n352) );
+  INVX1_LVT U264 ( .A(reg_data2[30]), .Y(n346) );
+  INVX1_LVT U265 ( .A(reg_data2[29]), .Y(n348) );
+  INVX1_LVT U266 ( .A(reg_data2[28]), .Y(n350) );
+  INVX1_LVT U267 ( .A(reg_data2[14]), .Y(n339) );
+  INVX1_LVT U268 ( .A(reg_data2[16]), .Y(n344) );
+  INVX1_LVT U269 ( .A(reg_data2[12]), .Y(n342) );
+  INVX1_LVT U270 ( .A(reg_data2[10]), .Y(n343) );
+  INVX1_LVT U271 ( .A(reg_data2[18]), .Y(n345) );
+  INVX1_LVT U272 ( .A(reg_data2[20]), .Y(n340) );
+  XOR2X1_LVT U273 ( .A1(n312), .A2(n311), .Y(pc_next[5]) );
+  XOR2X1_LVT U274 ( .A1(n305), .A2(n304), .Y(pc_next[6]) );
+  XOR2X1_LVT U275 ( .A1(n298), .A2(n297), .Y(pc_next[7]) );
+  OAI21X1_LVT U276 ( .A1(n323), .A2(n327), .A3(n324), .Y(n322) );
+  OAI21X1_LVT U277 ( .A1(n301), .A2(n291), .A3(n302), .Y(n292) );
+  OAI21X1_LVT U278 ( .A1(n108), .A2(n102), .A3(n109), .Y(n91) );
+  OAI21X1_LVT U279 ( .A1(n130), .A2(n114), .A3(n131), .Y(n115) );
+  XOR2X1_LVT U280 ( .A1(n331), .A2(n334), .Y(pc_next[1]) );
+  OAI21X1_LVT U281 ( .A1(n240), .A2(n226), .A3(n241), .Y(n227) );
+  OAI21X1_LVT U282 ( .A1(n170), .A2(n154), .A3(n171), .Y(n155) );
+  OAI21X1_LVT U283 ( .A1(n82), .A2(n102), .A3(n81), .Y(n83) );
+  OAI21X1_LVT U284 ( .A1(n69), .A2(n102), .A3(n68), .Y(n70) );
+  NAND2X0_RVT U285 ( .A1(n18), .A2(n88), .Y(n89) );
+  INVX0_RVT U286 ( .A(n24), .Y(n25) );
+  OAI21X1_LVT U287 ( .A1(n109), .A2(n96), .A3(n97), .Y(n80) );
+  OAI21X1_LVT U288 ( .A1(n131), .A2(n120), .A3(n121), .Y(n65) );
+  OAI21X1_LVT U289 ( .A1(n241), .A2(n231), .A3(n232), .Y(n44) );
+  OAI21X1_LVT U290 ( .A1(n209), .A2(n199), .A3(n200), .Y(n55) );
+  OR2X1_HVT U291 ( .A1(debug_pc[0]), .A2(n332), .Y(n333) );
+  OR2X1_RVT U292 ( .A1(debug_pc[30]), .A2(n51), .Y(n18) );
+  INVX4_LVT U293 ( .A(n352), .Y(n372) );
+  INVX4_LVT U294 ( .A(n351), .Y(n371) );
+  INVX4_LVT U295 ( .A(n348), .Y(n368) );
+  INVX4_LVT U296 ( .A(n350), .Y(n370) );
+  INVX4_LVT U297 ( .A(n346), .Y(n366) );
+  INVX4_LVT U298 ( .A(n347), .Y(n367) );
+  NBUFFX2_RVT U299 ( .A(reg_data2[1]), .Y(n385) );
+  NBUFFX2_RVT U300 ( .A(reg_data2[7]), .Y(n379) );
+  NBUFFX2_RVT U301 ( .A(reg_data2[3]), .Y(n383) );
+  NBUFFX2_RVT U302 ( .A(reg_data2[9]), .Y(n381) );
+  MUX21X2_LVT U303 ( .A1(reg_data2[7]), .A2(imm[7]), .S0(n355), .Y(
+        alu_input2[7]) );
+  MUX21X1_LVT U304 ( .A1(reg_data2[31]), .A2(imm[31]), .S0(n355), .Y(
+        alu_input2[31]) );
+  MUX21X1_LVT U305 ( .A1(imm[23]), .A2(reg_data2[23]), .S0(n356), .Y(
+        alu_input2[23]) );
+  MUX21X1_LVT U306 ( .A1(imm[25]), .A2(reg_data2[25]), .S0(n356), .Y(
+        alu_input2[25]) );
+  INVX0_HVT U307 ( .A(imm[2]), .Y(n21) );
+  MUX21X1_LVT U308 ( .A1(n366), .A2(imm[30]), .S0(n355), .Y(alu_input2[30]) );
+  MUX21X1_LVT U309 ( .A1(n370), .A2(imm[28]), .S0(n355), .Y(alu_input2[28]) );
+  MUX21X1_LVT U310 ( .A1(imm[24]), .A2(reg_data2[24]), .S0(n356), .Y(
+        alu_input2[24]) );
+  MUX21X1_LVT U311 ( .A1(imm[22]), .A2(reg_data2[22]), .S0(n356), .Y(
+        alu_input2[22]) );
+  MUX21X1_LVT U312 ( .A1(reg_data2[26]), .A2(imm[26]), .S0(n355), .Y(
+        alu_input2[26]) );
+  MUX21X1_LVT U313 ( .A1(imm[14]), .A2(n357), .S0(n356), .Y(alu_input2[14]) );
+  MUX21X1_LVT U314 ( .A1(imm[20]), .A2(n358), .S0(n356), .Y(alu_input2[20]) );
+  MUX21X1_LVT U315 ( .A1(imm[12]), .A2(n360), .S0(n356), .Y(alu_input2[12]) );
+  MUX21X1_LVT U316 ( .A1(imm[16]), .A2(n362), .S0(n356), .Y(alu_input2[16]) );
+  MUX21X1_LVT U317 ( .A1(imm[18]), .A2(n363), .S0(n356), .Y(alu_input2[18]) );
+  XOR2X1_LVT U318 ( .A1(n288), .A2(n287), .Y(pc_next[8]) );
+  XOR2X1_LVT U319 ( .A1(n223), .A2(n222), .Y(pc_next[16]) );
+  OAI21X1_LVT U320 ( .A1(n171), .A2(n160), .A3(n161), .Y(n59) );
+  NBUFFX2_LVT U321 ( .A(alu_result[5]), .Y(n364) );
+  NBUFFX2_LVT U322 ( .A(alu_result[4]), .Y(n365) );
+  NBUFFX8_LVT U323 ( .A(alu_src), .Y(n355) );
+  MUX21X2_LVT U324 ( .A1(imm[5]), .A2(reg_data2[5]), .S0(n356), .Y(
+        alu_input2[5]) );
+  AND2X1_LVT U325 ( .A1(imm[1]), .A2(n355), .Y(n17) );
+  AO21X1_LVT U326 ( .A1(reg_data2[1]), .A2(n356), .A3(n17), .Y(n386) );
+  NOR2X0_LVT U327 ( .A1(debug_pc[28]), .A2(n51), .Y(n108) );
+  NOR2X0_LVT U328 ( .A1(debug_pc[29]), .A2(n43), .Y(n96) );
+  NOR2X0_LVT U329 ( .A1(n108), .A2(n96), .Y(n79) );
+  NAND2X0_LVT U330 ( .A1(n18), .A2(n79), .Y(n69) );
+  NOR2X0_LVT U331 ( .A1(debug_pc[26]), .A2(n51), .Y(n130) );
+  NOR2X0_LVT U332 ( .A1(debug_pc[27]), .A2(n43), .Y(n120) );
+  NOR2X0_LVT U333 ( .A1(n130), .A2(n120), .Y(n66) );
+  NOR2X0_LVT U334 ( .A1(debug_pc[24]), .A2(n64), .Y(n135) );
+  NOR2X0_LVT U335 ( .A1(debug_pc[25]), .A2(n43), .Y(n140) );
+  NOR2X0_LVT U336 ( .A1(n135), .A2(n140), .Y(n126) );
+  NAND2X0_LVT U337 ( .A1(n66), .A2(n126), .Y(n101) );
+  NOR2X0_LVT U338 ( .A1(n69), .A2(n101), .Y(n71) );
+  NOR2X0_LVT U339 ( .A1(debug_pc[22]), .A2(n58), .Y(n170) );
+  NOR2X0_LVT U340 ( .A1(debug_pc[23]), .A2(n43), .Y(n160) );
+  NOR2X0_LVT U341 ( .A1(n170), .A2(n160), .Y(n60) );
+  NOR2X0_LVT U342 ( .A1(debug_pc[20]), .A2(n57), .Y(n175) );
+  NOR2X0_LVT U343 ( .A1(debug_pc[21]), .A2(n52), .Y(n182) );
+  NOR2X0_LVT U344 ( .A1(n175), .A2(n182), .Y(n166) );
+  NAND2X0_LVT U345 ( .A1(n60), .A2(n166), .Y(n62) );
+  NOR2X0_LVT U346 ( .A1(debug_pc[18]), .A2(n53), .Y(n194) );
+  NOR2X0_LVT U347 ( .A1(debug_pc[19]), .A2(n54), .Y(n199) );
+  NOR2X0_LVT U348 ( .A1(n194), .A2(n199), .Y(n56) );
+  NOR2X0_LVT U349 ( .A1(debug_pc[16]), .A2(n51), .Y(n219) );
+  NOR2X0_LVT U350 ( .A1(debug_pc[17]), .A2(n52), .Y(n214) );
+  NOR2X0_LVT U351 ( .A1(n219), .A2(n214), .Y(n204) );
+  NAND2X0_LVT U352 ( .A1(n56), .A2(n204), .Y(n188) );
+  NOR2X0_LVT U353 ( .A1(n62), .A2(n188), .Y(n145) );
+  NAND2X0_LVT U354 ( .A1(n71), .A2(n145), .Y(n73) );
+  AND2X1_LVT U355 ( .A1(n19), .A2(imm[4]), .Y(n27) );
+  NOR2X0_LVT U356 ( .A1(debug_pc[4]), .A2(n27), .Y(n306) );
+  AND2X1_LVT U357 ( .A1(n19), .A2(imm[5]), .Y(n28) );
+  NOR2X0_LVT U358 ( .A1(debug_pc[5]), .A2(n28), .Y(n308) );
+  NOR2X0_LVT U359 ( .A1(n306), .A2(n308), .Y(n300) );
+  NOR2X0_LVT U360 ( .A1(debug_pc[6]), .A2(n29), .Y(n301) );
+  NOR2X0_LVT U361 ( .A1(debug_pc[7]), .A2(n30), .Y(n294) );
+  NOR2X0_LVT U362 ( .A1(n301), .A2(n294), .Y(n32) );
+  NAND2X0_LVT U363 ( .A1(n300), .A2(n32), .Y(n34) );
+  AND2X1_LVT U364 ( .A1(n19), .A2(imm[0]), .Y(n332) );
+  NAND2X0_LVT U365 ( .A1(n332), .A2(debug_pc[0]), .Y(n334) );
+  AND2X1_LVT U366 ( .A1(n19), .A2(imm[1]), .Y(n20) );
+  NOR2X0_LVT U367 ( .A1(debug_pc[1]), .A2(n20), .Y(n328) );
+  NAND2X0_LVT U368 ( .A1(n20), .A2(debug_pc[1]), .Y(n329) );
+  OAI21X2_LVT U369 ( .A1(n334), .A2(n328), .A3(n329), .Y(n317) );
+  NOR2X0_LVT U370 ( .A1(debug_pc[2]), .A2(n22), .Y(n323) );
+  AND2X1_LVT U371 ( .A1(n19), .A2(imm[3]), .Y(n23) );
+  NOR2X0_LVT U372 ( .A1(debug_pc[3]), .A2(n23), .Y(n318) );
+  NOR2X0_LVT U373 ( .A1(n323), .A2(n318), .Y(n26) );
+  NAND2X0_LVT U374 ( .A1(n22), .A2(debug_pc[2]), .Y(n324) );
+  NAND2X0_LVT U375 ( .A1(n23), .A2(debug_pc[3]), .Y(n319) );
+  OA21X1_LVT U376 ( .A1(n324), .A2(n318), .A3(n319), .Y(n24) );
+  AOI21X1_LVT U377 ( .A1(n317), .A2(n26), .A3(n25), .Y(n289) );
+  NAND2X0_LVT U378 ( .A1(n27), .A2(debug_pc[4]), .Y(n313) );
+  NAND2X0_LVT U379 ( .A1(n28), .A2(debug_pc[5]), .Y(n309) );
+  OAI21X2_LVT U380 ( .A1(n313), .A2(n308), .A3(n309), .Y(n299) );
+  NAND2X0_LVT U381 ( .A1(n29), .A2(debug_pc[6]), .Y(n302) );
+  NAND2X0_LVT U382 ( .A1(n30), .A2(debug_pc[7]), .Y(n295) );
+  AOI21X1_LVT U383 ( .A1(n299), .A2(n32), .A3(n31), .Y(n33) );
+  OAI21X2_LVT U384 ( .A1(n34), .A2(n289), .A3(n33), .Y(n225) );
+  NOR2X0_LVT U385 ( .A1(debug_pc[10]), .A2(n37), .Y(n262) );
+  NOR2X0_LVT U386 ( .A1(debug_pc[11]), .A2(n38), .Y(n266) );
+  NOR2X0_LVT U387 ( .A1(n262), .A2(n266), .Y(n40) );
+  AND2X1_LVT U388 ( .A1(n19), .A2(imm[8]), .Y(n35) );
+  NOR2X0_LVT U389 ( .A1(debug_pc[8]), .A2(n35), .Y(n284) );
+  AND2X1_LVT U390 ( .A1(n19), .A2(imm[9]), .Y(n36) );
+  NOR2X0_LVT U391 ( .A1(debug_pc[9]), .A2(n36), .Y(n279) );
+  NOR2X0_LVT U392 ( .A1(n284), .A2(n279), .Y(n271) );
+  NAND2X0_LVT U393 ( .A1(n40), .A2(n271), .Y(n257) );
+  NOR2X0_LVT U394 ( .A1(debug_pc[12]), .A2(n41), .Y(n245) );
+  NOR2X0_LVT U395 ( .A1(debug_pc[13]), .A2(n54), .Y(n251) );
+  NOR2X0_LVT U396 ( .A1(n245), .A2(n251), .Y(n237) );
+  NOR2X0_LVT U397 ( .A1(debug_pc[14]), .A2(n42), .Y(n240) );
+  NOR2X0_LVT U398 ( .A1(debug_pc[15]), .A2(n43), .Y(n231) );
+  NOR2X0_LVT U399 ( .A1(n240), .A2(n231), .Y(n45) );
+  NAND2X0_LVT U400 ( .A1(n237), .A2(n45), .Y(n47) );
+  NOR2X0_LVT U401 ( .A1(n257), .A2(n47), .Y(n50) );
+  NAND2X0_LVT U402 ( .A1(n35), .A2(debug_pc[8]), .Y(n285) );
+  NAND2X0_LVT U403 ( .A1(n36), .A2(debug_pc[9]), .Y(n280) );
+  NAND2X0_LVT U404 ( .A1(n37), .A2(debug_pc[10]), .Y(n275) );
+  AOI21X1_LVT U405 ( .A1(n272), .A2(n40), .A3(n39), .Y(n256) );
+  NAND2X0_LVT U406 ( .A1(n41), .A2(debug_pc[12]), .Y(n258) );
+  NAND2X0_LVT U407 ( .A1(n43), .A2(debug_pc[13]), .Y(n252) );
+  OAI21X2_LVT U408 ( .A1(n258), .A2(n251), .A3(n252), .Y(n236) );
+  NAND2X0_LVT U409 ( .A1(n42), .A2(debug_pc[14]), .Y(n241) );
+  AOI21X1_LVT U410 ( .A1(n236), .A2(n45), .A3(n44), .Y(n46) );
+  OA21X1_LVT U411 ( .A1(n47), .A2(n256), .A3(n46), .Y(n48) );
+  AOI21X2_LVT U412 ( .A1(n225), .A2(n50), .A3(n49), .Y(n223) );
+  NAND2X0_LVT U413 ( .A1(n51), .A2(debug_pc[16]), .Y(n220) );
+  NAND2X0_LVT U414 ( .A1(n52), .A2(debug_pc[17]), .Y(n215) );
+  NAND2X0_LVT U415 ( .A1(n53), .A2(debug_pc[18]), .Y(n209) );
+  AOI21X1_LVT U416 ( .A1(n205), .A2(n56), .A3(n55), .Y(n187) );
+  NAND2X0_LVT U417 ( .A1(n57), .A2(debug_pc[20]), .Y(n190) );
+  NAND2X0_LVT U418 ( .A1(n43), .A2(debug_pc[21]), .Y(n183) );
+  NAND2X0_LVT U419 ( .A1(n58), .A2(debug_pc[22]), .Y(n171) );
+  AOI21X1_LVT U420 ( .A1(n165), .A2(n60), .A3(n59), .Y(n61) );
+  OA21X1_LVT U421 ( .A1(n62), .A2(n187), .A3(n61), .Y(n63) );
+  NAND2X0_LVT U422 ( .A1(n64), .A2(debug_pc[24]), .Y(n149) );
+  NAND2X0_LVT U423 ( .A1(n43), .A2(debug_pc[25]), .Y(n141) );
+  NAND2X0_LVT U424 ( .A1(n51), .A2(debug_pc[26]), .Y(n131) );
+  NAND2X0_LVT U425 ( .A1(n54), .A2(debug_pc[27]), .Y(n121) );
+  AOI21X1_LVT U426 ( .A1(n125), .A2(n66), .A3(n65), .Y(n102) );
+  NAND2X0_LVT U427 ( .A1(n51), .A2(debug_pc[28]), .Y(n109) );
+  NAND2X0_LVT U428 ( .A1(n43), .A2(debug_pc[29]), .Y(n97) );
+  AOI21X1_LVT U429 ( .A1(n80), .A2(n18), .A3(n67), .Y(n68) );
+  AOI21X1_LVT U430 ( .A1(n146), .A2(n71), .A3(n70), .Y(n72) );
+  OA21X1_LVT U431 ( .A1(n73), .A2(n223), .A3(n72), .Y(n74) );
+  XNOR2X2_LVT U432 ( .A1(n78), .A2(n77), .Y(pc_next[31]) );
+  NOR2X0_LVT U433 ( .A1(n82), .A2(n101), .Y(n84) );
+  NAND2X0_LVT U434 ( .A1(n84), .A2(n145), .Y(n86) );
+  AOI21X1_LVT U435 ( .A1(n146), .A2(n84), .A3(n83), .Y(n85) );
+  OA21X1_LVT U436 ( .A1(n86), .A2(n223), .A3(n85), .Y(n87) );
+  XNOR2X2_LVT U437 ( .A1(n90), .A2(n89), .Y(pc_next[30]) );
+  NOR2X0_LVT U438 ( .A1(n108), .A2(n101), .Y(n92) );
+  NAND2X0_LVT U439 ( .A1(n92), .A2(n145), .Y(n94) );
+  AOI21X1_LVT U440 ( .A1(n146), .A2(n92), .A3(n91), .Y(n93) );
+  OA21X1_LVT U441 ( .A1(n94), .A2(n223), .A3(n93), .Y(n95) );
+  XNOR2X2_LVT U442 ( .A1(n100), .A2(n99), .Y(pc_next[29]) );
+  NAND2X0_LVT U443 ( .A1(n104), .A2(n145), .Y(n106) );
+  AOI21X1_LVT U444 ( .A1(n146), .A2(n104), .A3(n103), .Y(n105) );
+  OA21X1_LVT U445 ( .A1(n106), .A2(n223), .A3(n105), .Y(n107) );
+  XNOR2X2_LVT U446 ( .A1(n112), .A2(n111), .Y(pc_next[28]) );
+  NOR2X0_LVT U447 ( .A1(n130), .A2(n113), .Y(n116) );
+  NAND2X0_LVT U448 ( .A1(n116), .A2(n145), .Y(n118) );
+  AOI21X1_LVT U449 ( .A1(n146), .A2(n116), .A3(n115), .Y(n117) );
+  OA21X1_LVT U450 ( .A1(n118), .A2(n223), .A3(n117), .Y(n119) );
+  XNOR2X2_LVT U451 ( .A1(n124), .A2(n123), .Y(pc_next[27]) );
+  NAND2X0_LVT U452 ( .A1(n126), .A2(n145), .Y(n128) );
+  AOI21X1_LVT U453 ( .A1(n146), .A2(n126), .A3(n125), .Y(n127) );
+  OA21X1_LVT U454 ( .A1(n128), .A2(n223), .A3(n127), .Y(n129) );
+  XNOR2X2_LVT U455 ( .A1(n134), .A2(n133), .Y(pc_next[26]) );
+  NAND2X0_LVT U456 ( .A1(n150), .A2(n145), .Y(n138) );
+  AOI21X1_LVT U457 ( .A1(n146), .A2(n150), .A3(n136), .Y(n137) );
+  OA21X1_LVT U458 ( .A1(n138), .A2(n223), .A3(n137), .Y(n139) );
+  XNOR2X2_LVT U459 ( .A1(n144), .A2(n143), .Y(pc_next[25]) );
+  OA21X1_LVT U460 ( .A1(n147), .A2(n223), .A3(n63), .Y(n148) );
+  XNOR2X2_LVT U461 ( .A1(n152), .A2(n151), .Y(pc_next[24]) );
+  NOR2X0_LVT U462 ( .A1(n170), .A2(n153), .Y(n156) );
+  AOI21X1_LVT U463 ( .A1(n178), .A2(n156), .A3(n155), .Y(n157) );
+  OA21X1_LVT U464 ( .A1(n158), .A2(n223), .A3(n157), .Y(n159) );
+  XNOR2X2_LVT U465 ( .A1(n164), .A2(n163), .Y(pc_next[23]) );
+  AOI21X1_LVT U466 ( .A1(n178), .A2(n166), .A3(n165), .Y(n167) );
+  OA21X1_LVT U467 ( .A1(n168), .A2(n223), .A3(n167), .Y(n169) );
+  XNOR2X2_LVT U468 ( .A1(n174), .A2(n173), .Y(pc_next[22]) );
+  AOI21X1_LVT U469 ( .A1(n178), .A2(n191), .A3(n177), .Y(n179) );
+  OA21X1_LVT U470 ( .A1(n180), .A2(n223), .A3(n179), .Y(n181) );
+  XNOR2X2_LVT U471 ( .A1(n186), .A2(n185), .Y(pc_next[21]) );
+  OA21X1_LVT U472 ( .A1(n188), .A2(n223), .A3(n187), .Y(n189) );
+  XNOR2X2_LVT U473 ( .A1(n193), .A2(n192), .Y(pc_next[20]) );
+  AOI21X1_LVT U474 ( .A1(n205), .A2(n210), .A3(n195), .Y(n196) );
+  OA21X1_LVT U475 ( .A1(n197), .A2(n223), .A3(n196), .Y(n198) );
+  XNOR2X2_LVT U476 ( .A1(n203), .A2(n202), .Y(pc_next[19]) );
+  OA21X1_LVT U477 ( .A1(n207), .A2(n223), .A3(n206), .Y(n208) );
+  XNOR2X2_LVT U478 ( .A1(n212), .A2(n211), .Y(pc_next[18]) );
+  OA21X1_LVT U479 ( .A1(n219), .A2(n223), .A3(n220), .Y(n213) );
+  XNOR2X2_LVT U480 ( .A1(n218), .A2(n217), .Y(pc_next[17]) );
+  NOR2X0_LVT U481 ( .A1(n240), .A2(n224), .Y(n228) );
+  INVX1_LVT U482 ( .A(n225), .Y(n288) );
+  AOI21X1_LVT U483 ( .A1(n248), .A2(n228), .A3(n227), .Y(n229) );
+  XNOR2X2_LVT U484 ( .A1(n235), .A2(n234), .Y(pc_next[15]) );
+  AOI21X1_LVT U485 ( .A1(n248), .A2(n237), .A3(n236), .Y(n238) );
+  XNOR2X2_LVT U486 ( .A1(n244), .A2(n243), .Y(pc_next[14]) );
+  AOI21X1_LVT U487 ( .A1(n248), .A2(n259), .A3(n247), .Y(n249) );
+  XNOR2X2_LVT U488 ( .A1(n255), .A2(n254), .Y(pc_next[13]) );
+  XNOR2X2_LVT U489 ( .A1(n261), .A2(n260), .Y(pc_next[12]) );
+  AOI21X1_LVT U490 ( .A1(n272), .A2(n276), .A3(n263), .Y(n264) );
+  XNOR2X2_LVT U491 ( .A1(n270), .A2(n269), .Y(pc_next[11]) );
+  XNOR2X2_LVT U492 ( .A1(n278), .A2(n277), .Y(pc_next[10]) );
+  XNOR2X2_LVT U493 ( .A1(n283), .A2(n282), .Y(pc_next[9]) );
+  NOR2X0_LVT U494 ( .A1(n301), .A2(n290), .Y(n293) );
+  AOI21X1_LVT U495 ( .A1(n316), .A2(n293), .A3(n292), .Y(n298) );
+  AOI21X1_LVT U496 ( .A1(n316), .A2(n300), .A3(n299), .Y(n305) );
+  AOI21X1_LVT U497 ( .A1(n316), .A2(n314), .A3(n307), .Y(n312) );
+  MUX21X2_LVT U498 ( .A1(mem_data[0]), .A2(alu_result[0]), .S0(n337), .Y(
+        debug_wb_data[0]) );
+  MUX21X2_LVT U499 ( .A1(mem_data[1]), .A2(alu_result[1]), .S0(n337), .Y(
+        debug_wb_data[1]) );
+  MUX21X2_LVT U500 ( .A1(mem_data[6]), .A2(alu_result[6]), .S0(n337), .Y(
+        debug_wb_data[6]) );
+  MUX21X2_LVT U501 ( .A1(mem_data[13]), .A2(alu_result[13]), .S0(n337), .Y(
+        debug_wb_data[13]) );
+  MUX21X2_LVT U502 ( .A1(mem_data[15]), .A2(alu_result[15]), .S0(n337), .Y(
+        debug_wb_data[15]) );
+  MUX21X2_LVT U503 ( .A1(mem_data[14]), .A2(alu_result[14]), .S0(n337), .Y(
+        debug_wb_data[14]) );
+  MUX21X2_LVT U504 ( .A1(mem_data[18]), .A2(alu_result[18]), .S0(n337), .Y(
+        debug_wb_data[18]) );
+  MUX21X2_LVT U505 ( .A1(mem_data[20]), .A2(alu_result[20]), .S0(n337), .Y(
+        debug_wb_data[20]) );
+  MUX21X2_LVT U506 ( .A1(alu_result[16]), .A2(mem_data[16]), .S0(n336), .Y(
+        debug_wb_data[16]) );
+  MUX21X2_LVT U507 ( .A1(mem_data[11]), .A2(alu_result[11]), .S0(n337), .Y(
+        debug_wb_data[11]) );
+  MUX21X2_LVT U508 ( .A1(alu_result[12]), .A2(mem_data[12]), .S0(n336), .Y(
+        debug_wb_data[12]) );
+  MUX21X2_LVT U509 ( .A1(mem_data[3]), .A2(alu_result[3]), .S0(n337), .Y(
+        debug_wb_data[3]) );
+  MUX21X2_LVT U510 ( .A1(mem_data[17]), .A2(alu_result[17]), .S0(n337), .Y(
+        debug_wb_data[17]) );
+  MUX21X2_LVT U511 ( .A1(mem_data[19]), .A2(alu_result[19]), .S0(n337), .Y(
+        debug_wb_data[19]) );
+  MUX21X2_LVT U512 ( .A1(mem_data[22]), .A2(alu_result[22]), .S0(n337), .Y(
+        debug_wb_data[22]) );
+  MUX21X2_LVT U513 ( .A1(mem_data[2]), .A2(alu_result[2]), .S0(n337), .Y(
+        debug_wb_data[2]) );
+  MUX21X2_LVT U514 ( .A1(mem_data[31]), .A2(alu_result[31]), .S0(n337), .Y(
+        debug_wb_data[31]) );
+  MUX21X2_LVT U515 ( .A1(mem_data[7]), .A2(alu_result[7]), .S0(n337), .Y(
+        debug_wb_data[7]) );
+  MUX21X2_LVT U516 ( .A1(mem_data[29]), .A2(alu_result[29]), .S0(n337), .Y(
+        debug_wb_data[29]) );
+  MUX21X2_LVT U517 ( .A1(mem_data[10]), .A2(alu_result[10]), .S0(n337), .Y(
+        debug_wb_data[10]) );
+  MUX21X2_LVT U518 ( .A1(mem_data[24]), .A2(alu_result[24]), .S0(n337), .Y(
+        debug_wb_data[24]) );
+  MUX21X2_LVT U519 ( .A1(mem_data[26]), .A2(alu_result[26]), .S0(n337), .Y(
+        debug_wb_data[26]) );
+  MUX21X2_LVT U520 ( .A1(mem_data[28]), .A2(alu_result[28]), .S0(n337), .Y(
+        debug_wb_data[28]) );
+  MUX21X2_LVT U521 ( .A1(mem_data[9]), .A2(alu_result[9]), .S0(n337), .Y(
+        debug_wb_data[9]) );
+  MUX21X2_LVT U522 ( .A1(alu_result[21]), .A2(mem_data[21]), .S0(n336), .Y(
+        debug_wb_data[21]) );
+  MUX21X2_LVT U523 ( .A1(mem_data[23]), .A2(alu_result[23]), .S0(n337), .Y(
+        debug_wb_data[23]) );
+  MUX21X2_LVT U524 ( .A1(mem_data[25]), .A2(alu_result[25]), .S0(n337), .Y(
+        debug_wb_data[25]) );
+  MUX21X2_LVT U525 ( .A1(mem_data[30]), .A2(alu_result[30]), .S0(n337), .Y(
+        debug_wb_data[30]) );
+  MUX21X2_LVT U526 ( .A1(alu_result[27]), .A2(mem_data[27]), .S0(n336), .Y(
+        debug_wb_data[27]) );
+  MUX21X2_LVT U527 ( .A1(mem_data[5]), .A2(n364), .S0(n337), .Y(
+        debug_wb_data[5]) );
+  MUX21X2_LVT U528 ( .A1(mem_data[4]), .A2(n365), .S0(n337), .Y(
+        debug_wb_data[4]) );
+  NBUFFX2_LVT U529 ( .A(reg_data2[5]), .Y(n384) );
+  INVX2_LVT U530 ( .A(reg_data2[8]), .Y(n341) );
+  INVX2_LVT U531 ( .A(reg_data2[4]), .Y(n349) );
+  INVX2_LVT U532 ( .A(reg_data2[2]), .Y(n353) );
+  INVX2_LVT U533 ( .A(reg_data2[6]), .Y(n354) );
+  MUX21X2_LVT U534 ( .A1(n368), .A2(imm[29]), .S0(n355), .Y(alu_input2[29]) );
+  MUX21X2_LVT U535 ( .A1(n367), .A2(imm[27]), .S0(n355), .Y(alu_input2[27]) );
+  MUX21X2_LVT U536 ( .A1(n372), .A2(imm[21]), .S0(n355), .Y(alu_input2[21]) );
+  MUX21X2_LVT U537 ( .A1(reg_data2[19]), .A2(imm[19]), .S0(n355), .Y(
+        alu_input2[19]) );
+  MUX21X2_LVT U538 ( .A1(reg_data2[17]), .A2(imm[17]), .S0(n355), .Y(
+        alu_input2[17]) );
+  MUX21X2_LVT U539 ( .A1(reg_data2[15]), .A2(imm[15]), .S0(n355), .Y(
+        alu_input2[15]) );
+  MUX21X2_LVT U540 ( .A1(reg_data2[13]), .A2(imm[13]), .S0(n355), .Y(
+        alu_input2[13]) );
+  MUX21X2_LVT U541 ( .A1(n371), .A2(imm[11]), .S0(n355), .Y(alu_input2[11]) );
+  MUX21X2_LVT U542 ( .A1(imm[10]), .A2(n361), .S0(n356), .Y(alu_input2[10]) );
+  MUX21X2_LVT U543 ( .A1(reg_data2[9]), .A2(imm[9]), .S0(n355), .Y(
+        alu_input2[9]) );
+  MUX21X2_LVT U544 ( .A1(imm[8]), .A2(n359), .S0(n356), .Y(alu_input2[8]) );
+  MUX21X2_LVT U545 ( .A1(imm[6]), .A2(n374), .S0(n356), .Y(alu_input2[6]) );
+  MUX21X2_LVT U546 ( .A1(imm[4]), .A2(n369), .S0(n356), .Y(alu_input2[4]) );
+  MUX21X2_LVT U547 ( .A1(reg_data2[3]), .A2(imm[3]), .S0(n355), .Y(
+        alu_input2[3]) );
+  MUX21X2_LVT U548 ( .A1(imm[2]), .A2(n373), .S0(n356), .Y(alu_input2[2]) );
 endmodule
 

@@ -2,14 +2,14 @@
 ****************************************
 check_design summary:
 Version:     Q-2019.12-SP3
-Date:        Mon Mar  9 23:09:33 2026
+Date:        Tue Mar 10 19:25:24 2026
 ****************************************
 
                    Name                                            Total
 --------------------------------------------------------------------------------
-Inputs/Outputs                                                     55
+Inputs/Outputs                                                     54
     Unconnected ports (LINT-28)                                    32
-    Shorted outputs (LINT-31)                                      21
+    Shorted outputs (LINT-31)                                      20
     Constant outputs (LINT-52)                                      2
 
 Cells                                                               3
@@ -56,25 +56,24 @@ Warning: In design 'data_mem', port 'addr[1]' is not connected to any nets. (LIN
 Warning: In design 'data_mem', port 'addr[0]' is not connected to any nets. (LINT-28)
 Warning: In design 'control', output port 'mem_read' is connected directly to output port 'mem_to_reg'. (LINT-31)
 Warning: In design 'control', output port 'alu_ctrl[3]' is connected directly to output port 'alu_ctrl[2]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[12]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[13]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[14]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[15]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[16]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[17]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[18]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[19]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[20]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[21]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[22]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[23]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[24]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[25]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[26]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[27]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[28]'. (LINT-31)
 Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[29]'. (LINT-31)
-Warning: In design 'imm_gen', output port 'imm[31]' is connected directly to output port 'imm[30]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[12]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[14]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[16]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[18]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[20]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[22]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[24]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[26]'. (LINT-31)
+Warning: In design 'imm_gen', output port 'imm[30]' is connected directly to output port 'imm[28]'. (LINT-31)
 Warning: In design 'riscv_core', a pin on submodule 'alu_inst' is connected to logic 1 or logic 0. (LINT-32)
    Pin 'alu_ctrl[3]' is connected to logic 0. 
 Warning: In design 'riscv_core', a pin on submodule 'alu_inst' is connected to logic 1 or logic 0. (LINT-32)

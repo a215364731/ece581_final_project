@@ -3,7 +3,7 @@
 # -------------------------------------------------------------------------
 # Matching the Top-Down period of 1.41ns
 # Duty cycle is 50% (0.705ns)
-create_clock [get_ports clk] -name clk -period 1.41 -waveform {0 0.705}
+create_clock [get_ports clk] -name clk -period 2.925
 
 # -------------------------------------------------------------------------
 # 2. Input Delays

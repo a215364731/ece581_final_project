@@ -1,0 +1,48 @@
+ 
+****************************************
+Report : constraint
+        -all_violators
+Design : riscv_core
+Version: Q-2019.12-SP3
+Date   : Tue Mar 10 19:44:23 2026
+****************************************
+
+
+   max_delay/setup ('clk' group)
+
+                             Required        Actual
+   Endpoint                 Path Delay     Path Delay        Slack
+   -----------------------------------------------------------------
+   dmem/read_data_reg_7_/D      2.76           2.76 f         0.00  (VIOLATED: increase significant digits)
+   dmem/read_data_reg_9_/D      2.76           2.76 f         0.00  (VIOLATED: increase significant digits)
+
+
+   max_area
+
+                             Required        Actual
+   Design                      Area           Area           Slack
+   -----------------------------------------------------------------
+   riscv_core                   0.00       265917.56      -265917.56
+                                                                    (VIOLATED)
+
+
+   max_leakage_power
+
+                             Required        Actual
+   Design                   Leakage Power  Leakage Power     Slack
+   -----------------------------------------------------------------
+   riscv_core                   0.00       3125334528.00  -3125334528.00
+                                                                    (VIOLATED)
+
+
+   multiport_net
+
+                             Required        Actual
+   Net                          Cost           Cost          Violation
+   -----------------------------------------------------------------
+   immgen/imm[12]               0.00           9.00          -9.00  (VIOLATED)
+   immgen/imm[31]               0.00           9.00          -9.00  (VIOLATED)
+   ctrl/mem_to_reg              0.00           1.00          -1.00  (VIOLATED)
+
+
+1
