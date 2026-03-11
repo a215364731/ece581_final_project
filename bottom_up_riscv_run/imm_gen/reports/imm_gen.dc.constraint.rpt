@@ -4,7 +4,7 @@ Report : constraint
         -all_violators
 Design : imm_gen
 Version: X-2025.06-SP4
-Date   : Fri Mar  6 17:39:33 2026
+Date   : Tue Mar 10 19:06:45 2026
 ****************************************
 
 
@@ -13,7 +13,7 @@ Date   : Fri Mar  6 17:39:33 2026
                              Required        Actual
    Design                   Leakage Power  Leakage Power     Slack
    -----------------------------------------------------------------
-   imm_gen                      0.00       925772.75      -925772.75
+   imm_gen                      0.00       5314096.00     -5314096.00
                                                                     (VIOLATED)
 
 
